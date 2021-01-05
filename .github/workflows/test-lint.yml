@@ -20,7 +20,7 @@ jobs:
       - name: Run unit tests
         run: |
           yarn
-          yarn test
+          yarn jest
         working-directory: ./app
       - name: Run cypress tests
         run: |
