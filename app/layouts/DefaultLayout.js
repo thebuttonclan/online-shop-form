@@ -122,18 +122,14 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const ResponsiveContainer = ({ children, query}) => (
+const ResponsiveContainer = ({ children, query }) => (
   /* Heads up!
    * For large applications it may not be best option to put all page into these containers at
    * they will be rendered twice for SSR.
    */
   <MediaContextProvider>
-    <DesktopContainer query={query}>
-      {children}
-    </DesktopContainer>
-    <MobileContainer query={query}>
-      {children}
-    </MobileContainer>
+    <DesktopContainer query={query}>{children}</DesktopContainer>
+    <MobileContainer query={query}>{children}</MobileContainer>
   </MediaContextProvider>
 );
 
