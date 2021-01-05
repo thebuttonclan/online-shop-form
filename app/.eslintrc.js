@@ -8,7 +8,9 @@ module.exports = {
   parser: 'babel-eslint',
   root: true,
   rules: {
+    camelcase: 0,
     'no-unused-vars': 0,
+    'arrow-body-style': 0,
     'import/no-unresolved': 0,
     'no-console': 0,
     'no-shadow': 0,
