@@ -1,6 +1,6 @@
-import Input from 'components/form/input';
-import Checkbox from 'components/form/checkbox';
-import Select from 'components/form/select';
+import Input from 'components/form/Input';
+import Checkbox from 'components/form/Checkbox';
+import Select from 'components/form/Select';
 
 // See https://react-jsonschema-form.readthedocs.io/en/latest/advanced-customization/custom-widgets-fields/ for overriding widgets
 const widgets = {
