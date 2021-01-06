@@ -76,10 +76,7 @@ const initExpresss = (options = {}) => {
   );
 
   // lusca
-  expressServer.use(lusca.xframe('SAMEORIGIN'));
   expressServer.use(lusca.p3p('ABCDEF'));
-  expressServer.use(lusca.xssProtection(true));
-  expressServer.use(lusca.nosniff());
   expressServer.use(lusca.referrerPolicy('same-origin'));
 
   // At a minimum, disable X-Powered-By header
