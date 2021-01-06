@@ -7,7 +7,7 @@ const Input = props => {
         value={props.value || ''}
         name={props.schema.name}
         onChange={e => props.onChange(e.target.value)}
-        required={props.schema.required || null}
+        required={props.schema.isRequired || null}
       />
       <style jsx>
         {`
