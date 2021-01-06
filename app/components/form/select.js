@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-const Checkbox = props => {
+const Select = props => {
   return (
     <>
       <div className="bc-gov-dropdown-wrapper">
@@ -60,4 +60,4 @@ const Checkbox = props => {
   );
 };
 
-export default Checkbox;
+export default Select;
