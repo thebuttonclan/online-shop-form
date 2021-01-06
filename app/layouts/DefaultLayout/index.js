@@ -1,10 +1,10 @@
-// https://github.com/Semantic-Org/Semantic-UI-React/blob/master/docs/src/layouts/HomepageLayout.js
+// see https://github.com/Semantic-Org/Semantic-UI-React/blob/master/docs/src/layouts/HomepageLayout.js as a reference
 
 import React, { Component } from 'react';
 import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Container, Icon, Image, Menu, Segment, Sidebar, Header } from 'semantic-ui-react';
+import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 import Footer from './Footer';
@@ -15,13 +15,15 @@ const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
 
 const TOP_HEIGHT = '60px';
 
-const { MediaContextProvider, Media } = createMedia({
+const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   breakpoints: {
     mobile: 0,
     tablet: 768,
     computer: 1024,
   },
 });
+
+export const mediaStyle = createMediaStyle();
 
 const HeaderSegment = styled(Segment)`
   min-height: ${TOP_HEIGHT};
@@ -35,10 +37,24 @@ const HeaderMenu = styled(Menu)`
   border-bottom: 2px solid #fcba19 !important;
 `;
 
-/* Heads up!
- * Neither Semantic UI nor Semantic UI React offer a responsive navbar, however, it can be implemented easily.
- * It can be more complicated, but you can create really flexible markup.
- */
+const XsImage = styled(Image)`
+  width: 50px;
+`;
+
+const BlockItem = styled(Menu.Item)`
+  display: block !important;
+
+  & * {
+    color: rgba(255, 255, 255) !important;
+    opacity: 1 !important;
+  }
+`;
+
+const BlockIcon = styled(Icon)`
+  display: block !important;
+  margin: auto !important;
+`;
+
 class DesktopContainer extends Component {
   state = {};
 
@@ -87,7 +103,7 @@ class MobileContainer extends Component {
     const { sidebarOpened } = this.state;
 
     return (
-      <Media as={Sidebar.Pushable} at="mobile">
+      <Media at="mobile" as={Sidebar.Pushable}>
         <Sidebar.Pushable>
           <Sidebar
             as={Menu}
@@ -106,9 +122,11 @@ class MobileContainer extends Component {
           <Sidebar.Pusher dimmed={sidebarOpened}>
             <HeaderSegment inverted textAlign="center" vertical>
               <HeaderMenu inverted secondary size="large">
-                <Menu.Item onClick={this.handleToggle}>
-                  <Icon name="sidebar" />
-                </Menu.Item>
+                <BlockItem onClick={this.handleToggle}>
+                  <BlockIcon name="sidebar" />
+                  <span>Menu</span>
+                </BlockItem>
+                <XsImage src={bcidSymbol} />
                 <Menu.Item>
                   <Header as="h3" inverted>
                     {TITLE}
@@ -131,13 +149,9 @@ MobileContainer.propTypes = {
 };
 
 const ResponsiveContainer = ({ children, query }) => (
-  /* Heads up!
-   * For large applications it may not be best option to put all page into these containers at
-   * they will be rendered twice for SSR.
-   */
   <MediaContextProvider>
-    <DesktopContainer query={query}>{children}</DesktopContainer>
     <MobileContainer query={query}>{children}</MobileContainer>
+    <DesktopContainer query={query}>{children}</DesktopContainer>
   </MediaContextProvider>
 );
 

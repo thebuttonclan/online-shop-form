@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { mediaStyle } from 'layouts/DefaultLayout';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -39,6 +40,7 @@ class MyDocument extends Document {
           <link rel="icon" href="/static/icons/bcid-favicon-16x16.png" sizes="16x16" type="image/png" />
           <link rel="mask-icon" href="/static/icons/bcid-apple-icon.svg" color="#036" />
           <link rel="icon" href="/static/icons/bcid-favicon-32x32.png" />
+          <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyle }} />
         </Head>
         <body>
           <Main />
