@@ -45,7 +45,7 @@ const initExpresss = (options = {}) => {
   expressServer.use(
     session({
       secret: sessionSecret,
-      resave: true,
+      resave: false,
       saveUninitialized: true,
       cookie: {
         // session expiration is set by default to 30 days
