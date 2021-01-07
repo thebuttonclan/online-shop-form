@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
   .bcgov-bg-color {
     background-color: #036 !important;
   }
+  .pointer { cursor: pointer; }
+  .no-padding { padding: 0; }
+  .no-margin { margin: 0; }
 `;
 
 class App extends PureComponent {

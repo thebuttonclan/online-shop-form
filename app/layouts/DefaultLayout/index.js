@@ -70,9 +70,11 @@ class DesktopContainer extends Component {
         <HeaderSegment inverted textAlign="center" vertical>
           <HeaderMenu fixed="top" inverted secondary size="large">
             <Container>
-              <Menu.Item>
-                <Image src={bcidLogoRev} size="small" />
-              </Menu.Item>
+              <Link href="/">
+                <Menu.Item className="pointer">
+                  <Image src={bcidLogoRev} size="small" />
+                </Menu.Item>
+              </Link>
               <Menu.Item>
                 <Header as="h2" inverted>
                   {TITLE}
@@ -126,7 +128,11 @@ class MobileContainer extends Component {
                   <BlockIcon name="sidebar" />
                   <span>Menu</span>
                 </BlockItem>
-                <XsImage src={bcidSymbol} />
+                <Link href="/">
+                  <Menu.Item className="pointer no-margin no-padding">
+                    <XsImage src={bcidSymbol} />
+                  </Menu.Item>
+                </Link>
                 <Menu.Item>
                   <Header as="h3" inverted>
                     {TITLE}
@@ -166,7 +172,7 @@ const MainSegment = styled(Segment)`
 const DefaultLayout = ({ children, query }) => (
   <ResponsiveContainer query={query}>
     <MainSegment vertical>
-      <Container text>{children}</Container>
+      <Container>{children}</Container>
     </MainSegment>
 
     <Footer />
