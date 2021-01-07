@@ -14,6 +14,7 @@ router.post('/submit', async (req, res) => {
   const form_data = { ...req.session.form_data, ...body };
   const savedFormSuccessfully = saveForm(form_data, req, res);
   if (savedFormSuccessfully) res.redirect('/application/success');
+  else res.redirect('/application/error');
 });
 
 router.post('/:page', async (req, res) => {
