@@ -3,7 +3,7 @@ import JsonSchemaForm from 'react-jsonschema-form';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import { createApplication } from 'services/application';
 
 const Form = props => {
   const router = useRouter();
@@ -14,8 +14,9 @@ const Form = props => {
 
     if (uploadData) {
       const dataToUpload = { ...allFormData, ...currentFormData };
-      await axios.post('/api/application/submit', { form_data: dataToUpload, js: true });
-      // TODO: Redirect if successful and all that stuff
+      const appliedSuccessfully = await createApplication(dataToUpload);
+      const redirectRoute = appliedSuccessfully ? 'success' : 'error';
+      router.push(`/application/${redirectRoute}`);
     } else {
       addFormData(currentFormData);
       router.push(route);
@@ -28,7 +29,6 @@ const Form = props => {
         name="my-form"
         action={postRoute}
         method="post"
-        formData={{ title: 'form title' }}
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}

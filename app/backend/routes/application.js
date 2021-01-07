@@ -1,28 +1,23 @@
 const JsonRouter = require('express-json-router');
+const { saveForm } = require('../helpers/form');
 
 const router = new JsonRouter();
 
+router.post('/submit/js', async (req, res) => {
+  const { body: form_data } = req;
+  const savedFormSuccessfully = saveForm(form_data, req, res);
+  if (savedFormSuccessfully) res.status(200).json(true);
+});
+
 router.post('/submit', async (req, res) => {
-  const {
-    body: { form_version, form_data, js },
-  } = req;
-
-  // Match up data formats for js vs no js
-  const uploadedData = js ? form_data : req.body;
-  delete uploadedData.title;
-
-  console.log(`uploaded ${JSON.stringify(uploadedData)} to backend`);
-  const completeData = { ...req.session.form_data, ...uploadedData };
-  console.log(`complete data is ${JSON.stringify(completeData)}`);
-
-  // TODO: Validate data and save to db/send error based on result
-  res.redirect('/application/submit');
+  const { body } = req;
+  const form_data = { ...req.session.form_data, ...body };
+  const savedFormSuccessfully = saveForm(form_data, req, res);
+  if (savedFormSuccessfully) res.redirect('/application/success');
 });
 
 router.post('/:page', async (req, res) => {
   const { page } = req.params;
-
-  // const application = await req.pgQuery.createApplication({ form_version, form_data });
 
   // Save current form progress into session
   req.session.form_data = { ...req.session.form_data, ...req.body };

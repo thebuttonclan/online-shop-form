@@ -4,6 +4,8 @@ import DefaultLayout from 'layouts/DefaultLayout';
 import { createGlobalStyle } from 'styled-components';
 import 'semantic-ui-css/semantic.min.css';
 
+const { version: appVersion } = require('../package.json');
+
 const GlobalStyle = createGlobalStyle`
   .bcgov-bg-color {
     background-color: #036 !important;
@@ -12,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
 class App extends PureComponent {
   state = {
-    allFormData: {},
+    allFormData: { formVersion: appVersion },
   };
 
   addFormData = data => {

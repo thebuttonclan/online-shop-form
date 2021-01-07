@@ -2,9 +2,8 @@ import axios from 'axios';
 
 async function createApplication(data) {
   try {
-    const application = await axios.post('/api/application', data).then(res => res.data);
-
-    return application;
+    const appliedSuccessfully = await axios.post('/api/application/submit/js', data).then(res => res.data);
+    return appliedSuccessfully;
   } catch (error) {
     console.error(error);
     return null;
