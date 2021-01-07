@@ -1,33 +1,8 @@
 const JsonRouter = require('express-json-router');
-const { saveForm } = require('../helpers/form');
 
 const router = new JsonRouter();
 
-router.post('/submit/js', async (req, res) => {
-  const { body: form_data } = req;
-  const savedFormSuccessfully = saveForm(form_data, req, res);
-  if (savedFormSuccessfully) res.status(200).json(true);
-});
-
-router.post('/submit', async (req, res) => {
-  const { body } = req;
-  const form_data = { ...req.session.form_data, ...body };
-  const savedFormSuccessfully = saveForm(form_data, req, res);
-  if (savedFormSuccessfully) res.redirect('/application/success');
-  else res.redirect('/application/error');
-});
-
-router.post('/:page', async (req, res) => {
-  const { page } = req.params;
-
-  // Save current form progress into session
-  req.session.form_data = { ...req.session.form_data, ...req.body };
-
-  // Redirect to the correct page based on where user posted from
-  if (page === 'second') res.redirect(`/application/second`);
-  else res.status(422).json({ error: 'failed' });
-});
-
+// Unused example route for now
 router.put('/:id', async req => {
   const {
     params: { id },

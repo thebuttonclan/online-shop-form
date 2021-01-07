@@ -1,17 +1,40 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import JsonSchemaForm from 'react-jsonschema-form';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
-import Form from 'components/form';
 import { firstSchema, firstUiSchema, secondSchema, secondUiSchema } from 'formConfig/jsonSchema';
-import isEmpty from 'lodash/isEmpty';
-import axios from 'axios';
 import { useRouter } from 'next/router';
+import { updateApplication, submitApplication, pageForward } from 'services/application';
+
+const LAST_PAGE = 2;
+const { version: formVersion } = require('../../package.json');
+
+const getSchema = page => {
+  if (page === 1) return firstSchema;
+  if (page === 2) return secondSchema;
+  // TODO: decide on invalid page handling
+  return firstSchema;
+};
+
+const getUISchema = page => {
+  if (page === 1) return firstUiSchema;
+  if (page === 2) return secondUiSchema;
+  return firstSchema;
+};
 
 export default function Apply({ formData, page }) {
-  console.log(formData, page);
-
   const router = useRouter();
+  const schema = getSchema(page);
+  const uiSchema = getUISchema(page);
+
+  const handleSubmit = async ({ formData }) => {
+    const { page: nextPage } = await updateApplication({ formVersion, ...formData }, page);
+    if (nextPage) {
+      router.push(`/apply/${nextPage}`);
+    } else {
+      router.push('/apply/success');
+    }
+  };
 
   return (
     <div className="container">
@@ -19,13 +42,10 @@ export default function Apply({ formData, page }) {
         name="my-form"
         method="post"
         formData={formData}
-        schema={page === 1 ? firstSchema : secondSchema}
-        uiSchema={page === 1 ? firstUiSchema : secondUiSchema}
+        schema={schema}
+        uiSchema={uiSchema}
         widgets={widgets}
-        onSubmit={async form => {
-          const data = await axios.post(`/apply/${page}?js=true`, form.formData).then(res => res.data);
-          router.push(`/apply/${data.page}`);
-        }}
+        onSubmit={handleSubmit}
         onError={() => console.log('errors')}
         ObjectFieldTemplate={ObjectFieldTemplate}
       />
@@ -45,23 +65,12 @@ export default function Apply({ formData, page }) {
   );
 }
 
-const validate = data => {
-  return true;
-};
-
-const LAST_PAGE = 2;
-
 export async function getServerSideProps({ req, res, query: params }) {
   const { body: postData, method, pgQuery, session = {}, query = {} } = req;
   const { formData = {} } = session;
   let { page } = params;
   page = Number(page);
-  console.log(page);
-  console.log(query);
-
-  const { js } = query;
-
-  console.log(page, formData);
+  const js = query.js === 'true';
 
   if (method === 'GET') {
     return {
@@ -69,33 +78,14 @@ export async function getServerSideProps({ req, res, query: params }) {
     };
   }
 
+  // Update session data
   const newData = { ...formData, ...postData };
   session.formData = newData;
 
-  // const valid = validate(form_data);
-
-  // if (!valid) {
-  //   throw new Error('validation failed.');
-  // }
-
-  const nextPage = page + 1;
-
-  const props = { page: nextPage, formData: newData };
-
-  // if (page === LAST_PAGE) {
-  //   await pgQuery.createApplication(newData);
-
-  //   if (js === 'true') {
-  //   }
-  // }
-
-  if (js === 'true') {
-    res.json(props);
-    res.end();
+  if (page === LAST_PAGE) {
+    await submitApplication(res, js, pgQuery, newData);
+    session.formData = {};
+    return { props: {} };
   }
-
-  res.redirect(`/apply/${nextPage}`);
-  res.end();
-
-  return { props };
+  return pageForward(page, newData, res, js);
 }
