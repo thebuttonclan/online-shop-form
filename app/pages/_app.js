@@ -11,13 +11,21 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 class App extends PureComponent {
+  state = {
+    allFormData: {},
+  };
+
+  addFormData = data => {
+    this.setState({ allFormData: { ...this.state.allFormData, ...data } });
+  };
+
   render() {
     const { Component, pageProps, router } = this.props;
     return (
       <>
         <GlobalStyle />
         <DefaultLayout query={{ ...router.query }}>
-          <Component {...pageProps} />
+          <Component {...pageProps} addFormData={this.addFormData} allFormData={this.state.allFormData} />
         </DefaultLayout>
       </>
     );
