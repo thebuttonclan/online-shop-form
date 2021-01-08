@@ -133,21 +133,18 @@ const schema1 = {
       title: 'Is the business owned by a BC resident or residents',
       default: false,
       name: 'bcOwned',
-      isRequired: true,
     },
     locatedInBc: {
       type: 'boolean',
       title: 'Is the business owned by a BC resident or residents',
       default: false,
       name: 'locatedInBc',
-      isRequired: true,
     },
     isCurrentlyOperating: {
       type: 'boolean',
       title: 'Is the business currently operating',
       default: false,
       name: 'isCurrentlyOperating',
-      isRequired: true,
     },
     pstNumber: {
       type: 'string',
@@ -183,7 +180,6 @@ const schema1 = {
       title: 'Have you filed last years income taxes?',
       default: false,
       name: 'incomeTaxesFiled',
-      isRequired: true,
     },
     revenue2019: {
       type: 'string',
@@ -198,7 +194,6 @@ const schema1 = {
       title: 'Has your business registered with WorkSafeBC?',
       default: false,
       name: 'workSafeBcRegistered',
-      isRequired: true,
     },
     // Has a condition
     sector: {
@@ -207,7 +202,6 @@ const schema1 = {
       title: 'Sector',
       enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
       // default: '',
-      isRequired: true,
     },
     region: {
       type: 'string',
@@ -226,7 +220,6 @@ const schema1 = {
         'North Shore and Sunshine Coast',
       ],
       // default: '',
-      isRequired: true,
     },
     isIndigenous: {
       type: 'string',
@@ -234,14 +227,12 @@ const schema1 = {
       title: 'Region',
       enum: ['Yes', 'No', 'Rather not answer'],
       // default: '',
-      isRequired: true,
     },
     repeatableProducts: {
       type: 'boolean',
       title: 'Does the business sell repeatable products?',
       default: false,
       name: 'repeatableProducts',
-      isRequired: true,
     },
   },
   ObjectFieldTemplate,

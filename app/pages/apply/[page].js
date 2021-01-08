@@ -2,6 +2,7 @@ import React from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
+import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
 
 import { useRouter } from 'next/router';
 import { getSchema, getUISchema, saveApplication } from 'services/application';
@@ -35,6 +36,7 @@ export default function Apply({ formData, page }) {
         onSubmit={handleSubmit}
         onError={console.log}
         ObjectFieldTemplate={ObjectFieldTemplate}
+        ArrayFieldTemplate={ArrayFieldTemplate}
       />
       {/* .error-detail class styles errors below fields,
           .panel-danger for top error message

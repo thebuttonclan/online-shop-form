@@ -1,3 +1,4 @@
+import { Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const { version: appVersion } = require('../../package.json');
@@ -17,10 +18,10 @@ const ShiddenInput = styled.input`
   display: none;
 `;
 
-function ObjectFieldTemplate({ TitleField, properties, title, description, schema }) {
+function ObjectFieldTemplate({ properties, title, description, schema }) {
   return (
     <>
-      <TitleField title={title} />
+      <Header as="h2">{title}</Header>
       <ShiddenInput type="text" name="formVersion" value={appVersion} readOnly />
       <Sgrid>
         {properties.map(prop => (
