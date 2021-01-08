@@ -1,5 +1,5 @@
 import React from 'react';
-import JsonSchemaForm from 'react-jsonschema-form';
+import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
@@ -22,7 +22,6 @@ export default function Apply({ formData, page }) {
   const uiSchema = getUISchema(page);
 
   const handleSubmit = async ({ formData }) => {
-    console.log(formData);
     const { page: nextPage } = await updateApplication({ formVersion, ...formData }, page);
     if (nextPage) {
       router.push(`/apply/${nextPage}`);

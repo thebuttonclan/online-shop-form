@@ -9,7 +9,7 @@ const schema1 = {
     'primaryContactPosition',
     'businessPhone',
     'email',
-    'Business Address',
+    'businessAddress',
     'bcOwned',
     'locatedInBc',
     'isCurrentlyOperating',
@@ -172,5 +172,17 @@ const schema1 = {
   },
   ObjectFieldTemplate,
 };
+
+const uiSchema = {};
+
+Object.keys(schema1.properties).forEach(property => {
+  uiSchema[property] = {
+    'ui:options': {
+      label: false,
+    },
+  };
+});
+
+export const uiSchema1 = uiSchema;
 
 export default schema1;
