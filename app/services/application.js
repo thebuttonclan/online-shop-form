@@ -1,9 +1,8 @@
 import axios from 'axios';
 import validate from 'react-jsonschema-form/lib/validate';
-import schema1, { uiSchema1 } from 'schemas/page-1';
+import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/full-schema';
-import { firstUiSchema, secondUiSchema } from 'formConfig/jsonSchema';
 
 export const LAST_PAGE = 2;
 export const PAGES = Array.from({ length: LAST_PAGE }, (_, i) => i + 1);
@@ -13,12 +12,6 @@ export function getSchema(page) {
   if (page === 2) return schema2;
   // TODO: decide on invalid page handling
   return schema1;
-}
-
-export function getUISchema(page) {
-  if (page === 1) return uiSchema1;
-  if (page === 2) return secondUiSchema;
-  return firstUiSchema;
 }
 
 export function validateFormData(formData, page) {
