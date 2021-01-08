@@ -22,6 +22,7 @@ const schema1 = {
     'incomeTaxesFiled',
     'revenue2019',
     'workSafeBcRegistered',
+    'sector',
     'region',
     'isIndigenous',
   ],
