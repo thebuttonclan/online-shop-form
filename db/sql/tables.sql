@@ -7,7 +7,6 @@ begin;
 create table if not exists public.applications (
     id serial not null,
     -- uid uuid default uuid_generate_v4(),
-    form_version varchar(1000),
     form_data jsonb,
     created_at timestamp with time zone default current_timestamp,
     updated_at timestamp with time zone default current_timestamp,
