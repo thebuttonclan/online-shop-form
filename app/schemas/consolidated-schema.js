@@ -92,12 +92,12 @@ const schema = {
       oneOf: [
         {
           properties: {
-            madeInBc: { enum: [false] },
+            madeInBc: { enum: [true] },
           },
         },
         {
           properties: {
-            madeInBc: { enum: [true] },
+            madeInBc: { enum: [false] },
             // not the best name here, but like sector maybe we consolidate to one field? discuss
             productionLocation: {
               type: 'string',
@@ -201,14 +201,14 @@ const schema = {
       type: 'string',
       title: 'Business Phone number',
       name: 'businessPhone',
-      pattern: '^(+d{1,2}s)?(?d{3})?[s.-]d{3}[s.-]d{4}$',
+      pattern: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
     },
     email: {
       type: 'string',
       title: 'Email',
       name: 'email',
       inputType: 'email',
-      pattern: '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}\b',
+      pattern: '(.+)@(.+){2,}.(.+){2,}',
     },
     businessAddress: {
       type: 'string',
@@ -228,7 +228,7 @@ const schema = {
     },
     locatedInBc: {
       type: 'boolean',
-      title: 'Is the business owned by a BC resident or residents',
+      title: 'Are the business’s sole or primary operations located in BC',
       default: false,
       name: 'locatedInBc',
       isRequired: true,
@@ -322,7 +322,7 @@ const schema = {
     isIndigenous: {
       type: 'string',
       name: 'isIndigenous',
-      title: 'Region',
+      title: 'Is this an Indigenous Business?',
       enum: ['Yes', 'No', 'Rather not answer'],
       // default: '',
       isRequired: true,
@@ -367,7 +367,7 @@ const schema = {
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
       type: 'boolean',
-      title: 'Is the business an import/export business?',
+      title: 'Does the business currently have an online store?',
       default: false,
       name: 'existingOnlineStore',
       isRequired: true,
