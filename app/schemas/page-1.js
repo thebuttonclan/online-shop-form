@@ -110,14 +110,14 @@ const schema1 = {
       type: 'string',
       title: 'Business Phone number',
       name: 'businessPhone',
-      pattern: '^(+d{1,2}s)?(?d{3})?[s.-]d{3}[s.-]d{4}$',
+      pattern: '^[0-9]{3}-[0-9]{3}-[0-9]{4}$',
     },
     email: {
       type: 'string',
       title: 'Email',
       name: 'email',
       inputType: 'email',
-      pattern: '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}\b',
+      pattern: '(.+)@(.+){2,}.(.+){2,}',
     },
     businessAddress: {
       type: 'string',
@@ -136,7 +136,7 @@ const schema1 = {
     },
     locatedInBc: {
       type: 'boolean',
-      title: 'Is the business owned by a BC resident or residents',
+      title: 'Are the business’s sole or primary operations located in BC',
       default: false,
       name: 'locatedInBc',
     },
@@ -224,7 +224,7 @@ const schema1 = {
     isIndigenous: {
       type: 'string',
       name: 'isIndigenous',
-      title: 'Region',
+      title: 'Is this an Indigenous Business?',
       enum: ['Yes', 'No', 'Rather not answer'],
       // default: '',
     },

@@ -26,12 +26,12 @@ const schema2 = {
       oneOf: [
         {
           properties: {
-            madeInBc: { enum: [false] },
+            madeInBc: { enum: [true] },
           },
         },
         {
           properties: {
-            madeInBc: { enum: [true] },
+            madeInBc: { enum: [false] },
             // not the best name here, but like sector maybe we consolidate to one field? discuss
             productionLocation: {
               type: 'string',
@@ -135,7 +135,7 @@ const schema2 = {
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
       type: 'boolean',
-      title: 'Is the business an import/export business?',
+      title: 'Does the business currently have an online store?',
       default: false,
       name: 'existingOnlineStore',
       isRequired: true,
@@ -170,6 +170,7 @@ const schema2 = {
     // That way we dont have a bunchof extra fields on the form, that don't require user input.
     serviceProviders: {
       type: 'array',
+      title: 'Service Provider(s)',
       items: {
         type: 'object',
         properties: {
@@ -194,6 +195,7 @@ const schema2 = {
     },
     customerAcquisition: {
       type: 'array',
+      title: 'Digital Customer Acquisition',
       items: {
         type: 'object',
         properties: {
@@ -217,6 +219,7 @@ const schema2 = {
     },
     staffTraining: {
       type: 'array',
+      title: 'Staff Training Costs',
       items: {
         type: 'object',
         properties: {
