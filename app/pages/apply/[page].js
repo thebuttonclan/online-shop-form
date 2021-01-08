@@ -5,14 +5,14 @@ import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
 
 import { useRouter } from 'next/router';
-import { getSchema, getUISchema, saveApplication } from 'services/application';
+import { getSchema, saveApplication } from 'services/application';
+import uiSchema from 'schemas/uiSchema';
 
 const { version: formVersion } = require('../../package.json');
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
   const schema = getSchema(page);
-  const uiSchema = getUISchema(page);
 
   const handleSubmit = async ({ formData }) => {
     const { page: nextPage } = await saveApplication({ formVersion, ...formData }, page);
