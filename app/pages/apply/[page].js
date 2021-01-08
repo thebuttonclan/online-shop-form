@@ -4,16 +4,8 @@ import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
 import { useRouter } from 'next/router';
-import {
-  getSchema,
-  getUISchema,
-  validateFormData,
-  updateApplication,
-  submitApplication,
-  pageForward,
-} from 'services/application';
+import { getSchema, getUISchema, saveApplication } from 'services/application';
 
-const LAST_PAGE = 2;
 const { version: formVersion } = require('../../package.json');
 
 export default function Apply({ formData, page }) {
@@ -22,7 +14,7 @@ export default function Apply({ formData, page }) {
   const uiSchema = getUISchema(page);
 
   const handleSubmit = async ({ formData }) => {
-    const { page: nextPage } = await updateApplication({ formVersion, ...formData }, page);
+    const { page: nextPage } = await saveApplication({ formVersion, ...formData }, page);
     if (nextPage) {
       router.push(`/apply/${nextPage}`);
     } else {
@@ -35,6 +27,7 @@ export default function Apply({ formData, page }) {
       <JsonSchemaForm
         name="my-form"
         method="post"
+        action={`/api/apply/${page}`}
         formData={formData}
         schema={schema}
         uiSchema={uiSchema}
@@ -59,32 +52,13 @@ export default function Apply({ formData, page }) {
   );
 }
 
-export async function getServerSideProps({ req, res, query: params }) {
-  const { body: postData, method, pgQuery, session = {}, query = {} } = req;
+export async function getServerSideProps({ req, query: params }) {
+  const { session = {} } = req;
   const { formData = {} } = session;
   let { page } = params;
   page = Number(page);
-  const js = query.js === 'true';
 
-  if (method === 'GET') {
-    return {
-      props: { page, formData },
-    };
-  }
-
-  // Update session data
-  const newData = { ...formData, ...postData };
-  session.formData = newData;
-
-  const validated = validateFormData(newData, page);
-  console.log(validated);
-
-  if (page === LAST_PAGE) {
-    await submitApplication(res, js, pgQuery, newData);
-    session.formData = {};
-  } else {
-    pageForward(page, newData, res, js);
-  }
-
-  return { props: {} };
+  return {
+    props: { page, formData },
+  };
 }

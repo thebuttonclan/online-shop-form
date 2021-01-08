@@ -228,7 +228,7 @@ export default class Home extends PureComponent {
           You are encouraged to submit your application, along with your grant proposal and additional documents early.
         </StyledP>
 
-        <Link href="/application/first">
+        <Link href="/apply/1" passHref>
           <StyledButton>APPLY</StyledButton>
         </Link>
 

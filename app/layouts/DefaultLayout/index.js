@@ -70,7 +70,7 @@ class DesktopContainer extends Component {
         <HeaderSegment inverted textAlign="center" vertical>
           <HeaderMenu fixed="top" inverted secondary size="large">
             <Container>
-              <Link href="/">
+              <Link href="/" passHref>
                 <Menu.Item className="pointer">
                   <Image src={bcidLogoRev} size="small" />
                 </Menu.Item>
@@ -128,7 +128,7 @@ class MobileContainer extends Component {
                   <BlockIcon name="sidebar" />
                   <span>Menu</span>
                 </BlockItem>
-                <Link href="/">
+                <Link href="/" passHref>
                   <Menu.Item className="pointer no-margin no-padding">
                     <XsImage src={bcidSymbol} />
                   </Menu.Item>
