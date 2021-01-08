@@ -1,31 +1,16 @@
 -- drop table if exists connect_session applications;
--- drop table if exists connect_session documents;
 -- drop table if exists connect_session cascade;
 
 begin;
 
 create table if not exists public.applications (
     id serial not null,
-    -- uid uuid default uuid_generate_v4(),
     form_data jsonb,
     created_at timestamp with time zone default current_timestamp,
     updated_at timestamp with time zone default current_timestamp,
     primary key(id)
 );
 alter table public.applications owner to osf;
-
-create table if not exists public.documents (
-    id serial not null,
-    -- uid uuid default uuid_generate_v4(),
-    application_id integer,
-    filename varchar(1000),
-    filetype varchar(1000),
-    key varchar(1000),
-    created_at timestamp with time zone default current_timestamp,
-    updated_at timestamp with time zone default current_timestamp,
-    foreign key(application_id) references applications(id)
-);
-alter table public.documents owner to osf;
 
 create table if not exists public.connect_session (
     sid varchar(4093) not null collate "default",
