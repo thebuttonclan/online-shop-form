@@ -2,25 +2,19 @@ import React from 'react';
 import JsonSchemaForm from 'react-jsonschema-form';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
-import { firstSchema, firstUiSchema, secondSchema, secondUiSchema } from 'formConfig/jsonSchema';
+
 import { useRouter } from 'next/router';
-import { updateApplication, submitApplication, pageForward } from 'services/application';
+import {
+  getSchema,
+  getUISchema,
+  validateFormData,
+  updateApplication,
+  submitApplication,
+  pageForward,
+} from 'services/application';
 
 const LAST_PAGE = 2;
 const { version: formVersion } = require('../../package.json');
-
-const getSchema = page => {
-  if (page === 1) return firstSchema;
-  if (page === 2) return secondSchema;
-  // TODO: decide on invalid page handling
-  return firstSchema;
-};
-
-const getUISchema = page => {
-  if (page === 1) return firstUiSchema;
-  if (page === 2) return secondUiSchema;
-  return firstSchema;
-};
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
@@ -28,6 +22,7 @@ export default function Apply({ formData, page }) {
   const uiSchema = getUISchema(page);
 
   const handleSubmit = async ({ formData }) => {
+    console.log(formData);
     const { page: nextPage } = await updateApplication({ formVersion, ...formData }, page);
     if (nextPage) {
       router.push(`/apply/${nextPage}`);
@@ -46,7 +41,7 @@ export default function Apply({ formData, page }) {
         uiSchema={uiSchema}
         widgets={widgets}
         onSubmit={handleSubmit}
-        onError={() => console.log('errors')}
+        onError={console.log}
         ObjectFieldTemplate={ObjectFieldTemplate}
       />
       {/* .error-detail class styles errors below fields,
@@ -82,10 +77,15 @@ export async function getServerSideProps({ req, res, query: params }) {
   const newData = { ...formData, ...postData };
   session.formData = newData;
 
+  const validated = validateFormData(newData, page);
+  console.log(validated);
+
   if (page === LAST_PAGE) {
     await submitApplication(res, js, pgQuery, newData);
     session.formData = {};
-    return { props: {} };
+  } else {
+    pageForward(page, newData, res, js);
   }
-  return pageForward(page, newData, res, js);
+
+  return { props: {} };
 }
