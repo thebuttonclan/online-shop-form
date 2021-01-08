@@ -1,5 +1,8 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
+const TEXT_MIN_LENGTH = 1;
+const TEXT_MAX_LENGTH = 1000;
+
 const schema1 = {
   title: 'Example Form',
   type: 'object',
@@ -9,7 +12,7 @@ const schema1 = {
     'primaryContactPosition',
     'businessPhone',
     'email',
-    'Business Address',
+    'businessAddress',
     'bcOwned',
     'locatedInBc',
     'isCurrentlyOperating',
@@ -37,6 +40,8 @@ const schema1 = {
               type: 'string',
               title: 'WorkSafeBC registration number',
               name: 'workSafeBcRegistrationNumber',
+              minLength: TEXT_MIN_LENGTH,
+              maxLength: TEXT_MAX_LENGTH,
             },
           },
           required: ['workSafeBcRegistrationNumber'],
@@ -58,7 +63,13 @@ const schema1 = {
               enum: ['Other'],
             },
             // Once we have a UI we can try to find a way to consolidate sectorOther to be the value of sector to avoid 2 fields
-            sectorOther: { type: 'string', title: 'Please specify', name: 'businessName', isRequired: true },
+            sectorOther: {
+              type: 'string',
+              title: 'Please specify',
+              name: 'businessName',
+              minLength: TEXT_MIN_LENGTH,
+              maxLength: TEXT_MAX_LENGTH,
+            },
           },
           required: ['sectorOther'],
         },
@@ -66,18 +77,55 @@ const schema1 = {
     },
   },
   properties: {
-    businessName: { type: 'string', title: 'Name of Applicant Business', name: 'businessName', isRequired: true },
-    businessWebsite: { type: 'string', title: 'Website link (if applicable)', name: 'businessWebsite' },
-    primaryContactName: { type: 'string', title: 'Primary Contact Name', name: 'primaryContactName', isRequired: true },
+    businessName: {
+      type: 'string',
+      title: 'Name of Applicant Business',
+      name: 'businessName',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
+    businessWebsite: {
+      type: 'string',
+      title: 'Website link (if applicable)',
+      name: 'businessWebsite',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
+    primaryContactName: {
+      type: 'string',
+      title: 'Primary Contact Name',
+      name: 'primaryContactName',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     primaryContactPosition: {
       type: 'string',
       title: 'Position/Title',
       name: 'primaryContactPosition',
       isRequired: true,
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
     },
-    businessPhone: { type: 'string', title: 'Business Phone number', name: 'businessPhone', isRequired: true },
-    email: { type: 'string', title: 'Email', name: 'email', inputType: 'email', isRequired: true },
-    businessAddress: { type: 'string', title: 'Business Address', name: 'businessAddress', isRequired: true },
+    businessPhone: {
+      type: 'string',
+      title: 'Business Phone number',
+      name: 'businessPhone',
+      pattern: '^(+d{1,2}s)?(?d{3})?[s.-]d{3}[s.-]d{4}$',
+    },
+    email: {
+      type: 'string',
+      title: 'Email',
+      name: 'email',
+      inputType: 'email',
+      pattern: '\b[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}\b',
+    },
+    businessAddress: {
+      type: 'string',
+      title: 'Business Address',
+      name: 'businessAddress',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     // businessLicense was supposed to be a file upload, but we're no longer doing them.
     // Need confirmation on what (if anything) we're using in it's place.
     bcOwned: {
@@ -101,15 +149,35 @@ const schema1 = {
       name: 'isCurrentlyOperating',
       isRequired: true,
     },
-    pstNumber: { type: 'string', title: 'PST Number', name: 'pstNumber' },
-    bcRegistrationID: { type: 'string', title: 'BC Registration ID', name: 'bcRegistrationID', isRequired: true },
+    pstNumber: {
+      type: 'string',
+      title: 'PST Number',
+      name: 'pstNumber',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
+    bcRegistrationID: {
+      type: 'string',
+      title: 'BC Registration ID',
+      name: 'bcRegistrationID',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     federalBusinessNumber: {
       type: 'string',
       title: 'Business Number (federal)',
       name: 'federalBusinessNumber',
       isRequired: true,
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
     },
-    gstNumber: { type: 'string', title: 'GST number', name: 'gstNumber', isRequired: true },
+    gstNumber: {
+      type: 'string',
+      title: 'GST number',
+      name: 'gstNumber',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     incomeTaxesFiled: {
       type: 'boolean',
       title: 'Have you filed last years income taxes?',
@@ -117,7 +185,13 @@ const schema1 = {
       name: 'incomeTaxesFiled',
       isRequired: true,
     },
-    revenue2019: { type: 'string', title: 'Last year’s revenue (2019)', name: 'revenue2019', isRequired: true },
+    revenue2019: {
+      type: 'string',
+      title: 'Last year’s revenue (2019)',
+      name: 'revenue2019',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     // Has a condition
     workSafeBcRegistered: {
       type: 'boolean',
