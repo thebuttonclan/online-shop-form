@@ -1,6 +1,6 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
-export default schema2 = {
+const schema2 = {
   title: 'Example Form',
   type: 'object',
   required: [
@@ -16,36 +16,36 @@ export default schema2 = {
     'planForFunds',
     'serviceProviders',
     'customerAcquisition',
-    'staffTraining'
+    'staffTraining',
   ],
   dependencies: {
     madeInBc: {
       oneOf: [
         {
           properties: {
-            madeInBc: {enum: [false]},
-          }
+            madeInBc: { enum: [false] },
+          },
         },
         {
           properties: {
-            madeInBc: {enum: [true]},
+            madeInBc: { enum: [true] },
             // not the best name here, but like sector maybe we consolidate to one field? discuss
-            productionLocation: { type: 'string', title: 'Where', name: 'productionLocation' }
+            productionLocation: { type: 'string', title: 'Where', name: 'productionLocation' },
           },
-          required: ['productionLocation']
-        }
-      ]
+          required: ['productionLocation'],
+        },
+      ],
     },
     existingOnlineStore: {
       oneOf: [
         {
           properties: {
-            existingOnlineStore: {enum: [false]},
-          }
+            existingOnlineStore: { enum: [false] },
+          },
         },
         {
           properties: {
-            existingOnlineStore: {enum: [true]},
+            existingOnlineStore: { enum: [true] },
             onlineStoreUrl: { type: 'string', title: 'Link to online store', name: 'onlineStoreUrl' },
             // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
             existingStoreFeatures: {
@@ -55,57 +55,61 @@ export default schema2 = {
                 'Shopping cart and order management capabilities',
                 'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
                 'Product catalogue, search and inventory status',
-                'Website analytics and reporting capabilities'
-              ]
-            }
+                'Website analytics and reporting capabilities',
+              ],
+            },
           },
-          required: ['onlineStoreUrl', 'existingStoreFeatures']
-        }
-      ]
+          required: ['onlineStoreUrl', 'existingStoreFeatures'],
+        },
+      ],
     },
     otherCovidFunding: {
       oneOf: [
         {
           properties: {
-            otherCovidFunding: {enum: [false]},
-          }
+            otherCovidFunding: { enum: [false] },
+          },
         },
         {
           properties: {
-            otherCovidFunding: {enum: [true]},
-            otherPrograms: { type: 'string', title: 'WorkSafeBC registration number', name: 'otherPrograms' }
+            otherCovidFunding: { enum: [true] },
+            otherPrograms: { type: 'string', title: 'WorkSafeBC registration number', name: 'otherPrograms' },
           },
-          required: ['otherPrograms']
-        }
-      ]
+          required: ['otherPrograms'],
+        },
+      ],
     },
   },
   properties: {
-    cannabisProducts: { 
-      type: 'boolean', title: 'Does your business sell Cannabis products?', default: false, name: 'cannabisProducts', isRequired: true
+    cannabisProducts: {
+      type: 'boolean',
+      title: 'Does your business sell Cannabis products?',
+      default: false,
+      name: 'cannabisProducts',
+      isRequired: true,
     },
     // Has a condition
     madeInBc: {
-      type: 'boolean', title: 'Are your products manufactured and/or produced in BC?', default: false, name: 'madeInBc', isRequired: true
+      type: 'boolean',
+      title: 'Are your products manufactured and/or produced in BC?',
+      default: false,
+      name: 'madeInBc',
+      isRequired: true,
     },
     employees: {
       type: 'string',
       name: 'employees',
       title: 'How many employees does the business have on its payroll?',
-      enum: [
-        'None',
-        '1-9',
-        '10-49',
-        '50-99',
-        '100-149',
-        '150-199',
-        '200 or more',
-      ],
+      enum: ['None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
       // default: '',
-      isRequired: true
+      isRequired: true,
     },
-    importExportBusiness: { 
-      type: 'boolean', title: 'Is the business an import/export business?', default: false, name: 'importExportBusiness', isRequired: true
+    importExportBusiness: {
+      type: 'boolean',
+      title: 'Is the business an import/export business?',
+      default: false,
+      name: 'importExportBusiness',
+      isRequired: true,
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
@@ -113,14 +117,15 @@ export default schema2 = {
       title: 'Is the business an import/export business?',
       default: false,
       name: 'existingOnlineStore',
-      isRequired: true
+      isRequired: true,
     },
     canMeetDeadline: {
       type: 'boolean',
-      title: 'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
+      title:
+        'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
       default: false,
       name: 'canMeetDeadline',
-      isRequired: true
+      isRequired: true,
     },
     // Has condition
     otherCovidFunding: {
@@ -128,25 +133,25 @@ export default schema2 = {
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
       default: false,
       name: 'otherCovidFunding',
-      isRequired: true
+      isRequired: true,
     },
 
     // GRANT PROPOSAL SECTION
     planForFunds: { type: 'string', title: 'PST Number', name: 'planForFunds', isRequired: true },
     // The following arrays also have a field that is just a calculated 75% of the total cost.
     // I don't think we necessarily need them in here, we can just add the fields to the view when created.
-    // That way we dont have a bunchof extra fields on the form, that don't require user input. 
+    // That way we dont have a bunchof extra fields on the form, that don't require user input.
     serviceProviders: {
       type: 'array',
       items: {
         type: 'object',
         properties: {
           provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' }
+          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
         },
-        dependencies: ['provider', 'serviceCost']
+        dependencies: ['provider', 'serviceCost'],
       },
-      isRequired: true
+      isRequired: true,
     },
     customerAcquisition: {
       type: 'array',
@@ -154,10 +159,10 @@ export default schema2 = {
         type: 'object',
         properties: {
           provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' }
+          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
         },
-        dependencies: ['provider', 'serviceCost']
-      }
+        dependencies: ['provider', 'serviceCost'],
+      },
     },
     staffTraining: {
       type: 'array',
@@ -165,12 +170,14 @@ export default schema2 = {
         type: 'object',
         properties: {
           provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' }
+          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
         },
-        dependencies: ['provider', 'serviceCost']
+        dependencies: ['provider', 'serviceCost'],
       },
-      isRequired: true
-    }
+      isRequired: true,
+    },
   },
   ObjectFieldTemplate,
 };
+
+export default schema2;
