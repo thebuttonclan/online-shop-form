@@ -1,7 +1,27 @@
 import axios from 'axios';
+import validate from 'react-jsonschema-form/lib/validate';
+import schema1 from 'schemas/page-1';
+import schema2 from 'schemas/page-2';
+import fullSchema from 'schemas/full-schema';
+import { firstUiSchema, secondUiSchema } from 'formConfig/jsonSchema';
 
-const validate = data => {
-  return true;
+const getSchema = page => {
+  if (page === 1) return schema1;
+  if (page === 2) return schema2;
+  // TODO: decide on invalid page handling
+  return fullSchema;
+};
+
+const getUISchema = page => {
+  if (page === 1) return firstUiSchema;
+  if (page === 2) return secondUiSchema;
+  return firstUiSchema;
+};
+
+const validateFormData = (formData, page) => {
+  const schema = getSchema(page);
+
+  return validate(formData, schema);
 };
 
 async function createApplication(data) {
@@ -50,7 +70,15 @@ const pageForward = (page, newData, res, js) => {
   } else {
     res.redirect(`/apply/${nextPage}`);
   }
-  return { props };
+  res.end();
 };
 
-module.exports = { createApplication, updateApplication, submitApplication, pageForward };
+module.exports = {
+  getSchema,
+  getUISchema,
+  validateFormData,
+  createApplication,
+  updateApplication,
+  submitApplication,
+  pageForward,
+};
