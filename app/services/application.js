@@ -1,6 +1,6 @@
 import axios from 'axios';
 import validate from 'react-jsonschema-form/lib/validate';
-import schema1 from 'schemas/page-1';
+import schema1, { uiSchema1 } from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/full-schema';
 import { firstUiSchema, secondUiSchema } from 'formConfig/jsonSchema';
@@ -9,11 +9,11 @@ const getSchema = page => {
   if (page === 1) return schema1;
   if (page === 2) return schema2;
   // TODO: decide on invalid page handling
-  return fullSchema;
+  return schema1;
 };
 
 const getUISchema = page => {
-  if (page === 1) return firstUiSchema;
+  if (page === 1) return uiSchema1;
   if (page === 2) return secondUiSchema;
   return firstUiSchema;
 };

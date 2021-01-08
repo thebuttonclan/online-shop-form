@@ -9,6 +9,8 @@ const Sgrid = styled.div`
 const SgridItem = styled.div`
   grid-row: ${props => props.row};
   grid-column: ${props => props.column};
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 const ShiddenInput = styled.input`
@@ -18,7 +20,7 @@ const ShiddenInput = styled.input`
 function ObjectFieldTemplate({ TitleField, properties, title, description, schema }) {
   return (
     <>
-      <TitleField title={'Form'} />
+      <TitleField title={title} />
       <ShiddenInput type="text" name="formVersion" value={appVersion} readOnly />
       <Sgrid>
         {properties.map(prop => (
