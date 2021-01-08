@@ -8,7 +8,6 @@ const lusca = require('lusca');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const connectPgPool = require('./setup-pg');
-const routes = require('./routes');
 const pgQuery = require('./queries');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
@@ -83,8 +82,6 @@ const initExpresss = (options = {}) => {
   expressServer.disable('x-powered-by');
 
   expressServer.set('trust proxy', 1); // trust first proxy
-
-  expressServer.use('/api', routes);
 
   return expressServer;
 };

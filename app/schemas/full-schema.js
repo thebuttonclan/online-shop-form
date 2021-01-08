@@ -10,6 +10,6 @@ function mergeIfArray(objValue, srcValue) {
   return undefined;
 }
 
-const fullSchema = _.mergeWith(schema1, schema2, mergeIfArray);
+const fullSchema = _.mergeWith({}, schema1, schema2, mergeIfArray);
 
 export default fullSchema;
