@@ -7,4 +7,4 @@ function mergeIfArray(objValue, srcValue) {
   }
 }
 
-const fullSchema = _.mergeWith(schema1, schema2, mergeIfArray);
+export default fullSchema = _.mergeWith(schema1, schema2, mergeIfArray);
