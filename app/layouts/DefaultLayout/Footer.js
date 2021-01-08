@@ -45,13 +45,19 @@ const Footer = () => {
       <Container>
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/" passHref>
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/resources/disclaimer">Disclaimer</Link>
+            <Link href="/resources/disclaimer" passHref>
+              Disclaimer
+            </Link>
           </li>
           <li>
-            <Link href="/resources/privacy">Privacy</Link>
+            <Link href="/resources/privacy" passHref>
+              Privacy
+            </Link>
           </li>
           <li>
             <a
@@ -63,10 +69,14 @@ const Footer = () => {
             </a>
           </li>
           <li>
-            <Link href="/resources/copyright">Copyright</Link>
+            <Link href="/resources/copyright" passHref>
+              Copyright
+            </Link>
           </li>
           <li>
-            <Link href="/resources/contact">Contact Us</Link>
+            <Link href="/resources/contact" passHref>
+              Contact Us
+            </Link>
           </li>
         </ul>
       </Container>
