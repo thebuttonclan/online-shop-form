@@ -1,5 +1,8 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
+const TEXT_MIN_LENGTH = 1;
+const TEXT_MAX_LENGTH = 1000;
+
 const schema2 = {
   title: 'Example Form',
   type: 'object',
@@ -30,7 +33,13 @@ const schema2 = {
           properties: {
             madeInBc: { enum: [true] },
             // not the best name here, but like sector maybe we consolidate to one field? discuss
-            productionLocation: { type: 'string', title: 'Where', name: 'productionLocation' },
+            productionLocation: {
+              type: 'string',
+              title: 'Where',
+              name: 'productionLocation',
+              minLength: TEXT_MIN_LENGTH,
+              maxLength: TEXT_MAX_LENGTH,
+            },
           },
           required: ['productionLocation'],
         },
@@ -46,7 +55,13 @@ const schema2 = {
         {
           properties: {
             existingOnlineStore: { enum: [true] },
-            onlineStoreUrl: { type: 'string', title: 'Link to online store', name: 'onlineStoreUrl' },
+            onlineStoreUrl: {
+              type: 'string',
+              title: 'Link to online store',
+              name: 'onlineStoreUrl',
+              minLength: TEXT_MIN_LENGTH,
+              maxLength: TEXT_MAX_LENGTH,
+            },
             // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
             existingStoreFeatures: {
               type: 'string',
@@ -73,7 +88,13 @@ const schema2 = {
         {
           properties: {
             otherCovidFunding: { enum: [true] },
-            otherPrograms: { type: 'string', title: 'WorkSafeBC registration number', name: 'otherPrograms' },
+            otherPrograms: {
+              type: 'string',
+              title: 'WorkSafeBC registration number',
+              name: 'otherPrograms',
+              minLength: TEXT_MIN_LENGTH,
+              maxLength: TEXT_MAX_LENGTH,
+            },
           },
           required: ['otherPrograms'],
         },
@@ -137,7 +158,13 @@ const schema2 = {
     },
 
     // GRANT PROPOSAL SECTION
-    planForFunds: { type: 'string', title: 'PST Number', name: 'planForFunds', isRequired: true },
+    planForFunds: {
+      type: 'string',
+      title: 'Indicate how you plan to use the funds.',
+      name: 'planForFunds',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     // The following arrays also have a field that is just a calculated 75% of the total cost.
     // I don't think we necessarily need them in here, we can just add the fields to the view when created.
     // That way we dont have a bunchof extra fields on the form, that don't require user input.
@@ -146,8 +173,20 @@ const schema2 = {
       items: {
         type: 'object',
         properties: {
-          provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
+          provider: {
+            type: 'string',
+            title: 'Service provider',
+            name: 'provider',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
+          serviceCost: {
+            type: 'string',
+            title: 'Cost of service',
+            name: 'serviceCost',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
         },
         dependencies: ['provider', 'serviceCost'],
       },
@@ -158,8 +197,20 @@ const schema2 = {
       items: {
         type: 'object',
         properties: {
-          provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
+          provider: {
+            type: 'string',
+            title: 'Service provider',
+            name: 'provider',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
+          serviceCost: {
+            type: 'string',
+            title: 'Cost of service',
+            name: 'serviceCost',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
         },
         dependencies: ['provider', 'serviceCost'],
       },
@@ -169,8 +220,20 @@ const schema2 = {
       items: {
         type: 'object',
         properties: {
-          provider: { type: 'string', title: 'Service provider', name: 'provider' },
-          serviceCost: { type: 'string', title: 'Cost of service', name: 'serviceCost' },
+          provider: {
+            type: 'string',
+            title: 'Service provider',
+            name: 'provider',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
+          serviceCost: {
+            type: 'string',
+            title: 'Cost of service',
+            name: 'serviceCost',
+            minLength: TEXT_MIN_LENGTH,
+            maxLength: TEXT_MAX_LENGTH,
+          },
         },
         dependencies: ['provider', 'serviceCost'],
       },
