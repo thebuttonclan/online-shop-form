@@ -19,6 +19,9 @@ const schema2 = {
     'serviceProviders',
     'customerAcquisition',
     'staffTraining',
+    'useOfGrant',
+    'personalInformation',
+    'taxImplications',
   ],
   dependencies: {
     madeInBc: {
@@ -106,7 +109,6 @@ const schema2 = {
       title: 'Does your business sell Cannabis products?',
       default: false,
       name: 'cannabisProducts',
-      isRequired: true,
     },
     // Has a condition
     madeInBc: {
@@ -114,7 +116,6 @@ const schema2 = {
       title: 'Are your products manufactured and/or produced in BC?',
       default: false,
       name: 'madeInBc',
-      isRequired: true,
     },
     employees: {
       type: 'string',
@@ -122,14 +123,12 @@ const schema2 = {
       title: 'How many employees does the business have on its payroll?',
       enum: ['None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
       // default: '',
-      isRequired: true,
     },
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
       default: false,
       name: 'importExportBusiness',
-      isRequired: true,
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
@@ -137,7 +136,6 @@ const schema2 = {
       title: 'Does the business currently have an online store?',
       default: false,
       name: 'existingOnlineStore',
-      isRequired: true,
     },
     canMeetDeadline: {
       type: 'boolean',
@@ -145,7 +143,6 @@ const schema2 = {
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
       default: false,
       name: 'canMeetDeadline',
-      isRequired: true,
     },
     // Has condition
     otherCovidFunding: {
@@ -153,7 +150,6 @@ const schema2 = {
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
       default: false,
       name: 'otherCovidFunding',
-      isRequired: true,
     },
 
     // GRANT PROPOSAL SECTION
@@ -190,7 +186,6 @@ const schema2 = {
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
     },
     customerAcquisition: {
       type: 'array',
@@ -239,7 +234,21 @@ const schema2 = {
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
+    },
+    useOfGrant: {
+      type: 'boolean',
+      title:
+        'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+    },
+    personalInformation: {
+      type: 'boolean',
+      title:
+        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Online Shop Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact the <Service provider contact info>',
+    },
+    taxImplications: {
+      type: 'boolean',
+      title:
+        'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
     },
   },
   ObjectFieldTemplate,
