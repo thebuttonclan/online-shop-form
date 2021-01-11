@@ -29,8 +29,8 @@ postgresql:
   host:
   port:
   username: testadmin@onlineshopsgrant
-  password: 
-  database: 
+  password:
+  database:
 
 autoscaling:
   enabled: true
