@@ -19,10 +19,9 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install asdf
         uses: asdf-vm/actions/setup@v1
-      - name: Install tools
+      - name: Install required tools
         run: |
-          cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
-          asdf plugin-update --all
+          asdf plugin-add postgres || true
           asdf install
           asdf reshim
       - name: Cache tools
