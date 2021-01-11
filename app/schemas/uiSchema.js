@@ -42,6 +42,9 @@ const uiSchema = {
     'serviceProviders',
     'customerAcquisition',
     'staffTraining',
+    'useOfGrant',
+    'personalInformation',
+    'taxImplications',
   ],
 };
 
