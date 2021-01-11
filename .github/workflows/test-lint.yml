@@ -27,9 +27,9 @@ jobs:
       - name: Setup postgres
         run: |
           chmod +x ./setup.sh
+          pg_ctl start
           psql -c "drop database if exists osf"
           ./setup.sh osf
-          pg_ctl start
         working-directory: ./db
       - name: Run unit tests
         run: |
