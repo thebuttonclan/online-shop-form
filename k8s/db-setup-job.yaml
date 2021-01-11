@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-setup
+spec:
+  template:
+    spec:
+      containers:
+      - name: postgres
+        image: onlineshopsgrantacr.azurecr.io/osf/db:blast
+        imagePullPolicy: Always
+        envFrom:
+          - secretRef:
+              name: postgresql
+
+      restartPolicy: Never
+  backoffLimit: 1
