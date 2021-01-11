@@ -25,6 +25,7 @@ const schema1 = {
     'sector',
     'region',
     'isIndigenous',
+    'repeatableProducts',
   ],
   dependencies: {
     workSafeBcRegistered: {

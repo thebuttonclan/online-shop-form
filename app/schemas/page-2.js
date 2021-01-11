@@ -34,7 +34,7 @@ const schema2 = {
             // not the best name here, but like sector maybe we consolidate to one field? discuss
             productionLocation: {
               type: 'string',
-              title: 'Where',
+              title: 'If no, where',
               name: 'productionLocation',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
