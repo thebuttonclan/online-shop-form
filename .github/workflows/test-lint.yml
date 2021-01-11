@@ -19,15 +19,22 @@ jobs:
             ${{ runner.os }}-yarn-
       - name: Install asdf
         uses: asdf-vm/actions/setup@v1
-      - uses: actions/cache@v2
+      - name: Install tools
+        run: |
+          cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
+          asdf plugin-update --all
+          asdf install
+          asdf reshim
+      - name: Cache tools
+        uses: actions/cache@v2
         with:
           path: |
             /home/runner/.asdf
           key: ${{ runner.os }}-${{ hashFiles('**/.tool-versions') }}
       - name: Setup postgres
         run: |
-          chmod +x ./setup.sh
           pg_ctl start
+          chmod +x ./setup.sh
           psql -c "drop database if exists osf"
           ./setup.sh osf
         working-directory: ./db
