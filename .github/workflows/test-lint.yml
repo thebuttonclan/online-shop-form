@@ -17,14 +17,14 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: Install asdf
+        uses: asdf-vm/actions/setup@v1
       - name: Cache tools
         uses: actions/cache@v2
         with:
           path: |
             /home/runner/.asdf
           key: ${{ runner.os }}-${{ hashFiles('**/.tool-versions') }}
-      - name: Install asdf
-        uses: asdf-vm/actions/setup@v1
       - name: Install required tools
         run: |
           asdf plugin-add postgres || true
@@ -33,9 +33,6 @@ jobs:
       - name: Setup postgres
         run: |
           pg_ctl start
-          chmod +x ./setup.sh
-          psql -c "drop database if exists osf"
-          ./setup.sh osf
         working-directory: ./db
       - name: Run unit tests
         run: |
