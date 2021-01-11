@@ -3,9 +3,9 @@ import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
-
+import { Button } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
-import { getSchema, saveApplication } from 'services/application';
+import { getSchema, saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/uiSchema';
 
 const { version: formVersion } = require('../../package.json');
@@ -13,15 +13,18 @@ const { version: formVersion } = require('../../package.json');
 export default function Apply({ formData, page }) {
   const router = useRouter();
   const schema = getSchema(page);
+  const continueBtnText = Number(page) === LAST_PAGE ? 'Submit' : 'Continue';
 
   const handleSubmit = async ({ formData }) => {
     const { page: nextPage } = await saveApplication({ formVersion, ...formData }, page);
     if (nextPage) {
       router.push(`/apply/${nextPage}`);
     } else {
-      router.push('/apply/success');
+      router.push('/apply/message/success');
     }
   };
+
+  const handlePrevious = () => router.push(`/apply/${page - 1}`);
 
   return (
     <div className="container">
@@ -37,7 +40,18 @@ export default function Apply({ formData, page }) {
         onError={console.log}
         ObjectFieldTemplate={ObjectFieldTemplate}
         ArrayFieldTemplate={ArrayFieldTemplate}
-      />
+      >
+        <div>
+          {Number(page) !== 1 && (
+            <Button id="btn-previous-page" type="button" secondary onClick={handlePrevious}>
+              Previous
+            </Button>
+          )}
+          <Button id="btn-submit-form-data" type="submit" primary>
+            {continueBtnText}
+          </Button>
+        </div>
+      </JsonSchemaForm>
       {/* .error-detail class styles errors below fields,
           .panel-danger for top error message
       */}
