@@ -14,6 +14,9 @@ const pageTwoFieldEntries = {
     { getBy: '#id_importExportBusiness' },
     { getBy: '#id_existingOnlineStore' },
     { getBy: '#id_canMeetDeadline' },
+    { getBy: '#id_useOfGrant' },
+    { getBy: '#id_personalInformation' },
+    { getBy: '#id_taxImplications' },
   ],
   selects: [
     { getBy: '#id_existingStoreFeatures', value: 'Shopping cart and order management capabilities' },
