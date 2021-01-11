@@ -53,4 +53,4 @@ pageTwoFieldEntries.selects.forEach(select => {
   expectedResult[name] = select.value;
 });
 
-export { expectedResult, pageTwoFieldEntries };
+export default pageTwoFieldEntries;
