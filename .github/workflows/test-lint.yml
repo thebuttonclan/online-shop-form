@@ -33,17 +33,19 @@ jobs:
       - name: Setup postgres
         run: |
           pg_ctl start
+          chmod +x ./setup.sh
+          ./setup.sh
         working-directory: ./db
       - name: Run unit tests
         run: |
           yarn
           yarn jest
         working-directory: ./app
-      # - name: Run cypress tests
-      #   run: |
-      #     yarn dev & yarn wait-on http://localhost:3000
-      #     yarn cypress run
-      #   working-directory: ./app
+      - name: Run cypress tests
+        run: |
+          yarn dev & yarn wait-on http://localhost:3000
+          yarn cypress run
+        working-directory: ./app
   pre-commit:
     runs-on: 'ubuntu-latest'
     steps:
