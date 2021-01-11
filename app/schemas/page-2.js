@@ -34,7 +34,7 @@ const schema2 = {
             // not the best name here, but like sector maybe we consolidate to one field? discuss
             productionLocation: {
               type: 'string',
-              title: 'Where',
+              title: 'Where are your products manufactured?',
               name: 'productionLocation',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
@@ -64,6 +64,7 @@ const schema2 = {
             // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
             existingStoreFeatures: {
               type: 'string',
+              name: 'existingStoreFeatures',
               enum: [
                 'Customer registration and information security features',
                 'Shopping cart and order management capabilities',
@@ -106,7 +107,6 @@ const schema2 = {
       title: 'Does your business sell Cannabis products?',
       default: false,
       name: 'cannabisProducts',
-      isRequired: true,
     },
     // Has a condition
     madeInBc: {
@@ -114,7 +114,6 @@ const schema2 = {
       title: 'Are your products manufactured and/or produced in BC?',
       default: false,
       name: 'madeInBc',
-      isRequired: true,
     },
     employees: {
       type: 'string',
@@ -122,14 +121,12 @@ const schema2 = {
       title: 'How many employees does the business have on its payroll?',
       enum: ['None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
       // default: '',
-      isRequired: true,
     },
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
       default: false,
       name: 'importExportBusiness',
-      isRequired: true,
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
@@ -137,7 +134,6 @@ const schema2 = {
       title: 'Does the business currently have an online store?',
       default: false,
       name: 'existingOnlineStore',
-      isRequired: true,
     },
     canMeetDeadline: {
       type: 'boolean',
@@ -145,7 +141,6 @@ const schema2 = {
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
       default: false,
       name: 'canMeetDeadline',
-      isRequired: true,
     },
     // Has condition
     otherCovidFunding: {
@@ -153,7 +148,6 @@ const schema2 = {
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
       default: false,
       name: 'otherCovidFunding',
-      isRequired: true,
     },
 
     // GRANT PROPOSAL SECTION
@@ -190,7 +184,6 @@ const schema2 = {
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
     },
     customerAcquisition: {
       type: 'array',
@@ -201,14 +194,14 @@ const schema2 = {
           provider: {
             type: 'string',
             title: 'Service provider',
-            name: 'provider',
+            name: 'customerAcquisitionProvider',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
           },
           serviceCost: {
             type: 'string',
             title: 'Cost of service',
-            name: 'serviceCost',
+            name: 'customerAcquisitionCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
           },
@@ -225,21 +218,20 @@ const schema2 = {
           provider: {
             type: 'string',
             title: 'Service provider',
-            name: 'provider',
+            name: 'staffTrainingProvider',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
           },
           serviceCost: {
             type: 'string',
             title: 'Cost of service',
-            name: 'serviceCost',
+            name: 'staffTrainingCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
           },
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
     },
   },
   ObjectFieldTemplate,

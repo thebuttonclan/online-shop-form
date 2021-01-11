@@ -67,7 +67,7 @@ const schema1 = {
             sectorOther: {
               type: 'string',
               title: 'Please specify',
-              name: 'businessName',
+              name: 'sectorOther',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
             },
@@ -238,17 +238,5 @@ const schema1 = {
   },
   ObjectFieldTemplate,
 };
-
-const uiSchema = {};
-
-Object.keys(schema1.properties).forEach(property => {
-  uiSchema[property] = {
-    'ui:options': {
-      label: false,
-    },
-  };
-});
-
-export const uiSchema1 = uiSchema;
 
 export default schema1;

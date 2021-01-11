@@ -15,8 +15,8 @@ export function getSchema(page) {
 }
 
 export function validateFormData(formData) {
-  const validate = validate(formData, fullSchema);
-  const { errors } = validate;
+  const validated = validate(formData, fullSchema);
+  const { errors } = validated;
   return errors.length === 0;
 }
 
@@ -32,7 +32,7 @@ export async function saveApplication(formData, page) {
 
 export function handleError(js, res) {
   if (js) return res.status(422).json(false);
-  res.status(422).redirect('/apply/error');
+  res.status(422).redirect('/apply/messages/error');
   return res.end();
 }
 
