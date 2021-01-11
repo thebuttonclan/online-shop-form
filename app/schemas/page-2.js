@@ -19,6 +19,9 @@ const schema2 = {
     'serviceProviders',
     'customerAcquisition',
     'staffTraining',
+    'useOfGrant',
+    'personalInformation',
+    'taxImplications',
   ],
   dependencies: {
     madeInBc: {
@@ -34,7 +37,7 @@ const schema2 = {
             // not the best name here, but like sector maybe we consolidate to one field? discuss
             productionLocation: {
               type: 'string',
-              title: 'Where are your products manufactured?',
+              title: 'If no, where',
               name: 'productionLocation',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
@@ -232,6 +235,21 @@ const schema2 = {
         },
         required: ['provider', 'serviceCost'],
       },
+    },
+    useOfGrant: {
+      type: 'boolean',
+      title:
+        'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+    },
+    personalInformation: {
+      type: 'boolean',
+      title:
+        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Online Shop Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact the <Service provider contact info>',
+    },
+    taxImplications: {
+      type: 'boolean',
+      title:
+        'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
     },
   },
   ObjectFieldTemplate,

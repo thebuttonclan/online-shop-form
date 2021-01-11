@@ -37,6 +37,9 @@ const schema = {
     'serviceProviders',
     'customerAcquisition',
     'staffTraining',
+    'useOfGrant',
+    'personalInformation',
+    'taxImplications',
   ],
   dependencies: {
     workSafeBcRegistered: {
@@ -193,7 +196,6 @@ const schema = {
       type: 'string',
       title: 'Position/Title',
       name: 'primaryContactPosition',
-      isRequired: true,
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
@@ -224,21 +226,18 @@ const schema = {
       title: 'Is the business owned by a BC resident or residents',
       default: false,
       name: 'bcOwned',
-      isRequired: true,
     },
     locatedInBc: {
       type: 'boolean',
       title: 'Are the business’s sole or primary operations located in BC',
       default: false,
       name: 'locatedInBc',
-      isRequired: true,
     },
     isCurrentlyOperating: {
       type: 'boolean',
       title: 'Is the business currently operating',
       default: false,
       name: 'isCurrentlyOperating',
-      isRequired: true,
     },
     pstNumber: {
       type: 'string',
@@ -258,7 +257,6 @@ const schema = {
       type: 'string',
       title: 'Business Number (federal)',
       name: 'federalBusinessNumber',
-      isRequired: true,
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
@@ -274,7 +272,6 @@ const schema = {
       title: 'Have you filed last years income taxes?',
       default: false,
       name: 'incomeTaxesFiled',
-      isRequired: true,
     },
     revenue2019: {
       type: 'string',
@@ -289,7 +286,6 @@ const schema = {
       title: 'Has your business registered with WorkSafeBC?',
       default: false,
       name: 'workSafeBcRegistered',
-      isRequired: true,
     },
     // Has a condition
     sector: {
@@ -298,7 +294,6 @@ const schema = {
       title: 'Sector',
       enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
       // default: '',
-      isRequired: true,
     },
     region: {
       type: 'string',
@@ -317,7 +312,6 @@ const schema = {
         'North Shore and Sunshine Coast',
       ],
       // default: '',
-      isRequired: true,
     },
     isIndigenous: {
       type: 'string',
@@ -325,21 +319,18 @@ const schema = {
       title: 'Is this an Indigenous Business?',
       enum: ['Yes', 'No', 'Rather not answer'],
       // default: '',
-      isRequired: true,
     },
     repeatableProducts: {
       type: 'boolean',
       title: 'Does the business sell repeatable products?',
       default: false,
       name: 'repeatableProducts',
-      isRequired: true,
     },
     cannabisProducts: {
       type: 'boolean',
       title: 'Does your business sell Cannabis products?',
       default: false,
       name: 'cannabisProducts',
-      isRequired: true,
     },
     // Has a condition
     madeInBc: {
@@ -347,7 +338,6 @@ const schema = {
       title: 'Are your products manufactured and/or produced in BC?',
       default: false,
       name: 'madeInBc',
-      isRequired: true,
     },
     employees: {
       type: 'string',
@@ -355,14 +345,12 @@ const schema = {
       title: 'How many employees does the business have on its payroll?',
       enum: ['None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
       // default: '',
-      isRequired: true,
     },
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
       default: false,
       name: 'importExportBusiness',
-      isRequired: true,
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
@@ -370,7 +358,6 @@ const schema = {
       title: 'Does the business currently have an online store?',
       default: false,
       name: 'existingOnlineStore',
-      isRequired: true,
     },
     canMeetDeadline: {
       type: 'boolean',
@@ -378,7 +365,6 @@ const schema = {
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
       default: false,
       name: 'canMeetDeadline',
-      isRequired: true,
     },
     // Has condition
     otherCovidFunding: {
@@ -386,7 +372,6 @@ const schema = {
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
       default: false,
       name: 'otherCovidFunding',
-      isRequired: true,
     },
 
     // GRANT PROPOSAL SECTION
@@ -422,7 +407,6 @@ const schema = {
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
     },
     customerAcquisition: {
       type: 'array',
@@ -469,7 +453,21 @@ const schema = {
         },
         required: ['provider', 'serviceCost'],
       },
-      isRequired: true,
+    },
+    useOfGrant: {
+      type: 'boolean',
+      title:
+        'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+    },
+    personalInformation: {
+      type: 'boolean',
+      title:
+        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Online Shop Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact the <Service provider contact info>',
+    },
+    taxImplications: {
+      type: 'boolean',
+      title:
+        'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
     },
   },
   ObjectFieldTemplate,

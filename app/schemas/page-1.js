@@ -25,6 +25,7 @@ const schema1 = {
     'sector',
     'region',
     'isIndigenous',
+    'repeatableProducts',
   ],
   dependencies: {
     workSafeBcRegistered: {
@@ -103,7 +104,6 @@ const schema1 = {
       type: 'string',
       title: 'Position/Title',
       name: 'primaryContactPosition',
-      isRequired: true,
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
@@ -165,7 +165,6 @@ const schema1 = {
       type: 'string',
       title: 'Business Number (federal)',
       name: 'federalBusinessNumber',
-      isRequired: true,
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
