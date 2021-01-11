@@ -33,6 +33,7 @@ jobs:
       - name: Setup postgres
         run: |
           pg_ctl start
+          createdb runner
           chmod +x ./setup.sh
           ./setup.sh
         working-directory: ./db
