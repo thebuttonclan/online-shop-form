@@ -2,6 +2,7 @@ import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
 const TEXT_MIN_LENGTH = 1;
 const TEXT_MAX_LENGTH = 1000;
+const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const schema1 = {
   title: 'Example Form',
@@ -187,7 +188,7 @@ const schema1 = {
       name: 'revenue2019',
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
-      pattern: '^[0-9]+(.[0-9]{1,2})?$',
+      pattern: CURRENCY_REGEX,
     },
     // Has a condition
     workSafeBcRegistered: {
