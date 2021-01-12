@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  repository: onlineshopsgrant.azurecr.io/osf/app
-  tag: v0.1.0
+  repository:
+  tag:
   pullPolicy: Always
   # pullPolicy: IfNotPresent
 
@@ -10,14 +10,13 @@ nameOverride: osf-app
 fullnameOverride: osf-app
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: ClusterIP
+  port: 3030
 
 ingress:
   enabled: false
-
-  host: onlineshopsgrant.com
-  paths: ['/']
+  host:
+  paths: ["/"]
 
   # tls: []
   #  - secretName: chart-example-tls
@@ -39,11 +38,6 @@ autoscaling:
   targetCPUUtilizationPercentage: 50
   targetMemoryUtilizationPercentage: 50
   customMetrics: []
-
-securityContext:
-  runAsUser: 1001
-  runAsGroup: 1001
-  fsGroup: 1001
 
 resources:
   # We usually recommend not to specify default resources and to leave this as a conscious
