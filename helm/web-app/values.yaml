@@ -1,0 +1,60 @@
+replicaCount: 1
+
+image:
+  repository:
+  tag:
+  pullPolicy: Always
+  # pullPolicy: IfNotPresent
+
+nameOverride: osf-app
+fullnameOverride: osf-app
+
+service:
+  type: ClusterIP
+  port: 3030
+
+ingress:
+  enabled: false
+  host:
+  paths: ["/"]
+
+  # tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+postgresql:
+  enabled: false
+  host:
+  port:
+  username:
+  password:
+  database:
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 11
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50
+  customMetrics: []
+
+resources:
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  #
+  # see https://youtrack-support.jetbrains.com/hc/en-us/articles/206546119-What-hardware-requirements-does-YouTrack-have-
+  limits:
+    cpu: 0.5
+    memory: 500M
+  requests:
+    cpu: 0.5
+    memory: 500M
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
