@@ -1,1 +1,2 @@
 *.secret.yaml filter=git-crypt diff=git-crypt
+terraform/terraform.tfvars filter=git-crypt diff=git-crypt

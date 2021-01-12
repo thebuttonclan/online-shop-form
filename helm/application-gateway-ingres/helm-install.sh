@@ -6,23 +6,4 @@ helm repo add application-gateway-kubernetes-ingress https://appgwingress.blob.c
 
 helm repo update
 
-helm install ingress-azure application-gateway-kubernetes-ingress/ingress-azure -f helm-config.yaml
-
-################################################################################
-# OR
-################################################################################
-
-# helm install ingress-azure application-gateway-kubernetes-ingress/ingress-azure \
-#     --namespace default \
-#     --debug \
-#     --set appgw.name=applicationgatewayABCD \
-#     --set appgw.resourceGroup=your-resource-group \
-#     --set appgw.subscriptionId=subscription-uuid \
-#     --set appgw.usePrivateIP=false \
-#     --set appgw.shared=false \
-#     --set armAuth.type=servicePrincipal \
-#     --set armAuth.secretJSON=$(az ad sp create-for-rbac --sdk-auth | base64 -w0) \
-#     --set rbac.enabled=false \
-#     --set verbosityLevel=3 \
-#     --set kubernetes.watchNamespace=default \
-#     --version 1.3.0
+helm install ingress-azure application-gateway-kubernetes-ingress/ingress-azure --version v1.3.0 -f helm-config.secret.yaml
