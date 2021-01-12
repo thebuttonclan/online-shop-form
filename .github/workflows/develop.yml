@@ -57,6 +57,9 @@ jobs:
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:blast
         working-directory: ./docker/postgres
 
+      - name: asdf_install
+        uses: asdf-vm/actions/setup@v1
+
       - name: Deploy Helm Charts
         run: |
           cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
