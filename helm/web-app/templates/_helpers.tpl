@@ -30,3 +30,9 @@ Create chart name and version as used by the chart label.
 {{- define "..chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
+{{/*
+Create data url
+*/}}
+{{- define "..databaseurl" -}}
+{{- printf "host=%s port=%s dbname=%s user=%s password=%s sslmode=require" .Values.postgresql.host .Values.postgresql.port .Values.postgresql.database .Values.postgresql.username .Values.postgresql.password -}}
+{{- end -}}

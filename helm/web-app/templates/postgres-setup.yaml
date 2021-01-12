@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: pre-install-job
+  name: postgres-setup
   labels:
     app.kubernetes.io/name: {{ include "..name" . }}
     helm.sh/chart: {{ include "..chart" . }}
@@ -10,7 +10,7 @@ metadata:
   annotations:
     "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
     "helm.sh/hook-delete-policy": before-hook-creation
-    "helm.sh/hook-weight": "3"
+    "helm.sh/hook-weight": "1"
 spec:
   template:
     spec:

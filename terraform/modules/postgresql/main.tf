@@ -26,7 +26,7 @@ module "postgresql" {
   administrator_password       = var.admin_password
   server_version               = local.server_version
   ssl_enforcement_enabled      = false
-  db_names                     = ["osf"]
+  db_names                     = []
   db_charset                   = "UTF8"
   db_collation                 = "English_United States.1252"
 
