@@ -279,6 +279,7 @@ const schema = {
       name: 'revenue2019',
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
+      pattern: '^[0-9]+(.[0-9]{1,2})?$',
     },
     // Has a condition
     workSafeBcRegistered: {
@@ -403,6 +404,7 @@ const schema = {
             name: 'serviceCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: '^[0-9]+(.[0-9]{1,2})?$',
           },
         },
         required: ['provider', 'serviceCost'],
@@ -426,6 +428,7 @@ const schema = {
             name: 'serviceCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: '^[0-9]+(.[0-9]{1,2})?$',
           },
         },
         required: ['provider', 'serviceCost'],
@@ -449,6 +452,7 @@ const schema = {
             name: 'serviceCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: '^[0-9]+(.[0-9]{1,2})?$',
           },
         },
         required: ['provider', 'serviceCost'],
