@@ -20,4 +20,4 @@ repos:
         files: \.(j|t)s$
         entry: ./.bin/eslint-prettier.sh
         pass_filenames: false
-exclude: \.secret.yaml$
+exclude: \.secret.yaml$|terraform/terraform.tfvars
