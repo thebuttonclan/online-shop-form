@@ -11,13 +11,13 @@ export function getSchema(page) {
   if (page === 1) return schema1;
   if (page === 2) return schema2;
   // TODO: decide on invalid page handling
-  return schema1;
+  return fullSchema;
 }
 
-export function validateFormData(formData, page) {
-  const schema = getSchema(page);
-
-  return validate(formData, schema);
+export function validateFormData(formData) {
+  const validated = validate(formData, fullSchema);
+  const { errors } = validated;
+  return errors.length === 0;
 }
 
 export async function saveApplication(formData, page) {
@@ -26,20 +26,20 @@ export async function saveApplication(formData, page) {
     return data;
   } catch (error) {
     console.error(error);
-    return null;
+    return { page: 'message/error' };
   }
 }
 
 export function handleError(js, res) {
   if (js) return res.status(422).json(false);
-  res.status(422).redirect('/apply/error');
+  res.status(422).redirect('/apply/messages/error');
   return res.end();
 }
 
 export async function submitApplication({ req, newData, js }) {
   const { res, pgQuery } = req;
 
-  const valid = validate(newData);
+  const valid = validateFormData(newData);
 
   if (!valid) handleError(js, res);
   const savedSuccessfully = await pgQuery.createApplication({ form_data: newData });

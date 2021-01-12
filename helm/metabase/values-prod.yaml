@@ -1,0 +1,19 @@
+cas-postgres:
+  patroni:
+    persistentVolume:
+      storageClass: default
+    env:
+      USE_WALG_BACKUP: "false"
+      USE_WALG_RESTORE: "false"
+    walE:
+      enable: false
+  namespace: prod-metabase
+
+route:
+  enable: false
+
+networkSecurityPolicies:
+  enable: false
+
+ingress:
+  enabled: true

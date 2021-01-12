@@ -9,6 +9,7 @@ repos:
       - id: check-json
       - id: check-vcs-permalinks
       - id: check-yaml
+        exclude: ^helm/
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: local
@@ -19,3 +20,4 @@ repos:
         files: \.(j|t)s$
         entry: ./.bin/eslint-prettier.sh
         pass_filenames: false
+exclude: \.secret.yaml$|terraform/terraform.tfvars

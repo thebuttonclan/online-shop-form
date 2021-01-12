@@ -12,9 +12,6 @@ async function handler(req, res) {
   const newData = { ...formData, ...postData };
   session.formData = newData;
 
-  const validated = validateFormData(newData, page);
-  console.log(validated);
-
   const context = { req, newData, page, js };
 
   if (page === LAST_PAGE) {

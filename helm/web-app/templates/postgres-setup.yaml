@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: postgres-setup
+  labels:
+    app.kubernetes.io/name: {{ include "..name" . }}
+    helm.sh/chart: {{ include "..chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade,pre-rollback
+    "helm.sh/hook-delete-policy": before-hook-creation
+    "helm.sh/hook-weight": "1"
+spec:
+  template:
+    spec:
+      containers:
+        - name: postgres-setup
+          image: onlineshopsgrantacr.azurecr.io/osf/db:blast
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: postgresql
+
+      restartPolicy: Never
+  backoffLimit: 1
