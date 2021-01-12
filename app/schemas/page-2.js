@@ -2,6 +2,7 @@ import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
 const TEXT_MIN_LENGTH = 1;
 const TEXT_MAX_LENGTH = 1000;
+const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const schema2 = {
   title: 'Example Form',
@@ -93,7 +94,7 @@ const schema2 = {
             otherCovidFunding: { enum: [true] },
             otherPrograms: {
               type: 'string',
-              title: 'WorkSafeBC registration number',
+              title: 'If yes, please list all programs',
               name: 'otherPrograms',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
@@ -183,6 +184,7 @@ const schema2 = {
             name: 'serviceCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: CURRENCY_REGEX,
           },
         },
         required: ['provider', 'serviceCost'],
@@ -207,6 +209,7 @@ const schema2 = {
             name: 'customerAcquisitionCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: CURRENCY_REGEX,
           },
         },
         required: ['provider', 'serviceCost'],
@@ -231,6 +234,7 @@ const schema2 = {
             name: 'staffTrainingCost',
             minLength: TEXT_MIN_LENGTH,
             maxLength: TEXT_MAX_LENGTH,
+            pattern: CURRENCY_REGEX,
           },
         },
         required: ['provider', 'serviceCost'],
