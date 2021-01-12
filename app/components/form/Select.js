@@ -36,6 +36,7 @@ const NamedSelect = props => {
           required={required}
           name={name}
           options={options}
+          id={`id_${name}`}
           onChange={(e, { value }) => {
             onChange(value);
           }}

@@ -10,6 +10,7 @@ module.exports = {
   rules: {
     camelcase: 0,
     'no-unused-vars': 0,
+    'cypress/no-unnecessary-waiting': 0,
     'arrow-body-style': 0,
     'import/no-unresolved': 0,
     'no-console': 0,
