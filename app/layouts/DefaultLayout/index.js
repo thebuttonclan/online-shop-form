@@ -6,14 +6,21 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-
+import { PRIMARY_COLOUR } from 'theme';
 import Footer from './Footer';
 
-const TITLE = 'Online shop grant program';
+const TITLE = 'Online Shops Grant Program';
 const bcidSymbol = `/images/bcid-symbol-rev.svg`;
 const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
 
 const TOP_HEIGHT = '60px';
+
+const HEADER_LINKS = [
+  { title: 'HOME', to: '/' },
+  { title: 'FAQ', to: '/frequently-asked-questions' },
+  { title: 'CONTACT US', to: '#contact-us' },
+  { title: 'PROGRAM GUIDE', to: '/' },
+];
 
 const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   breakpoints: {
@@ -32,9 +39,8 @@ const HeaderSegment = styled(Segment)`
 
 const HeaderMenu = styled(Menu)`
   padding: 0 !important;
-  background-color: #036 !important;
+  background-color: ${PRIMARY_COLOUR} !important;
   min-height: ${TOP_HEIGHT} !important;
-  border-bottom: 2px solid #fcba19 !important;
 `;
 
 const XsImage = styled(Image)`
@@ -55,6 +61,10 @@ const BlockIcon = styled(Icon)`
   margin: auto !important;
 `;
 
+const HeaderBrand = styled(Header)`
+  margin: auto !important;
+`;
+
 class DesktopContainer extends Component {
   state = {};
 
@@ -70,16 +80,21 @@ class DesktopContainer extends Component {
         <HeaderSegment inverted textAlign="center" vertical>
           <HeaderMenu fixed="top" inverted secondary size="large">
             <Container>
-              <Link href="/" passHref>
-                <Menu.Item className="pointer">
-                  <Image src={bcidLogoRev} size="small" />
-                </Menu.Item>
-              </Link>
-              <Menu.Item>
-                <Header as="h2" inverted>
+              <Link href="/apply" passHref>
+                <HeaderBrand as="h2" inverted className="pointer">
                   {TITLE}
-                </Header>
-              </Menu.Item>
+                </HeaderBrand>
+              </Link>
+              {HEADER_LINKS.map(header => (
+                <Menu.Item key={header.text}>
+                  <Link href={header.to} passHref>
+                    <Header as="h3" inverted className="pointer">
+                      {header.title}
+                    </Header>
+                  </Link>
+                </Menu.Item>
+              ))}
+              <Menu.Item></Menu.Item>
               <Menu.Item position="right"></Menu.Item>
             </Container>
           </HeaderMenu>
@@ -114,11 +129,17 @@ class MobileContainer extends Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={sidebarOpened}
-            className="bcgov-bg-color"
+            className="bg-primary"
           >
-            <Menu.Item>
-              <Image src={bcidLogoRev} size="small" />
-            </Menu.Item>
+            {HEADER_LINKS.map(header => (
+              <Menu.Item key={header.text}>
+                <Link href={header.to} passHref>
+                  <Header as="h3" inverted className="pointer">
+                    {header.title}
+                  </Header>
+                </Link>
+              </Menu.Item>
+            ))}
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
@@ -129,15 +150,11 @@ class MobileContainer extends Component {
                   <span>Menu</span>
                 </BlockItem>
                 <Link href="/" passHref>
-                  <Menu.Item className="pointer no-margin no-padding">
-                    <XsImage src={bcidSymbol} />
-                  </Menu.Item>
-                </Link>
-                <Menu.Item>
-                  <Header as="h3" inverted>
+                  <Header as="h3" inverted className="pointer">
                     {TITLE}
                   </Header>
-                </Menu.Item>
+                </Link>
+                <Menu.Item></Menu.Item>
                 <Menu.Item position="right"></Menu.Item>
               </HeaderMenu>
             </HeaderSegment>

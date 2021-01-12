@@ -3,10 +3,11 @@ import { withRouter } from 'next/router';
 import DefaultLayout from 'layouts/DefaultLayout';
 import { createGlobalStyle } from 'styled-components';
 import 'semantic-ui-css/semantic.min.css';
+import { PRIMARY_COLOUR } from 'theme';
 
 const GlobalStyle = createGlobalStyle`
-  .bcgov-bg-color {
-    background-color: #036 !important;
+  .bg-primary {
+    background-color: ${PRIMARY_COLOUR} !important;
   }
   .pointer { cursor: pointer; }
   .no-padding { padding: 0; }
