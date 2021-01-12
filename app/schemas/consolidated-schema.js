@@ -159,7 +159,7 @@ const schema = {
             otherCovidFunding: { enum: [true] },
             otherPrograms: {
               type: 'string',
-              title: 'WorkSafeBC registration number',
+              title: 'If yes, please list all programs',
               name: 'otherPrograms',
               minLength: TEXT_MIN_LENGTH,
               maxLength: TEXT_MAX_LENGTH,
