@@ -72,7 +72,7 @@ class DesktopContainer extends Component {
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    const { children } = this.props;
+    const { children, page } = this.props;
     const { fixed } = this.state;
 
     return (
@@ -188,8 +188,8 @@ const MainSegment = styled(Segment)`
 
 const DefaultLayout = ({ children, query }) => (
   <ResponsiveContainer query={query}>
-    <MainSegment vertical>
-      <Container>{children}</Container>
+    <MainSegment vertical className="no-padding">
+      {children}
     </MainSegment>
 
     <Footer />
