@@ -1,21 +1,16 @@
-# see https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action
-
-name: CD - Development
+name: CD - Staging (Tag)
 
 on:
-  workflow_run:
-    workflows: ["Run Tests and Lints"]
-    branches: [placeholder_dev]
-    types:
-      - completed
+  push:
+    tags:
+      - "*"
 
 env:
-  env: dev
-  tag: blast
+  env: test
+  tag: $(echo "${GITHUB_REF##*/}")
 
 jobs:
   build-deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

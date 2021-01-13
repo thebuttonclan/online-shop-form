@@ -2,6 +2,7 @@
 # see https://docs.microsoft.com/en-us/azure/aks/ingress-tls
 # see https://docs.openfaas.com/reference/ssl/kubernetes-with-cert-manager/
 # see https://docs.microsoft.com/en-us/azure/application-gateway/features
+# see https://docs.microsoft.com/en-us/azure/application-gateway/how-application-gateway-works
 # see https://docs.microsoft.com/en-us/azure/developer/terraform/create-k8s-cluster-with-aks-applicationgateway-ingress
 # see https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/application_gateway
 
@@ -37,7 +38,7 @@ resource "azurerm_subnet" "backend" {
 }
 
 resource "azurerm_public_ip" "this" {
-  name                = "example-pip"
+  name                = "frontend-pip"
   resource_group_name = azurerm_resource_group.this.name
   location            = local.resource_location
   allocation_method   = "Static"
