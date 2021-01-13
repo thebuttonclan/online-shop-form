@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: postgres-setup
-          image: onlineshopsgrantacr.azurecr.io/osf/db:blast
+          image: "{{ .Values.dbImage.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: Always
           envFrom:
             - secretRef:

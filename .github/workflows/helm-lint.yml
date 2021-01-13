@@ -1,13 +1,9 @@
-# see https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action
-
-name: CD - Development
+name: Lint Helm Charts
 
 on:
-  workflow_run:
-    workflows: ["Run Tests and Lints"]
-    branches: [placeholder_dev]
-    types:
-      - completed
+  push:
+    paths:
+    - 'placeholder_helm/**'
 
 env:
   env: dev
@@ -15,7 +11,6 @@ env:
 
 jobs:
   build-deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,27 +31,15 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
-      - name: Build Web App and Push Image
-        run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:${{ env.tag }} -f Dockerfile ../../app
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:${{ env.tag }}
-        working-directory: ./docker/node
-
-      - name: Build Postgres and Push Image
-        run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:${{ env.tag }} -f Dockerfile ../../db
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:${{ env.tag }}
-        working-directory: ./docker/postgres
-
       - name: asdf_install
         uses: asdf-vm/actions/setup@v1
 
-      - name: Deploy Helm Charts
+      - name: Lint Helm Charts
         run: |
           cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
           asdf plugin-update --all
           asdf install
           asdf reshim
           az aks get-credentials --resource-group onlineshopsgrant-resource-group --name onlineshopsgrant-aks
-          make upgrade-app ENV=${{ env.env }} TAG=${{ env.tag }}
+          make lint-app ENV=${{ env.env }} TAG=${{ env.tag }}
         working-directory: ./helm

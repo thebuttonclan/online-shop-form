@@ -18,7 +18,7 @@ const TOP_HEIGHT = '120px';
 
 const HEADER_LINKS = [
   { title: 'HOME', to: '/' },
-  { title: 'FAQ', to: '/frequently-asked-questions' },
+  { title: 'FAQ', to: '/faq' },
   { title: 'CONTACT US', to: '#contact' },
   { title: 'PROGRAM GUIDE', to: '/program-guide' },
 ];
@@ -92,7 +92,7 @@ class DesktopContainer extends Component {
                 </HeaderBrand>
               </Link>
               {HEADER_LINKS.map(header => (
-                <Menu.Item key={header.text}>
+                <Menu.Item key={header.title}>
                   <Link href={header.to} passHref>
                     <Header as="h3" inverted className="pointer">
                       {header.title}
@@ -136,7 +136,7 @@ class MobileContainer extends Component {
             className="bg-primary"
           >
             {HEADER_LINKS.map(header => (
-              <Menu.Item key={header.text}>
+              <Menu.Item key={header.title}>
                 <Link href={header.to} passHref>
                   <HeaderBrand as="h2" inverted className="pointer">
                     {header.title}

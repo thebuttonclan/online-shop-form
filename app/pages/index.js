@@ -66,7 +66,7 @@ export default class Home extends PureComponent {
               <Link href="/program-guide">Program guide</Link>
             </li>
             <li>
-              <Link href="/frequently-asked-questions">Frequently asked questions</Link>
+              <Link href="/faq">Frequently asked questions</Link>
             </li>
             <li>
               <a href="#contact">Contact us</a>

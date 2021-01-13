@@ -18,3 +18,8 @@ output "server_fqdn" {
   description = "The fully qualified domain name (FQDN) of the PostgreSQL server"
   value       = module.postgresql_dev.server_fqdn
 }
+
+output "public_ip_id" {
+  description = "The application gateway frontend Public IP ID"
+  value       = azurerm_public_ip.this.id
+}
