@@ -480,3 +480,100 @@ const schema = {
   },
   ObjectFieldTemplate,
 };
+
+const schemaTest = {
+  title: 'Example Form',
+  type: 'object',
+  required: [
+    'businessName',
+    'primaryContactName',
+    'primaryContactPosition',
+    'businessPhone',
+    'email',
+    'businessAddress',
+    'bcOwned',
+    'locatedInBc',
+    'isCurrentlyOperating',
+    'bcRegistrationID',
+    'federalBusinessNumber',
+    'gstNumber',
+    'incomeTaxesFiled',
+    'revenue2019',
+    'workSafeBcRegistered',
+    'sector',
+    'region',
+    'isIndigenous',
+    'repeatableProducts',
+  ],
+  dependencies: {
+    workSafeBcRegistered: {
+      oneOf: [
+        {
+          properties: {
+            workSafeBcRegistered: {
+              enum: [false],
+            },
+          },
+        },
+        {
+          properties: {
+            workSafeBcRegistered: {
+              enum: [true],
+            },
+          },
+          required: ['workSafeBcRegistrationNumber'],
+        },
+      ],
+    },
+    sector: {
+      oneOf: [
+        {
+          properties: {
+            sector: {
+              enum: [false],
+            },
+          },
+        },
+        {
+          properties: {
+            sector: {
+              enum: ['Other'],
+            },
+          },
+          required: ['sectorOther'],
+        },
+      ],
+    },
+  },
+  properties: {
+    workSafeBcRegistrationNumber: {
+      type: 'string',
+      title: 'WorkSafeBC registration number',
+      name: 'workSafeBcRegistrationNumber',
+    },
+    sectorOther: {
+      type: 'string',
+      title: 'Please specify',
+      name: 'sectorOther',
+    },
+
+    // Has a condition
+    workSafeBcRegistered: {
+      type: 'boolean',
+      title: 'Has your business registered with WorkSafeBC?',
+      name: 'workSafeBcRegistered',
+    },
+    // Has a condition
+    sector: {
+      type: 'string',
+      name: 'sector',
+      title: 'Sector',
+      enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
+      // default: "",
+    },
+  },
+};
+
+const order = ['workSafeBcRegistered', 'workSafeBcRegistrationNumber', 'sector', 'sectorOther'];
+
+export { schemaTest, order };

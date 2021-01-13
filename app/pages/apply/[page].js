@@ -5,15 +5,21 @@ import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
 import { Button } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
-import { getSchema, saveApplication, LAST_PAGE } from 'services/application';
+import { saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/uiSchema';
+import splitSchemas from 'schemas/splitSchema';
+// import consolidatedSchema from 'schemas/consolidated-schema';
+import { schemaTest, order } from 'schemas/consolidated-schema';
 
 const { version: formVersion } = require('../../package.json');
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
-  const schema = getSchema(page);
   const continueBtnText = Number(page) === LAST_PAGE ? 'Submit' : 'Continue';
+  // const order = uiSchema['ui:order'];
+  const schemasArray = splitSchemas(schemaTest, order);
+  // const schemasArray = splitSchemas(consolidatedSchema, order)
+  const schema = schemasArray[Number(page) - 1];
 
   const handleSubmit = async ({ formData }) => {
     const { page: nextPage } = await saveApplication({ formVersion, ...formData }, page);
