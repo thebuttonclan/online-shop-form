@@ -1,5 +1,7 @@
 cas-postgres:
   patroni:
+    image:
+      tag: fd49e26f35a1ada65ad64bedd383aa4096a4f96f
     persistentVolume:
       storageClass: default
     env:
@@ -9,11 +11,20 @@ cas-postgres:
       enable: false
   namespace: test-metabase
 
+metabase:
+  timeZone: US/Pacific
+  resources:
+    limits:
+      cpu: 0.5
+      memory: 500M
+    requests:
+      cpu: 0.5
+      memory: 500M
+  ingress:
+    enabled: false
+
 route:
   enable: false
 
 networkSecurityPolicies:
   enable: false
-
-ingress:
-  enabled: true

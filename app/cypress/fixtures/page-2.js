@@ -30,11 +30,11 @@ const pageTwoFieldEntries = {
     ],
     inputs: [
       { getBy: '#id_provider', text: 'test', parent: 'serviceProviders', type: 'provider' },
-      { getBy: '#id_serviceCost', text: '$10', parent: 'serviceProviders', type: 'serviceCost' },
+      { getBy: '#id_serviceCost', text: '10', parent: 'serviceProviders', type: 'serviceCost' },
       { getBy: '#id_customerAcquisitionProvider', text: 'test', parent: 'customerAcquisition', type: 'provider' },
-      { getBy: '#id_customerAcquisitionCost', text: '$30', parent: 'customerAcquisition', type: 'serviceCost' },
+      { getBy: '#id_customerAcquisitionCost', text: '30', parent: 'customerAcquisition', type: 'serviceCost' },
       { getBy: '#id_staffTrainingProvider', text: 'test', parent: 'staffTraining', type: 'provider' },
-      { getBy: '#id_staffTrainingCost', text: '$20', parent: 'staffTraining', type: 'serviceCost' },
+      { getBy: '#id_staffTrainingCost', text: '20', parent: 'staffTraining', type: 'serviceCost' },
     ],
   },
 };
