@@ -243,7 +243,7 @@ export default class Home extends PureComponent {
         <StyledAnchor href="/files/program_guide.pdf">PROGRAM GUIDE</StyledAnchor>
         <br />
         <br />
-        <StyledAnchor href="/files/faqs.pdf">FAQS</StyledAnchor>
+        <StyledAnchor href="/faq">FAQS</StyledAnchor>
 
         <Header as="h3">
           <strong>CONTACT US</strong>
