@@ -23,8 +23,7 @@ jobs:
           sudo apt-get install git-crypt
           git-crypt init
           echo "${{ secrets.GIT_CRYPT_KEY }}" | base64 -d > git-crypt.key
-          git status
-          git stash
+          git add .
           git-crypt unlock git-crypt.key
         # uses: sliteteam/github-action-git-crypt-unlock@1.0.2
         # env:
