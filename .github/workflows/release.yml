@@ -1,21 +1,18 @@
-# see https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action
-
-name: CD - Development
+name: Manual Workflow
 
 on:
-  workflow_run:
-    workflows: ["Run Tests and Lints"]
-    branches: [placeholder_dev]
-    types:
-      - completed
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag Version'
+        required: true
 
 env:
-  env: dev
-  tag: blast
+  env: prod
+  tag: ${{ github.event.inputs.tag }}
 
 jobs:
   build-deploy:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -35,18 +32,6 @@ jobs:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-
-      - name: Build Web App and Push Image
-        run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:${{ env.tag }} -f Dockerfile ../../app
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:${{ env.tag }}
-        working-directory: ./docker/node
-
-      - name: Build Postgres and Push Image
-        run: |
-          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:${{ env.tag }} -f Dockerfile ../../db
-          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:${{ env.tag }}
-        working-directory: ./docker/postgres
 
       - name: asdf_install
         uses: asdf-vm/actions/setup@v1

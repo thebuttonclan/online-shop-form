@@ -1,13 +1,16 @@
 replicaCount: 1
 
 image:
-  repository:
-  tag:
+  repository: onlineshopsgrant.azurecr.io/osf/webapp
+  tag: blast
   pullPolicy: Always
   # pullPolicy: IfNotPresent
 
-nameOverride: osf-app
-fullnameOverride: osf-app
+dbImage:
+  repository: onlineshopsgrantacr.azurecr.io/osf/db
+
+nameOverride: webapp
+fullnameOverride: webapp
 
 service:
   type: ClusterIP
