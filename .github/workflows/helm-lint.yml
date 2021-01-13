@@ -34,7 +34,7 @@ jobs:
       - name: asdf_install
         uses: asdf-vm/actions/setup@v1
 
-      - name: Deploy Helm Charts
+      - name: Lint Helm Charts
         run: |
           cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
           asdf plugin-update --all
