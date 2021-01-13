@@ -1,15 +1,13 @@
-name: Production Release
+name: Lint Helm Charts
 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag Version'
-        required: true
+  push:
+    paths:
+    - 'placeholder_helm/**'
 
 env:
-  env: prod
-  tag: ${{ github.event.inputs.tag }}
+  env: dev
+  tag: blast
 
 jobs:
   build-deploy:
@@ -43,5 +41,5 @@ jobs:
           asdf install
           asdf reshim
           az aks get-credentials --resource-group onlineshopsgrant-resource-group --name onlineshopsgrant-aks
-          make upgrade-app ENV=${{ env.env }} TAG=${{ env.tag }}
+          make lint-app ENV=${{ env.env }} TAG=${{ env.tag }}
         working-directory: ./helm
