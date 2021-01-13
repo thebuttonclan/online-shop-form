@@ -1,17 +1,16 @@
 import Link from 'next/link';
-import { Container } from 'semantic-ui-react';
+import { Container, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { PRIMARY_COLOUR } from 'theme';
 
 const StyledFooter = styled.footer`
-  background-color: #036;
-  border-top: 2px solid #fcba19;
+  background-color: ${PRIMARY_COLOUR};
   color: #fff;
-  font-family: ‘Noto Sans’, Verdana, Arial, sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  height: 46px;
+  min-height: 20vh;
 
   & ul {
     display: flex;
@@ -45,37 +44,10 @@ const Footer = () => {
       <Container>
         <ul>
           <li>
-            <Link href="/" passHref>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/resources/disclaimer" passHref>
-              Disclaimer
-            </Link>
-          </li>
-          <li>
-            <Link href="/resources/privacy" passHref>
-              Privacy
-            </Link>
-          </li>
-          <li>
-            <a
-              href="https://www2.gov.bc.ca/gov/content/home/accessible-government"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Accessibility
-            </a>
-          </li>
-          <li>
             <Link href="/resources/copyright" passHref>
-              Copyright
-            </Link>
-          </li>
-          <li>
-            <Link href="/resources/contact" passHref>
-              Contact Us
+              <p>
+                Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2020
+              </p>
             </Link>
           </li>
         </ul>
