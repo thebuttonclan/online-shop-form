@@ -12,6 +12,13 @@ const StyledHeader = styled(Header)`
   color: #44afb3;
 `;
 
+const StyledIcon = styled.div`
+  margin-left: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const StyledP = styled.p`
   font-size: 1.2em;
 `;
@@ -92,7 +99,9 @@ export default class Faq extends Component {
         <Accordion>
           <StyledAccordionTitle active={activeIndexs.includes(0)} index={0} onClick={this.handleAccordionClick}>
             <StyledQuestion>What expenses are ineligible?</StyledQuestion>
-            <Icon name={activeIndexs.includes(0) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(0) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(0)}>
             <StyledP>
@@ -115,7 +124,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               What does my business need to provide to demonstrate we’ve used a BC-based service provider?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(1) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(1) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(1)}>
             <StyledP>
@@ -130,7 +141,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               I have an e-commerce site. Am I still eligible for funding to make it better?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(2) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(2) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(2)}>
             <StyledP>
@@ -160,7 +173,9 @@ export default class Faq extends Component {
               I have received funding from other programs, including Buy BC Partnership Program E-commerce Funding
               Stream or Canada United Small Business Relief Fund. Am I still eligible?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(3) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(3) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(3)}>
             <StyledP>
@@ -175,7 +190,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               I’ve already started to build/enhance my business’s e-commerce site. Are those expenses eligible?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(4) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(4) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(4)}>
             <StyledP>
@@ -192,7 +209,9 @@ export default class Faq extends Component {
               I know a student that is able to build my online store for my business. Would they be an eligible BC-based
               service provider?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(5) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(5) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(5)}>
             <StyledP>Only those registered to do business in BC will be eligible as a service provider.</StyledP>
@@ -205,7 +224,9 @@ export default class Faq extends Component {
               I have an online store but need to add product pictures. Could I apply all the eligible funding toward a
               professional photographer?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(6) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(6) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(6)}>
             <StyledP>
@@ -221,7 +242,9 @@ export default class Faq extends Component {
               I have an employee that recently completed the Marketing Bootcamp course. Can I use this program to pay
               them to build my online store?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(7) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(7) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(7)}>
             <StyledP>
@@ -236,7 +259,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               My business address is located outside of British Columbia, but I live in BC. Can I still apply?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(8) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(8) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(8)}>
             <StyledP>No. The program is for business with a local BC address only.</StyledP>
@@ -249,7 +274,9 @@ export default class Faq extends Component {
               If my project expenses total to less than $7,500, do I still need to contribute my own business funds to
               the project?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(9) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(9) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(9)}>
             <StyledP>
@@ -265,7 +292,9 @@ export default class Faq extends Component {
               I have a friend in another province who provides digital marketing services on a contract basis. Can I use
               them as an eligible expense for my project?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(10) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(10) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(10)}>
             <StyledP>
@@ -279,7 +308,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               If I lose a receipt for any of my eligible expenses, can I still submit it as an eligible expense?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(11) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(11) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(11)}>
             <StyledP>No. All submitted expenses will require proof of service completed and proof of payment.</StyledP>
@@ -292,7 +323,9 @@ export default class Faq extends Component {
               Can I send one of my staff to a training course related to digital marketing and submit the tuition as an
               eligible expense?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(12) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(12) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(12)}>
             <StyledP>Yes. Training costs for digital marketing are considered an eligible expense.</StyledP>
@@ -304,7 +337,9 @@ export default class Faq extends Component {
             <StyledQuestion>
               Can I apply for this funding if I have an at home business that is not registered in BC?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(13) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(13) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(13)}>
             <StyledP>
@@ -320,7 +355,9 @@ export default class Faq extends Component {
               I have an online store but need to add product pictures. Could I apply all the eligible funding toward a
               professional photographer?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(14) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(14) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(14)}>
             <StyledP>
@@ -346,7 +383,9 @@ export default class Faq extends Component {
               Can I submit receipts for expenses that I incurred while setting up my online store prior to applying for
               this grant?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(15) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(15) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(15)}>
             <StyledP>
@@ -360,7 +399,9 @@ export default class Faq extends Component {
 
           <StyledAccordionTitle active={activeIndexs.includes(16)} index={16} onClick={this.handleAccordionClick}>
             <StyledQuestion>If I lose a receipt for any of my eligible expenses, will I be audited?</StyledQuestion>
-            <Icon name={activeIndexs.includes(16) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(16) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(16)}>
             <StyledP>
@@ -373,7 +414,9 @@ export default class Faq extends Component {
 
           <StyledAccordionTitle active={activeIndexs.includes(17)} index={17} onClick={this.handleAccordionClick}>
             <StyledQuestion>Are the grant funds taxable revenue?</StyledQuestion>
-            <Icon name={activeIndexs.includes(17) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(17) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(17)}>
             <StyledP>Yes. The grant funds are taxable and should be reported on your corporate tax return.</StyledP>
@@ -386,7 +429,9 @@ export default class Faq extends Component {
               Where can I go for advice if I’m unsure what I need to do start a project to build an online shop for my
               business?
             </StyledQuestion>
-            <Icon name={activeIndexs.includes(18) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(18) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(18)}>
             <StyledP>
@@ -413,7 +458,9 @@ export default class Faq extends Component {
 
           <StyledAccordionTitle active={activeIndexs.includes(19)} index={19} onClick={this.handleAccordionClick}>
             <StyledQuestion>Where can I go for advice in languages other than English?</StyledQuestion>
-            <Icon name={activeIndexs.includes(19) ? 'minus' : 'plus'} />
+            <StyledIcon>
+              <Icon name={activeIndexs.includes(19) ? 'minus' : 'plus'} />
+            </StyledIcon>
           </StyledAccordionTitle>
           <Accordion.Content active={activeIndexs.includes(19)}>
             <StyledP>Resources tbd</StyledP>
