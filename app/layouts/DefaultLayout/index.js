@@ -6,19 +6,28 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-
+import { PRIMARY_COLOUR, SUBHEADING_WEIGHT } from 'theme';
+import Banner from 'components/Landing/Banner';
 import Footer from './Footer';
 
-const TITLE = 'Online shop grant program';
+const TITLE = 'Online Shops Grant Program';
 const bcidSymbol = `/images/bcid-symbol-rev.svg`;
 const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
 
-const TOP_HEIGHT = '60px';
+const TOP_HEIGHT = '120px';
+
+const HEADER_LINKS = [
+  { title: 'HOME', to: '/' },
+  { title: 'FAQ', to: '/faq' },
+  { title: 'CONTACT US', to: '#contact' },
+  { title: 'PROGRAM GUIDE', to: '/program-guide' },
+];
 
 const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   breakpoints: {
     mobile: 0,
     tablet: 768,
+    headerBreak: 992,
     computer: 1024,
   },
 });
@@ -32,9 +41,8 @@ const HeaderSegment = styled(Segment)`
 
 const HeaderMenu = styled(Menu)`
   padding: 0 !important;
-  background-color: #036 !important;
-  min-height: ${TOP_HEIGHT} !important;
-  border-bottom: 2px solid #fcba19 !important;
+  background-color: ${PRIMARY_COLOUR} !important;
+  height: ${TOP_HEIGHT} !important;
 `;
 
 const XsImage = styled(Image)`
@@ -55,6 +63,14 @@ const BlockIcon = styled(Icon)`
   margin: auto !important;
 `;
 
+const HeaderBrand = styled(Header)`
+  margin: auto !important;
+  text-align: left;
+  color: white;
+  font-weight: ${SUBHEADING_WEIGHT};
+  max-width: 250px;
+`;
+
 class DesktopContainer extends Component {
   state = {};
 
@@ -62,25 +78,28 @@ class DesktopContainer extends Component {
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    const { children } = this.props;
+    const { children, page } = this.props;
     const { fixed } = this.state;
 
     return (
-      <Media greaterThan="mobile">
-        <HeaderSegment inverted textAlign="center" vertical>
+      <Media greaterThanOrEqual="headerBreak">
+        <HeaderSegment inverted textAlign="center" vertical id="top">
           <HeaderMenu fixed="top" inverted secondary size="large">
-            <Container>
-              <Link href="/" passHref>
-                <Menu.Item className="pointer">
-                  <Image src={bcidLogoRev} size="small" />
-                </Menu.Item>
-              </Link>
-              <Menu.Item>
-                <Header as="h2" inverted>
+            <Container style={{ padding: '20px' }}>
+              <Link href="/apply" passHref>
+                <HeaderBrand as="h2" className="pointer">
                   {TITLE}
-                </Header>
-              </Menu.Item>
-              <Menu.Item position="right"></Menu.Item>
+                </HeaderBrand>
+              </Link>
+              {HEADER_LINKS.map(header => (
+                <Menu.Item key={header.title}>
+                  <Link href={header.to} passHref>
+                    <Header as="h3" inverted className="pointer">
+                      {header.title}
+                    </Header>
+                  </Link>
+                </Menu.Item>
+              ))}
             </Container>
           </HeaderMenu>
         </HeaderSegment>
@@ -105,7 +124,7 @@ class MobileContainer extends Component {
     const { sidebarOpened } = this.state;
 
     return (
-      <Media at="mobile" as={Sidebar.Pushable}>
+      <Media lessThan="headerBreak" as={Sidebar.Pushable}>
         <Sidebar.Pushable>
           <Sidebar
             as={Menu}
@@ -114,31 +133,31 @@ class MobileContainer extends Component {
             onHide={this.handleSidebarHide}
             vertical
             visible={sidebarOpened}
-            className="bcgov-bg-color"
+            className="bg-primary"
           >
-            <Menu.Item>
-              <Image src={bcidLogoRev} size="small" />
-            </Menu.Item>
+            {HEADER_LINKS.map(header => (
+              <Menu.Item key={header.title}>
+                <Link href={header.to} passHref>
+                  <HeaderBrand as="h2" inverted className="pointer">
+                    {header.title}
+                  </HeaderBrand>
+                </Link>
+              </Menu.Item>
+            ))}
           </Sidebar>
 
           <Sidebar.Pusher dimmed={sidebarOpened}>
-            <HeaderSegment inverted textAlign="center" vertical>
+            <HeaderSegment inverted textAlign="center" vertical id="top">
               <HeaderMenu inverted secondary size="large">
                 <BlockItem onClick={this.handleToggle}>
                   <BlockIcon name="sidebar" />
                   <span>Menu</span>
                 </BlockItem>
                 <Link href="/" passHref>
-                  <Menu.Item className="pointer no-margin no-padding">
-                    <XsImage src={bcidSymbol} />
-                  </Menu.Item>
-                </Link>
-                <Menu.Item>
-                  <Header as="h3" inverted>
+                  <HeaderBrand inverted className="pointer">
                     {TITLE}
-                  </Header>
-                </Menu.Item>
-                <Menu.Item position="right"></Menu.Item>
+                  </HeaderBrand>
+                </Link>
               </HeaderMenu>
             </HeaderSegment>
 
@@ -169,14 +188,17 @@ const MainSegment = styled(Segment)`
   min-height: calc(100vh - ${TOP_HEIGHT});
 `;
 
-const DefaultLayout = ({ children, query }) => (
-  <ResponsiveContainer query={query}>
-    <MainSegment vertical>
-      <Container>{children}</Container>
-    </MainSegment>
+const DefaultLayout = ({ children, query, pathname }) => {
+  return (
+    <ResponsiveContainer query={query}>
+      <MainSegment vertical className="no-padding">
+        {pathname === '/' && <Banner />}
+        <Container>{children}</Container>
+      </MainSegment>
 
-    <Footer />
-  </ResponsiveContainer>
-);
+      <Footer />
+    </ResponsiveContainer>
+  );
+};
 
 export default DefaultLayout;

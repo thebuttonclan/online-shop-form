@@ -35,9 +35,9 @@ const schema = {
     'sector',
     // GRANT PROPOSAL SECTION
     'planForFunds',
-    'serviceProviders',
-    'customerAcquisition',
-    'staffTraining',
+    // 'serviceProviderCosts',
+    // 'customerAcquisitionCostsCosts',
+    // 'staffTrainingCosts',
     'useOfGrant',
     'personalInformation',
     'taxImplications',
@@ -47,18 +47,15 @@ const schema = {
       oneOf: [
         {
           properties: {
-            workSafeBcRegistered: { enum: [false] },
+            workSafeBcRegistered: {
+              enum: [false],
+            },
           },
         },
         {
           properties: {
-            workSafeBcRegistered: { enum: [true] },
-            workSafeBcRegistrationNumber: {
-              type: 'string',
-              title: 'WorkSafeBC registration number',
-              name: 'workSafeBcRegistrationNumber',
-              minLength: TEXT_MIN_LENGTH,
-              maxLength: TEXT_MAX_LENGTH,
+            workSafeBcRegistered: {
+              enum: [true],
             },
           },
           required: ['workSafeBcRegistrationNumber'],
@@ -79,14 +76,6 @@ const schema = {
             sector: {
               enum: ['Other'],
             },
-            // Once we have a UI we can try to find a way to consolidate sectorOther to be the value of sector to avoid 2 fields
-            sectorOther: {
-              type: 'string',
-              title: 'Please specify',
-              name: 'businessName',
-              minLength: TEXT_MIN_LENGTH,
-              maxLength: TEXT_MAX_LENGTH,
-            },
           },
           required: ['sectorOther'],
         },
@@ -102,14 +91,6 @@ const schema = {
         {
           properties: {
             madeInBc: { enum: [false] },
-            // not the best name here, but like sector maybe we consolidate to one field? discuss
-            productionLocation: {
-              type: 'string',
-              title: 'Where',
-              name: 'productionLocation',
-              minLength: TEXT_MIN_LENGTH,
-              maxLength: TEXT_MAX_LENGTH,
-            },
           },
           required: ['productionLocation'],
         },
@@ -125,24 +106,6 @@ const schema = {
         {
           properties: {
             existingOnlineStore: { enum: [true] },
-            onlineStoreUrl: {
-              type: 'string',
-              title: 'Link to online store',
-              name: 'onlineStoreUrl',
-              minLength: TEXT_MIN_LENGTH,
-              maxLength: TEXT_MAX_LENGTH,
-            },
-            // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
-            existingStoreFeatures: {
-              type: 'string',
-              enum: [
-                'Customer registration and information security features',
-                'Shopping cart and order management capabilities',
-                'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
-                'Product catalogue, search and inventory status',
-                'Website analytics and reporting capabilities',
-              ],
-            },
           },
           required: ['onlineStoreUrl', 'existingStoreFeatures'],
         },
@@ -158,13 +121,6 @@ const schema = {
         {
           properties: {
             otherCovidFunding: { enum: [true] },
-            otherPrograms: {
-              type: 'string',
-              title: 'If yes, please list all programs',
-              name: 'otherPrograms',
-              minLength: TEXT_MIN_LENGTH,
-              maxLength: TEXT_MAX_LENGTH,
-            },
           },
           required: ['otherPrograms'],
         },
@@ -289,6 +245,13 @@ const schema = {
       default: false,
       name: 'workSafeBcRegistered',
     },
+    workSafeBcRegistrationNumber: {
+      type: 'string',
+      title: 'WorkSafeBC registration number',
+      name: 'workSafeBcRegistrationNumber',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     // Has a condition
     sector: {
       type: 'string',
@@ -296,6 +259,13 @@ const schema = {
       title: 'Sector',
       enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
       // default: '',
+    },
+    sectorOther: {
+      type: 'string',
+      title: 'Please specify',
+      name: 'businessName',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
     },
     region: {
       type: 'string',
@@ -341,6 +311,13 @@ const schema = {
       default: false,
       name: 'madeInBc',
     },
+    productionLocation: {
+      type: 'string',
+      title: 'Where',
+      name: 'productionLocation',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     employees: {
       type: 'string',
       name: 'employees',
@@ -361,6 +338,24 @@ const schema = {
       default: false,
       name: 'existingOnlineStore',
     },
+    onlineStoreUrl: {
+      type: 'string',
+      title: 'Link to online store',
+      name: 'onlineStoreUrl',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
+    // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
+    existingStoreFeatures: {
+      type: 'string',
+      enum: [
+        'Customer registration and information security features',
+        'Shopping cart and order management capabilities',
+        'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
+        'Product catalogue, search and inventory status',
+        'Website analytics and reporting capabilities',
+      ],
+    },
     canMeetDeadline: {
       type: 'boolean',
       title:
@@ -375,7 +370,13 @@ const schema = {
       default: false,
       name: 'otherCovidFunding',
     },
-
+    otherPrograms: {
+      type: 'string',
+      title: 'If yes, please list all programs',
+      name: 'otherPrograms',
+      minLength: TEXT_MIN_LENGTH,
+      maxLength: TEXT_MAX_LENGTH,
+    },
     // GRANT PROPOSAL SECTION
     planForFunds: {
       type: 'string',
@@ -387,77 +388,23 @@ const schema = {
     // The following arrays also have a field that is just a calculated 75% of the total cost.
     // I don't think we necessarily need them in here, we can just add the fields to the view when created.
     // That way we dont have a bunchof extra fields on the form, that don't require user input.
-    serviceProviders: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          provider: {
-            type: 'string',
-            title: 'Service provider',
-            name: 'provider',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-          },
-          serviceCost: {
-            type: 'string',
-            title: 'Cost of service',
-            name: 'serviceCost',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-            pattern: CURRENCY_REGEX,
-          },
-        },
-        required: ['provider', 'serviceCost'],
-      },
+    serviceProviderCosts: {
+      type: 'string',
+      title: 'Provide estimate of costs for service providers',
+      name: 'serviceProviderCosts',
+      pattern: CURRENCY_REGEX,
     },
-    customerAcquisition: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          provider: {
-            type: 'string',
-            title: 'Service provider',
-            name: 'provider',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-          },
-          serviceCost: {
-            type: 'string',
-            title: 'Cost of service',
-            name: 'serviceCost',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-            pattern: CURRENCY_REGEX,
-          },
-        },
-        required: ['provider', 'serviceCost'],
-      },
+    customerAcquisitionCosts: {
+      type: 'string',
+      title: 'Provide estimate of costs for digital customer acquisition',
+      name: 'customerAcquisitionCosts',
+      pattern: CURRENCY_REGEX,
     },
-    staffTraining: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          provider: {
-            type: 'string',
-            title: 'Service provider',
-            name: 'provider',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-          },
-          serviceCost: {
-            type: 'string',
-            title: 'Cost of service',
-            name: 'serviceCost',
-            minLength: TEXT_MIN_LENGTH,
-            maxLength: TEXT_MAX_LENGTH,
-            pattern: CURRENCY_REGEX,
-          },
-        },
-        required: ['provider', 'serviceCost'],
-      },
+    staffTrainingCosts: {
+      type: 'string',
+      title: 'Provide estimate of costs for digital customer acquisition',
+      name: 'staffTrainingCosts',
+      pattern: CURRENCY_REGEX,
     },
     useOfGrant: {
       type: 'boolean',
@@ -481,99 +428,4 @@ const schema = {
   ObjectFieldTemplate,
 };
 
-const schemaTest = {
-  title: 'Example Form',
-  type: 'object',
-  required: [
-    'businessName',
-    'primaryContactName',
-    'primaryContactPosition',
-    'businessPhone',
-    'email',
-    'businessAddress',
-    'bcOwned',
-    'locatedInBc',
-    'isCurrentlyOperating',
-    'bcRegistrationID',
-    'federalBusinessNumber',
-    'gstNumber',
-    'incomeTaxesFiled',
-    'revenue2019',
-    'workSafeBcRegistered',
-    'sector',
-    'region',
-    'isIndigenous',
-    'repeatableProducts',
-  ],
-  dependencies: {
-    workSafeBcRegistered: {
-      oneOf: [
-        {
-          properties: {
-            workSafeBcRegistered: {
-              enum: [false],
-            },
-          },
-        },
-        {
-          properties: {
-            workSafeBcRegistered: {
-              enum: [true],
-            },
-          },
-          required: ['workSafeBcRegistrationNumber'],
-        },
-      ],
-    },
-    sector: {
-      oneOf: [
-        {
-          properties: {
-            sector: {
-              enum: [false],
-            },
-          },
-        },
-        {
-          properties: {
-            sector: {
-              enum: ['Other'],
-            },
-          },
-          required: ['sectorOther'],
-        },
-      ],
-    },
-  },
-  properties: {
-    workSafeBcRegistrationNumber: {
-      type: 'string',
-      title: 'WorkSafeBC registration number',
-      name: 'workSafeBcRegistrationNumber',
-    },
-    sectorOther: {
-      type: 'string',
-      title: 'Please specify',
-      name: 'sectorOther',
-    },
-
-    // Has a condition
-    workSafeBcRegistered: {
-      type: 'boolean',
-      title: 'Has your business registered with WorkSafeBC?',
-      name: 'workSafeBcRegistered',
-    },
-    // Has a condition
-    sector: {
-      type: 'string',
-      name: 'sector',
-      title: 'Sector',
-      enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
-      // default: "",
-    },
-  },
-};
-
-const order = ['workSafeBcRegistered', 'workSafeBcRegistrationNumber', 'sector', 'sectorOther'];
-
-export { schemaTest, order };
+export default schema;
