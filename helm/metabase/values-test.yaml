@@ -12,6 +12,7 @@ cas-postgres:
   namespace: test-metabase
 
 metabase:
+  timeZone: US/Pacific
   resources:
     limits:
       cpu: 0.5

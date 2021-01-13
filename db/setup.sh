@@ -8,9 +8,7 @@ fi
 
 echo $db;
 
-user="osf"
-
-psql "$DATABASE_URL" -c "SELECT * FROM pg_database"
+user="rootadmin"
 
 _psql() {
   PGOPTIONS='--client-min-messages=warning' psql -qtA --set ON_ERROR_STOP=1 "$@" 2>&1
@@ -68,6 +66,7 @@ elif [[ $coordinator_out == ERROR* ]]; then
   exit 1
 fi
 
+run_cmd_on_db "select version();"
 
 run_file "$extension_sql"
 run_file "$helper_sql"
@@ -81,6 +80,9 @@ run_file "$transition_sql"
 
 msg "=== DB VERSION"
 run_cmd_on_db "select version();"
+
+msg "=== DB Tables"
+run_cmd_on_db "select * from pg_database;"
 
 msg "=== CONSTRAINTS"
 run_cmd_on_db "select * from information_schema.key_column_usage;"

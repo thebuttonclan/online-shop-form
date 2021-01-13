@@ -10,7 +10,7 @@ create table if not exists public.applications (
     updated_at timestamp with time zone default current_timestamp,
     primary key(id)
 );
-alter table public.applications owner to osf;
+alter table public.applications owner to rootadmin;
 
 create table if not exists public.connect_session (
     sid varchar(4093) not null collate "default",
@@ -19,7 +19,7 @@ create table if not exists public.connect_session (
 )
 with (oids=false);
 
-alter table public.connect_session owner to osf;
+alter table public.connect_session owner to rootadmin;
 
 select create_constraint_if_not_exists(
     'public',

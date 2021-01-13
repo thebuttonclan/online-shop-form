@@ -2,7 +2,7 @@ const pg = require('pg');
 const session = require('express-session');
 const PgSession = require('connect-pg-simple')(session);
 
-const PGUSER = process.env.PGUSER || 'osf';
+const PGUSER = process.env.PGUSER || 'rootadmin';
 
 let databaseURL = 'postgres://';
 

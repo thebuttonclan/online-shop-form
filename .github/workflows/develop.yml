@@ -1,0 +1,58 @@
+# see https://docs.microsoft.com/en-us/azure/container-instances/container-instances-github-action
+
+name: CD - Development
+
+on:
+  workflow_run:
+    workflows: ["Run Tests and Lints"]
+    branches: [placeholder_dev]
+    types:
+      - completed
+
+jobs:
+  build-deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Unlock secrets
+        uses: sliteteam/github-action-git-crypt-unlock@1.0.2
+        env:
+          GIT_CRYPT_KEY: ${{ secrets.GIT_CRYPT_KEY }}
+
+      - name: "Login via Azure CLI"
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: "Login to Docker Registry"
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build Web App and Push Image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:blast -f Dockerfile ../../app
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/webapp:blast
+        working-directory: ./docker/node
+
+      - name: Build Postgres and Push Image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:blast -f Dockerfile ../../db
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/osf/db:blast
+        working-directory: ./docker/postgres
+
+      - name: asdf_install
+        uses: asdf-vm/actions/setup@v1
+
+      - name: Deploy Helm Charts
+        run: |
+          cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
+          asdf plugin-update --all
+          asdf install
+          asdf reshim
+          az aks get-credentials --resource-group onlineshopsgrant-resource-group --name onlineshopsgrant-aks
+          make upgrade-app NAMESPACE=dev-onlineshopsgrant ENV=dev
+        working-directory: ./helm
