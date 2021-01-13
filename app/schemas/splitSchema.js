@@ -1,5 +1,5 @@
 /* Returns array of dependencies in format [..., {ownerPropertyName: dependantPropertyName}] */
-function getPropertyDependencies(dependencies) {
+export function getPropertyDependencies(dependencies) {
   const propertyDependencies = [];
   Object.entries(dependencies).forEach(([ownerProperty, value]) => {
     if (value.oneOf) {
@@ -61,7 +61,7 @@ export default function splitSchema(schema, order) {
 
     // Check for dependency. Add dependant properties and dependency to current schema
     const dependancyRelation = propertyDependencies.filter(dependant => Object.keys(dependant)[0] === propertyName)[0];
-    const dependancy = dependancyRelation[propertyName];
+    const dependancy = dependancyRelation && dependancyRelation[propertyName];
     if (dependancy) {
       newSchema.properties[dependancy] = properties[dependancy];
       newSchema.dependencies[propertyName] = dependencies[propertyName];
