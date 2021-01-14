@@ -32,6 +32,7 @@
     "next": "^10.0.0",
     "pg": "^8.5.1",
     "react": "16.13.1",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "16.13.1",
     "react-jsonschema-form": "^1.8.1",
     "semantic-ui-css": "^2.4.1",

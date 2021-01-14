@@ -258,8 +258,7 @@ const schema = {
       type: 'string',
       name: 'sector',
       title: 'Sector',
-      enum: ['Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
-      // default: '',
+      enum: ['', 'Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
     },
     sectorOther: {
       type: 'string',
@@ -273,6 +272,7 @@ const schema = {
       name: 'region',
       title: 'Region',
       enum: [
+        '',
         'Capital Regional District',
         'Metro Vancouver',
         'Vancouver Island (except CRD)',
@@ -284,14 +284,12 @@ const schema = {
         'Southwest (except Metro Van)',
         'North Shore and Sunshine Coast',
       ],
-      // default: '',
     },
     isIndigenous: {
       type: 'string',
       name: 'isIndigenous',
       title: 'Is this an Indigenous Business?',
-      enum: ['Yes', 'No', 'Rather not answer'],
-      // default: '',
+      enum: ['', 'Yes', 'No', 'Rather not answer'],
     },
     repeatableProducts: {
       type: 'boolean',
@@ -323,8 +321,7 @@ const schema = {
       type: 'string',
       name: 'employees',
       title: 'How many employees does the business have on its payroll?',
-      enum: ['None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
-      // default: '',
+      enum: ['', 'None', '1-9', '10-49', '50-99', '100-149', '150-199', '200 or more'],
     },
     importExportBusiness: {
       type: 'boolean',
