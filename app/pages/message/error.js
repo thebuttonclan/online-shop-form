@@ -1,17 +1,9 @@
 import { Container, Icon } from 'semantic-ui-react';
 import Header2 from 'components/Header2';
-import StyledUl from 'components/StyledUl';
 import styled from 'styled-components';
 import { HUGE_FONT, MIN_PADDING } from 'theme';
 import StyledP from 'components/StyledP';
-import { validateFormData } from 'services/application';
-import pageSchemas from 'schemas/page-schemas';
 import HrefLink from 'components/HrefLink';
-import startCase from 'lodash/startCase';
-
-const IndentedUl = styled(StyledUl)`
-  margin-left: calc(${MIN_PADDING} * 3) !important;
-`;
 
 const SuccessBanner = styled.div`
   min-height: 150px;
