@@ -1,4 +1,5 @@
-import { Checkbox } from 'semantic-ui-react';
+import Form from 'react-bootstrap/Form';
+import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
 
 const NamedCheckbox = props => {
   const { name, title } = props.schema;

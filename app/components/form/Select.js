@@ -1,4 +1,4 @@
-import { Form } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
 
 const NamedSelect = props => {
