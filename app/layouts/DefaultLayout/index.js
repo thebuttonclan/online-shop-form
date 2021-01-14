@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR, SUBHEADING_WEIGHT } from 'theme';
-import Banner from 'components/Landing/Banner';
+import Banner from 'components/landing/Banner';
 import Footer from './Footer';
 
 const TITLE = 'Online Shops Grant Program';

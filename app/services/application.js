@@ -3,7 +3,7 @@ import validate from 'react-jsonschema-form/lib/validate';
 import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
-import { getPropertyDependencies } from 'schemas/splitSchema';
+import { getPropertyDependencies } from 'schemas/split-schema';
 
 export const LAST_PAGE =
   Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;

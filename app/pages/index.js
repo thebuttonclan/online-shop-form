@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
-import ProgramSteps from 'components/Landing/ProgramSteps';
+import ProgramSteps from 'components/landing/ProgramSteps';
 import Header2 from 'components/Header2';
-import EligibilityCriteria from 'components/Landing/EligibilityCriteria';
+import EligibilityCriteria from 'components/landing/EligibilityCriteria';
 import StyledUl from 'components/StyledUl';
 import StyledP from 'components/StyledP';
-import GeneralInformation from 'components/Landing/GeneralInformation';
+import GeneralInformation from 'components/landing/GeneralInformation';
 import Header1 from 'components/Header1';
 
 const NavigationUl = styled(StyledUl)`

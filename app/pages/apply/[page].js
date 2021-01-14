@@ -6,8 +6,8 @@ import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
 import { Button } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
-import uiSchema from 'schemas/uiSchema';
-import splitSchemas from 'schemas/splitSchema';
+import uiSchema from 'schemas/ui-schema';
+import splitSchemas from 'schemas/split-schema';
 import consolidatedSchema from 'schemas/consolidated-schema';
 
 const { version: formVersion } = require('../../package.json');
