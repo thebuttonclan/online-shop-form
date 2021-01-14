@@ -55,7 +55,9 @@ function GeneralInformation() {
           You are encouraged to submit your application, along with your grant proposal and additional documents early.
         </StyledP>
         <Link href="/apply/1" passHref>
-          <ApplyButton className="pointer">BEGIN APPLICATION</ApplyButton>
+          <a>
+            <ApplyButton className="pointer">BEGIN APPLICATION</ApplyButton>
+          </a>
         </Link>
       </Card.Content>
     </StyledCard>
