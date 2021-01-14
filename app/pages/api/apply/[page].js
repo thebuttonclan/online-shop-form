@@ -1,7 +1,7 @@
-import { LAST_PAGE, validateFormData, submitApplication, pageForward } from 'services/application';
+import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
 
 async function handler(req, res) {
-  const { body: postData, pgQuery, session = {}, query = {} } = req;
+  const { body: postData, session = {}, query = {} } = req;
   const { formData = {} } = session;
   let { page, js } = query;
 

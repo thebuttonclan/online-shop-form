@@ -19,36 +19,41 @@ export function getSchema(page) {
 export function validateFormData(formData) {
   const validated = validate(formData, fullSchema);
   const { errors } = validated;
-  return errors.length === 0;
+
+  return errors.length === 0 ? { isValidated: true, isValid: true } : { isValidated: true, isValid: false, errors };
 }
 
 export async function saveApplication(formData, page) {
-  try {
-    const data = await axios.post(`/api/apply/${page}?js=true`, formData).then(res => res.data);
-    return data;
-  } catch (error) {
-    console.error(error);
-    return { page: 'message/error' };
-  }
-}
+  const data = await axios.post(`/api/apply/${page}?js=true`, formData).then(
+    res => res.data,
+    err => err.response.data
+  );
 
-export function handleError(js, res) {
-  if (js) return res.status(422).json(false);
-  res.status(422).redirect('/apply/messages/error');
-  return res.end();
+  return data;
 }
 
 export async function submitApplication({ req, newData, js }) {
   const { res, pgQuery } = req;
 
-  const valid = validateFormData(newData);
+  try {
+    const result = validateFormData(newData);
 
-  if (!valid) handleError(js, res);
-  const savedSuccessfully = await pgQuery.createApplication({ form_data: newData });
-  if (!savedSuccessfully) handleError(js, res);
+    if (!result.isValid) {
+      if (js) return res.status(422).json(result);
+      return res.redirect('/message/validation-error');
+    }
 
-  if (js) res.status(200).json(true);
-  else res.status(200).redirect('success');
+    const success = await pgQuery.createApplication({ form_data: newData });
+    if (!success) {
+      throw new Error('Failed to save application');
+    }
+
+    if (js) return res.json(result);
+    return res.redirect('success');
+  } catch (error) {
+    if (js) return res.status(422).json({ hasError: true, message: error.message || error });
+    return res.redirect('/message/error');
+  }
 }
 
 export function pageForward({ req, newData, page, js }) {
