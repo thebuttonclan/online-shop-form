@@ -7,8 +7,8 @@ import { Button, Progress, Icon, Container } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/ui-schema';
-import splitSchemas from 'schemas/split-schema';
-import consolidatedSchema from 'schemas/consolidated-schema';
+import pageSchemas from 'schemas/page-schemas';
+import transformErrors from 'schemas/transform-errors';
 import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
 
@@ -46,43 +46,27 @@ const BackButton = styled.p`
   color: #006ef5;
   cursor: pointer;
 `;
-const order = uiSchema['ui:order'];
-const schemasArray = splitSchemas(consolidatedSchema, order);
-
-// example error object
-// {
-//    message: "should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
-//    name: "pattern",
-//    params: {pattern: "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"},
-//    property: ".businessPhone",
-//    schemaPath: "#/properties/businessPhone/pattern",
-//    stack: ".businessPhone should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
-// }
-function transformErrors(errors) {
-  return errors.map(err => {
-    console.log(err);
-    // we delegate most of the error displaying via html5; using minLength, maxLength, and pattern, and
-    // for special cases, i.e. errors from custom validation and errors cannot be caught by html5,
-    // we can override message field by looking up the custom message in the master schema...
-    // const property = err.property.slice(1);
-    // err.message = consolidatedSchema.properties[property].customErrorMessage;
-    return err;
-  });
-}
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
   const linkRoute = Number(page) === 1 ? '/' : `/apply/${Number(page) - 1}`;
   const continueBtnText = Number(page) === LAST_PAGE ? 'Submit' : 'Continue';
-  const schema = schemasArray[Number(page) - 1];
+  const schema = pageSchemas[Number(page) - 1];
   const percent = (Number(page) / LAST_PAGE) * 100;
 
   const handleSubmit = async ({ formData }) => {
-    const { page: nextPage } = await saveApplication({ formVersion, ...formData }, page);
-    if (nextPage) {
-      router.push(`/apply/${nextPage}`);
+    const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(
+      { formVersion, ...formData },
+      page
+    );
+
+    if (hasError) {
+      router.push('/message/error');
+    } else if (isValidated) {
+      if (isValid) router.push(`/message/success`);
+      else router.push(`/message/validation-error`);
     } else {
-      router.push('/apply/message/success');
+      router.push(`/apply/${nextPage}`);
     }
   };
 
