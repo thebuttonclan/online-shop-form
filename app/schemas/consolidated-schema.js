@@ -25,6 +25,7 @@ const schema = {
     'workSafeBcRegistered',
     'region',
     'isIndigenous',
+    'repeatableProducts',
     'cannabisProducts',
     'madeInBc',
     'employees',
@@ -345,16 +346,21 @@ const schema = {
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
-    // For these to show up as checkboxes, we need to include "ui:widget": "checkboxes" in uiSchema.
     existingStoreFeatures: {
-      type: 'string',
-      enum: [
-        'Customer registration and information security features',
-        'Shopping cart and order management capabilities',
-        'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
-        'Product catalogue, search and inventory status',
-        'Website analytics and reporting capabilities',
-      ],
+      type: 'array',
+      title: 'If the business has an existing online store, please select all that apply',
+      name: 'existingStoreFeatures',
+      items: {
+        type: 'string',
+        enum: [
+          'Customer registration and information security features',
+          'Shopping cart and order management capabilities',
+          'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
+          'Product catalogue, search and inventory status',
+          'Website analytics and reporting capabilities',
+        ],
+      },
+      uniqueItems: true,
     },
     canMeetDeadline: {
       type: 'boolean',
