@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react';
+import { Container } from 'semantic-ui-react';
 
-export default class Home extends PureComponent {
-  render() {
-    return <h1>Application Failed</h1>;
-  }
+export default function ErrorPage() {
+  return (
+    <Container>
+      <h1>Application Failed</h1>
+    </Container>
+  );
 }

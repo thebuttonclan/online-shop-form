@@ -3,7 +3,7 @@ import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
-import { Button } from 'semantic-ui-react';
+import { Button, Container } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { getSchema, saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/uiSchema';
@@ -27,7 +27,7 @@ export default function Apply({ formData, page }) {
   const handlePrevious = () => router.push(`/apply/${page - 1}`);
 
   return (
-    <div className="container">
+    <Container>
       <JsonSchemaForm
         name="my-form"
         method="post"
@@ -64,7 +64,7 @@ export default function Apply({ formData, page }) {
           }
         `}
       </style>
-    </div>
+    </Container>
   );
 }
 

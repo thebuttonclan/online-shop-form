@@ -3,7 +3,7 @@ import StyledCard from 'components/StyledCard';
 import StyledP from 'components/StyledP';
 import { Card } from 'semantic-ui-react';
 import StyledUl from 'components/StyledUl';
-import Link from 'next/link';
+import HrefLink from 'components/HrefLink';
 import styled from 'styled-components';
 import { SECONDARY_FONT_COLOUR } from 'theme';
 
@@ -25,9 +25,7 @@ function GeneralInformation() {
         <StyledUl>
           <li>
             Before completing, please read the{' '}
-            <Link href="/program-guide" passhref>
-              Online Shops Grant Program Guide
-            </Link>
+            <HrefLink href="/program-guide">Online Shops Grant Program Guide</HrefLink>
           </li>
           <li>
             Before submitting your application, please ensure that all required information and attachments are
@@ -54,9 +52,9 @@ function GeneralInformation() {
         <StyledP>
           You are encouraged to submit your application, along with your grant proposal and additional documents early.
         </StyledP>
-        <Link href="/apply/1" passHref>
+        <HrefLink href="/apply/1">
           <ApplyButton className="pointer">BEGIN APPLICATION</ApplyButton>
-        </Link>
+        </HrefLink>
       </Card.Content>
     </StyledCard>
   );
