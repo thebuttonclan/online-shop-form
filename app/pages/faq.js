@@ -9,7 +9,9 @@ const StyledContainer = styled.div`
 `;
 
 const StyledHeader = styled(Header)`
-  color: #44afb3;
+  color: #16152b;
+  font-weight: normal;
+  font-size: 3rem;
 `;
 
 const StyledIcon = styled.div`
@@ -40,7 +42,7 @@ const StyledAnchor = styled.a.attrs({ target: '_blank', rel: 'noopener noreferre
 const StyledShowAllWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  color: #4e5ca6;
+  color: #4e8cbe;
 `;
 
 const StyledAccordionTitle = styled(Accordion.Title)`
@@ -51,7 +53,7 @@ const StyledAccordionTitle = styled(Accordion.Title)`
 const StyledQuestion = styled.p`
   font-size: 1.2em;
   font-weight: bold;
-  color: #4e5ca6;
+  color: #16152b;
 `;
 
 export default class Faq extends Component {
