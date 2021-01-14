@@ -5,7 +5,7 @@ const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const schema = {
-  title: 'Example Form',
+  title: '',
   type: 'object',
   required: [
     'businessName',
