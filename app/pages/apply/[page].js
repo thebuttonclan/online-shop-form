@@ -3,14 +3,14 @@ import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
-import { Button, Progress, Icon } from 'semantic-ui-react';
+import { Button, Progress, Icon, Container } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/ui-schema';
 import splitSchemas from 'schemas/split-schema';
 import consolidatedSchema from 'schemas/consolidated-schema';
 import styled from 'styled-components';
-import Link from 'next/link';
+import HrefLink from 'components/HrefLink';
 
 const { version: formVersion } = require('../../package.json');
 
@@ -66,14 +66,14 @@ export default function Apply({ formData, page }) {
   };
 
   return (
-    <div className="container">
+    <Container>
       <TopRow>
-        <Link href={linkRoute} passHref>
+        <HrefLink href={linkRoute}>
           <BackButton>
             <Icon name="angle left"></Icon>
             Back
           </BackButton>
-        </Link>
+        </HrefLink>
         <ProgressContainer>
           <p>{`Question ${page} of ${LAST_PAGE}`}</p>
           <StyledProgress percent={percent} color="black" />
@@ -110,7 +110,7 @@ export default function Apply({ formData, page }) {
           }
         `}
       </style>
-    </div>
+    </Container>
   );
 }
 

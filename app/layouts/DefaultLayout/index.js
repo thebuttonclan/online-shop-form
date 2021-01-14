@@ -3,11 +3,10 @@
 import React, { Component } from 'react';
 import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR, SUBHEADING_WEIGHT } from 'theme';
-import Banner from 'components/landing/Banner';
+import HrefLink from 'components/HrefLink';
 import Footer from './Footer';
 
 const TITLE = 'Online Shops Grant Program';
@@ -68,6 +67,9 @@ const HeaderBrand = styled(Header)`
   text-align: left;
   color: white;
   font-weight: ${SUBHEADING_WEIGHT};
+`;
+
+const NarrowHeaderBrand = styled(HeaderBrand)`
   max-width: 250px;
 `;
 
@@ -78,28 +80,31 @@ class DesktopContainer extends Component {
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    const { children, page } = this.props;
+    const { children, pathname } = this.props;
     const { fixed } = this.state;
+
+    const isFormPage = pathname.startsWith('/apply/');
 
     return (
       <Media greaterThanOrEqual="headerBreak">
         <HeaderSegment inverted textAlign="center" vertical id="top">
           <HeaderMenu fixed="top" inverted secondary size="large">
             <Container style={{ padding: '20px' }}>
-              <Link href="/apply" passHref>
-                <HeaderBrand as="h2" className="pointer">
-                  {TITLE}
-                </HeaderBrand>
-              </Link>
-              {HEADER_LINKS.map(header => (
-                <Menu.Item key={header.title}>
-                  <Link href={header.to} passHref>
-                    <Header as="h3" inverted className="pointer">
-                      {header.title}
-                    </Header>
-                  </Link>
-                </Menu.Item>
-              ))}
+              {isFormPage ? (
+                <HeaderBrand as="h2">{TITLE}</HeaderBrand>
+              ) : (
+                <NarrowHeaderBrand as="h2">{TITLE}</NarrowHeaderBrand>
+              )}
+              {!isFormPage &&
+                HEADER_LINKS.map(header => (
+                  <Menu.Item key={header.title}>
+                    <HrefLink href={header.to} passHref>
+                      <Header as="h3" inverted className="pointer">
+                        {header.title}
+                      </Header>
+                    </HrefLink>
+                  </Menu.Item>
+                ))}
             </Container>
           </HeaderMenu>
         </HeaderSegment>
@@ -137,11 +142,11 @@ class MobileContainer extends Component {
           >
             {HEADER_LINKS.map(header => (
               <Menu.Item key={header.title}>
-                <Link href={header.to} passHref>
-                  <HeaderBrand as="h2" inverted className="pointer">
+                <HrefLink href={header.to} passHref>
+                  <NarrowHeaderBrand as="h2" inverted className="pointer">
                     {header.title}
-                  </HeaderBrand>
-                </Link>
+                  </NarrowHeaderBrand>
+                </HrefLink>
               </Menu.Item>
             ))}
           </Sidebar>
@@ -153,11 +158,7 @@ class MobileContainer extends Component {
                   <BlockIcon name="sidebar" />
                   <span>Menu</span>
                 </BlockItem>
-                <Link href="/" passHref>
-                  <HeaderBrand inverted className="pointer">
-                    {TITLE}
-                  </HeaderBrand>
-                </Link>
+                <HeaderBrand inverted>{TITLE}</HeaderBrand>
               </HeaderMenu>
             </HeaderSegment>
 
@@ -173,10 +174,12 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 };
 
-const ResponsiveContainer = ({ children, query }) => (
+const ResponsiveContainer = ({ children, query, pathname }) => (
   <MediaContextProvider>
     <MobileContainer query={query}>{children}</MobileContainer>
-    <DesktopContainer query={query}>{children}</DesktopContainer>
+    <DesktopContainer query={query} pathname={pathname}>
+      {children}
+    </DesktopContainer>
   </MediaContextProvider>
 );
 
@@ -190,12 +193,10 @@ const MainSegment = styled(Segment)`
 
 const DefaultLayout = ({ children, query, pathname }) => {
   return (
-    <ResponsiveContainer query={query}>
+    <ResponsiveContainer query={query} pathname={pathname}>
       <MainSegment vertical className="no-padding">
-        {pathname === '/' && <Banner />}
-        <Container>{children}</Container>
+        {children}
       </MainSegment>
-
       <Footer />
     </ResponsiveContainer>
   );
