@@ -1,17 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Container, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
-import Link from 'next/link';
 import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
-import ProgramSteps from 'components/Landing/ProgramSteps';
-import EligibilityCriteria from 'components/Landing/EligibilityCriteria';
+import ProgramSteps from 'components/landing/ProgramSteps';
+import EligibilityCriteria from 'components/landing/EligibilityCriteria';
 import StyledUl from 'components/StyledUl';
 import StyledP from 'components/StyledP';
-import GeneralInformation from 'components/Landing/GeneralInformation';
-import Banner from 'components/Landing/Banner';
+import GeneralInformation from 'components/landing/GeneralInformation';
+import Banner from 'components/landing/Banner';
 import Header1 from 'components/Header1';
 import Header2 from 'components/Header2';
+import HrefLink from 'components/HrefLink';
 
 const NavigationUl = styled(StyledUl)`
   & li {
@@ -64,10 +64,10 @@ export default function Home() {
             <a href="#submit-application">Submit your application</a>
           </li>
           <li>
-            <Link href="/program-guide">Program guide</Link>
+            <HrefLink href="/program-guide">Program guide</HrefLink>
           </li>
           <li>
-            <Link href="/faq">Frequently asked questions</Link>
+            <HrefLink href="/faq">Frequently asked questions</HrefLink>
           </li>
           <li>
             <a href="#contact">Contact us</a>

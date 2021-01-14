@@ -3,10 +3,10 @@
 import React, { Component } from 'react';
 import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR, SUBHEADING_WEIGHT } from 'theme';
+import HrefLink from 'components/HrefLink';
 import Footer from './Footer';
 
 const TITLE = 'Online Shops Grant Program';
@@ -98,11 +98,11 @@ class DesktopContainer extends Component {
               {!isFormPage &&
                 HEADER_LINKS.map(header => (
                   <Menu.Item key={header.title}>
-                    <Link href={header.to} passHref>
+                    <HrefLink href={header.to} passHref>
                       <Header as="h3" inverted className="pointer">
                         {header.title}
                       </Header>
-                    </Link>
+                    </HrefLink>
                   </Menu.Item>
                 ))}
             </Container>
@@ -142,11 +142,11 @@ class MobileContainer extends Component {
           >
             {HEADER_LINKS.map(header => (
               <Menu.Item key={header.title}>
-                <Link href={header.to} passHref>
+                <HrefLink href={header.to} passHref>
                   <NarrowHeaderBrand as="h2" inverted className="pointer">
                     {header.title}
                   </NarrowHeaderBrand>
-                </Link>
+                </HrefLink>
               </Menu.Item>
             ))}
           </Sidebar>
