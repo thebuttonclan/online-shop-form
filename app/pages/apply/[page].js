@@ -46,13 +46,34 @@ const BackButton = styled.p`
   color: #006ef5;
   cursor: pointer;
 `;
+const order = uiSchema['ui:order'];
+const schemasArray = splitSchemas(consolidatedSchema, order);
+
+// example error object
+// {
+//    message: "should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
+//    name: "pattern",
+//    params: {pattern: "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"},
+//    property: ".businessPhone",
+//    schemaPath: "#/properties/businessPhone/pattern",
+//    stack: ".businessPhone should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
+// }
+function transformErrors(errors) {
+  return errors.map(err => {
+    console.log(err);
+    // we delegate most of the error displaying via html5; using minLength, maxLength, and pattern, and
+    // for special cases, i.e. errors from custom validation and errors cannot be caught by html5,
+    // we can override message field by looking up the custom message in the master schema...
+    // const property = err.property.slice(1);
+    // err.message = consolidatedSchema.properties[property].customErrorMessage;
+    return err;
+  });
+}
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
   const linkRoute = Number(page) === 1 ? '/' : `/apply/${Number(page) - 1}`;
   const continueBtnText = Number(page) === LAST_PAGE ? 'Submit' : 'Continue';
-  const order = uiSchema['ui:order'];
-  const schemasArray = splitSchemas(consolidatedSchema, order);
   const schema = schemasArray[Number(page) - 1];
   const percent = (Number(page) / LAST_PAGE) * 100;
 
@@ -80,6 +101,7 @@ export default function Apply({ formData, page }) {
         </ProgressContainer>
       </TopRow>
       <JsonSchemaForm
+        key={`form-${page}`}
         name="my-form"
         method="post"
         action={`/api/apply/${page}`}
@@ -89,6 +111,8 @@ export default function Apply({ formData, page }) {
         widgets={widgets}
         onSubmit={handleSubmit}
         onError={console.log}
+        showErrorList={false}
+        transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
         ArrayFieldTemplate={ArrayFieldTemplate}
       >
