@@ -29,6 +29,10 @@ const SuccessBanner = styled.div`
   }
 `;
 
+const LiBreak = styled.li`
+  margin-top: ${MIN_PADDING};
+`;
+
 export default function SuccessPage() {
   return (
     <Container>
@@ -50,7 +54,7 @@ export default function SuccessPage() {
         <li>
           Income tax return
           <StyledUl>
-            <li>Notice of assessment; or</li>
+            <LiBreak>Notice of assessment; or</LiBreak>
             <li>First section of T2 return or first section of owner's tax return (form 5010-R)</li>
           </StyledUl>
         </li>
