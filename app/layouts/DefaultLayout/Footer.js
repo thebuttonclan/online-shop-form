@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import { Container, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR } from 'theme';
+import HrefLink from 'components/HrefLink';
 
 const StyledFooter = styled.footer`
   background-color: ${PRIMARY_COLOUR};
@@ -44,11 +44,11 @@ const Footer = () => {
       <Container>
         <ul>
           <li>
-            <Link href="/resources/copyright" passHref>
+            <HrefLink href="/resources/copyright">
               <p>
                 Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2020
               </p>
-            </Link>
+            </HrefLink>
           </li>
         </ul>
       </Container>
