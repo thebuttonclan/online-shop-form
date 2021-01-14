@@ -1,42 +1,22 @@
-import { Checkbox } from 'semantic-ui-react';
+import Form from 'react-bootstrap/Form';
+import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
 
 const NamedCheckbox = props => {
   const { name, title } = props.schema;
   const { value, onChange, required } = props;
   return (
-    <>
-      <noscript>
-        <div className="ui checkbox">
-          <input
-            type="checkbox"
-            id={`id_${name}`}
-            name={name}
-            required={required}
-            onChange={() => {
-              onChange(!value);
-            }}
-            checked={value}
-          />
-          <label htmlFor={`id_${name}`}>{title}</label>
-        </div>
-      </noscript>
-
-      {
-        // Works with js}
-      }
-      {typeof window === 'object' && (
-        <Checkbox
-          label={title}
-          required={required}
-          id={`id_${name}`}
-          name={name}
-          onChange={() => {
-            onChange(!value);
-          }}
-          checked={value}
-        />
-      )}
-    </>
+    <Form.Group contollId={`id_${name}`}>
+      <SemanticStyleLabel required={required}>{title}</SemanticStyleLabel>
+      <Form.Control
+        as="checkbox"
+        required={required}
+        name={name}
+        onChange={e => {
+          onChange(e.target.value);
+        }}
+        value={value || ''}
+      />
+    </Form.Group>
   );
 };
 
