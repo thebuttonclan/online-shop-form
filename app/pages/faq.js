@@ -11,6 +11,7 @@ const StyledContainer = styled.div`
 const StyledHeader = styled(Header)`
   color: #16152b;
   font-weight: normal;
+  font-size: 3rem;
 `;
 
 const StyledIcon = styled.div`
