@@ -182,19 +182,16 @@ const schema = {
     bcOwned: {
       type: 'boolean',
       title: 'Is the business owned by a BC resident or residents',
-      default: false,
       name: 'bcOwned',
     },
     locatedInBc: {
       type: 'boolean',
       title: 'Are the business’s sole or primary operations located in BC',
-      default: false,
       name: 'locatedInBc',
     },
     isCurrentlyOperating: {
       type: 'boolean',
       title: 'Is the business currently operating',
-      default: false,
       name: 'isCurrentlyOperating',
     },
     pstNumber: {
@@ -228,7 +225,6 @@ const schema = {
     incomeTaxesFiled: {
       type: 'boolean',
       title: 'Have you filed last years income taxes?',
-      default: false,
       name: 'incomeTaxesFiled',
     },
     revenue2019: {
@@ -243,14 +239,13 @@ const schema = {
     workSafeBcRegistered: {
       type: 'boolean',
       title: 'Has your business registered with WorkSafeBC?',
-      default: false,
       name: 'workSafeBcRegistered',
     },
     workSafeBcRegistrationNumber: {
       type: 'string',
       title: 'WorkSafeBC registration number',
       name: 'workSafeBcRegistrationNumber',
-      minLength: TEXT_MIN_LENGTH,
+      // minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     // Has a condition
@@ -294,27 +289,24 @@ const schema = {
     repeatableProducts: {
       type: 'boolean',
       title: 'Does the business sell repeatable products?',
-      default: false,
       name: 'repeatableProducts',
     },
     cannabisProducts: {
       type: 'boolean',
       title: 'Does your business sell Cannabis products?',
-      default: false,
       name: 'cannabisProducts',
     },
     // Has a condition
     madeInBc: {
       type: 'boolean',
       title: 'Are your products manufactured and/or produced in BC?',
-      default: false,
       name: 'madeInBc',
     },
     productionLocation: {
       type: 'string',
       title: 'Where',
       name: 'productionLocation',
-      minLength: TEXT_MIN_LENGTH,
+      // minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     employees: {
@@ -326,59 +318,75 @@ const schema = {
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
-      default: false,
       name: 'importExportBusiness',
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
       type: 'boolean',
       title: 'Does the business currently have an online store?',
-      default: false,
       name: 'existingOnlineStore',
     },
     onlineStoreUrl: {
       type: 'string',
       title: 'Link to online store',
       name: 'onlineStoreUrl',
-      minLength: TEXT_MIN_LENGTH,
+      // minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
-    },
-    existingStoreFeatures: {
-      type: 'array',
-      title: 'If the business has an existing online store, please select all that apply',
-      name: 'existingStoreFeatures',
-      items: {
-        type: 'string',
-        enum: [
-          'Customer registration and information security features',
-          'Shopping cart and order management capabilities',
-          'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
-          'Product catalogue, search and inventory status',
-          'Website analytics and reporting capabilities',
-        ],
-      },
-      uniqueItems: true,
     },
     canMeetDeadline: {
       type: 'boolean',
       title:
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
-      default: false,
       name: 'canMeetDeadline',
     },
     // Has condition
     otherCovidFunding: {
       type: 'boolean',
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
-      default: false,
       name: 'otherCovidFunding',
     },
     otherPrograms: {
       type: 'string',
       title: 'If yes, please list all programs',
       name: 'otherPrograms',
-      minLength: TEXT_MIN_LENGTH,
+      // minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
+    },
+    customerRegistration: {
+      type: 'boolean',
+      group: 'existingStoreFeatures',
+      title: 'Customer registration and information security features',
+      name: 'customerRegistration',
+      default: false,
+    },
+    shoppingCart: {
+      type: 'boolean',
+      group: 'existingStoreFeatures',
+      title: 'Shopping cart and order management capabilities',
+      name: 'shoppingCart',
+      default: false,
+    },
+    paymentProcessing: {
+      type: 'boolean',
+      group: 'existingStoreFeatures',
+      title:
+        'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
+      name: 'paymentProcessing',
+      default: false,
+    },
+    productCatalogue: {
+      type: 'boolean',
+      group: 'existingStoreFeatures',
+      title: 'Product catalogue, search and inventory status',
+      name: 'productCatalogue',
+      default: false,
+    },
+    websiteAnalytics: {
+      type: 'boolean',
+      group: 'existingStoreFeatures',
+      title: 'Website analytics and reporting capabilities',
+      name: 'websiteAnalytics',
+      default: false,
     },
     // GRANT PROPOSAL SECTION
     planForFunds: {

@@ -51,6 +51,18 @@ export default function splitSchema(schema, order) {
 
     const newSchema = { title, type, properties: {}, required: [], dependencies: {} };
 
+    // If in a group, push into the same schema
+    const { group } = properties[propertyName];
+    if (group) {
+      const owningSchema = schemas.find(schema => schema.group === group);
+      if (owningSchema) {
+        owningSchema.properties[propertyName] = properties[propertyName];
+        if (required.includes[propertyName]) owningSchema.required.push(propertyName);
+        return;
+      }
+      newSchema.group = group;
+    }
+
     // copy property
     newSchema.properties[propertyName] = properties[propertyName];
 

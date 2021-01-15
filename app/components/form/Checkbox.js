@@ -1,22 +1,37 @@
 import Form from 'react-bootstrap/Form';
 import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
+import styled from 'styled-components';
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLabel = styled(SemanticStyleLabel)`
+  margin-left: 2px !important;
+`;
 
 const NamedCheckbox = props => {
   const { name, title } = props.schema;
-  const { value, onChange, required } = props;
+  const { onChange, required, value } = props;
+
   return (
-    <Form.Group contollId={`id_${name}`}>
-      <SemanticStyleLabel required={required}>{title}</SemanticStyleLabel>
-      <Form.Control
-        as="checkbox"
+    <Row>
+      <input
+        type="checkbox"
         required={required}
         name={name}
+        id={`id_${name}`}
+        checked={value === true}
         onChange={e => {
-          onChange(e.target.value);
+          onChange(!value);
         }}
-        value={value || ''}
+        value={true}
       />
-    </Form.Group>
+      <StyledLabel required={required} htmlFor={`id_${name}`}>
+        {title}
+      </StyledLabel>
+    </Row>
   );
 };
 

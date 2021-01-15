@@ -1,12 +1,10 @@
-import { Form, Radio, Input } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const FlexContainer = styled.div`
   display: flex;
-`;
-
-const StyledRadio = styled(Radio)`
-  margin-right: 2em;
+  width: 80px;
+  justify-content: space-between;
 `;
 
 const NamedRadio = props => {
@@ -17,25 +15,32 @@ const NamedRadio = props => {
       <Form.Field>{title}</Form.Field>
       <FlexContainer>
         <Form.Field>
-          <StyledRadio
-            label="Yes"
-            name={`${name}-radio`}
+          <label htmlFor={`${name}_true`}>Yes</label>
+          <input
+            name={`${name}`}
+            type="radio"
             value={true}
+            id={`${name}_true`}
             checked={value === true}
-            onChange={(e, { value }) => {
-              onChange(value);
+            onChange={e => {
+              onChange(true);
             }}
+            required={true}
           />
         </Form.Field>
         <Form.Field>
-          <StyledRadio
+          <label htmlFor={`${name}_false`}>No</label>
+          <input
             label="No"
-            name={`${name}-radio`}
+            type="radio"
+            name={`${name}`}
+            id={`${name}_false`}
             value={false}
             checked={value === false}
-            onChange={(e, { value }) => {
-              onChange(value);
+            onChange={e => {
+              onChange(false);
             }}
+            required={true}
           />
         </Form.Field>
       </FlexContainer>

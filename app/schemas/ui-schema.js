@@ -16,8 +16,20 @@ const uiSchema = {
   businessPhone: {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
-  existingStoreFeatures: {
-    'ui:widget': 'checkboxes',
+  customerRegistration: {
+    'ui:widget': 'checkbox',
+  },
+  paymentProcessing: {
+    'ui:widget': 'checkbox',
+  },
+  shoppingCart: {
+    'ui:widget': 'checkbox',
+  },
+  productCatalogue: {
+    'ui:widget': 'checkbox',
+  },
+  websiteAnalytics: {
+    'ui:widget': 'checkbox',
   },
   // This prevents conditional fields from rendering at the end of the form
   'ui:order': [
@@ -51,10 +63,14 @@ const uiSchema = {
     'importExportBusiness',
     'existingOnlineStore',
     'onlineStoreUrl',
-    'existingStoreFeatures',
     'canMeetDeadline',
     'otherCovidFunding',
     'otherPrograms',
+    'customerRegistration',
+    'shoppingCart',
+    'paymentProcessing',
+    'productCatalogue',
+    'websiteAnalytics',
     'planForFunds',
     'serviceProviderCosts',
     'customerAcquisitionCosts',

@@ -5,8 +5,11 @@ import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
 
-export const LAST_PAGE =
-  Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;
+const allProperties = Object.keys(fullSchema.properties).length;
+const propertiesGroupedByDependencies = getPropertyDependencies(fullSchema.dependencies).length;
+const propertiesGroupedByPage = Object.values(fullSchema.properties).filter(schema => schema.group).length + 1;
+
+export const LAST_PAGE = allProperties - propertiesGroupedByDependencies - propertiesGroupedByPage;
 export const PAGES = Array.from({ length: LAST_PAGE }, (_, i) => i + 1);
 
 export function getSchema(page) {
@@ -48,7 +51,7 @@ export async function submitApplication({ req, newData, js }) {
   if (!savedSuccessfully) handleError(js, res);
 
   if (js) res.status(200).json(true);
-  else res.status(200).redirect('success');
+  else res.status(200).redirect('/apply/message/success');
 }
 
 export function pageForward({ req, newData, page, js }) {
