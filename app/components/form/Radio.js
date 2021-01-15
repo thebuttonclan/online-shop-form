@@ -14,8 +14,6 @@ const GroupTitle = styled.p`
 `;
 
 function RadioWidget(props) {
-  console.log(props);
-
   const { options, value, required, disabled, readonly, autofocus, onBlur, onFocus, onChange, id } = props;
   // Generating a unique field name to identify this set of radio buttons
   const { name, title } = props.schema;
