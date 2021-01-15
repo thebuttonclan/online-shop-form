@@ -17,7 +17,6 @@ const uiSchema = {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
   email: {
-    'ui:widget': 'checkboxes',
     'ui:help': 'Please use the format name@email.com',
   },
   revenue2019: {

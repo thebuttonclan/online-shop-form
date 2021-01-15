@@ -182,19 +182,16 @@ const schema = {
     bcOwned: {
       type: 'boolean',
       title: 'Is the business owned by a BC resident or residents',
-      default: false,
       name: 'bcOwned',
     },
     locatedInBc: {
       type: 'boolean',
       title: 'Are the business’s sole or primary operations located in BC',
-      default: false,
       name: 'locatedInBc',
     },
     isCurrentlyOperating: {
       type: 'boolean',
       title: 'Is the business currently operating',
-      default: false,
       name: 'isCurrentlyOperating',
     },
     pstNumber: {
@@ -228,7 +225,6 @@ const schema = {
     incomeTaxesFiled: {
       type: 'boolean',
       title: 'Have you filed last years income taxes?',
-      default: false,
       name: 'incomeTaxesFiled',
     },
     revenue2019: {
@@ -243,7 +239,6 @@ const schema = {
     workSafeBcRegistered: {
       type: 'boolean',
       title: 'Has your business registered with WorkSafeBC?',
-      default: false,
       name: 'workSafeBcRegistered',
     },
     workSafeBcRegistrationNumber: {
@@ -294,20 +289,17 @@ const schema = {
     repeatableProducts: {
       type: 'boolean',
       title: 'Does the business sell repeatable products?',
-      default: false,
       name: 'repeatableProducts',
     },
     cannabisProducts: {
       type: 'boolean',
       title: 'Does your business sell Cannabis products?',
-      default: false,
       name: 'cannabisProducts',
     },
     // Has a condition
     madeInBc: {
       type: 'boolean',
       title: 'Are your products manufactured and/or produced in BC?',
-      default: false,
       name: 'madeInBc',
     },
     productionLocation: {
@@ -326,14 +318,12 @@ const schema = {
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
-      default: false,
       name: 'importExportBusiness',
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
       type: 'boolean',
       title: 'Does the business currently have an online store?',
-      default: false,
       name: 'existingOnlineStore',
     },
     onlineStoreUrl: {
@@ -363,14 +353,12 @@ const schema = {
       type: 'boolean',
       title:
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
-      default: false,
       name: 'canMeetDeadline',
     },
     // Has condition
     otherCovidFunding: {
       type: 'boolean',
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
-      default: false,
       name: 'otherCovidFunding',
     },
     otherPrograms: {
