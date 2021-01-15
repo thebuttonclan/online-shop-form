@@ -190,7 +190,7 @@ const sections = [
   },
 ];
 
-export default function Home() {
+export default function PrivacyPolicy() {
   return (
     <>
       <StyledContainer>
