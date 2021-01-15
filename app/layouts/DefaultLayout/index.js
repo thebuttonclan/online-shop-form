@@ -61,9 +61,7 @@ const BlockIcon = styled(Icon)`
 `;
 
 const HeaderBrandText = styled(Header)`
-  margin: auto !important;
-  margin-left: ${MIN_PADDING} !important;
-  margin-right: 0 !important;
+  margin: auto ${MIN_PADDING} !important;
   text-align: left;
   color: white !important;
 `;
@@ -80,7 +78,6 @@ const LinksContainer = styled.div`
 
 const NarrowHeaderBrand = styled(HeaderBrandText)`
   max-width: 250px;
-  margin-left: 5px !important;
 `;
 
 const HeaderBrandContainer = styled.div`
@@ -88,7 +85,7 @@ const HeaderBrandContainer = styled.div`
   align-items: center;
 
   @media (max-width: ${HEADER_BREAKPOINT}px) {
-    padding-left: 40px;
+    padding-left: 30px;
   }
 `;
 
