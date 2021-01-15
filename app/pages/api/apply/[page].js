@@ -41,7 +41,7 @@ function cleanData(page, formData) {
 }
 
 async function handler(req, res) {
-  const { body: postData, pgQuery, session = {}, query = {} } = req;
+  const { body: postData, session = {}, query = {} } = req;
   const { formData = {} } = session;
   let { page, js } = query;
 
