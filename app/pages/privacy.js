@@ -205,7 +205,6 @@ export default function PrivacyPolicy() {
             );
           })}
         </NavigationUl>
-        <StyledUl></StyledUl>
         {sections.map(section => {
           return (
             <>
