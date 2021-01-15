@@ -13,6 +13,7 @@ const TITLE = 'Launch Online';
 const bcidSymbol = `/images/bcid-symbol-rev.svg`;
 const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
 const logo = `/icons/osgp-white-orage.svg`;
+const HEADER_BREAKPOINT = 992;
 
 const TOP_HEIGHT = '120px';
 
@@ -27,7 +28,7 @@ const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   breakpoints: {
     mobile: 0,
     tablet: 768,
-    headerBreak: 992,
+    headerBreak: HEADER_BREAKPOINT,
     computer: 1024,
   },
 });
@@ -78,19 +79,23 @@ const LinksContainer = styled.div`
 `;
 
 const NarrowHeaderBrand = styled(HeaderBrandText)`
-  max-width: 200px;
+  max-width: 250px;
   margin-left: 5px !important;
 `;
 
 const HeaderBrandContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-left: ${MIN_PADDING};
+
+  @media (max-width: ${HEADER_BREAKPOINT}px) {
+    padding-left: 40px;
+  }
 `;
 
 const DesktopHeaderContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
+  padding: 20px;
 `;
 
 const HeaderBrand = () => (
@@ -116,7 +121,7 @@ class DesktopContainer extends Component {
       <Media greaterThanOrEqual="headerBreak">
         <HeaderSegment inverted textAlign="center" vertical id="top">
           <HeaderMenu fixed="top" inverted secondary size="large">
-            <DesktopHeaderContainer style={{ padding: '20px' }}>
+            <DesktopHeaderContainer>
               <HeaderBrand />
               <LinksContainer>
                 {!isFormPage &&
