@@ -12,6 +12,7 @@ import Footer from './Footer';
 const TITLE = 'Online Shops Grant Program';
 const bcidSymbol = `/images/bcid-symbol-rev.svg`;
 const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
+const logo = `/icons/osgp-white-orage.svg`;
 
 const TOP_HEIGHT = '120px';
 
@@ -65,13 +66,31 @@ const BlockIcon = styled(Icon)`
 const HeaderBrand = styled(Header)`
   margin: auto !important;
   text-align: left;
-  color: white;
+  color: white !important;
   font-weight: ${SUBHEADING_WEIGHT};
 `;
 
-const NarrowHeaderBrand = styled(HeaderBrand)`
-  max-width: 250px;
+const Logo = styled.img`
+  width: 75px;
+  height: 75px;
 `;
+
+const NarrowHeaderBrand = styled(HeaderBrand)`
+  max-width: 200px;
+  margin-left: 5px !important;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NarrowHeader = props => (
+  <HeaderContainer>
+    <Logo src={logo} alt="Launch Online Logo" />
+    <NarrowHeaderBrand>{TITLE}</NarrowHeaderBrand>
+  </HeaderContainer>
+);
 
 class DesktopContainer extends Component {
   state = {};
@@ -91,9 +110,12 @@ class DesktopContainer extends Component {
           <HeaderMenu fixed="top" inverted secondary size="large">
             <Container style={{ padding: '20px' }}>
               {isFormPage ? (
-                <HeaderBrand as="h2">{TITLE}</HeaderBrand>
+                <HeaderContainer>
+                  <Logo src={logo} alt="Launch Online Logo" />
+                  <HeaderBrand>{TITLE}</HeaderBrand>
+                </HeaderContainer>
               ) : (
-                <NarrowHeaderBrand as="h2">{TITLE}</NarrowHeaderBrand>
+                <NarrowHeader />
               )}
               {!isFormPage &&
                 HEADER_LINKS.map(header => (
@@ -158,7 +180,7 @@ class MobileContainer extends Component {
                   <BlockIcon name="sidebar" />
                   <span>Menu</span>
                 </BlockItem>
-                <HeaderBrand inverted>{TITLE}</HeaderBrand>
+                <NarrowHeader />
               </HeaderMenu>
             </HeaderSegment>
 
