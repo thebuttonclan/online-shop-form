@@ -12,10 +12,10 @@ async function handler(req, res) {
   js = js === 'true';
 
   const currentPageSchema = schemasArray[page - 1];
-  const clearedFormData = removePageFields(currentPageSchema, formData);
+  const clearedFormData = removePageFields(formData, currentPageSchema);
 
   // Clean up newly posted data
-  const newData = matchPostBody(postData, fullSchema.properties);
+  const newData = matchPostBody(postData, currentPageSchema);
   const allData = { ...clearedFormData, ...newData };
   session.formData = allData;
   console.log('Cleaned newData is: ', allData);

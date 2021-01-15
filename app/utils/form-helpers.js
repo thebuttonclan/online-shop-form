@@ -28,28 +28,29 @@ function getBooleanValue(value) {
 const getArrayValue = value => (Array.isArray(value) ? value : [value]);
 
 // Clears fields for page before saving new values
-export function removePageFields(schema, formData) {
+export function removePageFields(formData, schema) {
   const fields = getFieldsForSchema(schema);
   return _.omit(formData, fields);
 }
 
 // Match body format to rjsf format for non-js cases
-export function matchPostBody(postData, allProperties) {
+export function matchPostBody(postData, schema) {
   const formattedData = { ...postData };
+  const { properties } = schema;
   const dataArray = Object.keys(formattedData);
 
   dataArray.forEach(propertyName => {
     let newValue = formattedData[propertyName];
     // Remove any posted values not on the full-schema
-    if (!allProperties[propertyName]) {
+    if (!properties[propertyName]) {
       if (propertyName === 'formVersion') return;
       delete formattedData.propertyName;
       return;
     }
-    if (allProperties[propertyName].type === 'boolean') {
+    if (properties[propertyName].type === 'boolean') {
       newValue = getBooleanValue(newValue);
     }
-    if (allProperties[propertyName].type === 'array') {
+    if (properties[propertyName].type === 'array') {
       newValue = getArrayValue(newValue);
     }
     // TODO: add support for cleaning other rjsf types below, e.g number
