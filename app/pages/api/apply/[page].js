@@ -1,4 +1,7 @@
 import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
+import schemasArray from 'schemas/page-schemas';
+import fullSchema from 'schemas/consolidated-schema';
+import { removePageFields, matchPostBody } from 'utils/form-helpers';
 
 async function handler(req, res) {
   const { body: postData, session = {}, query = {} } = req;
@@ -8,9 +11,14 @@ async function handler(req, res) {
   page = Number(page);
   js = js === 'true';
 
-  // Update session data
-  const newData = { ...formData, ...postData };
-  session.formData = newData;
+  const currentPageSchema = schemasArray[page - 1];
+  const clearedFormData = removePageFields(formData, currentPageSchema);
+
+  // Clean up newly posted data
+  const newData = matchPostBody(postData, currentPageSchema);
+  const allData = { ...clearedFormData, ...newData };
+  session.formData = allData;
+  console.log('Cleaned newData is: ', allData);
 
   const context = { req, newData, page, js };
 
