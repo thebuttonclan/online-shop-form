@@ -1,6 +1,7 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
-const TEXT_MIN_LENGTH = 1;
+// Only use on required elements if non-zero
+const REQUIRED_TEXT_MIN_LENGTH = 0;
 const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
@@ -133,28 +134,28 @@ const schema = {
       type: 'string',
       title: 'Name of Applicant Business',
       name: 'businessName',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     businessWebsite: {
       type: 'string',
       title: 'Website link (if applicable)',
       name: 'businessWebsite',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     primaryContactName: {
       type: 'string',
       title: 'Primary Contact Name',
       name: 'primaryContactName',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     primaryContactPosition: {
       type: 'string',
       title: 'Position/Title',
       name: 'primaryContactPosition',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     businessPhone: {
@@ -174,7 +175,7 @@ const schema = {
       type: 'string',
       title: 'Business Address',
       name: 'businessAddress',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     // businessLicense was supposed to be a file upload, but we're no longer doing them.
@@ -182,60 +183,56 @@ const schema = {
     bcOwned: {
       type: 'boolean',
       title: 'Is the business owned by a BC resident or residents',
-      default: false,
       name: 'bcOwned',
     },
     locatedInBc: {
       type: 'boolean',
       title: 'Are the business’s sole or primary operations located in BC',
-      default: false,
       name: 'locatedInBc',
     },
     isCurrentlyOperating: {
       type: 'boolean',
       title: 'Is the business currently operating',
-      default: false,
       name: 'isCurrentlyOperating',
     },
     pstNumber: {
       type: 'string',
       title: 'PST Number',
       name: 'pstNumber',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     bcRegistrationID: {
       type: 'string',
       title: 'BC Registration ID',
       name: 'bcRegistrationID',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     federalBusinessNumber: {
       type: 'string',
       title: 'Business Number (federal)',
       name: 'federalBusinessNumber',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     gstNumber: {
       type: 'string',
       title: 'GST number',
       name: 'gstNumber',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     incomeTaxesFiled: {
       type: 'boolean',
       title: 'Have you filed last years income taxes?',
-      default: false,
       name: 'incomeTaxesFiled',
     },
     revenue2019: {
       type: 'string',
       title: 'Last year’s revenue (2019)',
       name: 'revenue2019',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
       pattern: CURRENCY_REGEX,
     },
@@ -243,14 +240,13 @@ const schema = {
     workSafeBcRegistered: {
       type: 'boolean',
       title: 'Has your business registered with WorkSafeBC?',
-      default: false,
       name: 'workSafeBcRegistered',
     },
     workSafeBcRegistrationNumber: {
       type: 'string',
       title: 'WorkSafeBC registration number',
       name: 'workSafeBcRegistrationNumber',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     // Has a condition
@@ -264,7 +260,7 @@ const schema = {
       type: 'string',
       title: 'Please specify',
       name: 'businessName',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     region: {
@@ -294,27 +290,24 @@ const schema = {
     repeatableProducts: {
       type: 'boolean',
       title: 'Does the business sell repeatable products?',
-      default: false,
       name: 'repeatableProducts',
     },
     cannabisProducts: {
       type: 'boolean',
       title: 'Does your business sell Cannabis products?',
-      default: false,
       name: 'cannabisProducts',
     },
     // Has a condition
     madeInBc: {
       type: 'boolean',
       title: 'Are your products manufactured and/or produced in BC?',
-      default: false,
       name: 'madeInBc',
     },
     productionLocation: {
       type: 'string',
       title: 'Where',
       name: 'productionLocation',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     employees: {
@@ -326,21 +319,19 @@ const schema = {
     importExportBusiness: {
       type: 'boolean',
       title: 'Is the business an import/export business?',
-      default: false,
       name: 'importExportBusiness',
     },
     // Has condition, plus a second condition not done yet
     existingOnlineStore: {
       type: 'boolean',
       title: 'Does the business currently have an online store?',
-      default: false,
       name: 'existingOnlineStore',
     },
     onlineStoreUrl: {
       type: 'string',
       title: 'Link to online store',
       name: 'onlineStoreUrl',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     existingStoreFeatures: {
@@ -363,21 +354,19 @@ const schema = {
       type: 'boolean',
       title:
         'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
-      default: false,
       name: 'canMeetDeadline',
     },
     // Has condition
     otherCovidFunding: {
       type: 'boolean',
       title: 'Has your business received funding from other provincial or federal COVID-19 recovery programs?',
-      default: false,
       name: 'otherCovidFunding',
     },
     otherPrograms: {
       type: 'string',
       title: 'If yes, please list all programs',
       name: 'otherPrograms',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     // GRANT PROPOSAL SECTION
@@ -385,7 +374,7 @@ const schema = {
       type: 'string',
       title: 'Indicate how you plan to use the funds.',
       name: 'planForFunds',
-      minLength: TEXT_MIN_LENGTH,
+      minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     // The following arrays also have a field that is just a calculated 75% of the total cost.
