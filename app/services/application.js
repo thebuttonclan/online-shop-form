@@ -7,7 +7,7 @@ import { getPropertyDependencies } from 'schemas/split-schema';
 
 const allProperties = Object.keys(fullSchema.properties).length;
 const propertiesGroupedByDependencies = getPropertyDependencies(fullSchema.dependencies).length;
-const propertiesGroupedByPage = Object.values(fullSchema.properties).filter(schema => schema.group).length + 1;
+const propertiesGroupedByPage = Object.values(fullSchema.properties).filter(schema => schema.group).length - 1;
 
 export const LAST_PAGE = allProperties - propertiesGroupedByDependencies - propertiesGroupedByPage;
 export const PAGES = Array.from({ length: LAST_PAGE }, (_, i) => i + 1);

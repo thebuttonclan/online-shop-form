@@ -61,6 +61,7 @@ export default function splitSchema(schema, order) {
         return;
       }
       newSchema.group = group;
+      newSchema.groupTitle = schema.groups[group].title;
     }
 
     // copy property

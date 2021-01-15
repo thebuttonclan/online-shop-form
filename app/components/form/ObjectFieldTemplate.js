@@ -1,5 +1,7 @@
 import { Header } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { DEFAULT_FONT_SIZE, HUGE_FONT, LARGE_FONT } from 'theme';
+import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
 
 const { version: appVersion } = require('../../package.json');
 
@@ -18,10 +20,21 @@ const ShiddenInput = styled.input`
   display: none;
 `;
 
-function ObjectFieldTemplate({ properties, title, description, schema }) {
+const Title = styled.p`
+  font-size: ${LARGE_FONT} !important;
+  font-weight: bold;
+`;
+
+const SubTitle = styled.p`
+  font-weight: bold;
+`;
+
+function ObjectFieldTemplate({ properties, description, schema, title }) {
+  const { groupTitle } = schema;
   return (
     <>
-      <Header as="h2">{title}</Header>
+      <Title>{title}</Title>
+      {groupTitle && <SubTitle>{groupTitle}</SubTitle>}
       <ShiddenInput type="text" name="formVersion" value={appVersion} readOnly />
       <Sgrid>
         {properties.map(prop => (

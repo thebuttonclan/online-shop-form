@@ -1,12 +1,17 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 
-const TEXT_MIN_LENGTH = 1;
+const TEXT_MIN_LENGTH = 0;
 const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const schema = {
   title: 'Online Shops Grant',
   type: 'object',
+  groups: {
+    existingStoreFeatures: {
+      title: 'If the business has an existing online store, please select all that apply',
+    },
+  },
   required: [
     'businessName',
     'primaryContactName',
@@ -413,7 +418,7 @@ const schema = {
     },
     staffTrainingCosts: {
       type: 'string',
-      title: 'Provide estimate of costs for digital customer acquisition',
+      title: 'Provide estimate of costs for staff training',
       name: 'staffTrainingCosts',
       pattern: CURRENCY_REGEX,
     },

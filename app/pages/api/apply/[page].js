@@ -16,28 +16,30 @@ function getFieldsForPage(page, schemasArray) {
   }
 }
 
-function cleanData(page, formData) {
+function cleanData(page, formData, postData) {
+  // Remove old data for page before adding new data
+  const fields = getFieldsForPage(page, schemasArray);
+  const cleanFormData = _.omit(formData, fields);
+
+  const newData = { ...cleanFormData, ...postData };
+
   // Turn string false, true, to booleans
-  const dataArray = Object.entries(formData);
+  const dataArray = Object.entries(newData);
   const { properties } = schema;
   if (Array.isArray(dataArray)) {
     dataArray.forEach(([propertyName, value]) => {
       if (properties[propertyName] && properties[propertyName].type === 'boolean') {
         if (value === 'false') {
-          formData[propertyName] = false;
+          newData[propertyName] = false;
         }
         if (value === 'true') {
-          formData[propertyName] = true;
+          newData[propertyName] = true;
         }
       }
     });
   }
 
-  // Remove old data for page before adding new data
-  const fields = getFieldsForPage(page, schemasArray);
-  const cleanFormData = _.omit(formData, fields);
-
-  return cleanFormData;
+  return newData;
 }
 
 async function handler(req, res) {
@@ -48,8 +50,7 @@ async function handler(req, res) {
   page = Number(page);
   js = js === 'true';
 
-  const cleanedData = cleanData(page, postData);
-  const newData = { ...cleanedData, ...postData };
+  const newData = cleanData(page, formData, postData);
   session.formData = newData;
 
   const context = { req, newData, page, js };
