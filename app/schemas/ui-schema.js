@@ -16,6 +16,28 @@ const uiSchema = {
   businessPhone: {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
+  email: {
+    'ui:widget': 'checkboxes',
+    'ui:help': 'Please use the format name@email.com',
+  },
+  revenue2019: {
+    'ui:help': 'Please use the format 1234.56',
+  },
+  workSafeBcRegistrationNumber: {
+    'ui:help': 'This field is required if answering yes',
+  },
+  sectorOther: {
+    'ui:help': 'This field is required if answering Other',
+  },
+  productionLocation: {
+    'ui:help': 'This field is required if answering No',
+  },
+  onlineStoreUrl: {
+    'ui:help': 'This field is required if answering Yes',
+  },
+  otherPrograms: {
+    'ui:help': 'This field is required if answering Yes',
+  },
   existingStoreFeatures: {
     'ui:widget': 'checkboxes',
   },

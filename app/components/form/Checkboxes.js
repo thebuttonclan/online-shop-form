@@ -1,5 +1,21 @@
 // See https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/components/widgets/CheckboxesWidget.js
 // Code re-used with small change to pass name down to checkboxes for the non-js case
+import styled from 'styled-components';
+import { LARGE_FONT, MIN_PADDING } from 'theme';
+
+const SemanticLabel = styled.span`
+  padding-left: ${MIN_PADDING};
+  font-weight: bold;
+`;
+
+const CheckboxContainer = styled.span`
+  display: flex;
+  align-content: center;
+`;
+
+const GroupTitle = styled.p`
+  font-size: ${LARGE_FONT};
+`;
 
 function selectValue(value, selected, all) {
   const at = all.indexOf(value);
@@ -16,15 +32,16 @@ function deselectValue(value, selected) {
 function CheckboxesWidget(props) {
   const { id, disabled, options, value, autofocus, readonly, onChange } = props;
   const { enumOptions, enumDisabled, inline } = options;
-  const { name } = props.schema;
+  const { name, title } = props.schema;
   return (
     <div className="checkboxes" id={id}>
+      <GroupTitle>{title}</GroupTitle>
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
         const disabledCls = disabled || itemDisabled || readonly ? 'disabled' : '';
         const checkbox = (
-          <span>
+          <CheckboxContainer>
             <input
               type="checkbox"
               id={`${id}_${index}`}
@@ -42,8 +59,8 @@ function CheckboxesWidget(props) {
                 }
               }}
             />
-            <span>{option.label}</span>
-          </span>
+            <SemanticLabel>{option.label}</SemanticLabel>
+          </CheckboxContainer>
         );
         return inline ? (
           <label key={index} className={`checkbox-inline ${disabledCls}`}>
