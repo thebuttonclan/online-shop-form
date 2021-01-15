@@ -1,6 +1,6 @@
 import Input from 'components/form/Input';
 import Select from 'components/form/Select';
-import Checkbox from 'components/form/Checkbox';
+import Checkboxes from 'components/form/Checkboxes';
 import Radio from 'components/form/Radio';
 import Cost from 'components/form/Cost';
 
@@ -8,9 +8,9 @@ import Cost from 'components/form/Cost';
 const widgets = {
   TextWidget: Input,
   SelectWidget: Select,
-  CheckboxWidget: Checkbox,
   RadioWidget: Radio,
   Cost: Cost,
+  CheckboxesWidget: Checkboxes,
 };
 
 export default widgets;

@@ -18,8 +18,8 @@ const TOP_HEIGHT = '120px';
 const HEADER_LINKS = [
   { title: 'HOME', to: '/' },
   { title: 'FAQ', to: '/faq' },
-  { title: 'CONTACT US', to: '#contact' },
   { title: 'PROGRAM GUIDE', to: '/program-guide' },
+  { title: 'CONTACT US', to: '#contact' },
 ];
 
 const { MediaContextProvider, Media, createMediaStyle } = createMedia({
