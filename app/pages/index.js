@@ -5,6 +5,7 @@ import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } fro
 import InfoMessage from 'components/InfoMessage';
 import ProgramSteps from 'components/landing/ProgramSteps';
 import EligibilityCriteria from 'components/landing/EligibilityCriteria';
+import Acknowledgement from 'components/landing/Acknowledgement';
 import StyledUl from 'components/StyledUl';
 import StyledP from 'components/StyledP';
 import GeneralInformation from 'components/landing/GeneralInformation';
@@ -42,6 +43,13 @@ const BackToTop = () => (
 
 const ScrollContainer = styled(Container)`
   overflow-y: scroll;
+`;
+
+const HorizontalRule = styled.hr`
+  height: 1px;
+  border: none;
+  background-color: black;
+  margin: 40px 0;
 `;
 
 export default function Home() {
@@ -171,6 +179,10 @@ export default function Home() {
             info@gov.bc.ca
           </Info>
         </div>
+
+        <HorizontalRule />
+
+        <Acknowledgement />
       </Container>
     </>
   );
