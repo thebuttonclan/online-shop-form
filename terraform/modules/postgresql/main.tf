@@ -31,7 +31,7 @@ module "postgresql" {
   firewall_rule_prefix = "firewall-"
   firewall_rules       = []
 
-  vnet_rule_name_prefix = "postgresql-vnet-rule-"
+  vnet_rule_name_prefix = "${var.prefix}-postgresql-vnet-rule-"
   vnet_rules = [
     { name = "subnet1", subnet_id = var.vnet_subnet_id },
   ]
@@ -59,4 +59,11 @@ resource "azurerm_postgresql_server" "reader" {
   ssl_enforcement_enabled = false
 
   depends_on = [module.postgresql]
+}
+
+resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
+  name                = "${var.prefix}-postgresql-vnet-rule-subnet1-reader"
+  resource_group_name = var.resource_group_name
+  server_name         = azurerm_postgresql_server.reader.name
+  subnet_id           = var.vnet_subnet_id
 }
