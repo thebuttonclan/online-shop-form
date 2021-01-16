@@ -35,12 +35,10 @@ spec:
               containerPort: 3000
               protocol: TCP
           env:
-            - name: RELEASE_REVISION
-              value: "{{ .Release.Revision }}"
-            # - name: DOMAIN_NAME
-            #   value: {{ .Values.ingress.host }}
-            # - name: SESSION_SECRET
-            #   value: {{ .Values.service.sessionSecret }}
+            - name: DOMAIN_NAME
+              value: {{ .Values.ingress.host }}
+            - name: SESSION_SECRET
+              value: {{ .Values.service.sessionSecret }}
           envFrom:
             - secretRef:
                 name: postgresql

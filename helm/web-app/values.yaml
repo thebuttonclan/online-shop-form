@@ -15,16 +15,10 @@ fullnameOverride: webapp
 service:
   type: ClusterIP
   port: 3030
+  sessionSecret: # this must be overridden and stored securely
 
 ingress:
   enabled: false
-  host:
-  paths: ["/"]
-
-  # tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 postgresql:
   enabled: false
