@@ -3,15 +3,17 @@
 import React, { Component } from 'react';
 import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
-import { Container, Icon, Image, Menu, Segment, Sidebar, Header, Button } from 'semantic-ui-react';
+import { Container, Icon, Menu, Segment, Sidebar, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { PRIMARY_COLOUR, SUBHEADING_WEIGHT } from 'theme';
+import { PRIMARY_COLOUR, MIN_PADDING } from 'theme';
 import HrefLink from 'components/HrefLink';
 import Footer from './Footer';
 
-const TITLE = 'Online Shops Grant Program';
+const TITLE = 'Launch Online';
 const bcidSymbol = `/images/bcid-symbol-rev.svg`;
 const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
+const logo = `/icons/osgp-white-orage.svg`;
+const HEADER_BREAKPOINT = 992;
 
 const TOP_HEIGHT = '120px';
 
@@ -26,7 +28,7 @@ const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   breakpoints: {
     mobile: 0,
     tablet: 768,
-    headerBreak: 992,
+    headerBreak: HEADER_BREAKPOINT,
     computer: 1024,
   },
 });
@@ -44,10 +46,6 @@ const HeaderMenu = styled(Menu)`
   height: ${TOP_HEIGHT} !important;
 `;
 
-const XsImage = styled(Image)`
-  width: 50px;
-`;
-
 const BlockItem = styled(Menu.Item)`
   display: block !important;
 
@@ -62,16 +60,47 @@ const BlockIcon = styled(Icon)`
   margin: auto !important;
 `;
 
-const HeaderBrand = styled(Header)`
-  margin: auto !important;
+const HeaderBrandText = styled(Header)`
+  margin: auto ${MIN_PADDING} !important;
   text-align: left;
-  color: white;
-  font-weight: ${SUBHEADING_WEIGHT};
+  color: white !important;
 `;
 
-const NarrowHeaderBrand = styled(HeaderBrand)`
+const Logo = styled.img`
+  width: 75px;
+  height: 75px;
+`;
+
+const LinksContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const NarrowHeaderBrand = styled(HeaderBrandText)`
   max-width: 250px;
 `;
+
+const HeaderBrandContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: ${HEADER_BREAKPOINT}px) {
+    padding-left: 30px;
+  }
+`;
+
+const DesktopHeaderContainer = styled(Container)`
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+`;
+
+const HeaderBrand = () => (
+  <HeaderBrandContainer>
+    <Logo src={logo} alt="Launch Online Logo" />
+    <HeaderBrandText>{TITLE}</HeaderBrandText>
+  </HeaderBrandContainer>
+);
 
 class DesktopContainer extends Component {
   state = {};
@@ -89,23 +118,21 @@ class DesktopContainer extends Component {
       <Media greaterThanOrEqual="headerBreak">
         <HeaderSegment inverted textAlign="center" vertical id="top">
           <HeaderMenu fixed="top" inverted secondary size="large">
-            <Container style={{ padding: '20px' }}>
-              {isFormPage ? (
-                <HeaderBrand as="h2">{TITLE}</HeaderBrand>
-              ) : (
-                <NarrowHeaderBrand as="h2">{TITLE}</NarrowHeaderBrand>
-              )}
-              {!isFormPage &&
-                HEADER_LINKS.map(header => (
-                  <Menu.Item key={header.title}>
-                    <HrefLink href={header.to} passHref>
-                      <Header as="h3" inverted className="pointer">
-                        {header.title}
-                      </Header>
-                    </HrefLink>
-                  </Menu.Item>
-                ))}
-            </Container>
+            <DesktopHeaderContainer>
+              <HeaderBrand />
+              <LinksContainer>
+                {!isFormPage &&
+                  HEADER_LINKS.map(header => (
+                    <Menu.Item key={header.title}>
+                      <HrefLink href={header.to} passHref>
+                        <Header as="h4" inverted className="pointer">
+                          {header.title}
+                        </Header>
+                      </HrefLink>
+                    </Menu.Item>
+                  ))}
+              </LinksContainer>
+            </DesktopHeaderContainer>
           </HeaderMenu>
         </HeaderSegment>
         {children}
@@ -125,8 +152,9 @@ class MobileContainer extends Component {
   handleToggle = () => this.setState({ sidebarOpened: true });
 
   render() {
-    const { children } = this.props;
+    const { children, pathname } = this.props;
     const { sidebarOpened } = this.state;
+    const isFormPage = pathname.startsWith('/apply/');
 
     return (
       <Media lessThan="headerBreak" as={Sidebar.Pushable}>
@@ -154,14 +182,16 @@ class MobileContainer extends Component {
           <Sidebar.Pusher dimmed={sidebarOpened}>
             <HeaderSegment inverted textAlign="center" vertical id="top">
               <HeaderMenu inverted secondary size="large">
-                <BlockItem onClick={this.handleToggle}>
-                  <BlockIcon name="sidebar" />
-                  <span>Menu</span>
-                </BlockItem>
-                <HeaderBrand inverted>{TITLE}</HeaderBrand>
+                {!isFormPage && (
+                  <BlockItem onClick={this.handleToggle}>
+                    <BlockIcon name="sidebar" />
+                    <span>Menu</span>
+                  </BlockItem>
+                )}
+
+                <HeaderBrand />
               </HeaderMenu>
             </HeaderSegment>
-
             {children}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
@@ -176,7 +206,9 @@ MobileContainer.propTypes = {
 
 const ResponsiveContainer = ({ children, query, pathname }) => (
   <MediaContextProvider>
-    <MobileContainer query={query}>{children}</MobileContainer>
+    <MobileContainer query={query} pathname={pathname}>
+      {children}
+    </MobileContainer>
     <DesktopContainer query={query} pathname={pathname}>
       {children}
     </DesktopContainer>
