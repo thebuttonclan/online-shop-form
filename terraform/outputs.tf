@@ -20,6 +20,6 @@ output "server_fqdn" {
 }
 
 output "public_ip_id" {
-  description = "The application gateway frontend Public IP ID"
-  value       = azurerm_public_ip.this.id
+  description = "The application gateway frontend Public IP address"
+  value       = azurerm_public_ip.this.ip_address
 }

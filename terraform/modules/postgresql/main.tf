@@ -6,8 +6,6 @@
 # see https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_server#create_mode
 
 locals {
-  sku_name       = "GP_Gen5_2"
-  storage_mb     = 5120
   server_version = "11"
 }
 
@@ -18,8 +16,8 @@ module "postgresql" {
   location            = var.location
 
   server_name                  = "${var.prefix}-db"
-  sku_name                     = local.sku_name
-  storage_mb                   = local.storage_mb
+  sku_name                     = var.sku_name
+  storage_mb                   = var.storage_mb
   backup_retention_days        = 14
   geo_redundant_backup_enabled = false
   administrator_login          = var.admin_username
@@ -51,8 +49,8 @@ resource "azurerm_postgresql_server" "reader" {
   resource_group_name = var.resource_group_name
   location            = var.location
 
-  sku_name   = local.sku_name
-  storage_mb = local.storage_mb
+  sku_name   = var.sku_name
+  storage_mb = var.storage_mb
   version    = local.server_version
 
   create_mode               = "Replica"

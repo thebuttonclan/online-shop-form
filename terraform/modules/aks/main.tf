@@ -8,6 +8,7 @@ module "aks" {
   prefix                           = var.prefix
   network_plugin                   = "azure"
   vnet_subnet_id                   = var.vnet_subnet_id
+  sku_tier                         = "Paid"
   private_cluster_enabled          = false
   enable_log_analytics_workspace   = true
   enable_role_based_access_control = false

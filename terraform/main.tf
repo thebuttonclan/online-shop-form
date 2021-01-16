@@ -1,5 +1,5 @@
 locals {
-  prefix            = "onlineshopsgrant"
+  prefix            = "launchonline"
   resource_location = "Canada Central"
 }
 
@@ -16,6 +16,7 @@ module "aks" {
   client_secret       = var.client_secret
   prefix              = local.prefix
   vnet_subnet_id      = azurerm_subnet.this.id
+  agents_size         = "Standard_F4"
   agents_min_count    = 1
   agents_max_count    = 3
 
@@ -27,6 +28,8 @@ module "postgresql_dev" {
   prefix              = local.prefix
   resource_group_name = azurerm_resource_group.this.name
   location            = local.resource_location
+  sku_name            = "GP_Gen5_4"
+  storage_mb          = 10240
   admin_username      = "rootadmin"
   admin_password      = var.postgresql_password_dev
   vnet_subnet_id      = azurerm_subnet.this.id

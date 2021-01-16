@@ -1,13 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: onlineshopsgrant.azurecr.io/osf/webapp
+  repository: launchonlineacr.azurecr.io/osf/webapp
   tag: blast
   pullPolicy: Always
   # pullPolicy: IfNotPresent
 
 dbImage:
-  repository: onlineshopsgrantacr.azurecr.io/osf/db
+  repository: launchonlineacr.azurecr.io/osf/db
 
 nameOverride: webapp
 fullnameOverride: webapp
