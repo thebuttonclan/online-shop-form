@@ -62,8 +62,9 @@ resource "azurerm_postgresql_server" "reader" {
 }
 
 resource "azurerm_postgresql_virtual_network_rule" "vnet_rules" {
+  count               = var.create_read_replica ? 1 : 0
   name                = "${var.prefix}-postgresql-vnet-rule-subnet1-reader"
   resource_group_name = var.resource_group_name
-  server_name         = azurerm_postgresql_server.reader.name
+  server_name         = azurerm_postgresql_server.reader[count.index].name
   subnet_id           = var.vnet_subnet_id
 }

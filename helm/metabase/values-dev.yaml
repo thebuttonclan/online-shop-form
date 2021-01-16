@@ -22,12 +22,12 @@ metabase:
       cert-manager.io/cluster-issuer: letsencrypt-prod
       cert-manager.io/acme-challenge-type: http01
     hosts:
-      - metabase.launchonline.junminahn.com
+      - metabase.launchonline.buttoncloud.ca
     path: /
     tls:
-      - secretName: metabase-launchonline-junminahn-com-tls
+      - secretName: metabase-launchonline-tls
         hosts:
-          - metabase.launchonline.junminahn.com
+          - metabase.launchonline.buttoncloud.ca
 
 route:
   enable: false
