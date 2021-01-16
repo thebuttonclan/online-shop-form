@@ -6,10 +6,6 @@ import HrefLink from 'components/HrefLink';
 const StyledFooter = styled.footer`
   background-color: ${PRIMARY_COLOUR};
   color: #fff;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
   min-height: 20vh;
 
   & ul {
@@ -38,19 +34,20 @@ const StyledFooter = styled.footer`
   }
 `;
 
+const Copyright = styled.div`
+  color: white !important;
+  padding-top: 20px;
+`;
+
 const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <ul>
-          <li>
-            <HrefLink href="/resources/copyright">
-              <p>
-                Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2020
-              </p>
-            </HrefLink>
-          </li>
-        </ul>
+        <HrefLink href="/resources/copyright">
+          <Copyright>
+            Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2020
+          </Copyright>
+        </HrefLink>
       </Container>
     </StyledFooter>
   );
