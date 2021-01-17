@@ -93,6 +93,7 @@ export default function Apply({ formData, page }) {
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}
+        onChange={schema.onChange || (() => {})}
         onSubmit={handleSubmit}
         onError={console.log}
         showErrorList={false}
