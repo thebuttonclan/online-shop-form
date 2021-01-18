@@ -13,8 +13,6 @@ import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
 import { Helmet } from 'react-helmet';
 
-const { version: formVersion } = require('../../package.json');
-
 const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
@@ -56,10 +54,7 @@ export default function Apply({ formData, page }) {
   const percent = (Number(page) / LAST_PAGE) * 100;
 
   const handleSubmit = async ({ formData }) => {
-    const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(
-      { formVersion, ...formData },
-      page
-    );
+    const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
 
     if (hasError) {
       router.push('/message/error');
