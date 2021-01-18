@@ -2,19 +2,16 @@
 // Code re-used with small change to pass name down to checkboxes for the non-js case
 import styled from 'styled-components';
 import { LARGE_FONT, MIN_PADDING } from 'theme';
-
-const SemanticLabel = styled.span`
-  padding-left: ${MIN_PADDING};
-  font-weight: bold;
-`;
+import Label from 'components/form/SemanticStyleLabel';
 
 const CheckboxContainer = styled.span`
   display: flex;
   align-content: center;
+  margin: ${MIN_PADDING};
 `;
 
-const GroupTitle = styled.p`
-  font-size: ${LARGE_FONT};
+const CheckboxLabel = styled.span`
+  margin-left: ${MIN_PADDING};
 `;
 
 function selectValue(value, selected, all) {
@@ -35,7 +32,7 @@ function CheckboxesWidget(props) {
   const { name, title } = props.schema;
   return (
     <div className="checkboxes" id={id}>
-      <GroupTitle>{title}</GroupTitle>
+      <Label>{title}</Label>
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
@@ -59,7 +56,7 @@ function CheckboxesWidget(props) {
                 }
               }}
             />
-            <SemanticLabel>{option.label}</SemanticLabel>
+            <CheckboxLabel>{option.label}</CheckboxLabel>
           </CheckboxContainer>
         );
         return inline ? (

@@ -11,6 +11,7 @@ import pageSchemas from 'schemas/page-schemas';
 import transformErrors from 'schemas/transform-errors';
 import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
+import { Helmet } from 'react-helmet';
 
 const { version: formVersion } = require('../../package.json');
 
@@ -72,6 +73,9 @@ export default function Apply({ formData, page }) {
 
   return (
     <Container>
+      <Helmet>
+        <title>Apply!</title>
+      </Helmet>
       <TopRow>
         <HrefLink href={linkRoute}>
           <BackButton>

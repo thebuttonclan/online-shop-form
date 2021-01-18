@@ -1,10 +1,8 @@
-import { Form } from 'react-bootstrap';
+import { LARGE_FONT } from 'theme';
 import styled from 'styled-components';
 
-const SemanticStyleLabel = styled(Form.Label)`
-  font-weight: bold;
-  font-size: 0.92857143em;
-
+const SemanticStyleLabel = styled.h1`
+  font-size: ${LARGE_FONT};
   ${props =>
     !props.required
       ? ''

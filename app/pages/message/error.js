@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HUGE_FONT, MIN_PADDING } from 'theme';
 import StyledP from 'components/StyledP';
 import HrefLink from 'components/HrefLink';
+import { Helmet } from 'react-helmet';
 
 const SuccessBanner = styled.div`
   min-height: 150px;
@@ -28,6 +29,9 @@ const SuccessBanner = styled.div`
 export default function ErrorPage() {
   return (
     <Container>
+      <Helmet>
+        <title>Something Went Wrong</title>
+      </Helmet>
       <SuccessBanner>
         <p>
           <Icon name="exclamation circle"></Icon>

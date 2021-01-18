@@ -20,8 +20,8 @@ const TOP_HEIGHT = '120px';
 const HEADER_LINKS = [
   { title: 'HOME', to: '/' },
   { title: 'FAQ', to: '/faq' },
-  { title: 'PROGRAM GUIDE', to: '/program-guide' },
-  { title: 'CONTACT US', to: '#contact' },
+  { title: 'PROGRAM GUIDE', to: '/files/program_guide.pdf', blank: true },
+  { title: 'CONTACT US', to: '/#contact' },
 ];
 
 const { MediaContextProvider, Media, createMediaStyle } = createMedia({
@@ -124,7 +124,7 @@ class DesktopContainer extends Component {
                 {!isFormPage &&
                   HEADER_LINKS.map(header => (
                     <Menu.Item key={header.title}>
-                      <HrefLink href={header.to} passHref>
+                      <HrefLink href={header.to} passHref blank={header.blank}>
                         <Header as="h4" inverted className="pointer">
                           {header.title}
                         </Header>
@@ -170,7 +170,7 @@ class MobileContainer extends Component {
           >
             {HEADER_LINKS.map(header => (
               <Menu.Item key={header.title}>
-                <HrefLink href={header.to} passHref>
+                <HrefLink href={header.to} passHref blank={header.blank}>
                   <NarrowHeaderBrand as="h2" inverted className="pointer">
                     {header.title}
                   </NarrowHeaderBrand>
