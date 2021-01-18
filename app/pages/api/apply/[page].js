@@ -2,8 +2,6 @@ import { LAST_PAGE, submitApplication, pageForward } from 'services/application'
 import schemasArray from 'schemas/page-schemas';
 import { removePageFields, matchPostBody } from 'utils/form-helpers';
 
-const { version: formVersion } = require('../../../package.json');
-
 async function handler(req, res) {
   const { body: postData, session = {}, query = {} } = req;
   const { formData = {} } = session;
@@ -21,7 +19,7 @@ async function handler(req, res) {
   session.formData = newFormData;
   console.log('Cleaned newData is: ', newFormData);
 
-  const context = { req, newData: { ...newFormData, formVersion }, page, js };
+  const context = { req, newData: newFormData, page, js };
 
   if (page === LAST_PAGE) {
     await submitApplication(context);

@@ -5,6 +5,8 @@ import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
 
+const { version: formVersion } = require('../../../package.json');
+
 export const LAST_PAGE =
   Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;
 export const PAGES = Array.from({ length: LAST_PAGE }, (_, i) => i + 1);
@@ -43,7 +45,7 @@ export async function submitApplication({ req, newData, js }) {
       return res.redirect('/message/validation-error');
     }
 
-    const success = await pgQuery.createApplication({ form_data: newData });
+    const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
     if (!success) {
       throw new Error('Failed to save application');
     }
