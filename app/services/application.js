@@ -5,7 +5,7 @@ import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
 
-const { version: formVersion } = require('../../../package.json');
+const { version: formVersion } = require('../package.json');
 
 export const LAST_PAGE =
   Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;
