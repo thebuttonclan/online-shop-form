@@ -377,27 +377,34 @@ const schema = {
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
-    // The following arrays also have a field that is just a calculated 75% of the total cost.
-    // I don't think we necessarily need them in here, we can just add the fields to the view when created.
-    // That way we dont have a bunchof extra fields on the form, that don't require user input.
-    serviceProviderCosts: {
-      type: 'string',
-      title: 'Provide estimate of costs for service providers',
-      name: 'serviceProviderCosts',
-      pattern: CURRENCY_REGEX,
+
+    costs: {
+      type: 'object',
+      name: 'costs',
+      // Title has to be a string, but we have custom text there so empty.
+      title: '',
+      properties: {
+        serviceProviderCosts: {
+          type: 'string',
+          title: 'Service Provider(s)',
+          name: 'serviceProviderCosts',
+          pattern: CURRENCY_REGEX,
+        },
+        customerAcquisitionCosts: {
+          type: 'string',
+          title: 'Digital Customer Acquisition',
+          name: 'customerAcquisitionCosts',
+          pattern: CURRENCY_REGEX,
+        },
+        staffTrainingCosts: {
+          type: 'string',
+          title: 'Staff Training Costs',
+          name: 'staffTrainingCosts',
+          pattern: CURRENCY_REGEX,
+        },
+      },
     },
-    customerAcquisitionCosts: {
-      type: 'string',
-      title: 'Provide estimate of costs for digital customer acquisition',
-      name: 'customerAcquisitionCosts',
-      pattern: CURRENCY_REGEX,
-    },
-    staffTrainingCosts: {
-      type: 'string',
-      title: 'Provide estimate of costs for digital customer acquisition',
-      name: 'staffTrainingCosts',
-      pattern: CURRENCY_REGEX,
-    },
+
     useOfGrant: {
       type: 'boolean',
       name: 'useOfGrant',

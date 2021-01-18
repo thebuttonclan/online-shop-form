@@ -1,5 +1,5 @@
 import consolodateSchema from './consolidated-schema';
-
+import CostsFieldTemplate from '../components/form/CostsFieldTemplate';
 // This turns all of the boolean fields into radio buttons
 const booleanFields = {};
 
@@ -40,6 +40,19 @@ const uiSchema = {
   existingStoreFeatures: {
     'ui:widget': 'checkboxes',
   },
+  costs: {
+    'ui:FieldTemplate': CostsFieldTemplate,
+    serviceProviderCosts: {
+      'ui:widget': 'Cost',
+    },
+    customerAcquisitionCosts: {
+      'ui:widget': 'Cost',
+    },
+    staffTrainingCosts: {
+      'ui:widget': 'Cost',
+    },
+  },
+
   // This prevents conditional fields from rendering at the end of the form
   'ui:order': [
     'businessName',
@@ -77,6 +90,7 @@ const uiSchema = {
     'otherCovidFunding',
     'otherPrograms',
     'planForFunds',
+    'costs',
     'serviceProviderCosts',
     'customerAcquisitionCosts',
     'staffTrainingCosts',
