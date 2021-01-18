@@ -15,8 +15,8 @@ helm repo update
 
 helm install cert-manager jetstack/cert-manager -n cert-manager --version v1.1.0
 
-# kubectl apply -f cluster_issuer-staging.yaml
+sleep 5
 
-sleep 2
+# kubectl apply -f cluster_issuer-staging.yaml
 
 kubectl apply -f cluster_issuer.yaml

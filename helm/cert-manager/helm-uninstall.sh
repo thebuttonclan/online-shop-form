@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl delete -f cluster_issuer-staging.yaml -n cert-manager
+# kubectl delete -f cluster_issuer-staging.yaml -n cert-manager
 
 kubectl delete -f cluster_issuer.yaml -n cert-manager
 

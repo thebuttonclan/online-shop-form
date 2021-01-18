@@ -23,6 +23,13 @@ module "aks" {
   depends_on = [azurerm_resource_group.this, azurerm_subnet.this]
 }
 
+data "azurerm_log_analytics_workspace" "this" {
+  name                = "${local.prefix}-workspace"
+  resource_group_name = azurerm_resource_group.this.name
+
+  depends_on = [module.aks]
+}
+
 module "postgresql_dev" {
   source              = "./modules/postgresql"
   prefix              = "${local.prefix}-dev"

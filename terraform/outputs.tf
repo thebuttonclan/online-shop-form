@@ -33,3 +33,11 @@ output "public_ip_id" {
   description = "The application gateway frontend Public IP address"
   value       = azurerm_public_ip.this.ip_address
 }
+
+output "log_analytics_workspace_id" {
+  value = data.azurerm_log_analytics_workspace.this.workspace_id
+}
+
+output "log_analytics_primary_shared_key" {
+  value = data.azurerm_log_analytics_workspace.this.primary_shared_key
+}

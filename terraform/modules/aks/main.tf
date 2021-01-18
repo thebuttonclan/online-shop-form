@@ -11,17 +11,21 @@ module "aks" {
   sku_tier                         = "Paid"
   private_cluster_enabled          = false
   enable_log_analytics_workspace   = true
+  enable_kube_dashboard            = true
   enable_role_based_access_control = false
-  enable_http_application_routing  = true
-  enable_azure_policy              = true
-  enable_auto_scaling              = true
-  agents_size                      = var.agents_size
-  agents_min_count                 = var.agents_min_count
-  agents_max_count                 = var.agents_max_count
-  agents_count                     = null # set `null` while `enable_auto_scaling` is `true` to avoid possible `agents_count` changes.
-  agents_pool_name                 = "exnodepool"
-  agents_availability_zones        = ["1", "2"]
-  agents_type                      = "VirtualMachineScaleSets"
+  # see https://docs.microsoft.com/en-us/azure/aks/http-application-routing
+  # HTTP application routing is only recommended for dev/test clusters
+  enable_http_application_routing = false
+  # see https://docs.microsoft.com/en-us/azure/aks/use-pod-security-on-azure-policy
+  enable_azure_policy             = true
+  enable_auto_scaling             = true
+  agents_size                     = var.agents_size
+  agents_min_count                = var.agents_min_count
+  agents_max_count                = var.agents_max_count
+  agents_count                    = null # set `null` while `enable_auto_scaling` is `true` to avoid possible `agents_count` changes.
+  agents_pool_name                = "exnodepool"
+  agents_availability_zones       = ["1", "2"]
+  agents_type                     = "VirtualMachineScaleSets"
 
   agents_labels = {
     "nodepool" : "defaultnodepool"
