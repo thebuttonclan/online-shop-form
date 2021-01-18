@@ -36,18 +36,22 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const addNormalScroll = () => document.documentElement.classList.add('normal-scroll');
+const removeNormalScroll = () => document.documentElement.classList.remove('normal-scroll');
+
 class App extends PureComponent {
   // scroll-behaviour: smooth on html breaks nextjs linking, will not go to top
   // of page when routing. Switching to normal scroll between routing fixes this
   // See https://github.com/vercel/next.js/issues/20125
   componentDidMount() {
-    this.props.router.events.on('routeChangeStart', () => {
-      document.documentElement.classList.add('normal-scroll');
-    });
-    this.props.router.events.on('routeChangeComplete', () => {
-      document.documentElement.classList.remove('normal-scroll');
-    });
+    this.props.router.events.on('routeChangeStart', addNormalScroll);
+    this.props.router.events.on('routeChangeComplete', removeNormalScroll);
   }
+  componentWillUnmount() {
+    this.props.router.events.off('routeChangeStart', addNormalScroll);
+    this.props.router.events.off('routeChangeComplete', removeNormalScroll);
+  }
+
   render() {
     const { Component, pageProps, router } = this.props;
     return (

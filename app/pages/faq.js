@@ -93,7 +93,7 @@ export default class Faq extends Component {
       <Container>
         <Helmet>
           <title>Frequently Asked Questions</title>
-        </Helmet>{' '}
+        </Helmet>
         <StyledContainer>
           <StyledHeader as="h1">FAQ</StyledHeader>
 
