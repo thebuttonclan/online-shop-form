@@ -16,9 +16,11 @@ const costsSchema = schemasArray[getPageByField('costs') - 1];
 costsSchema.onChange = ctx => {
   const { setGrantAmount } = ctx.schema.properties.costs;
 
-  const { formData } = ctx;
-  const grantAmount = calculateGrantAmount(formData);
-  setGrantAmount(grantAmount);
+  if (setGrantAmount) {
+    const { formData } = ctx;
+    const grantAmount = calculateGrantAmount(formData);
+    setGrantAmount(grantAmount);
+  }
 };
 
 export default schemasArray;
