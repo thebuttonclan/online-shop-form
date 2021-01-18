@@ -29,6 +29,7 @@ export default function CostsFieldTemplate(props) {
 
   const [grantAmount, setGrantAmount] = useState(initialGrantAmount);
 
+  // Note that it mutates the page schema to have `setGrantAmount` available in onChange event
   schema.setGrantAmount = setGrantAmount;
 
   return (
@@ -43,7 +44,7 @@ export default function CostsFieldTemplate(props) {
       {props.children}
       <div>
         <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
-        {formatCurrency(grantAmount)}
+        {formatCurrency(Math.min(grantAmount, MAX_GRANT_AMOUNT))}
       </div>
     </div>
   );
