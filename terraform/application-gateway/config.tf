@@ -5,6 +5,6 @@ terraform {
     resource_group_name  = "launchonline-storage-resource-group"
     storage_account_name = "launchonlinestorage"
     container_name       = "lo-tstate"
-    key                  = "terraform.tfstate"
+    key                  = "terraform-ag.tfstate"
   }
 }

@@ -1,13 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: onlineshopsgrant.azurecr.io/osf/webapp
+  repository: launchonlineacr.azurecr.io/osf/webapp
   tag: blast
   pullPolicy: Always
   # pullPolicy: IfNotPresent
 
 dbImage:
-  repository: onlineshopsgrantacr.azurecr.io/osf/db
+  repository: launchonlineacr.azurecr.io/osf/db
 
 nameOverride: webapp
 fullnameOverride: webapp
@@ -15,16 +15,10 @@ fullnameOverride: webapp
 service:
   type: ClusterIP
   port: 3030
+  sessionSecret: # this must be overridden and stored securely
 
 ingress:
   enabled: false
-  host:
-  paths: ["/"]
-
-  # tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
 
 postgresql:
   enabled: false

@@ -3,7 +3,7 @@ NAMESPACE = osf
 IMAGE_NAME = webapp
 TAG = blast
 IMAGE_REPO = ${IMAGE_NAME}:${TAG}
-ACR = onlineshopsgrantacr.azurecr.io
+ACR = launchonlineacr.azurecr.io
 
 .PHONY: docker-build
 docker-build:

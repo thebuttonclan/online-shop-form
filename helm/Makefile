@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 ENV = dev
-NAMESPACE="${ENV}-onlineshopsgrant"
+NAMESPACE="${ENV}-launchonline"
 TAG = blast
 
 .PHONY: install-app
