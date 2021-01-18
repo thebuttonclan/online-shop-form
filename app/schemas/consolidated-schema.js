@@ -305,7 +305,7 @@ const schema = {
     },
     productionLocation: {
       type: 'string',
-      title: 'Where',
+      title: 'If no, please specify where',
       name: 'productionLocation',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
@@ -329,7 +329,7 @@ const schema = {
     },
     onlineStoreUrl: {
       type: 'string',
-      title: 'Link to online store',
+      title: 'Please input the link to the business’ online store',
       name: 'onlineStoreUrl',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,

@@ -12,6 +12,7 @@ import transformErrors from 'schemas/transform-errors';
 import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
 import { Helmet } from 'react-helmet';
+import validate from 'schemas/validate';
 
 const TopRow = styled.div`
   display: flex;
@@ -97,6 +98,7 @@ export default function Apply({ formData, page }) {
         onSubmit={handleSubmit}
         onError={console.log}
         showErrorList={false}
+        validate={validate}
         transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
         ArrayFieldTemplate={ArrayFieldTemplate}

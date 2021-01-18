@@ -1,5 +1,6 @@
 import axios from 'axios';
 import validate from 'react-jsonschema-form/lib/validate';
+import customValidate from 'schemas/validate';
 import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
@@ -19,8 +20,9 @@ export function getSchema(page) {
 }
 
 export function validateFormData(formData) {
-  const validated = validate(formData, fullSchema);
+  const validated = validate(formData, fullSchema, customValidate);
   const { errors } = validated;
+  console.log(errors);
 
   return errors.length === 0 ? { isValidated: true, isValid: true } : { isValidated: true, isValid: false, errors };
 }

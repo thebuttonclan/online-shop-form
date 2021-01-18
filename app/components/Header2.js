@@ -5,6 +5,6 @@ export default styled.p`
   font-size: ${LARGE_FONT};
   font-color: ${PRIMARY_FONT_COLOUR};
   font-weight: ${SUBHEADING_WEIGHT};
-  padding: ${MIN_PADDING};
+  padding: ${MIN_PADDING} ${MIN_PADDING} ${MIN_PADDING} 0;
   margin: 0;
 `;

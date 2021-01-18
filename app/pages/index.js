@@ -13,6 +13,7 @@ import Banner from 'components/landing/Banner';
 import Header1 from 'components/Header1';
 import Header2 from 'components/Header2';
 import HrefLink from 'components/HrefLink';
+import { TOP_HEIGHT } from 'layouts/DefaultLayout';
 
 const NavigationUl = styled(StyledUl)`
   & li {
@@ -52,6 +53,10 @@ const HorizontalRule = styled.hr`
   margin: 40px 0;
 `;
 
+const ScrollHeader1 = styled(Header1)`
+  scroll-margin-top: ${TOP_HEIGHT};
+`;
+
 export default function Home() {
   return (
     <>
@@ -84,7 +89,7 @@ export default function Home() {
           </li>
         </NavigationUl>
 
-        <Header1 id="program-explanation">How the program works</Header1>
+        <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
         <StyledP>
           The Online Shops grant program will give Indigenous and non-Indigenous businesses funding to createan online
           shop and/or improve their e-commerce experience to attract new local customers and expandto new markets. The
@@ -106,7 +111,7 @@ export default function Home() {
         <ProgramSteps />
         <BackToTop />
 
-        <Header1 id="application-deadlines">Application deadlines</Header1>
+        <ScrollHeader1 id="application-deadlines">Application deadlines</ScrollHeader1>
         <StyledP>
           Program intake is open until the funds have been fully subscribed. The funding will be given on afirst-come
           first-serve basis to small- and medium-sized B.C. businesses to rapidly adapt to changingconsumer behaviour
@@ -118,13 +123,13 @@ export default function Home() {
         </StyledP>
         <BackToTop />
 
-        <Header1 id="eligibility">Determine your eligibility</Header1>
+        <ScrollHeader1 id="eligibility">Determine your eligibility</ScrollHeader1>
         <StyledP>Review the following criteria to determine if your business is eligible for the program.</StyledP>
 
         <EligibilityCriteria />
         <BackToTop />
 
-        <Header1 id="submit-application">Submit your application</Header1>
+        <ScrollHeader1 id="submit-application">Submit your application</ScrollHeader1>
 
         <Header2>Before applying</Header2>
         <StyledP>
@@ -165,7 +170,7 @@ export default function Home() {
         <GeneralInformation />
         <BackToTop />
 
-        <Header1 id="contact">CONTACT US</Header1>
+        <ScrollHeader1 id="contact">CONTACT US</ScrollHeader1>
         <StyledP>
           Please contact us directly to ask questions. We will respond within <strong>3 business days.</strong>
         </StyledP>
@@ -177,8 +182,10 @@ export default function Home() {
         </div>
         <div>
           <Info>
-            <Icon name="mail" />
-            info@gov.bc.ca
+            <HrefLink href="mailto:info@gov.bc.ca">
+              <Icon name="mail" />
+              info@gov.bc.ca
+            </HrefLink>
           </Info>
         </div>
 

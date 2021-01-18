@@ -14,6 +14,10 @@ const ApplyButton = styled.button`
   border: none;
   padding: 30px 60px;
   margin: 20px;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 function GeneralInformation() {

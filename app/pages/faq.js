@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 const StyledContainer = styled.div`
-  margin-top: 2em;
-  margin-left: 2em;
-  margin-right: 2em;
+  margin: 2em;
 `;
 
 const StyledHeader = styled(Header)`
@@ -57,6 +55,10 @@ const StyledQuestion = styled.p`
   color: #16152b;
 `;
 
+const ShowAllBtn = styled.p`
+  cursor: pointer;
+`;
+
 export default class Faq extends Component {
   constructor(props) {
     super(props);
@@ -99,7 +101,7 @@ export default class Faq extends Component {
 
           <StyledShowAllWrapper>
             <div></div>
-            <p onClick={this.handleAllClick}>{activeIndexs.length >= 1 ? 'Hide all' : 'Show all'}</p>
+            <ShowAllBtn onClick={this.handleAllClick}>{activeIndexs.length >= 1 ? 'Hide all' : 'Show all'}</ShowAllBtn>
           </StyledShowAllWrapper>
           <Divider />
 

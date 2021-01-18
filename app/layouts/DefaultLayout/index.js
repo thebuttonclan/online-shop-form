@@ -15,7 +15,7 @@ const bcidLogoRev = `/images/bcid-logo-rev-en.svg`;
 const logo = `/icons/osgp-white-orage.svg`;
 const HEADER_BREAKPOINT = 992;
 
-const TOP_HEIGHT = '120px';
+export const TOP_HEIGHT = '120px';
 
 const HEADER_LINKS = [
   { title: 'HOME', to: '/' },
