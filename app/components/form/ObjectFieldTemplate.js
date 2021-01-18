@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const { version: appVersion } = require('../../package.json');
-
 const Sgrid = styled.div`
   display: grid;
 `;
@@ -20,7 +18,6 @@ const ShiddenInput = styled.input`
 function ObjectFieldTemplate({ properties, title, description, schema }) {
   return (
     <>
-      <ShiddenInput type="text" name="formVersion" value={appVersion} readOnly />
       <Sgrid>
         {properties.map(prop => (
           <SgridItem

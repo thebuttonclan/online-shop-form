@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { getNestedFieldPropertiesByName } from 'schemas/split-schema';
 
 function getFieldsForSchema(schema) {
   try {
@@ -38,23 +39,42 @@ export function matchPostBody(postData, schema) {
   const formattedData = { ...postData };
   const { properties } = schema;
   const dataArray = Object.keys(formattedData);
+  const nestedFields = getNestedFieldPropertiesByName(schema);
 
   dataArray.forEach(propertyName => {
     let newValue = formattedData[propertyName];
+    const objectIndex = nestedFields.findIndex(field => {
+      const ownedPropertyNames = Object.values(field)[0];
+      return ownedPropertyNames.includes(propertyName);
+    });
+
     // Remove any posted values not on the full-schema
-    if (!properties[propertyName]) {
-      if (propertyName === 'formVersion') return;
+    if (!properties[propertyName] && objectIndex === -1) {
       delete formattedData.propertyName;
       return;
     }
-    if (properties[propertyName].type === 'boolean') {
+
+    if (properties[propertyName]?.type === 'boolean') {
       newValue = getBooleanValue(newValue);
+      formattedData[propertyName] = newValue;
     }
-    if (properties[propertyName].type === 'array') {
+
+    if (properties[propertyName]?.type === 'array') {
       newValue = getArrayValue(newValue);
+      formattedData[propertyName] = newValue;
+    }
+
+    // If fieldname is part of an object
+    if (objectIndex !== -1) {
+      const owningPropertyName = Object.keys(nestedFields[objectIndex])[0];
+      if (!formattedData[owningPropertyName]) {
+        formattedData[owningPropertyName] = {};
+        formattedData[owningPropertyName][propertyName] = newValue;
+      } else {
+        formattedData[owningPropertyName][propertyName] = newValue;
+      }
     }
     // TODO: add support for cleaning other rjsf types below, e.g number
-    formattedData[propertyName] = newValue;
   });
   return formattedData;
 }

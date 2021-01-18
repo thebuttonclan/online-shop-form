@@ -34,6 +34,21 @@ function getNestedFieldProperties(properties) {
   });
   return nestedFields;
 }
+// Returns array objects of all nested fields in object fields, e.g [{cost: ['serviceProviders', 'acquitisionCosts']}]
+export function getNestedFieldPropertiesByName(schema) {
+  const { properties } = schema;
+  const nestedFields = [];
+  Object.entries(properties).forEach(([ownerProperty, value]) => {
+    if (value.type === 'object') {
+      const ownedProperties = { [ownerProperty]: [] };
+      Object.keys(value.properties).forEach(fieldName => {
+        ownedProperties[ownerProperty].push(fieldName);
+      });
+      nestedFields.push(ownedProperties);
+    }
+  });
+  return nestedFields;
+}
 /* splitSchema is built to handle only dependencies of the form
 {
   propertyName: {

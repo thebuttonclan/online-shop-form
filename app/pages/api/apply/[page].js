@@ -1,6 +1,5 @@
 import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
 import schemasArray from 'schemas/page-schemas';
-import fullSchema from 'schemas/consolidated-schema';
 import { removePageFields, matchPostBody } from 'utils/form-helpers';
 
 async function handler(req, res) {
