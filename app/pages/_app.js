@@ -4,6 +4,7 @@ import DefaultLayout from 'layouts/DefaultLayout';
 import { createGlobalStyle } from 'styled-components';
 import 'semantic-ui-css/semantic.min.css';
 import { PRIMARY_COLOUR, DEFAULT_FONT_SIZE, SECONDARY_COLOUR, PRIMARY_FONT } from 'theme';
+import { Helmet } from 'react-helmet';
 
 const GlobalStyle = createGlobalStyle`
   .bg-primary {
@@ -29,13 +30,31 @@ const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
   }
+
+  html.normal-scroll {
+    scroll-behavior: auto;
+  }
 `;
 
 class App extends PureComponent {
+  // scroll-behaviour: smooth on html breaks nextjs linking, will not go to top
+  // of page when routing. Switching to normal scroll between routing fixes this
+  // See https://github.com/vercel/next.js/issues/20125
+  componentDidMount() {
+    this.props.router.events.on('routeChangeStart', () => {
+      document.documentElement.classList.add('normal-scroll');
+    });
+    this.props.router.events.on('routeChangeComplete', () => {
+      document.documentElement.classList.remove('normal-scroll');
+    });
+  }
   render() {
     const { Component, pageProps, router } = this.props;
     return (
       <>
+        <Helmet>
+          <title>Launch Online</title>
+        </Helmet>
         <GlobalStyle />
         <DefaultLayout query={{ ...router.query }} pathname={router.pathname}>
           <Component {...pageProps} />

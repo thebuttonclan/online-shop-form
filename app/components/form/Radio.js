@@ -3,14 +3,18 @@
 
 import styled from 'styled-components';
 import { MIN_PADDING, LARGE_FONT } from 'theme';
+import Label from 'components/form/SemanticStyleLabel';
 
-const SemanticLabel = styled.span`
+const RadioLabel = styled.span`
   padding-left: ${MIN_PADDING};
-  font-weight: bold;
 `;
 
-const GroupTitle = styled.p`
-  font-size: ${LARGE_FONT};
+const RadioGroup = styled.div`
+  display: flex;
+
+  & div {
+    padding: ${MIN_PADDING};
+  }
 `;
 
 function RadioWidget(props) {
@@ -21,41 +25,43 @@ function RadioWidget(props) {
   // checked={checked} has been moved above name={name}, As mentioned in #349;
   // this is a temporary fix for radio button rendering bug in React, facebook/react#7630.
   return (
-    <div className="field-radio-group" id={id}>
-      <GroupTitle>{title}</GroupTitle>
-      {enumOptions.map((option, i) => {
-        const checked = option.value === value;
-        const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
-        const disabledCls = disabled || itemDisabled || readonly ? 'disabled' : '';
-        const radio = (
-          <span>
-            <input
-              type="radio"
-              checked={checked}
-              name={name}
-              required={required}
-              value={option.value}
-              disabled={disabled || itemDisabled || readonly}
-              autoFocus={autofocus && i === 0}
-              onChange={_ => onChange(option.value)}
-              onBlur={onBlur && (event => onBlur(id, event.target.value))}
-              onFocus={onFocus && (event => onFocus(id, event.target.value))}
-            />
-            <SemanticLabel>{option.label}</SemanticLabel>
-          </span>
-        );
+    <>
+      <Label required={required}>{title}</Label>
+      <RadioGroup className="field-radio-group" id={id}>
+        {enumOptions.map((option, i) => {
+          const checked = option.value === value;
+          const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
+          const disabledCls = disabled || itemDisabled || readonly ? 'disabled' : '';
+          const radio = (
+            <span>
+              <input
+                type="radio"
+                checked={checked}
+                name={name}
+                required={required}
+                value={option.value}
+                disabled={disabled || itemDisabled || readonly}
+                autoFocus={autofocus && i === 0}
+                onChange={_ => onChange(option.value)}
+                onBlur={onBlur && (event => onBlur(id, event.target.value))}
+                onFocus={onFocus && (event => onFocus(id, event.target.value))}
+              />
+              <RadioLabel>{option.label}</RadioLabel>
+            </span>
+          );
 
-        return inline ? (
-          <label key={i} className={`radio-inline ${disabledCls}`}>
-            {radio}
-          </label>
-        ) : (
-          <div key={i} className={`radio ${disabledCls}`}>
-            <label>{radio}</label>
-          </div>
-        );
-      })}
-    </div>
+          return inline ? (
+            <label key={i} className={`radio-inline ${disabledCls}`}>
+              {radio}
+            </label>
+          ) : (
+            <div key={i} className={`radio ${disabledCls}`}>
+              <label>{radio}</label>
+            </div>
+          );
+        })}
+      </RadioGroup>
+    </>
   );
 }
 

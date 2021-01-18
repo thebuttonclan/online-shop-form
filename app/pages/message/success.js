@@ -4,6 +4,7 @@ import StyledUl from 'components/StyledUl';
 import styled from 'styled-components';
 import { HUGE_FONT, MIN_PADDING } from 'theme';
 import StyledP from 'components/StyledP';
+import { Helmet } from 'react-helmet';
 
 const IndentedUl = styled(StyledUl)`
   margin-left: calc(${MIN_PADDING} * 3) !important;
@@ -36,6 +37,9 @@ const LiBreak = styled.li`
 export default function SuccessPage() {
   return (
     <Container>
+      <Helmet>
+        <title>Application Submitted</title>
+      </Helmet>
       <SuccessBanner>
         <p>
           <Icon name="check circle"></Icon>

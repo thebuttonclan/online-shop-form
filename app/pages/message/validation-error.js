@@ -8,6 +8,7 @@ import { validateFormData } from 'services/application';
 import pageSchemas from 'schemas/page-schemas';
 import HrefLink from 'components/HrefLink';
 import startCase from 'lodash/startCase';
+import { Helmet } from 'react-helmet';
 
 const IndentedUl = styled(StyledUl)`
   margin-left: calc(${MIN_PADDING} * 3) !important;
@@ -42,6 +43,9 @@ export default function ErrorPage({ result }) {
 
   return (
     <Container>
+      <Helmet>
+        <title>Something Went Wrong</title>
+      </Helmet>
       <SuccessBanner>
         <p>
           <Icon name="exclamation circle"></Icon>

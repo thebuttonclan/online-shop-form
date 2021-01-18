@@ -72,7 +72,9 @@ export default function Home() {
             <a href="#submit-application">Submit your application</a>
           </li>
           <li>
-            <HrefLink href="/program-guide">Program guide</HrefLink>
+            <HrefLink href="/files/program_guide.pdf" blank>
+              Program guide
+            </HrefLink>
           </li>
           <li>
             <HrefLink href="/faq">Frequently asked questions</HrefLink>

@@ -2,9 +2,10 @@ import React from 'react';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
-import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
+import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import StyledUl from 'components/StyledUl';
 import Header2 from 'components/Header2';
+import { Helmet } from 'react-helmet';
 
 const externalLink = href => (
   <a href={href} target="_blank">
@@ -194,6 +195,9 @@ export default function PrivacyPolicy() {
   return (
     <>
       <StyledContainer>
+        <Helmet>
+          <title>Privacy Policy</title>
+        </Helmet>
         <StyledH1>WEBSITE TERMS OF USE AND PRIVACY POLICY</StyledH1>
         <Header2>Contents:</Header2>
         <NavigationUl>

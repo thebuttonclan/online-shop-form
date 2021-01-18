@@ -7,7 +7,7 @@ const HEADER_HEIGHT = '40vh';
 const ImageBackground = styled.div`
   width: 100vw;
   min-height: ${HEADER_HEIGHT} !important;
-  background-image: url('/images/banner.webp');
+  background-image: url('/images/banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;

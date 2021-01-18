@@ -25,7 +25,9 @@ function GeneralInformation() {
         <StyledUl>
           <li>
             Before completing, please read the{' '}
-            <HrefLink href="/program-guide">Online Shops Grant Program Guide</HrefLink>
+            <HrefLink href="/files/program_guide.pdf" blank>
+              Online Shops Grant Program Guide
+            </HrefLink>
           </li>
           <li>
             Before submitting your application, please ensure that all required information and attachments are

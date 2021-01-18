@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Accordion, Icon, Divider, Header, Container } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 const StyledContainer = styled.div`
   margin-top: 2em;
@@ -90,7 +91,9 @@ export default class Faq extends Component {
     const { activeIndexs } = this.state;
     return (
       <Container>
-        {' '}
+        <Helmet>
+          <title>Frequently Asked Questions</title>
+        </Helmet>{' '}
         <StyledContainer>
           <StyledHeader as="h1">FAQ</StyledHeader>
 

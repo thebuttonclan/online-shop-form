@@ -5,7 +5,7 @@ export const QUATERNERY_COLOUR = '#7a2297';
 export const BACKGROUND_COLOUR = '#FFF';
 
 export const HUGE_FONT = '46px';
-export const LARGE_FONT = '26px';
+export const LARGE_FONT = '30px';
 export const DEFAULT_FONT_SIZE = '18px';
 
 export const PRIMARY_FONT_COLOUR = 'black';
