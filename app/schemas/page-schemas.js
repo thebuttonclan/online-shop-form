@@ -1,8 +1,7 @@
 import uiSchema from 'schemas/ui-schema';
 import consolidatedSchema from 'schemas/consolidated-schema';
 import splitSchemas from 'schemas/split-schema';
-import values from 'lodash/values';
-import sum from 'lodash/sum';
+import { calculateGrantAmount } from 'schemas/helpers';
 
 const order = uiSchema['ui:order'];
 const schemasArray = splitSchemas(consolidatedSchema, order);
@@ -15,16 +14,11 @@ export const getPageByField = field => fieldsArray.findIndex(arr => arr.includes
 const costsSchema = schemasArray[getPageByField('costs') - 1];
 
 costsSchema.onChange = ctx => {
-  const { grandAmountRef } = ctx.schema.properties.costs;
+  const { setGrantAmount } = ctx.schema.properties.costs;
 
-  if (grandAmountRef && grandAmountRef.current) {
-    const { formData } = ctx;
-
-    const total = sum(values(formData.costs).map(Number));
-    const grandAmount = total * 0.75;
-
-    grandAmountRef.current.value = grandAmount.toFixed(2);
-  }
+  const { formData } = ctx;
+  const grantAmount = calculateGrantAmount(formData);
+  setGrantAmount(grantAmount);
 };
 
 export default schemasArray;

@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
+import { calculateGrantAmount } from 'schemas/helpers';
+import { formatCurrency } from 'helpers/number';
 
 const Sdiv = styled.div`
   font-weight: bold;
@@ -20,9 +22,14 @@ const Sinput = styled.input`
 const MAX_GRANT_AMOUNT = 7500;
 
 export default function CostsFieldTemplate(props) {
-  const inputEl = useRef(null);
+  const { formContext, schema } = props;
+  const { initialFormData } = formContext;
 
-  props.schema.grandAmountRef = inputEl;
+  const initialGrantAmount = calculateGrantAmount(initialFormData);
+
+  const [grantAmount, setGrantAmount] = useState(initialGrantAmount);
+
+  schema.setGrantAmount = setGrantAmount;
 
   return (
     <div>
@@ -36,7 +43,7 @@ export default function CostsFieldTemplate(props) {
       {props.children}
       <div>
         <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
-        <Sinput ref={inputEl} type="text" disabled id="id_grant_request" />
+        {formatCurrency(grantAmount)}
       </div>
     </div>
   );

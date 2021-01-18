@@ -23,6 +23,7 @@ const Sinput = styled(Form.Input)`
 const Cost = props => {
   const { name, title, inputType, pattern, minLength, maxLength } = props.schema;
   const { value, onChange, required } = props;
+
   // Add $
   return (
     <Sdiv>
