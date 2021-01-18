@@ -40,6 +40,6 @@ jobs:
           asdf plugin-update --all
           asdf install
           asdf reshim
-          az aks get-credentials --resource-group onlineshopsgrant-resource-group --name onlineshopsgrant-aks
+          az aks get-credentials --resource-group launchonline-resource-group --name launchonline-aks
           make lint-app ENV=${{ env.env }} TAG=${{ env.tag }}
         working-directory: ./helm
