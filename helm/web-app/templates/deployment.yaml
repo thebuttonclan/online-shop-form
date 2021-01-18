@@ -34,6 +34,15 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 3000
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
           env:
             # Passing release version is essential to trigger a new deploymnet when deploying with `helm upgrade --install` command
             - name: RELEASE_REVISION

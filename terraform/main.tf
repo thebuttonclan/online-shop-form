@@ -35,7 +35,7 @@ module "postgresql_dev" {
   vnet_subnet_id      = azurerm_subnet.this.id
   create_read_replica = true
 
-  depends_on = [azurerm_resource_group.this, azurerm_subnet.this]
+  depends_on = [module.aks]
 }
 
 # module "postgresql_prod" {
@@ -50,7 +50,7 @@ module "postgresql_dev" {
 #   vnet_subnet_id      = azurerm_subnet.this.id
 #   create_read_replica = true
 
-#   depends_on = [azurerm_resource_group.this, azurerm_subnet.this]
+#   depends_on = [module.aks]
 # }
 
 # module "postgresql_test" {
@@ -65,7 +65,7 @@ module "postgresql_dev" {
 #   vnet_subnet_id      = azurerm_subnet.this.id
 #   create_read_replica = true
 
-#   depends_on = [azurerm_resource_group.this, azurerm_subnet.this]
+#   depends_on = [module.aks]
 # }
 
 module "container_registry" {
