@@ -42,10 +42,12 @@ export default function CostsFieldTemplate(props) {
         <HrefLink href="/program-guide"> program guide</HrefLink>.
       </SInfo>
       {props.children}
-      <div>
-        <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
-        {formatCurrency(Math.min(grantAmount, MAX_GRANT_AMOUNT))}
-      </div>
+      {typeof window === 'object' && (
+        <div>
+          <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
+          {formatCurrency(Math.min(grantAmount, MAX_GRANT_AMOUNT))}
+        </div>
+      )}
     </div>
   );
 }
