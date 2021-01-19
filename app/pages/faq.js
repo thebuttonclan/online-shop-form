@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Accordion, Icon, Divider, Header, Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
+import { DEFAULT_FONT_SIZE } from 'theme';
 
 const StyledContainer = styled.div`
   margin-top: 2em;
@@ -23,21 +24,21 @@ const StyledIcon = styled.div`
 `;
 
 const StyledP = styled.p`
-  font-size: 1.2em;
+  font-size: ${DEFAULT_FONT_SIZE};
 `;
 
 const StyledUl = styled.ul`
   margin-left: 0.5em;
 
   & li {
-    font-size: 1.2em;
+    font-size: ${DEFAULT_FONT_SIZE};
     margin-bottom: 0.6em;
   }
 `;
 
 const StyledAnchor = styled.a.attrs({ target: '_blank', rel: 'noopener noreferrer' })`
   display: block;
-  font-size: 1.2em;
+  font-size: ${DEFAULT_FONT_SIZE};
 `;
 
 const StyledShowAllWrapper = styled.div`
@@ -105,6 +106,52 @@ export default class Faq extends Component {
 
           <Accordion>
             <StyledAccordionTitle active={activeIndexs.includes(0)} index={0} onClick={this.handleAccordionClick}>
+              <StyledQuestion>What expenses are eligible?</StyledQuestion>
+              <StyledIcon>
+                <Icon name={activeIndexs.includes(0) ? 'minus' : 'plus'} />
+              </StyledIcon>
+            </StyledAccordionTitle>
+            <Accordion.Content active={activeIndexs.includes(0)}>
+              <StyledP>
+                Funding recipients MUST use local B.C. service providers to complete contract work to build or improve
+                their online store. The only exception to this rule is when a service is provided entirely online, such
+                as:
+              </StyledP>
+              <StyledUl>
+                <li>Platform subscription </li>
+                <li>Purchase of online photos and graphics </li>
+                <li>Purchase of online promotional space such as Facebook ads </li>
+              </StyledUl>
+              <StyledP>
+                Expenses related to the development, management and improvement of an online shop and must support
+                e-commerce (website only with and email and/or phone number is not an eligible expense), such as:
+              </StyledP>
+              <StyledUl>
+                <li>
+                  Service provider costs:
+                  <StyledUl>
+                    <li>Development time for the platform (create new or substantially enhance) </li>
+                    <li>Pictures (including photographer), stock photos or related graphics required for site </li>
+                    <li>Copy and online content writing </li>
+                    <li>Online inventory of goods and products development </li>
+                  </StyledUl>
+                </li>
+                <li>
+                  Digital customer acquisition costs:
+                  <StyledUl>
+                    <li>Subscription costs of e-commerce platform (up to 1 year) </li>
+                    <li>Online advertising costs (up to 1 year) </li>
+                    <li>Search Engine Optimization (SEO) </li>
+                  </StyledUl>
+                </li>
+                <li>Banner and other embedded advertising creation (e.g., social media sites, gaming, etc.) </li>
+                <li>Staff training to manage own online shop and/or gain digital marketing skills </li>
+              </StyledUl>
+            </Accordion.Content>
+
+            <Divider />
+
+            <StyledAccordionTitle active={activeIndexs.includes(0)} index={0} onClick={this.handleAccordionClick}>
               <StyledQuestion>What expenses are ineligible?</StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(0) ? 'minus' : 'plus'} />
@@ -112,9 +159,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(0)}>
               <StyledP>
-                Funding is not to be used for ongoing e-commerce activities that have already started or will commence
-                before the StyledProject start date or for general website or IT upgrades. Further, it is not to be used
-                for:
+                Funding cannot be used for ongoing e-commerce activities that the business has already started before
+                the project start date or for general website or IT upgrades. Funds also cannot be used for:
               </StyledP>
               <StyledUl>
                 <li>Starting an e-commerce business which intends to sell products on behalf of other companies</li>
@@ -129,7 +175,8 @@ export default class Faq extends Component {
 
             <StyledAccordionTitle active={activeIndexs.includes(1)} index={1} onClick={this.handleAccordionClick}>
               <StyledQuestion>
-                What does my business need to provide to demonstrate we’ve used a BC-based service provider?
+                What does my business need to provide to demonstrate we’ve used a B.C.-based service provider to build
+                the online shop?
               </StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(1) ? 'minus' : 'plus'} />
@@ -137,17 +184,16 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(1)}>
               <StyledP>
-                Eligible service providers can be demonstrated through their invoices of eligible expenses which include
-                the company name, BC address, Business number and GST number.
+                You should obtain the company name, B.C. address, Business number and GST number before contracting them
+                to your project to ensure the expenses are eligible. The information is provided to Alacrity Canada in
+                the Expense Summary Report, and must be available in invoices for auditing purposes.
               </StyledP>
             </Accordion.Content>
 
             <Divider />
 
             <StyledAccordionTitle active={activeIndexs.includes(2)} index={2} onClick={this.handleAccordionClick}>
-              <StyledQuestion>
-                I have an e-commerce site. Am I still eligible for funding to make it better?
-              </StyledQuestion>
+              <StyledQuestion>I have an e-commerce site. Am I still eligible for funding to enhance it?</StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(2) ? 'minus' : 'plus'} />
               </StyledIcon>
@@ -168,8 +214,8 @@ export default class Faq extends Component {
                 <li>Website analytics and reporting capabilities.</li>
               </StyledUl>
               <StyledP>
-                The grant program is intended to get businesses online and to fully participate in the digital market
-                place. This grant program is not intended for businesses that have more advanced e-commerce capabilities
+                The grant program is intended to get businesses online to fully participate in the digital market-place.
+                The grant program is not intended for businesses that already have more advanced e-commerce capabilities
                 in place.
               </StyledP>
             </Accordion.Content>
@@ -187,8 +233,9 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(3)}>
               <StyledP>
-                Yes. ​You will be required to declare that the programs have been complementary, and the costs covered
-                by this program are towards expenses not covered by the other programs.
+                Yes. However, you will be required to declare that the programs are not used to pay the same expense
+                twice, i.e. the funding provided through the Online Shops Program will be used toward expenses not
+                covered by the other programs your business has participated in.
               </StyledP>
             </Accordion.Content>
 
@@ -204,9 +251,9 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(4)}>
               <StyledP>
-                Only cost incurred to build or enhance online shops during the pre-determined program timelines will be
-                eligible, i.e. within three months from when you receive your confirmation of eligibility and grant
-                letter.
+                Only cost incurred to build or enhance your online shop during the program timelines will be eligible,
+                i.e. the grant funding will cover eligible expenses to build or enhance your online shop within 12-weeks
+                from when you received confirmation of eligibility via the grant letter.
               </StyledP>
             </Accordion.Content>
 
@@ -215,49 +262,28 @@ export default class Faq extends Component {
             <StyledAccordionTitle active={activeIndexs.includes(5)} index={5} onClick={this.handleAccordionClick}>
               <StyledQuestion>
                 I know a student that is able to build my online store for my business. Would they be an eligible
-                BC-based service provider?
+                B.C.-based service provider?
               </StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(5) ? 'minus' : 'plus'} />
               </StyledIcon>
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(5)}>
-              <StyledP>Only those registered to do business in BC will be eligible as a service provider.</StyledP>
-            </Accordion.Content>
-
-            <Divider />
-
-            <StyledAccordionTitle active={activeIndexs.includes(6)} index={6} onClick={this.handleAccordionClick}>
-              <StyledQuestion>
-                I have an online store but need to add product pictures. Could I apply all the eligible funding toward a
-                professional photographer?
-              </StyledQuestion>
-              <StyledIcon>
-                <Icon name={activeIndexs.includes(6) ? 'minus' : 'plus'} />
-              </StyledIcon>
-            </StyledAccordionTitle>
-            <Accordion.Content active={activeIndexs.includes(6)}>
-              <StyledP>
-                Funding is not to be used for ongoing e-commerce activities that have already started or will commence
-                before the project start date or for general website or IT upgrades.
-              </StyledP>
+              <StyledP>Only those registered to do business in B.C. will be eligible as a service provider.</StyledP>
             </Accordion.Content>
 
             <Divider />
 
             <StyledAccordionTitle active={activeIndexs.includes(7)} index={7} onClick={this.handleAccordionClick}>
-              <StyledQuestion>
-                I have an employee that recently completed the Marketing Bootcamp course. Can I use this program to pay
-                them to build my online store?
-              </StyledQuestion>
+              <StyledQuestion>Can I use this program to pay an employee to build my online shop?</StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(7) ? 'minus' : 'plus'} />
               </StyledIcon>
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(7)}>
               <StyledP>
-                Employee salaries are not eligible expenses. The employee can build the online store, and the grant
-                funds can be used towards other eligible expenses.
+                Employee salaries are not eligible expenses. The employee can build the online shop, and the grant funds
+                can be used toward other eligible expenses.
               </StyledP>
             </Accordion.Content>
 
@@ -288,8 +314,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(9)}>
               <StyledP>
-                The grant covers 75% of project expenses, up to a maximum of $7,500. This means that even if your
-                project costs are only $1,000 total, your company must cover 25% of the cost (25% of the project cost).
+                The grant covers 75% of project expenses, up to a maximum of $7,500. For example, if your project costs
+                are only $1,000, your company must cover 25% of the project cost ($250) of the $1,000.
               </StyledP>
             </Accordion.Content>
 
@@ -306,7 +332,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(10)}>
               <StyledP>
-                No. All contractors must be locally based in BC in order to be considered an eligible expense.
+                No. All contractors must be locally based in B.C. and be registered to do business in B.C. in order to
+                be considered an eligible expense.
               </StyledP>
             </Accordion.Content>
 
@@ -353,7 +380,7 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(13)}>
               <StyledP>
-                No. All applicants are required to be a BC-based registered business with a business number to be
+                No. All applicants are required to be a B.C.-based and be registered to do business in B.C. to be
                 considered for funding.
               </StyledP>
             </Accordion.Content>
@@ -362,7 +389,7 @@ export default class Faq extends Component {
 
             <StyledAccordionTitle active={activeIndexs.includes(14)} index={14} onClick={this.handleAccordionClick}>
               <StyledQuestion>
-                I have an online store but need to add product pictures. Could I apply all the eligible funding toward a
+                I have an online shop but need to add product pictures. Could I apply all the eligible funding toward a
                 professional photographer?
               </StyledQuestion>
               <StyledIcon>
@@ -371,8 +398,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(14)}>
               <StyledP>
-                It depends. If your online store that has no more than 3 of the 5 identified online store features, see
-                below, you would be eligible for expenses toward a professional photographer.
+                It depends. If your online shop has no more than 3 of the 5 identified online shop features below, you
+                would be eligible for expenses toward a professional photographer.
               </StyledP>
               <StyledUl>
                 <li>Customer registration and information security features</li>
@@ -390,8 +417,8 @@ export default class Faq extends Component {
 
             <StyledAccordionTitle active={activeIndexs.includes(15)} index={15} onClick={this.handleAccordionClick}>
               <StyledQuestion>
-                Can I submit receipts for expenses that I incurred while setting up my online store prior to applying
-                for this grant?
+                Can I submit receipts for expenses that I incurred while setting up my online shop prior to applying for
+                this grant?
               </StyledQuestion>
               <StyledIcon>
                 <Icon name={activeIndexs.includes(15) ? 'minus' : 'plus'} />
@@ -399,9 +426,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(15)}>
               <StyledP>
-                Only cost incurred to build or enhance online shops during the pre-determined program timelines will be
-                eligible, i.e. within three months from when you receive your confirmation of eligibility and grant
-                letter.
+                The grant funding will cover eligible expenses to build or enhance your online shop within 12-weeks from
+                when you received confirmation of eligibility via the grant letter.
               </StyledP>
             </Accordion.Content>
 
@@ -415,8 +441,8 @@ export default class Faq extends Component {
             </StyledAccordionTitle>
             <Accordion.Content active={activeIndexs.includes(16)}>
               <StyledP>
-                Audits will be conducted mostly at random, if you do lose a receipt try to supply other evidence of the
-                expense such as bank statement.
+                Audits will be randomly conducted. If you do lose a other evidence of the expense, such as bank
+                statement may be considered.
               </StyledP>
             </Accordion.Content>
 
@@ -448,11 +474,11 @@ export default class Faq extends Component {
                 Digital Economy: Rapid Response + Resiliency (DER3), program funded through Innovate BC, provides
                 support to small-medium sized businesses, in any sector, enter or expand in the digital economy, through
                 personalized advisory services to assess needs, recommend tools and solutions toward appropriate
-                technology and connections to vetted digital service providers: local BC businesses that provide online
-                services. For information and to register:
+                technology and connections to vetted digital service providers: local B.C. businesses that provide
+                online services. For information and to register:
               </StyledP>
               <StyledAnchor href="https://innovatebc.ca/what-we-offer/connect-with-ex perts/der3/">
-                https://innovatebc.ca/what-we-offer/connect-with-ex perts/der3/
+                https://innovatebc.ca/what-we-offer/connect-with-experts/der3/
               </StyledAnchor>
               <br />
               <StyledP>
@@ -462,18 +488,6 @@ export default class Faq extends Component {
               <StyledAnchor href="https://www.boardoftrade.com/events/individual-eve nts/1789-6567">
                 https://www.boardoftrade.com/events/individual-eve nts/1789-6567
               </StyledAnchor>
-            </Accordion.Content>
-
-            <Divider />
-
-            <StyledAccordionTitle active={activeIndexs.includes(19)} index={19} onClick={this.handleAccordionClick}>
-              <StyledQuestion>Where can I go for advice in languages other than English?</StyledQuestion>
-              <StyledIcon>
-                <Icon name={activeIndexs.includes(19) ? 'minus' : 'plus'} />
-              </StyledIcon>
-            </StyledAccordionTitle>
-            <Accordion.Content active={activeIndexs.includes(19)}>
-              <StyledP>Resources tbd</StyledP>
             </Accordion.Content>
           </Accordion>
         </StyledContainer>

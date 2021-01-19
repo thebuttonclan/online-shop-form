@@ -41,8 +41,8 @@ const Banner = ({ text }) => (
       <Container>
         <BannerOverlayHeader as="h1">Online Shops Grant Program</BannerOverlayHeader>
         <BannerOverlaySubHeader>
-          Small and medium-sized businesses are vital to British Columbia’s economy. The Online Shop grant program is
-          investing up to $12 million to help small- and medium-size businesses throughout B.C. movetheir business model
+          Small and medium-sized businesses are vital to British Columbia’s economy. The Online Shops Grant program will
+          invest up to $12 million to help small- and medium-size businesses throughout B.C. move their business model
           online.
         </BannerOverlaySubHeader>
       </Container>
