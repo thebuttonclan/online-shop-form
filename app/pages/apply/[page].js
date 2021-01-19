@@ -49,10 +49,10 @@ const BackButton = styled.p`
 
 export default function Apply({ formData, page }) {
   const router = useRouter();
-  const linkRoute = Number(page) === 1 ? '/' : `/apply/${Number(page) - 1}`;
-  const continueBtnText = Number(page) === LAST_PAGE ? 'Submit' : 'Continue';
-  const schema = pageSchemas[Number(page) - 1];
-  const percent = (Number(page) / LAST_PAGE) * 100;
+  const linkRoute = page === 1 ? '/' : `/apply/${page - 1}`;
+  const continueBtnText = page === LAST_PAGE ? 'Submit' : 'Continue';
+  const schema = pageSchemas[page - 1];
+  const percent = (page / LAST_PAGE) * 100;
 
   const handleSubmit = async ({ formData }) => {
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
@@ -125,11 +125,13 @@ export default function Apply({ formData, page }) {
   );
 }
 
-export async function getServerSideProps({ req, query: params }) {
+export async function getServerSideProps({ req, res, query: params }) {
   const { session = {} } = req;
   const { formData = {} } = session;
   let { page } = params;
   page = Number(page);
+  const validPage = page <= LAST_PAGE && page > 0 && Number.isInteger(page);
+  if (!validPage) res.redirect('/');
 
   return {
     props: { page, formData },
