@@ -56,7 +56,7 @@ export async function submitApplication({ req, newData, js }) {
     req.session.formData = {};
 
     if (js) return res.json(result);
-    return res.redirect('success');
+    return res.redirect('/message/success');
   } catch (error) {
     if (js) return res.status(422).json({ hasError: true, message: error.message || error });
     return res.redirect('/message/error');
