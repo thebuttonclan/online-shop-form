@@ -33,21 +33,20 @@ create or replace view public.application_extract
         form_data ->> 'sector' AS sector,
         form_data ->> 'sectorOther' AS sector_other,
         form_data ->> 'planForFunds' AS plan_for_funds,
-        form_data ->> 'serviceProviders' AS service_providers,
-        sum(sp_cost) AS total_sp_costs,
-        sum(sp_cost)*.75 AS grant_portion_sp,
-        form_data ->> 'customerAcquisition' AS customer_acquisition,
-        sum(ca_cost) AS total_ca_costs,
-        sum(ca_cost)*.75 AS grant_portion_ca,
-        form_data ->> 'staffTraining' AS staff_training,
-        sum(st_cost) AS total_st_costs,
-        sum(st_cost)*.75 AS grant_portion_st,
-        sum(sp_cost) + sum(ca_cost) + sum(st_cost) AS total_costs,
-        LEAST(7500, sum(sp_cost) + sum(ca_cost) + sum(st_cost)) AS grant_value
-    from applications a
-    cross join (select
-      (jsonb_array_elements(form_data -> 'costs' -> 'serviceProviders') ->> 'serviceCost')::numeric as sp_cost,
-      (jsonb_array_elements(form_data -> 'costs' -> 'customerAcquisition') ->> 'serviceCost')::numeric as ca_cost,
-      (jsonb_array_elements(form_data -> 'costs' -> 'staffTraining') ->> 'serviceCost')::numeric as st_cost
-      from applications) as agg_costs
-    group by id;
+        form_data -> 'costs' ->> 'serviceProviderCosts' AS service_provider_costs,
+        form_data -> 'costs' ->> 'customerAcquisitionCosts' AS customer_acquisition_costs,
+        form_data -> 'costs' ->> 'staffTrainingCosts' AS staff_training_costs,
+        (
+          (form_data -> 'costs' ->> 'serviceProviderCosts')::numeric +
+          (form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric +
+          (form_data -> 'costs' ->> 'staffTrainingCosts')::numeric
+        ) AS total_costs,
+        LEAST(
+          7500,
+          (.75 * (
+            (form_data -> 'costs' ->> 'serviceProviderCosts')::numeric +
+            (form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric +
+            (form_data -> 'costs' ->> 'staffTrainingCosts')::numeric
+          ))
+        ) AS grant_request
+    from applications

@@ -31,7 +31,6 @@ const schema = {
     'madeInBc',
     'employees',
     'importExportBusiness',
-    'existingOnlineStore',
     'canMeetDeadline',
     'otherCovidFunding',
     'sector',
@@ -95,21 +94,6 @@ const schema = {
             madeInBc: { enum: [false] },
           },
           required: ['productionLocation'],
-        },
-      ],
-    },
-    existingOnlineStore: {
-      oneOf: [
-        {
-          properties: {
-            existingOnlineStore: { enum: [false] },
-          },
-        },
-        {
-          properties: {
-            existingOnlineStore: { enum: [true] },
-          },
-          required: ['onlineStoreUrl', 'existingStoreFeatures'],
         },
       ],
     },
@@ -321,34 +305,58 @@ const schema = {
       title: 'Is the business an import/export business?',
       name: 'importExportBusiness',
     },
-    // Has condition, plus a second condition not done yet
-    existingOnlineStore: {
-      type: 'boolean',
-      title: 'Does the business currently have an online store?',
-      name: 'existingOnlineStore',
-    },
-    onlineStoreUrl: {
-      type: 'string',
-      title: 'Please input the link to the business’ online store',
-      name: 'onlineStoreUrl',
-      minLength: REQUIRED_TEXT_MIN_LENGTH,
-      maxLength: TEXT_MAX_LENGTH,
-    },
-    existingStoreFeatures: {
-      type: 'array',
-      title: 'If the business has an existing online store, please select all that apply',
-      name: 'existingStoreFeatures',
-      items: {
-        type: 'string',
-        enum: [
-          'Customer registration and information security features',
-          'Shopping cart and order management capabilities',
-          'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
-          'Product catalogue, search and inventory status',
-          'Website analytics and reporting capabilities',
-        ],
+    onlineStore: {
+      type: 'object',
+      name: 'onlineStore',
+      title: '',
+      properties: {
+        existingOnlineStore: {
+          type: 'boolean',
+          title: 'Does the business currently have an online store?',
+          name: 'existingOnlineStore',
+        },
+        onlineStoreUrl: {
+          type: 'string',
+          title: 'Link to online store',
+          name: 'onlineStoreUrl',
+          minLength: REQUIRED_TEXT_MIN_LENGTH,
+          maxLength: TEXT_MAX_LENGTH,
+        },
+        existingStoreFeatures: {
+          type: 'array',
+          title: 'If the business has an existing online store, please select all that apply',
+          name: 'existingStoreFeatures',
+          items: {
+            type: 'string',
+            enum: [
+              'Customer registration and information security features',
+              'Shopping cart and order management capabilities',
+              'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
+              'Product catalogue, search and inventory status',
+              'Website analytics and reporting capabilities',
+            ],
+          },
+          uniqueItems: true,
+        },
       },
-      uniqueItems: true,
+      required: ['existingOnlineStore'],
+      dependencies: {
+        existingOnlineStore: {
+          oneOf: [
+            {
+              properties: {
+                existingOnlineStore: { enum: [false] },
+              },
+            },
+            {
+              properties: {
+                existingOnlineStore: { enum: [true] },
+              },
+              required: ['onlineStoreUrl'],
+            },
+          ],
+        },
+      },
     },
     canMeetDeadline: {
       type: 'boolean',

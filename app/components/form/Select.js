@@ -2,8 +2,10 @@ import Form from 'react-bootstrap/Form';
 import SemanticStyleLabel from 'components/form/SemanticStyleLabel';
 
 const NamedSelect = props => {
-  const { name, title } = props.schema;
-  const { value, onChange, required } = props;
+  const { value, onChange, required, schema } = props;
+  const { name, title } = schema;
+  const enumItems = schema.enum || ['', ...schema.items.enum];
+
   return (
     <Form.Group contollId={`id_${name}`}>
       <SemanticStyleLabel required={required}>{title}</SemanticStyleLabel>
@@ -11,12 +13,13 @@ const NamedSelect = props => {
         as="select"
         required={required}
         name={name}
+        defaultValue=""
         onChange={e => {
           onChange(e.target.value);
         }}
         value={value || ''}
       >
-        {props.schema.enum.map(title => (
+        {enumItems.map(title => (
           <option value={title} key={title}>
             {title}
           </option>
