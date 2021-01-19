@@ -91,18 +91,18 @@ export default function Home() {
 
         <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
         <StyledP>
-          The Online Shops grant program will give Indigenous and non-Indigenous businesses funding to createan online
-          shop and/or improve their e-commerce experience to attract new local customers and expandto new markets. The
-          grant will pay for up to 75% of eligible expenses, up to a maximum of $7,500 perbusiness.
+          The Online Shops Grant program provides funding to B.C.-based business to create an online shop and/or improve
+          their e-commerce experience to attract new local customers and expand to new markets. The grant will pay for
+          up to 75% of eligible expenses, up to a maximum of $7,500 per business.
         </StyledP>
         <StyledP>
-          The program supports a rapid response for businesses, and is accepting applications from businessesready to
-          start and finish their work in 12-weeks.
+          The program supports a rapid response for businesses and is accepting applications from businesses ready to
+          start and finish their online shop in 12-weeks.
         </StyledP>
         <Header2>Please note:</Header2>
         <StyledUl>
           <li>
-            Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outsideof the lower
+            Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outside of the lower
             mainland and greater Victoria.
           </li>
           <li>The funds must be used to hire B.C.-based company(ies) to do the online store development.</li>
@@ -113,12 +113,11 @@ export default function Home() {
 
         <ScrollHeader1 id="application-deadlines">Application deadlines</ScrollHeader1>
         <StyledP>
-          Program intake is open until the funds have been fully subscribed. The funding will be given on afirst-come
-          first-serve basis to small- and medium-sized B.C. businesses to rapidly adapt to changingconsumer behaviour
-          due to COVID-19.
+          Program application intake is open until the funds have been fully subscribed. Funding will be awarded on a
+          first-come first-serve basis to small- and medium-sized B.C. businesses.
         </StyledP>
         <StyledP>
-          For the projects to have an immediate benefit, the funds will be given as soon as a business has beenapproved
+          For the projects to have an immediate benefit, the funds will be given as soon as a business has been approved
           for the program.
         </StyledP>
         <BackToTop />
@@ -134,8 +133,8 @@ export default function Home() {
         <Header2>Before applying</Header2>
         <StyledP>
           Please review the eligibility information on this page. If you have any questions, please use the contact form
-          at the bottom of this page for support before submitting your application. Incomplete applications will not be
-          reviewed.
+          at the bottom of this page for support before submitting your application. Incomplete applications cannot be
+          approved to receive a grant.
         </StyledP>
 
         <Header2>You will be asked to provide:</Header2>
@@ -146,8 +145,8 @@ export default function Home() {
           <li>PST and WorkSafeBC registrations, if applicable</li>
           <li>Income tax return</li>
           <StyledUl>
-            <li>Notice of assessment; or</li>
-            <li>First section of T2 return or first section of owner’s tax return (form 5010-R)</li>
+            <li>Notice of assessment (2019); or</li>
+            <li>First section of T2 return or first section of owner’s tax return (form 5010-R) (2019 or 2020)</li>
           </StyledUl>
           <li>B.C. business registration number and official registered name</li>
           <li>

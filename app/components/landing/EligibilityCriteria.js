@@ -26,7 +26,9 @@ function ProgramSteps() {
               <li>GST number</li>
               <li>PST and WorkSafeBC number (where applicable)</li>
             </StyledUl>
-            <li>Generated sales of more than $30,000 in the past year</li>
+            <li>
+              Generated sales of more than $30,000 in the past year (in 2019, or in the year preceding the application)
+            </li>
             <li>
               Has repeatable products, or in the case of artists and jewellers, individual items that have slight
               differences (i.e. paintings or rings)
@@ -49,9 +51,7 @@ function ProgramSteps() {
         </StyledUl>
 
         <InfoMessage
-          text={`Businesses will be asked to declare access to other programs funded by the provincial or federal
-                  government such as Buy BC Partnership Program E-commerce Funding Stream or Canada United Small
-                  Business Relief Fund.`}
+          text={`Businesses will be asked to declare access to other programs funded by the provincial or federal government such as Buy BC Partnership Program E-commerce Funding Stream or Canada United Small Business Relief Fund.`}
         />
       </Card.Content>
       <CardHeader text="Eligible Expenses" />

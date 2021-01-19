@@ -46,18 +46,18 @@ function ProgramSteps() {
       <StepsContainer>
         <StepContainer title="Step 1:">
           <StyledP>
-            Develop a grant proposal that indicates how you plan to use the funds. Businesses are expectedto show a cost
+            Develop a grant proposal that indicates how you plan to use the funds. Businesses need to show a cost
             estimate that includes how much funding you need and how the money will be spent.
           </StyledP>
         </StepContainer>
         <StepContainer title="Step 2:">
           <StyledP>
-            Complete the online application showing government that you meet the eligibility criteria andsubmit their
-            online shop proposal.
+            Complete the online application demonstrating that you meet the eligibility criteria and submit your online
+            shop proposal.
           </StyledP>
         </StepContainer>
         <StepContainer title="Step 3:">
-          <StyledP>Applicants will be contacted within 3 weeks with the outcome of their application.</StyledP>
+          <StyledP>Applicants will be contacted within three weeks with the outcome of their application.</StyledP>
         </StepContainer>
       </StepsContainer>
     </StyledCard>
