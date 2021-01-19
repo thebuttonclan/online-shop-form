@@ -35,7 +35,8 @@ export default function CostsFieldTemplate(props) {
   return (
     <div>
       <SInfo>
-        Provide included cost estimates indicating how much funding you may need for each cost grouping.
+        Please provide us with the complete cost estimates for each cost grouping. At the bottom of the page all costs
+        will be totalled and 75% (max $7500) will be included in the total grant amount requested.
         <br />
         <br />
         Please refer to elligible expenses, online shop completion checklist and grant limit information in the

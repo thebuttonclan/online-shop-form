@@ -36,9 +36,6 @@ const schema = {
     'sector',
     // GRANT PROPOSAL SECTION
     'planForFunds',
-    // 'serviceProviderCosts',
-    // 'customerAcquisitionCostsCosts',
-    // 'staffTrainingCosts',
     'useOfGrant',
     'personalInformation',
     'taxImplications',
