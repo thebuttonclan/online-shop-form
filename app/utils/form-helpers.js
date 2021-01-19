@@ -40,6 +40,7 @@ export function matchPostBody(postData, schema) {
   const { properties } = schema;
   const dataArray = Object.keys(formattedData);
   const nestedFields = getNestedFieldPropertiesByName(schema);
+  const toDelete = [];
 
   dataArray.forEach(propertyName => {
     let newValue = formattedData[propertyName];
@@ -50,7 +51,7 @@ export function matchPostBody(postData, schema) {
 
     // Remove any posted values not on the full-schema
     if (!properties[propertyName] && objectIndex === -1) {
-      delete formattedData.propertyName;
+      toDelete.push(propertyName);
       return;
     }
 
@@ -67,6 +68,12 @@ export function matchPostBody(postData, schema) {
     // If fieldname is part of an object
     if (objectIndex !== -1) {
       const owningPropertyName = Object.keys(nestedFields[objectIndex])[0];
+      toDelete.push(propertyName);
+      // Handle boolean for nested fields
+      if (properties[owningPropertyName].properties[propertyName].type === 'boolean') {
+        newValue = getBooleanValue(newValue);
+      }
+
       if (!formattedData[owningPropertyName]) {
         formattedData[owningPropertyName] = {};
         formattedData[owningPropertyName][propertyName] = newValue;
@@ -76,5 +83,8 @@ export function matchPostBody(postData, schema) {
     }
     // TODO: add support for cleaning other rjsf types below, e.g number
   });
+  if (toDelete.length > 0) {
+    return _.omit(formattedData, toDelete);
+  }
   return formattedData;
 }
