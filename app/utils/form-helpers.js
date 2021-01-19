@@ -67,6 +67,12 @@ export function matchPostBody(postData, schema) {
     // If fieldname is part of an object
     if (objectIndex !== -1) {
       const owningPropertyName = Object.keys(nestedFields[objectIndex])[0];
+
+      // Handle boolean for nested fields
+      if (properties[owningPropertyName].properties[propertyName].type === 'boolean') {
+        newValue = getBooleanValue(newValue);
+      }
+
       if (!formattedData[owningPropertyName]) {
         formattedData[owningPropertyName] = {};
         formattedData[owningPropertyName][propertyName] = newValue;
@@ -75,6 +81,8 @@ export function matchPostBody(postData, schema) {
       }
     }
     // TODO: add support for cleaning other rjsf types below, e.g number
+    // TODO: stop JS from double posting. currently nested fields are left in the base
+    // even after we add them to the parent. delete isn't working on them.
   });
   return formattedData;
 }
