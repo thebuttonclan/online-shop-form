@@ -31,14 +31,19 @@ const uiSchema = {
   productionLocation: {
     'ui:help': 'This field is required if answering No',
   },
-  onlineStoreUrl: {
-    'ui:help': 'This field is required if answering Yes',
-  },
-  otherPrograms: {
-    'ui:help': 'This field is required if answering Yes',
-  },
-  existingStoreFeatures: {
-    'ui:widget': 'checkboxes',
+  onlineStore: {
+    existingOnlineStore: {
+      'ui:widget': 'radio',
+    },
+    onlineStoreUrl: {
+      'ui:help': 'This field is required if answering Yes',
+    },
+    otherPrograms: {
+      'ui:help': 'This field is required if answering Yes',
+    },
+    existingStoreFeatures: {
+      'ui:widget': 'checkboxes',
+    },
   },
   costs: {
     'ui:FieldTemplate': CostsFieldTemplate,
@@ -83,6 +88,7 @@ const uiSchema = {
     'productionLocation',
     'employees',
     'importExportBusiness',
+    'onlineStore',
     'existingOnlineStore',
     'onlineStoreUrl',
     'existingStoreFeatures',
