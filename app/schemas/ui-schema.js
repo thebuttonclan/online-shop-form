@@ -45,6 +45,9 @@ const uiSchema = {
       'ui:widget': 'checkboxes',
     },
   },
+  planForFunds: {
+    'ui:widget': 'TextareaWidget',
+  },
   costs: {
     'ui:FieldTemplate': CostsFieldTemplate,
     serviceProviderCosts: {
