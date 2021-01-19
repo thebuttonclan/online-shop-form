@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Scard = styled(Card)`
   border: 2px solid ${SECONDARY_COLOUR} !important;
+  border-radius: 10px !important;
 `;
 
 function Styledcard({ children }) {

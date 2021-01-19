@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
 import { SUBHEADING_WEIGHT, MIN_PADDING, BACKGROUND_COLOUR, HUGE_FONT, HEADING_WEIGHT } from 'theme';
 
-const HEADER_HEIGHT = '40vh';
+const HEADER_HEIGHT = '45vh';
 
 const ImageBackground = styled.div`
   width: 100vw;
@@ -18,13 +18,12 @@ const ImageBackground = styled.div`
 
 const BannerOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
-  min-height: calc(${HEADER_HEIGHT} * 0.4);
   color: ${BACKGROUND_COLOUR};
 `;
 
 const BannerOverlaySubHeader = styled.p`
   font-weight: ${SUBHEADING_WEIGHT};
-  margin-bottom: 50px !important;
+  margin-bottom: 30px !important;
 `;
 
 const BannerOverlayHeader = styled.h1`
@@ -33,6 +32,7 @@ const BannerOverlayHeader = styled.h1`
   font-weight: ${HEADING_WEIGHT};
   font-family: helvetica;
   margin-top: 50px;
+  margin-bottom: ${MIN_PADDING};
 `;
 
 const Banner = ({ text }) => (

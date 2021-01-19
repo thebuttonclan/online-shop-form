@@ -16,11 +16,14 @@ const uiSchema = {
   businessPhone: {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
+  businessAddress: {
+    'ui:help': 'For example: 1111 Government St. V8Z 1M2',
+  },
   email: {
     'ui:help': 'Please use the format name@email.com',
   },
   revenue2019: {
-    'ui:help': 'Please use the format 1234.56',
+    'ui:help': 'Please enter in a numerical value only (no symbols)',
   },
   workSafeBcRegistrationNumber: {
     'ui:help': 'This field is required if answering yes',
