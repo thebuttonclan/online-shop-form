@@ -26,12 +26,6 @@ function getBooleanValue(value) {
   return newValue;
 }
 
-function removeUnusedFields(formData, toDelete) {
-  const newFormData = { ...formData };
-  toDelete.forEach(field => delete newFormData[field]);
-  return newFormData;
-}
-
 const getArrayValue = value => (Array.isArray(value) ? value : [value]);
 
 // Clears fields for page before saving new values
@@ -90,7 +84,7 @@ export function matchPostBody(postData, schema) {
     // TODO: add support for cleaning other rjsf types below, e.g number
   });
   if (toDelete.length > 0) {
-    return removeUnusedFields(formattedData, toDelete);
+    return _.omit(formattedData, toDelete);
   }
   return formattedData;
 }
