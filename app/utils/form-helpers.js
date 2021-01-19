@@ -74,7 +74,10 @@ export function matchPostBody(postData, schema) {
         newValue = getBooleanValue(newValue);
       } else if (properties[owningPropertyName].properties[propertyName].type === 'array') {
         newValue = getArrayValue(newValue);
-        console.log(`NEW VALUE: `, newValue);
+      }
+      // handles when empty string is passed (user didn't enter)
+      else if (properties[owningPropertyName].properties[propertyName].type === 'number') {
+        newValue = Number(newValue);
       }
 
       if (!formattedData[owningPropertyName]) {
