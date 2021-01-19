@@ -390,19 +390,19 @@ const schema = {
       title: '',
       properties: {
         serviceProviderCosts: {
-          type: 'string',
+          type: 'number',
           title: 'Service Provider(s)',
           name: 'serviceProviderCosts',
           pattern: CURRENCY_REGEX,
         },
         customerAcquisitionCosts: {
-          type: 'string',
+          type: 'number',
           title: 'Digital Customer Acquisition',
           name: 'customerAcquisitionCosts',
           pattern: CURRENCY_REGEX,
         },
         staffTrainingCosts: {
-          type: 'string',
+          type: 'number',
           title: 'Staff Training Costs',
           name: 'staffTrainingCosts',
           pattern: CURRENCY_REGEX,
