@@ -1,6 +1,6 @@
 import axios from 'axios';
 import validate from 'react-jsonschema-form/lib/validate';
-import customValidate from 'schemas/validate';
+import customValidate from 'schemas/custom-validate';
 import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
@@ -19,10 +19,11 @@ export function getSchema(page) {
   return fullSchema;
 }
 
+// see https://github.com/rjsf-team/react-jsonschema-form/blob/6f3c4c78765cbae67b91bf7762094c9b7e38c7d1/packages/core/src/validate.js#L167
 export function validateFormData(formData) {
   const validated = validate(formData, fullSchema, customValidate);
+
   const { errors } = validated;
-  console.log(errors);
 
   return errors.length === 0 ? { isValidated: true, isValid: true } : { isValidated: true, isValid: false, errors };
 }

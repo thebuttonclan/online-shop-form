@@ -9,6 +9,8 @@ import pageSchemas from 'schemas/page-schemas';
 import HrefLink from 'components/HrefLink';
 import startCase from 'lodash/startCase';
 import { Helmet } from 'react-helmet';
+import reduce from 'lodash/reduce';
+import map from 'lodash/map';
 
 const IndentedUl = styled(StyledUl)`
   margin-left: calc(${MIN_PADDING} * 3) !important;
@@ -39,7 +41,19 @@ const findFieldIndex = fieldname => pageSchemas.findIndex(schema => !!schema.pro
 export default function ErrorPage({ result }) {
   const { errors } = result;
 
-  const validErrors = errors.filter(err => !!err.property);
+  // Collect error data within an object to remove duplicates
+  const errorMap = reduce(
+    errors,
+    (ret, err) => {
+      if (err.stack.includes(':')) {
+        const field = err.stack.split(':')[0];
+        ret[field] = findFieldIndex(field) + 1;
+      }
+
+      return ret;
+    },
+    {}
+  );
 
   return (
     <Container>
@@ -58,14 +72,10 @@ export default function ErrorPage({ result }) {
         There were issues with the following values:
       </Header2>
       <IndentedUl>
-        {validErrors.map(error => {
-          const property = error.property.slice(1);
-          const fieldIndex = findFieldIndex(property);
-          const page = fieldIndex + 1;
-
+        {map(errorMap, (page, field) => {
           return (
-            <li>
-              {startCase(property)} (<HrefLink href={`/apply/${page}`}>page {page}</HrefLink>)
+            <li key={field}>
+              {startCase(field)} (<HrefLink href={`/apply/${page}`}>page {page}</HrefLink>)
             </li>
           );
         })}
