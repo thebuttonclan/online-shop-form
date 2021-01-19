@@ -69,9 +69,12 @@ export function matchPostBody(postData, schema) {
     if (objectIndex !== -1) {
       const owningPropertyName = Object.keys(nestedFields[objectIndex])[0];
       toDelete.push(propertyName);
-      // Handle boolean for nested fields
+      // Handle nested boolean and array fields
       if (properties[owningPropertyName].properties[propertyName].type === 'boolean') {
         newValue = getBooleanValue(newValue);
+      } else if (properties[owningPropertyName].properties[propertyName].type === 'array') {
+        newValue = getArrayValue(newValue);
+        console.log(`NEW VALUE: `, newValue);
       }
 
       if (!formattedData[owningPropertyName]) {
