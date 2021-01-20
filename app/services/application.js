@@ -53,6 +53,9 @@ export async function submitApplication({ req, newData, js }) {
       throw new Error('Failed to save application');
     }
 
+    const count = await pgQuery.countApplication();
+    req.backendState.setApplicationCount(count);
+
     req.session.formData = {};
 
     if (js) return res.json(result);

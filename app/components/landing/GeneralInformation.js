@@ -18,9 +18,17 @@ const ApplyButton = styled.button`
   &:hover {
     opacity: 0.8;
   }
+
+  &:disabled {
+    background-color: gray;
+    &:hover {
+      opacity: 1;
+      cursor: default;
+    }
+  }
 `;
 
-function GeneralInformation() {
+function GeneralInformation({ canSubmit }) {
   return (
     <StyledCard>
       <CardHeader text="General Information" />
@@ -59,7 +67,9 @@ function GeneralInformation() {
           You are encouraged to submit your application, along with your grant proposal and additional documents early.
         </StyledP>
         <HrefLink href="/apply/1">
-          <ApplyButton className="pointer">BEGIN APPLICATION</ApplyButton>
+          <ApplyButton className="pointer" disabled={!canSubmit}>
+            BEGIN APPLICATION
+          </ApplyButton>
         </HrefLink>
       </Card.Content>
     </StyledCard>
