@@ -251,7 +251,7 @@ const contents = [
     ),
   },
   {
-    question: `Can I apply for this funding if I have an at home business that is not registered in BC?`,
+    question: `Can I apply for this funding if I have an at home business that is not registered in B.C?`,
     content: (
       <>
         <StyledP>
