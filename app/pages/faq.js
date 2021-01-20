@@ -100,6 +100,8 @@ export default class Faq extends Component {
         <StyledContainer>
           <StyledHeader as="h1">FAQ</StyledHeader>
 
+          <StyledP>(Also provided in French, Spanish, Chinese, Korean, Punjabi, and Tagalog)</StyledP>
+
           <StyledShowAllWrapper>
             <div></div>
             <ShowAllBtn onClick={this.handleAllClick}>{activeIndexs.length >= 1 ? 'Hide all' : 'Show all'}</ShowAllBtn>

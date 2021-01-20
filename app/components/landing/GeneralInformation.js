@@ -35,7 +35,7 @@ function GeneralInformation() {
           </li>
           <li>
             Before submitting your application, please ensure that all required information and attachments are
-            completed and attached to your application. Incomplete applications will not be evaluated
+            completed and attached to your application in order to be reviewed.
           </li>
           <li>Meeting the criteria does not guarantee that the application will be approved for funding.</li>
           <li>Upon review, additional information may be requested from the applicant.</li>
