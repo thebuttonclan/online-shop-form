@@ -20,9 +20,6 @@ service:
 ingress:
   enabled: false
 
-ingresswww:
-  enabled: false
-
 postgresql:
   enabled: false
   host:
