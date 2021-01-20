@@ -47,8 +47,6 @@ spec:
             # Passing release version is essential to trigger a new deploymnet when deploying with `helm upgrade --install` command
             - name: RELEASE_REVISION
               value: "{{ .Release.Revision }}"
-            - name: DOMAIN_NAME
-              value: {{ .Values.ingress.host }}
             - name: SESSION_SECRET
               value: {{ .Values.service.sessionSecret }}
           envFrom:
