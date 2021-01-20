@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { PRIMARY_COLOUR } from 'theme';
 import HrefLink from 'components/HrefLink';
 
+const alacrityAspectRatio = 322 / 1000;
+const sbcAspectRatio = 255 / 1043;
+const bcAspectRatio = 523 / 554;
+
 const StyledFooter = styled.footer`
   background-color: ${PRIMARY_COLOUR};
   color: #fff;
@@ -39,6 +43,20 @@ const Copyright = styled.div`
   padding-top: 20px;
 `;
 
+const Logo = styled.img`
+  width: 20%;
+  height: ${props => `calc(${props.aspect} * 20%)`};
+  min-width: 100px;
+  min-height: ${props => `calc(${props.aspect} * 100px)`};
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const Footer = () => {
   return (
     <StyledFooter>
@@ -48,6 +66,11 @@ const Footer = () => {
             Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2020
           </Copyright>
         </HrefLink>
+        <LogoContainer>
+          <Logo src="/icons/alacrity_black.png" alt="Alacrity Canada" aspect={alacrityAspectRatio} />
+          <Logo src="/icons/bc_vertical.png" alt="Government of British Columbia" aspect={bcAspectRatio} />
+          <Logo src="/icons/BCID-StrongerBC-rgb-rev.jpg" alt="Stronger BC" aspect={sbcAspectRatio} />
+        </LogoContainer>
       </Container>
     </StyledFooter>
   );
