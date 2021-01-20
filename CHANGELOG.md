@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.3...v1.1.4) (2021-01-20)
+
+
+### Bug Fixes
+
+* initialize submissions ([62d6ca3](https://github.com/thebuttonclan/online-shop-form/commit/62d6ca3424a46c968efe9f314a11f0f720876393))
+* small fixes ([5f2dfa6](https://github.com/thebuttonclan/online-shop-form/commit/5f2dfa66df0d523b388ff823f2c8c9a33c45324a))
+* use contents for indices ([1e87cae](https://github.com/thebuttonclan/online-shop-form/commit/1e87caed69ffc04f037a59a7f562eee501e78e8c))
+
 ### [1.1.3](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.2...v1.1.3) (2021-01-20)
 
 ### [1.1.2](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.1...v1.1.2) (2021-01-20)
