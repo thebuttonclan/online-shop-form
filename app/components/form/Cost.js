@@ -41,7 +41,10 @@ const Cost = props => {
         onChange={e => onChange(e.target.value)}
         value={value}
       />
-      <SfinePrint>Calculation of 75% to establish grant amount estimate</SfinePrint>
+      <SfinePrint>
+        Below, see the calculation that establishes the total grant amount requested (75% of eligible costs up to a max.
+        of $7,500)
+      </SfinePrint>
     </Sdiv>
   );
 };

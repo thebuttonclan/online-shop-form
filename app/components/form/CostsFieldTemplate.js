@@ -39,7 +39,7 @@ export default function CostsFieldTemplate(props) {
         will be totalled and 75% (max $7500) will be included in the total grant amount requested.
         <br />
         <br />
-        Please refer to elligible expenses, online shop completion checklist and grant limit information in the
+        Please refer to eligible expenses, online shop completion checklist and grant limit information in the
         <HrefLink href="/program-guide"> program guide</HrefLink>.
       </SInfo>
       {props.children}
