@@ -3,7 +3,7 @@ name: Lint Helm Charts
 on:
   push:
     paths:
-    - 'placeholder_helm/**'
+    - 'helm/**'
 
 env:
   env: dev
