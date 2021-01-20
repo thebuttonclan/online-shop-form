@@ -1,4 +1,4 @@
-drop view public.application_extract;
+drop view if exists public.application_extract;
 create view public.application_extract
     as select
         id,
