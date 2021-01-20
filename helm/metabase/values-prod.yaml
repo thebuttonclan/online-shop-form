@@ -16,7 +16,25 @@ cas-postgres:
 metabase:
   timeZone: US/Pacific
   ingress:
-    enabled: false
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: azure/application-gateway
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/acme-challenge-type: http01
+    hosts:
+      - metabase.launchonline.ca
+    path: /
+    tls:
+      - secretName: prod-metabase-launchonline-tls
+        hosts:
+          - metabase.launchonline.ca
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 1Gi
 
 route:
   enable: false

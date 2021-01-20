@@ -1,3 +1,4 @@
+# see https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-scale#autoscale-pods
 {{- if .Values.autoscaling.enabled }}
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler

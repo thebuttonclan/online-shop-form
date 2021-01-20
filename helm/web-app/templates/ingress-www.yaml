@@ -1,22 +1,22 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingresswww.enabled -}}
 {{- $fullName := include "..fullname" . -}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: "www-{{ $fullName }}"
   labels:
     app.kubernetes.io/name: {{ include "..name" . }}
     helm.sh/chart: {{ include "..chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-  {{- with .Values.ingress.annotations }}
+  {{- with .Values.ingresswww.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-{{- if .Values.ingress.tls }}
+{{- if .Values.ingresswww.tls }}
   tls:
-  {{- range .Values.ingress.tls }}
+  {{- range .Values.ingresswww.tls }}
     - hosts:
       {{- range .hosts }}
         - {{ . | quote }}
@@ -25,10 +25,10 @@ spec:
   {{- end }}
 {{- end }}
   rules:
-    - host: {{ .Values.ingress.host | quote }}
+    - host: {{ .Values.ingresswww.host | quote }}
       http:
         paths:
-        {{- range .Values.ingress.paths }}
+        {{- range .Values.ingresswww.paths }}
           - path: {{ . }}
             backend:
               serviceName: {{ $fullName }}
