@@ -28,7 +28,7 @@ const ApplyButton = styled.button`
   }
 `;
 
-function GeneralInformation({ submissions }) {
+function GeneralInformation({ canSubmit }) {
   return (
     <StyledCard>
       <CardHeader text="General Information" />
@@ -67,7 +67,7 @@ function GeneralInformation({ submissions }) {
           You are encouraged to submit your application, along with your grant proposal and additional documents early.
         </StyledP>
         <HrefLink href="/apply/1">
-          <ApplyButton className="pointer" disabled={submissions > 2000}>
+          <ApplyButton className="pointer" disabled={!canSubmit}>
             BEGIN APPLICATION
           </ApplyButton>
         </HrefLink>

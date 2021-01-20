@@ -9,6 +9,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const connectPgPool = require('./setup-pg');
 const pgQuery = require('./queries');
+const backendState = require('./state');
+const { countApplication } = require('./queries/application');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
@@ -18,10 +20,12 @@ const ONE_DAY = 2 * HALF_DAY;
 const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 
-const initExpresss = (options = {}) => {
-  let submissions = 0;
-
+const initExpresss = async (options = {}) => {
   const { pgPool, store } = connectPgPool();
+
+  // Set initial submission count
+  const count = await countApplication(pgPool);
+  const canSubmit = backendState.setApplicationCount(count);
 
   const expressServer = express();
   expressServer.pgPool = pgPool;
@@ -33,8 +37,7 @@ const initExpresss = (options = {}) => {
   });
 
   expressServer.use((req, res, next) => {
-    req.increment = () => submissions++;
-    req.submissions = submissions;
+    req.backendState = backendState;
     next();
   });
 

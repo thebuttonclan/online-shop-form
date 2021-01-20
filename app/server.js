@@ -7,8 +7,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-app.prepare().then(() => {
-  const expressServer = initExpresss();
+app.prepare().then(async () => {
+  const expressServer = await initExpresss();
 
   // catch all other routes and return the index file
   expressServer.all('*', async (req, res) => handle(req, res));
