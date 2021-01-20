@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Icon } from 'semantic-ui-react';
+import { Container, Icon, Message, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
@@ -57,11 +57,28 @@ const ScrollHeader1 = styled(Header1)`
   scroll-margin-top: ${TOP_HEIGHT};
 `;
 
-export default function Home() {
+const WarningMessage = styled(Message)`
+  display: flex;
+  align-items: center;
+`;
+
+export default function Home({ submissions }) {
   return (
     <>
       <Banner />
       <Container>
+        {submissions > 2000 && (
+          <WarningMessage warning>
+            <Icon size="large" name="exclamation triangle"></Icon>
+            <div>
+              <Header warning>Please Be Advised</Header>
+              <p>
+                Due to the volume of applications we've already received, the application intake form is currently ON
+                HOLD. Please check back at a later time if this status has changed. We are sorry for any inconvenience.
+              </p>
+            </div>
+          </WarningMessage>
+        )}
         <Header2>On this page:</Header2>
         <NavigationUl>
           <li>
@@ -166,7 +183,7 @@ export default function Home() {
           their online shop within 12-weeks of receiving the grant.
         </StyledP>
 
-        <GeneralInformation />
+        <GeneralInformation submissions={submissions} />
         <BackToTop />
 
         <ScrollHeader1 id="contact">CONTACT US</ScrollHeader1>
@@ -194,4 +211,11 @@ export default function Home() {
       </Container>
     </>
   );
+}
+
+export async function getServerSideProps({ req }) {
+  const { submissions } = req;
+  return {
+    props: { submissions },
+  };
 }

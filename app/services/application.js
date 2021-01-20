@@ -53,6 +53,7 @@ export async function submitApplication({ req, newData, js }) {
       throw new Error('Failed to save application');
     }
 
+    req.increment();
     req.session.formData = {};
 
     if (js) return res.json(result);
