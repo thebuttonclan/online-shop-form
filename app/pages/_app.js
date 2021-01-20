@@ -34,6 +34,13 @@ const GlobalStyle = createGlobalStyle`
   html.normal-scroll {
     scroll-behavior: auto;
   }
+
+  .link {
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const addNormalScroll = () => document.documentElement.classList.add('normal-scroll');
