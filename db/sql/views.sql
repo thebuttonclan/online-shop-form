@@ -1,4 +1,5 @@
-create or replace view public.application_extract
+drop view public.application_extract;
+create view public.application_extract
     as select
         id,
         form_data ->> 'businessName' AS business_name,
@@ -49,4 +50,4 @@ create or replace view public.application_extract
             (form_data -> 'costs' ->> 'staffTrainingCosts')::numeric
           ))
         ) AS grant_request
-    from applications
+    from applications;
