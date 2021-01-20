@@ -1,5 +1,5 @@
-drop view public.application_extract;
-create view public.application_extract
+drop view public.master_extract;
+create view public.master_extract
     as select
         id,
         form_data ->> 'businessName' AS business_name,
