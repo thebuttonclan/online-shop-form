@@ -432,4 +432,17 @@ const schema = {
   ObjectFieldTemplate,
 };
 
+function getChildParentRelationships(schema) {
+  const rel = {};
+  Object.keys(schema.properties).forEach(field => {
+    if (schema.properties[field].type === 'object') {
+      Object.keys(schema.properties[field].properties).forEach(nestedField => {
+        rel[nestedField] = field;
+      });
+    }
+  });
+  return rel;
+}
+export const childParentRelationships = getChildParentRelationships(schema);
+
 export default schema;

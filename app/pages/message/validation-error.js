@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { HUGE_FONT, MIN_PADDING } from 'theme';
 import StyledP from 'components/StyledP';
 import { validateFormData } from 'services/application';
+import { childParentRelationships } from 'schemas/consolidated-schema';
 import pageSchemas from 'schemas/page-schemas';
 import HrefLink from 'components/HrefLink';
 import startCase from 'lodash/startCase';
@@ -37,6 +38,14 @@ const SuccessBanner = styled.div`
 `;
 
 const findFieldIndex = fieldname => pageSchemas.findIndex(schema => !!schema.properties[fieldname]);
+function findFieldPage(fieldName) {
+  const index = findFieldIndex(fieldName);
+  if (index >= 0) {
+    return index + 1;
+  }
+  const parentName = childParentRelationships[fieldName];
+  return findFieldIndex(parentName) + 1;
+}
 
 export default function ErrorPage({ result }) {
   const { errors } = result;
@@ -47,7 +56,7 @@ export default function ErrorPage({ result }) {
     (ret, err) => {
       if (err.stack.includes(':')) {
         const field = err.stack.split(':')[0];
-        ret[field] = findFieldIndex(field) + 1;
+        ret[field] = findFieldPage(field);
       }
 
       return ret;
