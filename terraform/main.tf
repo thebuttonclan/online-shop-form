@@ -55,7 +55,7 @@ module "postgresql_test" {
   admin_username      = "rootadmin"
   admin_password      = var.postgresql_password_test
   vnet_subnet_id      = azurerm_subnet.this.id
-  create_read_replica = false
+  create_read_replica = true
 
   depends_on = [module.aks]
 }
