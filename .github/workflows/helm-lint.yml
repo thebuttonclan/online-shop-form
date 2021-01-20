@@ -3,7 +3,8 @@ name: Lint Helm Charts
 on:
   push:
     paths:
-    - 'helm/**'
+      - "helm/**"
+      - "!helm/**.secret.yaml"
 
 env:
   env: dev
