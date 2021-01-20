@@ -19,8 +19,6 @@ const TWO_WEEKS = 14 * ONE_DAY;
 const THIRTY_DAYS = 30 * ONE_DAY;
 
 const initExpresss = (options = {}) => {
-  let submissions = 0;
-
   const { pgPool, store } = connectPgPool();
 
   const expressServer = express();
@@ -30,6 +28,15 @@ const initExpresss = (options = {}) => {
     req.pgPool = pgPool;
     req.pgQuery = new pgQuery(pgPool, req);
     next();
+  });
+
+  let submissions = 0;
+  pgPool.query('select count(*) from applications;').then(res => {
+    if (res.rows.length === 0) {
+      submissions = 0;
+    } else {
+      submissions = Number(res.rows[0].count || 0);
+    }
   });
 
   expressServer.use((req, res, next) => {
