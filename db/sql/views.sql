@@ -45,9 +45,9 @@ create view public.application_extract
         LEAST(
           7500,
           (.75 * (
-            (form_data -> 'costs' ->> 'serviceProviderCosts')::numeric +
-            (form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric +
-            (form_data -> 'costs' ->> 'staffTrainingCosts')::numeric
+            GREATEST((form_data -> 'costs' ->> 'serviceProviderCosts')::numeric, 0) +
+            GREATEST((form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric, 0) +
+            GREATEST((form_data -> 'costs' ->> 'staffTrainingCosts')::numeric, 0)
           ))
         ) AS grant_request
     from applications;
