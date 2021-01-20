@@ -17,7 +17,7 @@ const StepsContainer = styled.div`
 
 const HorizontalRule = styled.hr`
   background: ${TERTIARY_COLOUR};
-  margin-left: ${MIN_PADDING};
+  margin: 0;
   height: 7px;
   width: 30%;
   border: none;
