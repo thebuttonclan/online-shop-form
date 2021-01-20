@@ -202,7 +202,7 @@ const contents = [
     ),
   },
   {
-    question: `My business address is located outside of British Columbia, but I live in BC. Can I still apply?`,
+    question: `My business address is located outside of British Columbia, but I live in B.C. Can I still apply?`,
     content: (
       <>
         <StyledP>No. The program is for business with a local BC address only.</StyledP>
