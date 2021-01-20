@@ -19,6 +19,5 @@ helm install cas-metabase cas-metabase/cas-metabase -n prod-metabase -f values-p
 # use the following helm commands to uninstalling metabase instances
 #
 # helm uninstall cas-metabase -n dev-metabase
-# kubectl delete pvc --all -n dev-metabase
 # kubectl delete configmap --all -n dev-metabase
-#
+# kubectl delete pvc --all -n dev-metabase

@@ -18,7 +18,7 @@ module "aks" {
   vnet_subnet_id      = azurerm_subnet.this.id
   agents_size         = "Standard_F4"
   agents_min_count    = 1
-  agents_max_count    = 3
+  agents_max_count    = 20
 
   depends_on = [azurerm_resource_group.this, azurerm_subnet.this]
 }
@@ -40,40 +40,40 @@ module "postgresql_dev" {
   admin_username      = "rootadmin"
   admin_password      = var.postgresql_password_dev
   vnet_subnet_id      = azurerm_subnet.this.id
-  create_read_replica = true
+  create_read_replica = false
 
   depends_on = [module.aks]
 }
 
-# module "postgresql_prod" {
-#   source              = "./modules/postgresql"
-#   prefix              = "${local.prefix}-prod"
-#   resource_group_name = azurerm_resource_group.this.name
-#   location            = local.resource_location
-#   sku_name            = "GP_Gen5_4"
-#   storage_mb          = 10240
-#   admin_username      = "rootadmin"
-#   admin_password      = var.postgresql_password_prod
-#   vnet_subnet_id      = azurerm_subnet.this.id
-#   create_read_replica = true
+module "postgresql_test" {
+  source              = "./modules/postgresql"
+  prefix              = "${local.prefix}-test"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = local.resource_location
+  sku_name            = "GP_Gen5_2"
+  storage_mb          = 5120
+  admin_username      = "rootadmin"
+  admin_password      = var.postgresql_password_test
+  vnet_subnet_id      = azurerm_subnet.this.id
+  create_read_replica = false
 
-#   depends_on = [module.aks]
-# }
+  depends_on = [module.aks]
+}
 
-# module "postgresql_test" {
-#   source              = "./modules/postgresql"
-#   prefix              = "${local.prefix}-test"
-#   resource_group_name = azurerm_resource_group.this.name
-#   location            = local.resource_location
-#   sku_name            = "GP_Gen5_4"
-#   storage_mb          = 10240
-#   admin_username      = "rootadmin"
-#   admin_password      = var.postgresql_password_test
-#   vnet_subnet_id      = azurerm_subnet.this.id
-#   create_read_replica = true
+module "postgresql_prod" {
+  source              = "./modules/postgresql"
+  prefix              = "${local.prefix}-prod"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = local.resource_location
+  sku_name            = "GP_Gen5_4"
+  storage_mb          = 10240
+  admin_username      = "rootadmin"
+  admin_password      = var.postgresql_password_prod
+  vnet_subnet_id      = azurerm_subnet.this.id
+  create_read_replica = true
 
-#   depends_on = [module.aks]
-# }
+  depends_on = [module.aks]
+}
 
 module "container_registry" {
   source              = "./modules/container-registry"
