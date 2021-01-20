@@ -62,12 +62,12 @@ const WarningMessage = styled(Message)`
   align-items: center;
 `;
 
-export default function Home({ submissions }) {
+export default function Home({ canSubmit }) {
   return (
     <>
       <Banner />
       <Container>
-        {submissions > 2000 && (
+        {!canSubmit && (
           <WarningMessage warning>
             <Icon size="large" name="exclamation triangle"></Icon>
             <div>
@@ -183,7 +183,7 @@ export default function Home({ submissions }) {
           their online shop within 12-weeks of receiving the grant.
         </StyledP>
 
-        <GeneralInformation submissions={submissions} />
+        <GeneralInformation canSubmit={canSubmit} />
         <BackToTop />
 
         <ScrollHeader1 id="contact">CONTACT US</ScrollHeader1>
@@ -214,8 +214,16 @@ export default function Home({ submissions }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const { submissions } = req;
+  const { pgQuery, backendState } = req;
+
+  let canSubmit = backendState.canSubmit;
+
+  if (canSubmit) {
+    const count = await pgQuery.countApplication();
+    canSubmit = backendState.setApplicationCount(count);
+  }
+
   return {
-    props: { submissions },
+    props: { canSubmit },
   };
 }

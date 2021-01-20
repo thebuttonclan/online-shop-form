@@ -33,6 +33,7 @@ module.exports = {
     'import/no-dynamic-require': 0,
     'new-cap': 0,
     'prefer-template': 0,
+    'prefer-destructuring': 0,
     'no-fallthrough': 0,
   },
   overrides: [],
