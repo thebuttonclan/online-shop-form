@@ -19,6 +19,15 @@ const uiSchema = {
   businessAddress: {
     'ui:help': 'For example: 1111 Government St. V8Z 1M2',
   },
+  pstNumber: {
+    'ui:help': 'For example: PST-1234-5678',
+  },
+  federalBusinessNumber: {
+    'ui:help': 'For example: 123456789',
+  },
+  gstNumber: {
+    'ui:help': 'For example: 123456789 RT 0001',
+  },
   email: {
     'ui:help': 'Please use the format name@email.com',
   },

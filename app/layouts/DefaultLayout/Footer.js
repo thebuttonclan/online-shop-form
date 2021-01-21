@@ -64,7 +64,7 @@ const Footer = () => {
         <LogoContainer>
           <Logo src="/icons/alacrity_black.png" alt="Alacrity Canada" aspect={alacrityAspectRatio} />
           <Logo src="/icons/bc_vertical.png" alt="Government of British Columbia" aspect={bcAspectRatio} />
-          <Logo src="/icons/BCID-StrongerBC-rgb-rev.jpg" alt="Stronger BC" aspect={sbcAspectRatio} />
+          <Logo src="/icons/BC-StrongerBC_cmyk_pos_sans.svg" alt="Stronger BC" aspect={sbcAspectRatio} />
         </LogoContainer>
         <Copyright>
           Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2021

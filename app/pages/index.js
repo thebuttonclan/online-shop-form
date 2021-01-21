@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Icon, Message, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
+import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
 import ProgramSteps from 'components/landing/ProgramSteps';
 import EligibilityCriteria from 'components/landing/EligibilityCriteria';
@@ -192,14 +192,14 @@ export default function Home({ canSubmit }) {
         <div>
           <Info>
             <Icon name="phone" />
-            250-123-4557
+            844-487-1266
           </Info>
         </div>
         <div>
           <Info>
-            <HrefLink href="mailto:info@gov.bc.ca">
+            <HrefLink href="mailto:info@launchonline.ca">
               <Icon name="mail" />
-              info@gov.bc.ca
+              info@launchonline.ca
             </HrefLink>
           </Info>
         </div>
