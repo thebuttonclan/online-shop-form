@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Icon, Message, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { LARGE_FONT, SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
+import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
 import ProgramSteps from 'components/landing/ProgramSteps';
 import EligibilityCriteria from 'components/landing/EligibilityCriteria';
@@ -24,7 +24,6 @@ const NavigationUl = styled(StyledUl)`
 
 const Info = styled.div`
   color: ${SECONDARY_FONT_COLOUR};
-  font-size: ${LARGE_FONT};
   margin: ${MIN_PADDING} 0;
 `;
 
@@ -114,7 +113,7 @@ export default function Home({ canSubmit }) {
         </StyledP>
         <StyledP>
           The program supports a rapid response for businesses and is accepting applications from businesses ready to
-          start and finish their online shop in 12-weeks.
+          start and finish their online shop within 12 weeks.
         </StyledP>
         <Header2>Please note:</Header2>
         <StyledUl>
@@ -131,7 +130,7 @@ export default function Home({ canSubmit }) {
         <ScrollHeader1 id="application-deadlines">Application deadlines</ScrollHeader1>
         <StyledP>
           Program application intake is open until the funds have been fully subscribed. Funding will be awarded on a
-          first-come first-serve basis to small- and medium-sized B.C. businesses.
+          first-come first-served basis to small- and medium-sized B.C. businesses.
         </StyledP>
         <StyledP>
           For the projects to have an immediate benefit, the funds will be given as soon as a business has been approved
@@ -160,7 +159,7 @@ export default function Home({ canSubmit }) {
           <li>Proof of a valid B.C. business licence</li>
           <li>Business number</li>
           <li>PST and WorkSafeBC registrations, if applicable</li>
-          <li>Income tax return</li>
+          <li>Income tax return:</li>
           <StyledUl>
             <li>Notice of assessment (2019); or</li>
             <li>First section of T2 return or first section of owner’s tax return (form 5010-R) (2019 or 2020)</li>
@@ -180,7 +179,7 @@ export default function Home({ canSubmit }) {
         <Header2>Receive funding to build your online store</Header2>
         <StyledP>
           Successful applicants will receive funding within 2-3 weeks of approval and are required to develop or upgrade
-          their online shop within 12-weeks of receiving the grant.
+          their online shop within 12 weeks of receiving the grant.
         </StyledP>
 
         <GeneralInformation canSubmit={canSubmit} />
@@ -193,14 +192,14 @@ export default function Home({ canSubmit }) {
         <div>
           <Info>
             <Icon name="phone" />
-            250-123-4557
+            844-487-1266
           </Info>
         </div>
         <div>
           <Info>
-            <HrefLink href="mailto:info@gov.bc.ca">
+            <HrefLink href="mailto:info@launchonline.ca">
               <Icon name="mail" />
-              info@gov.bc.ca
+              info@launchonline.ca
             </HrefLink>
           </Info>
         </div>

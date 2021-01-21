@@ -163,55 +163,55 @@ const schema = {
     // Need confirmation on what (if anything) we're using in it's place.
     bcOwned: {
       type: 'boolean',
-      title: 'Is the business owned by a BC resident or residents',
+      title: 'Is the business owned by a BC resident or residents?',
       name: 'bcOwned',
     },
     locatedInBc: {
       type: 'boolean',
-      title: 'Are the business’s sole or primary operations located in BC',
+      title: 'Are the business’s sole or primary operations located in BC?',
       name: 'locatedInBc',
     },
     isCurrentlyOperating: {
       type: 'boolean',
-      title: 'Is the business currently operating',
+      title: 'Is the business currently operating?',
       name: 'isCurrentlyOperating',
     },
     pstNumber: {
       type: 'string',
-      title: 'PST Number',
+      title: 'What is your Provincial Sales Tax (PST) Number?',
       name: 'pstNumber',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     bcRegistrationID: {
       type: 'string',
-      title: 'BC Registration ID',
+      title: 'What is your BC Registration ID?',
       name: 'bcRegistrationID',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     federalBusinessNumber: {
       type: 'string',
-      title: 'Business Number (federal)',
+      title: 'What is your Federal Business Number?',
       name: 'federalBusinessNumber',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     gstNumber: {
       type: 'string',
-      title: 'GST number',
+      title: 'What is your Goods and Services Tax (GST) Number?',
       name: 'gstNumber',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
     incomeTaxesFiled: {
       type: 'boolean',
-      title: 'Have you filed last years income taxes?',
+      title: "Have you filed last year's income taxes?",
       name: 'incomeTaxesFiled',
     },
     revenue2019: {
       type: 'string',
-      title: 'Last year’s revenue (2019)',
+      title: 'What was your revenue for last year (2019)?',
       name: 'revenue2019',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
@@ -225,7 +225,7 @@ const schema = {
     },
     workSafeBcRegistrationNumber: {
       type: 'string',
-      title: 'WorkSafeBC registration number',
+      title: 'What is your WorkSafeBC registration number (if applicable)?',
       name: 'workSafeBcRegistrationNumber',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
@@ -234,7 +234,7 @@ const schema = {
     sector: {
       type: 'string',
       name: 'sector',
-      title: 'Sector',
+      title: 'What is your sector?',
       enum: ['', 'Retail', 'Manufacturing', 'Tourism', 'Artist', 'Agrifoods', 'Other'],
     },
     sectorOther: {
@@ -247,7 +247,7 @@ const schema = {
     region: {
       type: 'string',
       name: 'region',
-      title: 'Region',
+      title: 'What region does your business operate in?',
       enum: [
         '',
         'Capital Regional District',
@@ -314,7 +314,7 @@ const schema = {
         },
         onlineStoreUrl: {
           type: 'string',
-          title: 'Link to online store',
+          title: 'If yes, please provide a link to the online store',
           name: 'onlineStoreUrl',
           minLength: REQUIRED_TEXT_MIN_LENGTH,
           maxLength: TEXT_MAX_LENGTH,
@@ -377,7 +377,7 @@ const schema = {
     // GRANT PROPOSAL SECTION
     planForFunds: {
       type: 'string',
-      title: 'Indicate how you plan to use the funds.',
+      title: 'Please indicate how you plan to use the funds.',
       name: 'planForFunds',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,

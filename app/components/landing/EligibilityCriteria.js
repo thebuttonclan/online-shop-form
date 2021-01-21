@@ -19,7 +19,7 @@ function ProgramSteps() {
             <li>Is currently operating;</li>
             <li>Is registered in B.C.;</li>
             <li>Employs less than 149 B.C. residents;</li>
-            <li>Pays taxes in BC</li>
+            <li>Pays taxes in B.C.</li>
             <li>Maintains a</li>
             <StyledUl>
               <li>Business license number</li>
@@ -56,7 +56,7 @@ function ProgramSteps() {
       </Card.Content>
       <CardHeader text="Eligible Expenses" />
       <Card.Content>
-        <StyledP>Funding will help cover up to 75% of costs for expenses like:</StyledP>
+        <StyledP>Funding will help cover up to 75% of costs for expenses such as:</StyledP>
         <StyledUl>
           <li>Service provider costs:</li>
           <StyledUl>
@@ -76,7 +76,7 @@ function ProgramSteps() {
         </StyledUl>
 
         <StyledP>
-          Successful applicants must use one or more B.C.-based service providers to build or improve their online
+          Successful applicants must use one or more B.C.-based service provider(s) to build or improve their online
           store. The only non-B.C.-based eligible expenses include:
         </StyledP>
         <StyledUl>

@@ -50,7 +50,7 @@ function GeneralInformation({ canSubmit }) {
           <li>Only one application per business will be considered.</li>
           <li>Applications are evaluated within three weeks.</li>
           <li>
-            By submitting this application, you allow the Program to share information with BC Provincial Government.
+            By submitting this application, you allow the Program to share information with B.C. Provincial Government.
           </li>
           <li>
             To foster information sharing, applicant information may be shared with other levels of government and
@@ -64,7 +64,8 @@ function GeneralInformation({ canSubmit }) {
       <CardHeader text="Submit Your Application" />
       <Card.Content>
         <StyledP>
-          You are encouraged to submit your application, along with your grant proposal and additional documents early.
+          You are encouraged to submit your application, along with your grant proposal and additional documents as
+          early as possible.
         </StyledP>
         <HrefLink href="/apply/1">
           <ApplyButton className="pointer" disabled={!canSubmit}>

@@ -75,8 +75,8 @@ const contents = [
           <li>Purchase of online promotional space such as Facebook ads </li>
         </StyledUl>
         <StyledP>
-          Expenses related to the development, management and improvement of an online shop and must support e-commerce
-          (website only with and email and/or phone number is not an eligible expense), such as:
+          Expenses related to the development, management and improvement of an online shop supporting e-commerce
+          (website only with an email and/or phone number is not an eligible expense), such as:
         </StyledP>
         <StyledUl>
           <li>
@@ -174,7 +174,7 @@ const contents = [
     content: (
       <>
         <StyledP>
-          Only cost incurred to build or enhance your online shop during the program timelines will be eligible, i.e.
+          Only costs incurred to build or enhance your online shop during the program timelines will be eligible, i.e.
           the grant funding will cover eligible expenses to build or enhance your online shop within 12-weeks from when
           you received confirmation of eligibility via the grant letter.
         </StyledP>
@@ -205,7 +205,7 @@ const contents = [
     question: `My business address is located outside of British Columbia, but I live in B.C. Can I still apply?`,
     content: (
       <>
-        <StyledP>No. The program is for business with a local BC address only.</StyledP>
+        <StyledP>No. The program is for businesses with a local B.C. address only.</StyledP>
       </>
     ),
   },
@@ -251,7 +251,7 @@ const contents = [
     ),
   },
   {
-    question: `Can I apply for this funding if I have an at home business that is not registered in B.C?`,
+    question: `Can I apply for this funding if I have an at-home business that is not registered in B.C?`,
     content: (
       <>
         <StyledP>
@@ -268,7 +268,7 @@ const contents = [
       <>
         <StyledP>
           It depends. If your online shop has no more than 3 of the 5 identified online shop features below, you would
-          be eligible for expenses toward a professional photographer.
+          be eligible for expenses toward a professional photographer:
         </StyledP>
         <StyledUl>
           <li>Customer registration and information security features</li>
@@ -299,8 +299,8 @@ const contents = [
     content: (
       <>
         <StyledP>
-          Audits will be randomly conducted. If you do lose a other evidence of the expense, such as bank statement may
-          be considered.
+          Audits will be randomly conducted. If you do lose original receipts, other evidence of the expense, such as
+          bank statements, may be considered.
         </StyledP>
       </>
     ),
@@ -319,11 +319,11 @@ const contents = [
     content: (
       <>
         <StyledP>
-          Digital Economy: Rapid Response + Resiliency (DER3), program funded through Innovate BC, provides support to
-          small-medium sized businesses, in any sector, enter or expand in the digital economy, through personalized
-          advisory services to assess needs, recommend tools and solutions toward appropriate technology and connections
-          to vetted digital service providers: local B.C. businesses that provide online services. For information and
-          to register:
+          The Digital Economy: Rapid Response + Resiliency (DER3), program funded through Innovate BC, provides support
+          for small-medium sized businesses in any sector to enter or expand in the digital economy, through
+          personalized advisory services to assess needs, recommend tools and solutions toward appropriate technology
+          and connections to vetted digital service providers: local B.C. businesses that provide online services. For
+          information and to register:
         </StyledP>
         <StyledAnchor href="https://innovatebc.ca/what-we-offer/connect-with-ex perts/der3/">
           https://innovatebc.ca/what-we-offer/connect-with-experts/der3/
