@@ -40,7 +40,7 @@ export default function CostsFieldTemplate(props) {
         <br />
         <br />
         Please refer to eligible expenses, online shop completion checklist and grant limit information in the
-        <HrefLink href="/program-guide"> program guide</HrefLink>.
+        <HrefLink href="/files/program_guide.pdf"> program guide</HrefLink>.
       </SInfo>
       {props.children}
       {typeof window === 'object' && (

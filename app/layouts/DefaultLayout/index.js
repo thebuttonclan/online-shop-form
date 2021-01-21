@@ -97,7 +97,9 @@ const DesktopHeaderContainer = styled(Container)`
 
 const HeaderBrand = () => (
   <HeaderBrandContainer>
-    <Logo src={logo} alt="Launch Online Logo" />
+    <HrefLink href="/">
+      <Logo src={logo} alt="Launch Online Logo" />
+    </HrefLink>
     <HeaderBrandText>{TITLE}</HeaderBrandText>
   </HeaderBrandContainer>
 );
