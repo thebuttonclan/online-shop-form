@@ -64,7 +64,17 @@ resource "azurerm_monitor_action_group" "this" {
   short_name          = "loalert"
 
   email_receiver {
-    name          = "junminahn"
+    name          = "Junmin Ahn"
     email_address = "junmin@button.is"
+  }
+
+  email_receiver {
+    name          = "Jon Langlois"
+    email_address = "jon@button.is"
+  }
+
+  email_receiver {
+    name          = "Mike Vesprini"
+    email_address = "mike@button.is"
   }
 }
