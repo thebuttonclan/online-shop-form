@@ -15,7 +15,7 @@ export default function Acknowledgment(props) {
     <Acknowledgement>
       <StrongText>
         <p>
-          The Online Shops Grant Program is part of StrongerBC, B.C.'s economic recovery plan. The program is
+          The Launch Online Grant Program is part of StrongerBC, B.C.'s economic recovery plan. The program is
           administered by Alacrity Canada. We gratefully acknowledge the financial support of the Province of British
           Columbia through the Ministry of Jobs, Economic Recovery and Innovation.
         </p>

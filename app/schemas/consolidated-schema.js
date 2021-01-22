@@ -6,7 +6,7 @@ const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const schema = {
-  title: 'Online Shops Grant',
+  title: 'Launch Online Grant',
   type: 'object',
   required: [
     'businessName',
@@ -163,7 +163,7 @@ const schema = {
     // Need confirmation on what (if anything) we're using in it's place.
     bcOwned: {
       type: 'boolean',
-      title: 'Is the business owned by a BC resident or residents?',
+      title: 'Is the business owned by a B.C. resident or residents?',
       name: 'bcOwned',
     },
     locatedInBc: {
@@ -185,7 +185,7 @@ const schema = {
     },
     bcRegistrationID: {
       type: 'string',
-      title: 'What is your BC Registration ID?',
+      title: 'What is your B.C. Registration ID?',
       name: 'bcRegistrationID',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
@@ -420,7 +420,7 @@ const schema = {
       type: 'boolean',
       name: 'personalInformation',
       title:
-        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Online Shop Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact the <Service provider contact info>',
+        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Launch Online Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact info@launchonline.ca',
     },
     taxImplications: {
       type: 'boolean',
