@@ -33,6 +33,8 @@ const { MediaContextProvider, Media, createMediaStyle } = createMedia({
   },
 });
 
+export const Response = { MediaContextProvider, Media };
+
 export const mediaStyle = createMediaStyle();
 
 const HeaderSegment = styled(Segment)`

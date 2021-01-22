@@ -1,11 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
 import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import StyledUl from 'components/StyledUl';
 import Header2 from 'components/Header2';
-import { Helmet } from 'react-helmet';
+import { Response } from 'layouts/DefaultLayout';
 
 const externalLink = href => (
   <a href={href} target="_blank">
@@ -35,6 +36,15 @@ const NavigationUl = styled(StyledUl)`
 const StyledP = styled.p`
   padding-left: ${MIN_PADDING};
   padding-right: ${MIN_PADDING};
+`;
+
+const RelativeDiv = styled.div`
+  position: relative;
+`;
+
+const AbsoluteAnchor = styled.a`
+  position: absolute;
+  top: -120px;
 `;
 
 const sections = [
@@ -209,16 +219,24 @@ export default function PrivacyPolicy() {
             );
           })}
         </NavigationUl>
-        {sections.map(section => {
-          return (
-            <>
-              <Header2 id={kebabCase(section.title)}>{section.title}</Header2>
-              {section.lines.map(line => {
-                return <StyledP>{Array.isArray(line) ? line.map(v => v) : line}</StyledP>;
-              })}
-            </>
-          );
-        })}
+        <Response.MediaContextProvider>
+          {sections.map(section => {
+            return (
+              <RelativeDiv>
+                <Response.Media greaterThanOrEqual="headerBreak">
+                  <AbsoluteAnchor id={kebabCase(section.title)} />
+                </Response.Media>
+                <Response.Media lessThan="headerBreak">
+                  <a id={kebabCase(section.title)} />
+                </Response.Media>
+                <Header2>{section.title}</Header2>
+                {section.lines.map(line => {
+                  return <StyledP>{Array.isArray(line) ? line.map(v => v) : line}</StyledP>;
+                })}
+              </RelativeDiv>
+            );
+          })}
+        </Response.MediaContextProvider>
       </StyledContainer>
     </>
   );
