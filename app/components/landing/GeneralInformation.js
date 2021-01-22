@@ -38,7 +38,7 @@ function GeneralInformation({ canSubmit }) {
           <li>
             Before completing, please read the{' '}
             <HrefLink href="/files/program_guide.pdf" blank>
-              Online Shops Grant Program Guide
+              Launch Online Grant Program Guide
             </HrefLink>
           </li>
           <li>
@@ -50,13 +50,14 @@ function GeneralInformation({ canSubmit }) {
           <li>Only one application per business will be considered.</li>
           <li>Applications are evaluated within three weeks.</li>
           <li>
-            By submitting this application, you allow the Program to share information with B.C. Provincial Government.
+            By submitting this application, you allow the Program to share information with the B.C. Provincial
+            Government.
           </li>
           <li>
             To foster information sharing, applicant information may be shared with other levels of government and
-            funding programs. Personal information is collected for administration of the Online Shops Grant including
+            funding programs. Personal information is collected for administration of the Launch Online Grant including
             for confirming residency, under the Personal Information Act. If you have questions about the collection you
-            may contact:{' '}
+            may contact: <HrefLink href="mailto:info@launchonline.ca">info@launchonline.ca</HrefLink>
           </li>
         </StyledUl>
       </Card.Content>

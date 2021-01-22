@@ -107,9 +107,9 @@ export default function Home({ canSubmit }) {
 
         <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
         <StyledP>
-          The Online Shops Grant program provides funding to B.C.-based business to create an online shop and/or improve
-          their e-commerce experience to attract new local customers and expand to new markets. The grant will pay for
-          up to 75% of eligible expenses, up to a maximum of $7,500 per business.
+          The Launch Online Grant program provides funding to B.C.-based business to create an online shop and/or
+          improve their e-commerce experience to attract new local customers and expand to new markets. The grant will
+          pay for up to 75% of eligible expenses, up to a maximum of $7,500 per business.
         </StyledP>
         <StyledP>
           The program supports a rapid response for businesses and is accepting applications from businesses ready to
