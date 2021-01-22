@@ -1,65 +1,55 @@
+import { Grid } from 'semantic-ui-react';
 import CardHeader from 'components/StyledCardHeader';
 import StyledCard from 'components/StyledCard';
 import styled from 'styled-components';
 import StyledP from 'components/StyledP';
 import Header2 from 'components/Header2';
-import { MIN_PADDING, TERTIARY_COLOUR } from 'theme';
-
-const StepsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 10px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
+import { TERTIARY_COLOUR } from 'theme';
 
 const HorizontalRule = styled.hr`
   background: ${TERTIARY_COLOUR};
   margin: 0;
   height: 7px;
-  width: 30%;
+  width: 100px;
   border: none;
 `;
 
-const Step = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-basis: 0;
-  flex-grow: 1;
-  margin: 10px;
+const PaddingGrid = styled(Grid)`
+  padding: 0 1em !important;
 `;
 
-const StepContainer = props => (
-  <Step>
-    <Header2>{props.title}</Header2>
-    <HorizontalRule />
-    {props.children}
-  </Step>
-);
+const steps = [
+  {
+    title: 'Step 1:',
+    text:
+      'Develop a grant proposal that indicates how you plan to use the funds. Businesses need to show a cost estimate that includes how much funding you need and how the money will be spent.',
+  },
+  {
+    title: 'Step 2:',
+    text:
+      'Complete the online application demonstrating that you meet the eligibility criteria and submit your online shop proposal.',
+  },
+  {
+    title: 'Step 3:',
+    text: 'Applicants will be contacted within three weeks with the outcome of their application.',
+  },
+];
 
 function ProgramSteps() {
   return (
     <StyledCard>
       <CardHeader text="The program application has three steps" />
-      <StepsContainer>
-        <StepContainer title="Step 1:">
-          <StyledP>
-            Develop a grant proposal that indicates how you plan to use the funds. Businesses need to show a cost
-            estimate that includes how much funding you need and how the money will be spent.
-          </StyledP>
-        </StepContainer>
-        <StepContainer title="Step 2:">
-          <StyledP>
-            Complete the online application demonstrating that you meet the eligibility criteria and submit your online
-            shop proposal.
-          </StyledP>
-        </StepContainer>
-        <StepContainer title="Step 3:">
-          <StyledP>Applicants will be contacted within three weeks with the outcome of their application.</StyledP>
-        </StepContainer>
-      </StepsContainer>
+      <PaddingGrid columns="three" divided stackable>
+        <Grid.Row>
+          {steps.map(step => (
+            <Grid.Column key={step.title}>
+              <Header2>{step.title}</Header2>
+              <HorizontalRule />
+              <StyledP>{step.text}</StyledP>
+            </Grid.Column>
+          ))}
+        </Grid.Row>
+      </PaddingGrid>
     </StyledCard>
   );
 }
