@@ -60,7 +60,7 @@ The documents follow [the article describing how to get started with Terraform o
 
 1. After provisioning all resources in Azure cloud, install `application gateway ingress` via Helm.
 
-   - Set required values in `helm/application-gateway-ingres/helm-config.secret.yaml` before installing Helm chart.
+   - Set required values in `helm/application-gateway-ingress/helm-config.secret.yaml` before installing Helm chart.
 
    ```
    appgw.subscriptionId <subscription_id>
@@ -70,7 +70,7 @@ The documents follow [the article describing how to get started with Terraform o
    ```
 
    ```sh
-   cd helm/application-gateway-ingres
+   cd helm/application-gateway-ingress
    ./helm-install.sh
    ```
 
