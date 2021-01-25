@@ -13,10 +13,11 @@ To see production logs in Azure UI:
     - To find all submissions with timestamp and submission number, use `submitted` as the findString.
 
 The table can be filtered through the UI and the query language. Currently, custom logs are sent when an application is submitted successfully,
-fails backend validation, or fails to save to database. The associated messages are:
+fails backend validation, did not save correctly to the database, or general error when saving. The associated messages are:
 
 - `submitted <application number>`
 - `invalid`
 - `db error`
+- `saving error`
 
 Which can be filtered for by findstring to find the relevant logs.

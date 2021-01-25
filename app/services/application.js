@@ -5,7 +5,7 @@ import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
-import { DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG } from 'utils/logging';
+import { DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG, SAVING_ERROR_MSG } from 'utils/logging';
 
 const { version: formVersion } = require('../package.json');
 
@@ -45,13 +45,15 @@ export async function submitApplication({ req, newData, js }) {
     const result = validateFormData(newData);
 
     if (!result.isValid) {
-      res.log = INVALID_APPLICATION_MSG;
+      res.log = `${INVALID_APPLICATION_MSG}, data: ${JSON.stringify(newData)}, errors: ${JSON.stringify(
+        result.errors
+      )}`;
       if (js) return res.status(422).json(result);
       return res.redirect('/message/validation-error');
     }
     const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
     if (!success) {
-      res.log = DB_ERROR_MSG;
+      res.log = `${DB_ERROR_MSG}, data: ${JSON.stringify(newData)}`;
       throw new Error('Failed to save application');
     }
 
@@ -64,6 +66,7 @@ export async function submitApplication({ req, newData, js }) {
     if (js) return res.json(result);
     return res.redirect('/message/success');
   } catch (error) {
+    res.log = `${SAVING_ERROR_MSG}: ${error}`;
     if (js) return res.status(422).json({ hasError: true, message: error.message || error });
     return res.redirect('/message/error');
   }
