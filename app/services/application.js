@@ -5,6 +5,7 @@ import schema1 from 'schemas/page-1';
 import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
+import { DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG } from 'utils/logging';
 
 const { version: formVersion } = require('../package.json');
 
@@ -44,17 +45,19 @@ export async function submitApplication({ req, newData, js }) {
     const result = validateFormData(newData);
 
     if (!result.isValid) {
+      res.log = INVALID_APPLICATION_MSG;
       if (js) return res.status(422).json(result);
       return res.redirect('/message/validation-error');
     }
-
     const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
     if (!success) {
+      res.log = DB_ERROR_MSG;
       throw new Error('Failed to save application');
     }
 
     const count = await pgQuery.countApplication();
     req.backendState.setApplicationCount(count);
+    res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
 
     req.session.formData = {};
 
