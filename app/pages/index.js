@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Icon, Message, Header } from 'semantic-ui-react';
+import { Container, Icon, Message, Header, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
@@ -14,6 +14,7 @@ import Header1 from 'components/Header1';
 import Header2 from 'components/Header2';
 import HrefLink from 'components/HrefLink';
 import { TOP_HEIGHT } from 'layouts/DefaultLayout';
+import SBCLogo from 'components/SBCLogo';
 
 const NavigationUl = styled(StyledUl)`
   & li {
@@ -78,32 +79,40 @@ export default function Home({ canSubmit }) {
             </div>
           </WarningMessage>
         )}
+
         <Header2>On this page:</Header2>
-        <NavigationUl>
-          <li>
-            <a href="#program-explanation">How the program works</a>
-          </li>
-          <li>
-            <a href="#application-deadlines">Application deadlines</a>
-          </li>
-          <li>
-            <a href="#eligibility">Determine your eligibility</a>
-          </li>
-          <li>
-            <a href="#submit-application">Submit your application</a>
-          </li>
-          <li>
-            <HrefLink href="/files/program_guide.pdf" blank>
-              Program guide
-            </HrefLink>
-          </li>
-          <li>
-            <HrefLink href="/faq">Frequently asked questions</HrefLink>
-          </li>
-          <li>
-            <a href="#contact">Contact us</a>
-          </li>
-        </NavigationUl>
+        <Grid columns={2} stackable centered verticalAlign="center">
+          <Grid.Column>
+            <NavigationUl>
+              <li>
+                <a href="#program-explanation">How the program works</a>
+              </li>
+              <li>
+                <a href="#application-deadlines">Application deadlines</a>
+              </li>
+              <li>
+                <a href="#eligibility">Determine your eligibility</a>
+              </li>
+              <li>
+                <a href="#submit-application">Submit your application</a>
+              </li>
+              <li>
+                <HrefLink href="/files/program_guide.pdf" blank>
+                  Program guide
+                </HrefLink>
+              </li>
+              <li>
+                <HrefLink href="/faq">Frequently asked questions</HrefLink>
+              </li>
+              <li>
+                <a href="#contact">Contact us</a>
+              </li>
+            </NavigationUl>
+          </Grid.Column>
+          <Grid.Column verticalAlign="center">
+            <SBCLogo />
+          </Grid.Column>
+        </Grid>
 
         <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
         <StyledP>

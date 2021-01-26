@@ -41,6 +41,7 @@ const StyledFooter = styled.footer`
 const Copyright = styled.div`
   color: white !important;
   padding-bottom: 20px;
+  padding-top: 20px;
 `;
 
 const Logo = styled.img`
@@ -63,7 +64,6 @@ const Footer = () => {
       <Container>
         <LogoContainer>
           <Logo src="/icons/alacrity_black.png" alt="Alacrity Canada" aspect={alacrityAspectRatio} />
-          <Logo src="/icons/bc_vertical.png" alt="Government of British Columbia" aspect={bcAspectRatio} />
           <Logo src="/icons/BC-StrongerBC_cmyk_pos_sans.svg" alt="Stronger BC" aspect={sbcAspectRatio} />
         </LogoContainer>
         <Copyright>
