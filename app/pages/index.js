@@ -109,7 +109,7 @@ export default function Home({ canSubmit }) {
               </li>
             </NavigationUl>
           </Grid.Column>
-          <Grid.Column verticalAlign="center">
+          <Grid.Column>
             <SBCLogo />
           </Grid.Column>
         </Grid>
