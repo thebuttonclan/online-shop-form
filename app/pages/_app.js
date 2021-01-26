@@ -11,10 +11,6 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${PRIMARY_COLOUR} !important;
   }
 
-  .bg-secondary {
-    background-color: ${SECONDARY_COLOUR} !important;
-  }
-
   .no-padding {
     padding: 0 !important;
   }

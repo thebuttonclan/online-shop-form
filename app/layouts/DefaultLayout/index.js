@@ -5,7 +5,7 @@ import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
 import { Container, Icon, Menu, Segment, Sidebar, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { PRIMARY_COLOUR, MIN_PADDING } from 'theme';
+import { PRIMARY_COLOUR, MIN_PADDING, SECONDARY_COLOUR } from 'theme';
 import HrefLink from 'components/HrefLink';
 import Footer from './Footer';
 
@@ -46,6 +46,7 @@ const HeaderMenu = styled(Menu)`
   padding: 0 !important;
   background-color: ${PRIMARY_COLOUR} !important;
   height: ${TOP_HEIGHT} !important;
+  border-bottom: 5px solid ${SECONDARY_COLOUR} !important;
 `;
 
 const BlockItem = styled(Menu.Item)`

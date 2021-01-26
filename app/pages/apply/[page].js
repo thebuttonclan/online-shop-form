@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import HrefLink from 'components/HrefLink';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
+import { PRIMARY_COLOUR } from 'theme';
 
 const TopRow = styled.div`
   display: flex;
@@ -45,6 +46,11 @@ const StyledProgress = styled(Progress)`
 const BackButton = styled.p`
   color: #006ef5;
   cursor: pointer;
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${PRIMARY_COLOUR} !important;
+  color: white !important;
 `;
 
 export default function Apply({ formData, page }) {
@@ -104,9 +110,9 @@ export default function Apply({ formData, page }) {
         ArrayFieldTemplate={ArrayFieldTemplate}
       >
         <div>
-          <Button id="btn-submit-form-data" type="submit" primary>
+          <StyledButton id="btn-submit-form-data" type="submit">
             {continueBtnText}
-          </Button>
+          </StyledButton>
         </div>
       </JsonSchemaForm>
       {/* .error-detail class styles errors below fields,
