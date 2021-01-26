@@ -1,8 +1,6 @@
 import axios from 'axios';
 import validate from 'react-jsonschema-form/lib/validate';
 import createValidator from 'schemas/custom-validate';
-import schema1 from 'schemas/page-1';
-import schema2 from 'schemas/page-2';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
 
@@ -11,13 +9,6 @@ const { version: formVersion } = require('../package.json');
 export const LAST_PAGE =
   Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;
 export const PAGES = Array.from({ length: LAST_PAGE }, (_, i) => i + 1);
-
-export function getSchema(page) {
-  if (page === 1) return schema1;
-  if (page === 2) return schema2;
-  // TODO: decide on invalid page handling
-  return fullSchema;
-}
 
 // see https://github.com/rjsf-team/react-jsonschema-form/blob/6f3c4c78765cbae67b91bf7762094c9b7e38c7d1/packages/core/src/validate.js#L167
 export function validateFormData(formData) {

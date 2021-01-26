@@ -270,7 +270,7 @@ const schema = {
     },
     repeatableProducts: {
       type: 'boolean',
-      title: 'Does the business sell repeatable products?',
+      title: 'Does the business sell products (goods)?',
       name: 'repeatableProducts',
     },
     cannabisProducts: {
