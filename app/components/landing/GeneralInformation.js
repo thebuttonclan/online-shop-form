@@ -42,7 +42,7 @@ function GeneralInformation({ canSubmit }) {
             </HrefLink>
           </li>
           <li>
-            Before submitting your application, please ensure that all required information are completed. Incomplete
+            Before submitting your application, please ensure that all required information is completed. Incomplete
             applications cannot be approved to receive a grant.
           </li>
           <li>Meeting the criteria does not guarantee that the application will be approved for funding.</li>
