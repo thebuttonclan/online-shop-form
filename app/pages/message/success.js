@@ -65,7 +65,7 @@ export default function SuccessPage() {
       </IndentedUl>
       <StyledP>
         If you have any questions about your applications please contact us at:{' '}
-        <a href="mailto:info@launchonline.ca">info@launchonline.ca</a>
+        <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>
       </StyledP>
     </Container>
   );
