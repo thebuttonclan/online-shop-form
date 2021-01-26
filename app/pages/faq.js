@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Accordion, Icon, Divider, Header, Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { DEFAULT_FONT_SIZE } from 'theme';
+import { DEFAULT_FONT_SIZE, PRIMARY_FONT } from 'theme';
 
 const StyledContainer = styled.div`
   margin: 2em;
@@ -12,6 +12,7 @@ const StyledHeader = styled(Header)`
   color: #16152b;
   font-weight: normal;
   font-size: 3rem;
+  font-family: ${PRIMARY_FONT} !important;
 `;
 
 const StyledIcon = styled.div`
@@ -48,6 +49,7 @@ const StyledShowAllWrapper = styled.div`
 const StyledAccordionTitle = styled(Accordion.Title)`
   display: flex;
   justify-content: space-between;
+  font-family: ${PRIMARY_FONT} !important;
 `;
 
 const StyledQuestion = styled.p`

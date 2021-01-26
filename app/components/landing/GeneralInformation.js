@@ -5,10 +5,10 @@ import { Card } from 'semantic-ui-react';
 import StyledUl from 'components/StyledUl';
 import HrefLink from 'components/HrefLink';
 import styled from 'styled-components';
-import { SECONDARY_FONT_COLOUR } from 'theme';
+import { PRIMARY_COLOUR } from 'theme';
 
 const ApplyButton = styled.button`
-  background-color: ${SECONDARY_FONT_COLOUR};
+  background-color: ${PRIMARY_COLOUR};
   color: white;
   border-radius: 20px;
   border: none;
