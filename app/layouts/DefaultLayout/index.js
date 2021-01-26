@@ -5,7 +5,7 @@ import { createMedia } from '@artsy/fresnel';
 import PropTypes from 'prop-types';
 import { Container, Icon, Menu, Segment, Sidebar, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { PRIMARY_COLOUR, MIN_PADDING, SECONDARY_COLOUR } from 'theme';
+import { PRIMARY_COLOUR, MIN_PADDING, SECONDARY_COLOUR, PRIMARY_FONT } from 'theme';
 import HrefLink from 'components/HrefLink';
 import Footer from './Footer';
 
@@ -67,6 +67,7 @@ const HeaderBrandText = styled(Header)`
   margin: auto ${MIN_PADDING} !important;
   text-align: left;
   color: white !important;
+  font-family: ${PRIMARY_FONT} !important;
 `;
 
 const Logo = styled.img`
@@ -77,6 +78,10 @@ const Logo = styled.img`
 const LinksContainer = styled.div`
   display: flex;
   justify-content: space-around;
+
+  & .ui.header {
+    font-family: ${PRIMARY_FONT} !important;
+  }
 `;
 
 const NarrowHeaderBrand = styled(HeaderBrandText)`

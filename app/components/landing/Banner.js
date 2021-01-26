@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Container } from 'semantic-ui-react';
-import { SUBHEADING_WEIGHT, MIN_PADDING, BACKGROUND_COLOUR, HUGE_FONT, HEADING_WEIGHT } from 'theme';
+import { SUBHEADING_WEIGHT, MIN_PADDING, BACKGROUND_COLOUR, HUGE_FONT, HEADING_WEIGHT, PRIMARY_FONT } from 'theme';
 
 const HEADER_HEIGHT = '45vh';
 
@@ -30,7 +30,7 @@ const BannerOverlayHeader = styled.h1`
   font-size: ${HUGE_FONT};
   text-transform: uppercase;
   font-weight: ${HEADING_WEIGHT};
-  font-family: helvetica;
+  font-family: ${PRIMARY_FONT};
   margin-top: 50px;
   margin-bottom: ${MIN_PADDING};
 `;

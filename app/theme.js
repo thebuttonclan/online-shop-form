@@ -11,7 +11,7 @@ export const SECONDARY_FONT_COLOUR = '#4083bd';
 
 export const HEADING_WEIGHT = 'lighter';
 export const SUBHEADING_WEIGHT = 'bold';
-export const PRIMARY_FONT = 'Helvetica';
+export const PRIMARY_FONT = 'BC Sans';
 
 // Using as default spacer
 export const MIN_PADDING = '10px';
