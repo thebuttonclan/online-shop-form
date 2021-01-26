@@ -41,9 +41,9 @@ const Banner = ({ text }) => (
       <Container>
         <BannerOverlayHeader as="h1">Launch Online Grant Program</BannerOverlayHeader>
         <BannerOverlaySubHeader>
-          Small and medium-sized businesses are vital to British Columbia’s economy. The Launch Online Grant program
-          will invest up to $12 million to help small- and medium-size businesses throughout B.C. move their business
-          model online.
+          Small and medium-sized businesses are vital to British Columbia’s economy. As part of StrongerBC, B.C.’s
+          Economic Recovery Plan the Launch Online Grant program will invest up to $12 million to help small- and
+          medium-size businesses throughout B.C. move their business model online.
         </BannerOverlaySubHeader>
       </Container>
     </BannerOverlay>

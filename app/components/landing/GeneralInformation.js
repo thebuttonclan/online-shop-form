@@ -31,7 +31,7 @@ const ApplyButton = styled.button`
 function GeneralInformation({ canSubmit }) {
   return (
     <StyledCard>
-      <CardHeader text="General Information" />
+      <CardHeader text="Application Process" />
 
       <Card.Content>
         <StyledUl>
@@ -54,10 +54,13 @@ function GeneralInformation({ canSubmit }) {
             Government.
           </li>
           <li>
-            To foster information sharing, applicant information may be shared with other levels of government and
-            funding programs. Personal information is collected for administration of the Launch Online Grant including
-            for confirming residency, under the Personal Information Act. If you have questions about the collection you
-            may contact Alacrity Canada at 844-487-1266 or{' '}
+            To foster information sharing, applicant information maybe shared with other levels of government and
+            funding programs.
+          </li>
+          <li>
+            Personal information is collected for administration of the Launch Online Grant including for confirming
+            residency, under the Personal Information Protection Act. If you have questions about the collection you may
+            contact Alacrity Canada at 844-487-1266 or{' '}
             <HrefLink href="mailto:info@launchonline.ca">info@launchonline.ca</HrefLink>
           </li>
         </StyledUl>
