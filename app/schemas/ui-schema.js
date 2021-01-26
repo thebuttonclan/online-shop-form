@@ -12,6 +12,7 @@ Object.keys(consolodateSchema.properties).forEach(propertyName => {
 });
 
 const uiSchema = {
+  // If overriding ui for boolean fields, make sure to include the widget as radio
   ...booleanFields,
   businessPhone: {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
@@ -31,6 +32,7 @@ const uiSchema = {
   isCurrentlyOperating: {
     'ui:help':
       'Businesses not currently operating due to a public health order affecting their business or sector are not eligible for the program. Businesses that only operate seasonally, but that are ready to open during the appropriate season (and that otherwise meet all other eligibility criteria) will be considered operating.',
+    'ui:widget': 'radio',
   },
   email: {
     'ui:help': 'Please use the format name@email.com',
