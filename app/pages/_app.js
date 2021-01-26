@@ -37,6 +37,17 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: underline;
     }
   }
+
+  @font-face {
+    font-family: 'BC Sans';
+    src: url('/fonts/BCSans-Regular.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'BC Sans';
+    src: url('/fonts/BCSans-Bold.woff') format('woff');
+    font-weight: bold;
+  }
 `;
 
 const addNormalScroll = () => document.documentElement.classList.add('normal-scroll');

@@ -36,7 +36,6 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <title>Launch Online</title>
           <link rel="icon" href="/icons/launch-online-favicon-32x32.png" />
-          <link href="/fonts/fonts.css" rel="stylesheet" />
           <style type="text/css" dangerouslySetInnerHTML={{ __html: mediaStyle }} />
         </Head>
         <body>
