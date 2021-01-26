@@ -240,7 +240,7 @@ const schema = {
     sectorOther: {
       type: 'string',
       title: 'Please specify',
-      name: 'businessName',
+      name: 'sectorOther',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },

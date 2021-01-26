@@ -38,6 +38,7 @@ function RadioWidget(props) {
                 type="radio"
                 checked={checked}
                 name={name}
+                id={`id_${name}`}
                 required={required}
                 value={option.value}
                 disabled={disabled || itemDisabled || readonly}

@@ -39,7 +39,6 @@ export async function saveApplication(formData, page) {
 
 export async function submitApplication({ req, newData, js }) {
   const { res, pgQuery } = req;
-
   try {
     const result = validateFormData(newData);
 
