@@ -42,8 +42,8 @@ function GeneralInformation({ canSubmit }) {
             </HrefLink>
           </li>
           <li>
-            Before submitting your application, please ensure that all required information and attachments are
-            completed and attached to your application in order to be reviewed.
+            Before submitting your application, please ensure that all required information is completed. Incomplete
+            applications cannot be approved to receive a grant.
           </li>
           <li>Meeting the criteria does not guarantee that the application will be approved for funding.</li>
           <li>Upon review, additional information may be requested from the applicant.</li>
@@ -57,7 +57,8 @@ function GeneralInformation({ canSubmit }) {
             To foster information sharing, applicant information may be shared with other levels of government and
             funding programs. Personal information is collected for administration of the Launch Online Grant including
             for confirming residency, under the Personal Information Act. If you have questions about the collection you
-            may contact: <HrefLink href="mailto:info@launchonline.ca">info@launchonline.ca</HrefLink>
+            may contact Alacrity Canada at 844-487-1266 or{' '}
+            <HrefLink href="mailto:info@launchonline.ca">info@launchonline.ca</HrefLink>
           </li>
         </StyledUl>
       </Card.Content>

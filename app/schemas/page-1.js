@@ -184,7 +184,7 @@ const schema1 = {
     },
     revenue2019: {
       type: 'string',
-      title: 'Last year’s revenue (2019)',
+      title: 'Last year’s revenue (2019 or the year preceding the application)',
       name: 'revenue2019',
       minLength: TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
