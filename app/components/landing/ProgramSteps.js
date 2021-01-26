@@ -4,10 +4,10 @@ import StyledCard from 'components/StyledCard';
 import styled from 'styled-components';
 import StyledP from 'components/StyledP';
 import Header2 from 'components/Header2';
-import { TERTIARY_COLOUR } from 'theme';
+import { PRIMARY_COLOUR } from 'theme';
 
 const HorizontalRule = styled.hr`
-  background: ${TERTIARY_COLOUR};
+  background: ${PRIMARY_COLOUR};
   margin: 0;
   height: 7px;
   width: 100px;

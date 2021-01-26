@@ -11,6 +11,7 @@ const connectPgPool = require('./setup-pg');
 const pgQuery = require('./queries');
 const backendState = require('./state');
 const { countApplication } = require('./queries/application');
+const { formatLogs } = require('../utils/logging');
 
 const sessionSecret = process.env.SESSION_SECRET || crypto.randomBytes(32).toString();
 const isProd = process.env.NODE_ENV === 'production';
@@ -41,7 +42,7 @@ const initExpresss = async (options = {}) => {
     next();
   });
 
-  expressServer.use(logger('dev'));
+  expressServer.use(logger(isProd ? formatLogs : 'dev'));
   expressServer.use(bodyParser.json());
   expressServer.use(bodyParser.urlencoded({ extended: false }));
   expressServer.use(cookieParser());

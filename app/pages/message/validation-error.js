@@ -91,7 +91,7 @@ export default function ErrorPage({ result }) {
       </IndentedUl>
       <StyledP>
         If you have any questions about your applications please contact us at:{' '}
-        <a href="mailto:info@strongerbc.ca">info@strongerbc.ca</a>
+        <a href="mailto:info@launchonline.ca">info@launchonline.ca</a>
       </StyledP>
     </Container>
   );

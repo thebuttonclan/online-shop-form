@@ -1,16 +1,12 @@
 import { Container, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { PRIMARY_COLOUR } from 'theme';
-import HrefLink from 'components/HrefLink';
-
-const alacrityAspectRatio = 322 / 1000;
-const sbcAspectRatio = 255 / 1043;
-const bcAspectRatio = 523 / 554;
+import { PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
 
 const StyledFooter = styled.footer`
   background-color: ${PRIMARY_COLOUR};
   color: #fff;
-  min-height: 20vh;
+  min-height: 10vh;
+  border-top: 5px solid ${SECONDARY_COLOUR};
 
   & ul {
     display: flex;
@@ -41,31 +37,13 @@ const StyledFooter = styled.footer`
 const Copyright = styled.div`
   color: white !important;
   padding-bottom: 20px;
-`;
-
-const Logo = styled.img`
-  width: 20%;
-  height: ${props => `calc(${props.aspect} * 20%)`};
-  min-width: 100px;
-  min-height: ${props => `calc(${props.aspect} * 100px)`};
-`;
-
-const LogoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  padding-top: 20px;
 `;
 
 const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <LogoContainer>
-          <Logo src="/icons/alacrity_black.png" alt="Alacrity Canada" aspect={alacrityAspectRatio} />
-          <Logo src="/icons/bc_vertical.png" alt="Government of British Columbia" aspect={bcAspectRatio} />
-          <Logo src="/icons/BC-StrongerBC_cmyk_pos_sans.svg" alt="Stronger BC" aspect={sbcAspectRatio} />
-        </LogoContainer>
         <Copyright>
           Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2021
         </Copyright>

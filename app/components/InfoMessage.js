@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Message, Icon } from 'semantic-ui-react';
-import { QUATERNERY_COLOUR, MIN_PADDING } from 'theme';
+import { MIN_PADDING, PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
 
 const StyledP = styled.p`
   color: white;
@@ -8,8 +8,9 @@ const StyledP = styled.p`
 `;
 
 const StyledMessage = styled(Message)`
-  background-color: ${QUATERNERY_COLOUR} !important;
-  border-radius: 30px !important;
+  background-color: ${PRIMARY_COLOUR} !important;
+  border-left: 10px solid ${SECONDARY_COLOUR};
+  border-radius: 0 !important;
   margin: ${MIN_PADDING} !important;
 `;
 

@@ -35,8 +35,9 @@ export default function CostsFieldTemplate(props) {
   return (
     <div>
       <SInfo>
-        Please provide us with the complete cost estimates for each cost grouping. At the bottom of the page all costs
-        will be totalled and 75% (max $7500) will be included in the total grant amount requested.
+        Please provide us with the complete cost estimates for each cost grouping (service provider, digital customer
+        acquisition or training costs). The total grant amount requested through this application is auto-calculated at
+        the bottom of this page: 75% of the eligible costs (max of $7,500).
         <br />
         <br />
         Please refer to eligible expenses, online shop completion checklist and grant limit information in the
