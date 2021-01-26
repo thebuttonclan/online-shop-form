@@ -81,7 +81,7 @@ export default function Home({ canSubmit }) {
         )}
 
         <Header2>On this page:</Header2>
-        <Grid columns={2} stackable centered verticalAlign="center">
+        <Grid columns={2} stackable>
           <Grid.Column>
             <NavigationUl>
               <li>
