@@ -28,6 +28,10 @@ const uiSchema = {
   gstNumber: {
     'ui:help': 'For example: 123456789 RT 0001',
   },
+  isCurrentlyOperating: {
+    'ui:help':
+      'Businesses not currently operating due to a public health order affecting their business or sector are not eligible for the program. Businesses that only operate seasonally, but that are ready to open during the appropriate season (and that otherwise meet all other eligibility criteria) will be considered operating.',
+  },
   email: {
     'ui:help': 'Please use the format name@email.com',
   },
