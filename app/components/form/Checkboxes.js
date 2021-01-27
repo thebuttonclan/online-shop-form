@@ -1,7 +1,7 @@
 // See https://github.com/rjsf-team/react-jsonschema-form/blob/master/packages/core/src/components/widgets/CheckboxesWidget.js
 // Code re-used with small change to pass name down to checkboxes for the non-js case
 import styled from 'styled-components';
-import { LARGE_FONT, MIN_PADDING } from 'theme';
+import { MIN_PADDING } from 'theme';
 import Label from 'components/form/SemanticStyleLabel';
 
 const CheckboxContainer = styled.span`
