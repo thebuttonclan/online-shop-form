@@ -10,7 +10,6 @@ const Acknowledgement = styled.div`
 
 const StrongText = styled.div`
   margin: 20px 0 !important;
-  font-weight: bold;
 `;
 
 const Logo = styled.img`
