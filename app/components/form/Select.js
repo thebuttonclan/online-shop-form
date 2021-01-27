@@ -12,6 +12,7 @@ const NamedSelect = props => {
       <Form.Control
         as="select"
         required={required}
+        id={`id_${name}`}
         name={name}
         defaultValue=""
         onChange={e => {

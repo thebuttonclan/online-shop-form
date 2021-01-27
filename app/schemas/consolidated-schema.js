@@ -240,7 +240,7 @@ const schema = {
     sectorOther: {
       type: 'string',
       title: 'Please specify',
-      name: 'businessName',
+      name: 'sectorOther',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
@@ -270,7 +270,7 @@ const schema = {
     },
     repeatableProducts: {
       type: 'boolean',
-      title: 'Does the business sell repeatable products?',
+      title: 'Does the business sell products (goods)?',
       name: 'repeatableProducts',
     },
     cannabisProducts: {

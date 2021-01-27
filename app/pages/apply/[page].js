@@ -80,7 +80,7 @@ export default function Apply({ formData, page }) {
       </Helmet>
       <TopRow>
         <HrefLink href={linkRoute}>
-          <BackButton>
+          <BackButton id={`id_back_button`}>
             <Icon name="angle left"></Icon>
             Back
           </BackButton>

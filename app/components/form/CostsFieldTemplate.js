@@ -47,7 +47,7 @@ export default function CostsFieldTemplate(props) {
       {typeof window === 'object' && (
         <div>
           <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
-          {formatCurrency(Math.min(grantAmount, MAX_GRANT_AMOUNT))}
+          <div id={`id_total_grant_request`}>{formatCurrency(Math.min(grantAmount, MAX_GRANT_AMOUNT))}</div>
         </div>
       )}
     </div>
