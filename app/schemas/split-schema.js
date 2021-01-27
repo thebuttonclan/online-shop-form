@@ -1,15 +1,19 @@
+const isObject = obj => obj === Object(obj);
+
 /* Returns array of dependencies in format [..., {ownerPropertyName: dependantPropertyName}] */
 export function getPropertyDependencies(dependencies) {
   const propertyDependencies = [];
-  Object.entries(dependencies).forEach(([ownerProperty, value]) => {
-    if (value.oneOf) {
-      value.oneOf.forEach(scenario => {
-        if (scenario.required) {
-          propertyDependencies.push({ [ownerProperty]: scenario.required[0] });
-        }
-      });
-    }
-  });
+  if (isObject(dependencies)) {
+    Object.entries(dependencies).forEach(([ownerProperty, value]) => {
+      if (value.oneOf) {
+        value.oneOf.forEach(scenario => {
+          if (scenario.required) {
+            propertyDependencies.push({ [ownerProperty]: scenario.required[0] });
+          }
+        });
+      }
+    });
+  }
   return propertyDependencies;
 }
 
