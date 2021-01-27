@@ -30,7 +30,7 @@ const BannerOverlayHeader = styled.h1`
   text-transform: uppercase;
   font-weight: ${HEADING_WEIGHT};
   font-family: ${PRIMARY_FONT};
-  margin-top: 50px;
+  margin-top: 30px !important;
   margin-bottom: ${MIN_PADDING};
 `;
 
