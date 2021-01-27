@@ -19,7 +19,6 @@ import SBCLogo from 'components/SBCLogo';
 const NavigationUl = styled(StyledUl)`
   & li {
     color: ${SECONDARY_FONT_COLOUR};
-    font-weight: ${SUBHEADING_WEIGHT};
   }
 `;
 
@@ -41,10 +40,6 @@ const BackToTop = () => (
     </a>
   </ScrollUp>
 );
-
-const ScrollContainer = styled(Container)`
-  overflow-y: scroll;
-`;
 
 const HorizontalRule = styled.hr`
   height: 1px;
