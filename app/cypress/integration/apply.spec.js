@@ -40,10 +40,7 @@ describe(`Form behavious test`, () => {
     cy.get('#btn-submit-form-data').click({ force: true });
     cy.wait(3000);
     // go back to 16 and check value
-    cy.get('#id_back_button')
-      .parent()
-      .invoke('attr', 'href')
-      .then(href => cy.visit(href));
+    cy.get('#id_back_button').click({ force: true });
     cy.get(`#id_revenue2019`).should('have.value', formFieldEntries[15].inputs[0].text);
   });
 
