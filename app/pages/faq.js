@@ -3,6 +3,7 @@ import { Accordion, Icon, Divider, Header, Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { DEFAULT_FONT_SIZE, PRIMARY_FONT } from 'theme';
+import HrefLink from 'components/HrefLink';
 
 const StyledContainer = styled.div`
   margin: 2em;
@@ -380,8 +381,10 @@ export default class Faq extends Component {
         </Helmet>
         <StyledContainer>
           <StyledHeader as="h1">FAQ</StyledHeader>
-
           <StyledP>(Also provided in French, Spanish, Chinese, Korean, Punjabi, and Tagalog)</StyledP>
+          <HrefLink href="/files/faqs.pdf" blank>
+            View the translated FAQs.
+          </HrefLink>
 
           <StyledShowAllWrapper>
             <div></div>
