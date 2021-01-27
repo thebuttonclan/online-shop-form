@@ -2,7 +2,7 @@
 // Code re-used with small change to pass name down to checkboxes for the non-js case
 
 import styled from 'styled-components';
-import { MIN_PADDING, LARGE_FONT } from 'theme';
+import { MIN_PADDING } from 'theme';
 import Label from 'components/form/SemanticStyleLabel';
 
 const RadioLabel = styled.span`

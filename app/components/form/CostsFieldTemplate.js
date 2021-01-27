@@ -14,11 +14,6 @@ const SInfo = styled.div`
   font-weight: bold;
 `;
 
-const Sinput = styled.input`
-  margin-bottom: 30px !important;
-  max-width: 300px;
-`;
-
 const MAX_GRANT_AMOUNT = 7500;
 
 export default function CostsFieldTemplate(props) {

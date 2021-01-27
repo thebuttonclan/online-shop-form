@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Icon, Message, Header, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
+import { SECONDARY_FONT_COLOUR, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
 import ProgramSteps from 'components/landing/ProgramSteps';
 import EligibilityCriteria from 'components/landing/EligibilityCriteria';
 import Acknowledgement from 'components/landing/Acknowledgement';
 import StyledUl from 'components/StyledUl';
+import NavigationUl from 'components/NavigationUl';
 import StyledP from 'components/StyledP';
 import GeneralInformation from 'components/landing/GeneralInformation';
 import Banner from 'components/landing/Banner';
@@ -15,12 +16,6 @@ import Header2 from 'components/Header2';
 import HrefLink from 'components/HrefLink';
 import { TOP_HEIGHT } from 'layouts/DefaultLayout';
 import SBCLogo from 'components/SBCLogo';
-
-const NavigationUl = styled(StyledUl)`
-  & li {
-    color: ${SECONDARY_FONT_COLOUR};
-  }
-`;
 
 const Info = styled.div`
   color: ${SECONDARY_FONT_COLOUR};
