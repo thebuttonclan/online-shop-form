@@ -34,13 +34,13 @@ create view public.application_extract
         form_data ->> 'sector' AS sector,
         form_data ->> 'sectorOther' AS sector_other,
         form_data ->> 'planForFunds' AS plan_for_funds,
-        form_data -> 'costs' ->> 'serviceProviderCosts' AS service_provider_costs,
-        form_data -> 'costs' ->> 'customerAcquisitionCosts' AS customer_acquisition_costs,
-        form_data -> 'costs' ->> 'staffTrainingCosts' AS staff_training_costs,
+        GREATEST((form_data -> 'costs' ->> 'serviceProviderCosts')::numeric, 0) AS service_provider_costs,
+        GREATEST((form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric, 0) AS customer_acquisition_costs,
+        GREATEST((form_data -> 'costs' ->> 'staffTrainingCosts')::numeric, 0) AS staff_training_costs,
         (
-          (form_data -> 'costs' ->> 'serviceProviderCosts')::numeric +
-          (form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric +
-          (form_data -> 'costs' ->> 'staffTrainingCosts')::numeric
+          GREATEST((form_data -> 'costs' ->> 'serviceProviderCosts')::numeric, 0) +
+          GREATEST((form_data -> 'costs' ->> 'customerAcquisitionCosts')::numeric, 0) +
+          GREATEST((form_data -> 'costs' ->> 'staffTrainingCosts')::numeric, 0)
         ) AS total_costs,
         LEAST(
           7500,
