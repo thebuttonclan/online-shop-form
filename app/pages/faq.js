@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { DEFAULT_FONT_SIZE, PRIMARY_FONT } from 'theme';
 import HrefLink from 'components/HrefLink';
+import StyledP from 'components/StyledP';
 
 const StyledContainer = styled.div`
   margin: 2em;
@@ -21,10 +22,6 @@ const StyledIcon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`;
-
-const StyledP = styled.p`
-  font-size: ${DEFAULT_FONT_SIZE};
 `;
 
 const StyledUl = styled.ul`
@@ -51,12 +48,6 @@ const StyledAccordionTitle = styled(Accordion.Title)`
   display: flex;
   justify-content: space-between;
   font-family: ${PRIMARY_FONT} !important;
-`;
-
-const StyledQuestion = styled.p`
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #16152b;
 `;
 
 const ShowAllBtn = styled.p`
@@ -396,7 +387,9 @@ export default class Faq extends Component {
             {contents.map((content, i) => (
               <>
                 <StyledAccordionTitle active={activeIndexs.includes(i)} index={i} onClick={this.handleAccordionClick}>
-                  <StyledQuestion>{content.question}</StyledQuestion>
+                  <StyledP fontSize="1.2em" bold color="#16152b">
+                    {content.question}
+                  </StyledP>
                   <StyledIcon>
                     <Icon name={activeIndexs.includes(i) ? 'minus' : 'plus'} />
                   </StyledIcon>

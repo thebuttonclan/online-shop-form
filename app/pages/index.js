@@ -27,18 +27,13 @@ const Info = styled.div`
   margin: ${MIN_PADDING} 0;
 `;
 
-const ScrollUp = styled.p`
-  color: ${SECONDARY_FONT_COLOUR};
-  font-weight: bold;
-`;
-
 const BackToTop = () => (
-  <ScrollUp>
+  <StyledP color="secondary" bold>
     <a href="#top">
       <Icon name="arrow circle up"></Icon>
       Back To Top
     </a>
-  </ScrollUp>
+  </StyledP>
 );
 
 const HorizontalRule = styled.hr`

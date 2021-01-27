@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { LARGE_FONT, PRIMARY_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
+import { LARGE_FONT, SUBHEADING_WEIGHT, MIN_PADDING } from 'theme';
 
 export default styled.p`
   font-size: ${LARGE_FONT};

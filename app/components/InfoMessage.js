@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import { Message, Icon } from 'semantic-ui-react';
+import StyledP from 'components/StyledP';
 import { MIN_PADDING, PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
-
-const StyledP = styled.p`
-  color: white;
-  padding: ${MIN_PADDING};
-`;
 
 const StyledMessage = styled(Message)`
   background-color: ${PRIMARY_COLOUR} !important;
@@ -32,7 +28,9 @@ const InfoMessage = ({ text }) => (
   <StyledMessage>
     <Row>
       <StyledIcon name="info circle" size="huge" />
-      <StyledP>{text}</StyledP>
+      <StyledP color="white" padding="min">
+        {text}
+      </StyledP>
     </Row>
   </StyledMessage>
 );

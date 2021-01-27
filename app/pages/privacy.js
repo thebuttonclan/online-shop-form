@@ -6,6 +6,7 @@ import kebabCase from 'lodash/kebabCase';
 import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING, PRIMARY_FONT } from 'theme';
 import StyledUl from 'components/StyledUl';
 import Header2 from 'components/Header2';
+import StyledP from 'components/StyledP';
 import { Response } from 'layouts/DefaultLayout';
 
 const externalLink = href => (
@@ -32,11 +33,6 @@ const NavigationUl = styled(StyledUl)`
     color: ${SECONDARY_FONT_COLOUR};
     font-weight: ${SUBHEADING_WEIGHT};
   }
-`;
-
-const StyledP = styled.p`
-  padding-left: ${MIN_PADDING};
-  padding-right: ${MIN_PADDING};
 `;
 
 const RelativeDiv = styled.div`
@@ -232,7 +228,11 @@ export default function PrivacyPolicy() {
                 </Response.Media>
                 <Header2>{section.title}</Header2>
                 {section.lines.map(line => {
-                  return <StyledP>{Array.isArray(line) ? line.map(v => v) : line}</StyledP>;
+                  return (
+                    <StyledP paddingLeft="min" paddingRight="min">
+                      {Array.isArray(line) ? line.map(v => v) : line}
+                    </StyledP>
+                  );
                 })}
               </RelativeDiv>
             );

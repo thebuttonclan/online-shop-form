@@ -1,18 +1,9 @@
 import { Form, Input } from 'semantic-ui-react';
 import styled from 'styled-components';
+import StyledP from 'components/StyledP';
 
 const Sdiv = styled.div`
   margin-bottom: 30px;
-`;
-
-const FieldName = styled.p`
-  font-weight: bold;
-`;
-
-const SfinePrint = styled.p`
-  font-size: 0.75em;
-  color: #313132;
-  opacity: 0.75;
 `;
 
 const Sinput = styled(Form.Input)`
@@ -28,7 +19,7 @@ const Cost = props => {
   return (
     <Sdiv>
       <h3>{title}</h3>
-      <FieldName>Total Amount</FieldName>
+      <StyledP bold>Total Amount</StyledP>
       <Sinput
         id={`id_${name}`}
         required={required}
@@ -41,10 +32,10 @@ const Cost = props => {
         onChange={e => onChange(e.target.value)}
         value={value}
       />
-      <SfinePrint>
+      <StyledP size="0.75em" color="#313132" opacity="0.75">
         Below, see the calculation that establishes the total grant amount requested (75% of eligible costs up to a max.
         of $7,500)
-      </SfinePrint>
+      </StyledP>
     </Sdiv>
   );
 };
