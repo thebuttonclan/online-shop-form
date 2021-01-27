@@ -22,7 +22,6 @@ const BannerOverlay = styled.div`
 `;
 
 const BannerOverlaySubHeader = styled.p`
-  font-weight: ${SUBHEADING_WEIGHT};
   margin-bottom: 30px !important;
 `;
 
