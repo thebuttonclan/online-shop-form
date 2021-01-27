@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
-import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING, PRIMARY_FONT } from 'theme';
-import StyledUl from 'components/StyledUl';
+import { MIN_PADDING, PRIMARY_FONT } from 'theme';
+import NavigationUl from 'components/NavigationUl';
 import Header2 from 'components/Header2';
 import { Response } from 'layouts/DefaultLayout';
 
@@ -25,13 +25,6 @@ const StyledH1 = styled.h1`
   padding-left: ${MIN_PADDING};
   padding-right: ${MIN_PADDING};
   font-family: ${PRIMARY_FONT} !important;
-`;
-
-const NavigationUl = styled(StyledUl)`
-  & li {
-    color: ${SECONDARY_FONT_COLOUR};
-    font-weight: ${SUBHEADING_WEIGHT};
-  }
 `;
 
 const StyledP = styled.p`

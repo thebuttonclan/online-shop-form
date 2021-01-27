@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { DEFAULT_FONT_SIZE, PRIMARY_FONT } from 'theme';
 import HrefLink from 'components/HrefLink';
+import StyledUl from 'components/StyledUl';
 
 const StyledContainer = styled.div`
   margin: 2em;
@@ -25,15 +26,6 @@ const StyledIcon = styled.div`
 
 const StyledP = styled.p`
   font-size: ${DEFAULT_FONT_SIZE};
-`;
-
-const StyledUl = styled.ul`
-  margin-left: 0.5em;
-
-  & li {
-    font-size: ${DEFAULT_FONT_SIZE};
-    margin-bottom: 0.6em;
-  }
 `;
 
 const StyledAnchor = styled.a.attrs({ target: '_blank', rel: 'noopener noreferrer' })`
