@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: auto;
   }
 
-  .link {
+  a {
     cursor: pointer;
     &:hover {
       text-decoration: underline;
