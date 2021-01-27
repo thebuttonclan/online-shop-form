@@ -4,16 +4,11 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { DEFAULT_FONT_SIZE, PRIMARY_FONT } from 'theme';
 import HrefLink from 'components/HrefLink';
+import StyledUl from 'components/StyledUl';
+import Header1 from 'components/Header1';
 
 const StyledContainer = styled.div`
   margin: 2em;
-`;
-
-const StyledHeader = styled(Header)`
-  color: #16152b;
-  font-weight: normal;
-  font-size: 3rem;
-  font-family: ${PRIMARY_FONT} !important;
 `;
 
 const StyledIcon = styled.div`
@@ -25,15 +20,6 @@ const StyledIcon = styled.div`
 
 const StyledP = styled.p`
   font-size: ${DEFAULT_FONT_SIZE};
-`;
-
-const StyledUl = styled.ul`
-  margin-left: 0.5em;
-
-  & li {
-    font-size: ${DEFAULT_FONT_SIZE};
-    margin-bottom: 0.6em;
-  }
 `;
 
 const StyledAnchor = styled.a.attrs({ target: '_blank', rel: 'noopener noreferrer' })`
@@ -380,7 +366,7 @@ export default class Faq extends Component {
           <title>Frequently Asked Questions</title>
         </Helmet>
         <StyledContainer>
-          <StyledHeader as="h1">FAQ</StyledHeader>
+          <Header1 as="h1">FAQ</Header1>
           <StyledP>(Also provided in French, Spanish, Chinese, Korean, Punjabi, and Tagalog)</StyledP>
           <HrefLink href="/files/faqs.pdf" blank>
             View the translated FAQs.

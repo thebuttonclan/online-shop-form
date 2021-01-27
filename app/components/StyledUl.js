@@ -8,4 +8,8 @@ export default styled.ul`
   & li {
     margin-bottom: 0.6em;
   }
+
+  & ul {
+    padding-top: ${MIN_PADDING};
+  }
 `;

@@ -11,11 +11,7 @@ const SgridItem = styled.div`
   margin-bottom: 5px;
 `;
 
-const ShiddenInput = styled.input`
-  display: none;
-`;
-
-function ObjectFieldTemplate({ properties, title, description, schema }) {
+function ObjectFieldTemplate({ properties, description }) {
   return (
     <>
       <Sgrid>

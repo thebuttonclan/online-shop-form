@@ -3,8 +3,9 @@ import { Helmet } from 'react-helmet';
 import { Container } from 'semantic-ui-react';
 import styled from 'styled-components';
 import kebabCase from 'lodash/kebabCase';
-import { SECONDARY_FONT_COLOUR, SUBHEADING_WEIGHT, MIN_PADDING, PRIMARY_FONT } from 'theme';
-import StyledUl from 'components/StyledUl';
+import { MIN_PADDING } from 'theme';
+import NavigationUl from 'components/NavigationUl';
+import Header1 from 'components/Header1';
 import Header2 from 'components/Header2';
 import { Response } from 'layouts/DefaultLayout';
 
@@ -19,19 +20,6 @@ const mailLink = email => <a href={`mailto:${email}`}>{email}</a>;
 const StyledContainer = styled(Container)`
   margin-top: 1rem;
   margin-bottom: 1rem;
-`;
-
-const StyledH1 = styled.h1`
-  padding-left: ${MIN_PADDING};
-  padding-right: ${MIN_PADDING};
-  font-family: ${PRIMARY_FONT} !important;
-`;
-
-const NavigationUl = styled(StyledUl)`
-  & li {
-    color: ${SECONDARY_FONT_COLOUR};
-    font-weight: ${SUBHEADING_WEIGHT};
-  }
 `;
 
 const StyledP = styled.p`
@@ -209,7 +197,7 @@ export default function PrivacyPolicy() {
         <Helmet>
           <title>Privacy Policy</title>
         </Helmet>
-        <StyledH1>WEBSITE TERMS OF USE AND PRIVACY POLICY</StyledH1>
+        <Header1>WEBSITE TERMS OF USE AND PRIVACY POLICY</Header1>
         <Header2>Contents:</Header2>
         <NavigationUl>
           {sections.map(section => {
