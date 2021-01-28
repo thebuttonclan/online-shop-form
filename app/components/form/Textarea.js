@@ -2,11 +2,12 @@ import { Form, TextArea } from 'semantic-ui-react';
 import Label from 'components/form/SemanticStyleLabel';
 
 const NamedInput = props => {
-  const { name, title, inputType, pattern, minLength, maxLength } = props.schema;
+  const { name, title, inputType, pattern, minLength, maxLength, subTitle } = props.schema;
   const { value, onChange, required } = props;
   return (
     <>
       <Label required={required}>{title}</Label>
+      {subTitle}
       <Form.TextArea
         required={required}
         pattern={pattern}
