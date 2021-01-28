@@ -1,4 +1,5 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
+import GrantProposalDescription from 'components/form/GrantProposalDescription';
 
 // Only use on required elements if non-zero
 const REQUIRED_TEXT_MIN_LENGTH = 0;
@@ -379,16 +380,7 @@ const schema = {
       type: 'string',
       title: 'Grant Proposal',
       name: 'planForFunds',
-      subTitle: (
-        <>
-          Please provide a grant proposal on how you plan to use the grant funds. Please refer to eligible expenses,
-          online shops completion checklist and grant limit information in the Program Guide.
-          <p>
-            The estimated total costs for service provide costs, digital marketing and training will be entered on the
-            next page of this application.
-          </p>
-        </>
-      ),
+      subTitle: GrantProposalDescription(),
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
