@@ -55,7 +55,6 @@ const WarningMessage = styled(Message)`
 export default function Home({ canSubmit }) {
   return (
     <>
-      <Banner />
       <Container>
         {!canSubmit && (
           <WarningMessage warning>
@@ -69,7 +68,7 @@ export default function Home({ canSubmit }) {
             </div>
           </WarningMessage>
         )}
-
+        <Banner />
         <Header2>On this page:</Header2>
         <Grid columns={2} stackable>
           <Grid.Column>
