@@ -18,7 +18,7 @@ const uiSchema = {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
   businessAddress: {
-    'ui:help': 'For example: 1111 Government St. V8Z 1M2',
+    'ui:help': 'For example: 1111 Government St. A1A 1A1',
   },
   pstNumber: {
     'ui:help': 'For example: PST-1234-5678',
@@ -64,6 +64,9 @@ const uiSchema = {
     },
   },
   planForFunds: {
+    'ui:widget': 'TextareaWidget',
+  },
+  otherPrograms: {
     'ui:widget': 'TextareaWidget',
   },
   costs: {
