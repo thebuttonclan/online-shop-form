@@ -377,9 +377,18 @@ const schema = {
     // GRANT PROPOSAL SECTION
     planForFunds: {
       type: 'string',
-      title: `Please provide a grant proposal on how you plan to use the grant funds. Please refer to eligible expenses, online shops completion checklist and grant limit information in the Program Guide.
-      The estimated total costs for service provide costs, digital marketing and training will be entered on the next page of this application.  `,
+      title: 'Grant Proposal',
       name: 'planForFunds',
+      subTitle: (
+        <>
+          Please provide a grant proposal on how you plan to use the grant funds. Please refer to eligible expenses,
+          online shops completion checklist and grant limit information in the Program Guide.
+          <p>
+            The estimated total costs for service provide costs, digital marketing and training will be entered on the
+            next page of this application.
+          </p>
+        </>
+      ),
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },

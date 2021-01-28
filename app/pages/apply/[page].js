@@ -2,7 +2,6 @@ import React from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
-import ArrayFieldTemplate from 'components/form/ArrayFieldTemplate';
 import { Button, Progress, Icon, Container } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
@@ -107,7 +106,6 @@ export default function Apply({ formData, page }) {
         validate={createValidator(page)}
         transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
-        ArrayFieldTemplate={ArrayFieldTemplate}
       >
         <div>
           <StyledButton id="btn-submit-form-data" type="submit">
