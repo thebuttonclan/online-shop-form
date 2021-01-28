@@ -153,7 +153,7 @@ export default function Home({ canSubmit }) {
         <StyledP>
           Prepare a proposal for how much grant funding you need and how you plan to use the funds, with estimates for
           the eligible expenses. The application form will contain a space for you to include your proposal (note the
-          max size is xx number of characters) and cost estimates.
+          max size is 1,000 characters) and cost estimates.
         </StyledP>
 
         <Header2>You will be asked to provide:</Header2>
