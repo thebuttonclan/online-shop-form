@@ -50,6 +50,7 @@ const BackButton = styled.p`
 const StyledButton = styled(Button)`
   background-color: ${PRIMARY_COLOUR} !important;
   color: white !important;
+  margin-bottom: 50px !important;
 `;
 
 export default function Apply({ formData, page }) {
