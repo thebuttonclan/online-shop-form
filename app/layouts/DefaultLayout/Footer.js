@@ -1,6 +1,7 @@
 import { Container, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
+import HRefLink from 'components/HrefLink';
 
 const StyledFooter = styled.footer`
   background-color: ${PRIMARY_COLOUR};
@@ -34,19 +35,33 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Copyright = styled.div`
+const SFlexBetween = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const FooterItem = styled.div`
   color: white !important;
   padding-bottom: 20px;
   padding-top: 20px;
+
+  & a {
+    color: white !important;
+  }
 `;
 
 const Footer = () => {
   return (
     <StyledFooter>
       <Container>
-        <Copyright>
-          Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2021
-        </Copyright>
+        <SFlexBetween>
+          <FooterItem>
+            Copyright <Icon name="copyright outline" size="small" /> Alacrity Canada 2021
+          </FooterItem>
+          <FooterItem>
+            <HRefLink href="/privacy">Privacy Policy</HRefLink>
+          </FooterItem>
+        </SFlexBetween>
       </Container>
     </StyledFooter>
   );
