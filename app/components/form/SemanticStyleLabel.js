@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const SemanticStyleLabel = styled.h1`
   font-size: ${LARGE_FONT};
+  margin-top: 20px !important;
   ${props =>
     !props.required
       ? ''

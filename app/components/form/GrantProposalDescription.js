@@ -1,4 +1,5 @@
 import HrefLink from 'components/HrefLink';
+import StyledP from 'components/StyledP';
 
 export default function GrantProposalDescription() {
   return (
@@ -9,10 +10,10 @@ export default function GrantProposalDescription() {
         Program Guide
       </HrefLink>
       .
-      <p>
+      <StyledP>
         The estimated total costs for service provide costs, digital marketing and training will be entered on the next
         page of this application.
-      </p>
+      </StyledP>
     </>
   );
 }
