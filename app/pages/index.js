@@ -114,7 +114,6 @@ export default function Home({ canSubmit }) {
           The program supports a rapid response for businesses and is accepting applications from businesses ready to
           start and finish their online shop within 12 weeks.
         </StyledP>
-        <Header2>Please note:</Header2>
         <StyledUl>
           <li>
             Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outside of the lower
@@ -151,6 +150,11 @@ export default function Home({ canSubmit }) {
           at the bottom of this page for support before submitting your application. Incomplete applications cannot be
           approved to receive a grant.
         </StyledP>
+        <StyledP>
+          Prepare a proposal for how much grant funding you need and how you plan to use the funds, with estimates for
+          the eligible expenses. The application form will contain a space for you to include your proposal (note the
+          max size is 1,000 characters) and cost estimates.
+        </StyledP>
 
         <Header2>You will be asked to provide:</Header2>
         <StyledUl>
@@ -164,10 +168,6 @@ export default function Home({ canSubmit }) {
             <li>First section of T2 return or first section of owner’s tax return (form 5010-R) (2019 or 2020)</li>
           </StyledUl>
           <li>B.C. business registration number and official registered name</li>
-          <li>
-            Proposal for how much grant funding you need and how you plan to use the funds, with estimates for the
-            eligible expenses
-          </li>
         </StyledUl>
 
         <InfoMessage
