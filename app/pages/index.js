@@ -114,7 +114,6 @@ export default function Home({ canSubmit }) {
           The program supports a rapid response for businesses and is accepting applications from businesses ready to
           start and finish their online shop within 12 weeks.
         </StyledP>
-        <Header2>Please note:</Header2>
         <StyledUl>
           <li>
             Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outside of the lower
