@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
@@ -63,10 +63,12 @@ export default function Apply({ formData, page }) {
   const continueBtnText = page === LAST_PAGE ? 'Submit' : 'Continue';
   const schema = pageSchemas[page - 1];
   const percent = (page / LAST_PAGE) * 100;
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async ({ formData }) => {
+    setLoading(true);
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
-
+    setLoading(false);
     if (hasError) {
       router.push('/message/error');
     } else if (isValidated) {
@@ -113,7 +115,7 @@ export default function Apply({ formData, page }) {
         ObjectFieldTemplate={ObjectFieldTemplate}
       >
         <div>
-          <StyledButton id="btn-submit-form-data" type="submit">
+          <StyledButton id="btn-submit-form-data" type="submit" loading={loading}>
             {continueBtnText}
           </StyledButton>
         </div>
