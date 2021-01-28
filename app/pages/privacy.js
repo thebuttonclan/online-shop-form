@@ -23,8 +23,11 @@ const StyledContainer = styled(Container)`
 `;
 
 const StyledP = styled.p`
-  padding-left: ${MIN_PADDING};
   padding-right: ${MIN_PADDING};
+`;
+
+const PWrapper = styled.div`
+  padding-bottom: 30px;
 `;
 
 const RelativeDiv = styled.div`
@@ -34,6 +37,12 @@ const RelativeDiv = styled.div`
 const AbsoluteAnchor = styled.a`
   position: absolute;
   top: -120px;
+`;
+
+const StyledUl = styled(NavigationUl)`
+  & li {
+    font-weight: normal !important;
+  }
 `;
 
 const sections = [
@@ -199,7 +208,7 @@ export default function PrivacyPolicy() {
         </Helmet>
         <Header1>WEBSITE TERMS OF USE AND PRIVACY POLICY</Header1>
         <Header2>Contents:</Header2>
-        <NavigationUl>
+        <StyledUl>
           {sections.map(section => {
             return (
               <li>
@@ -207,7 +216,7 @@ export default function PrivacyPolicy() {
               </li>
             );
           })}
-        </NavigationUl>
+        </StyledUl>
         <Response.MediaContextProvider>
           {sections.map(section => {
             return (
@@ -219,9 +228,11 @@ export default function PrivacyPolicy() {
                   <a id={kebabCase(section.title)} />
                 </Response.Media>
                 <Header2>{section.title}</Header2>
-                {section.lines.map(line => {
-                  return <StyledP>{Array.isArray(line) ? line.map(v => v) : line}</StyledP>;
-                })}
+                <PWrapper>
+                  {section.lines.map(line => {
+                    return <StyledP>{Array.isArray(line) ? line.map(v => v) : line}</StyledP>;
+                  })}
+                </PWrapper>
               </RelativeDiv>
             );
           })}

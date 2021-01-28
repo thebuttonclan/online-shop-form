@@ -12,6 +12,7 @@ const Sdiv = styled.div`
 
 const SInfo = styled.div`
   font-weight: bold;
+  padding-bottom: 30px;
 `;
 
 const MAX_GRANT_AMOUNT = 7500;

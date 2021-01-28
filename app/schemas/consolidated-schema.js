@@ -179,7 +179,7 @@ const schema = {
     },
     pstNumber: {
       type: 'string',
-      title: 'What is your Provincial Sales Tax (PST) Number?',
+      title: 'What is your Provincial Sales Tax (PST) Number? (optional)',
       name: 'pstNumber',
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,

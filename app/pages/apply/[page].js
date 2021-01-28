@@ -14,6 +14,10 @@ import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
 import { PRIMARY_COLOUR } from 'theme';
 
+const SJsonSchemaForm = styled(JsonSchemaForm)`
+  padding-bottom: 30px;
+`;
+
 const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
@@ -90,7 +94,7 @@ export default function Apply({ formData, page }) {
           <StyledProgress percent={percent} color="black" />
         </ProgressContainer>
       </TopRow>
-      <JsonSchemaForm
+      <SJsonSchemaForm
         key={`form-${page}`}
         name="my-form"
         method="post"
@@ -113,7 +117,7 @@ export default function Apply({ formData, page }) {
             {continueBtnText}
           </StyledButton>
         </div>
-      </JsonSchemaForm>
+      </SJsonSchemaForm>
       {/* .error-detail class styles errors below fields,
           .panel-danger for top error message
       */}
