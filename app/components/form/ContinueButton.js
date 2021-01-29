@@ -1,6 +1,5 @@
 import { Button } from 'semantic-ui-react';
 import styled from 'styled-components';
-import useRouteChange from 'hooks';
 import { PRIMARY_COLOUR } from 'theme';
 import { useState } from 'react';
 
@@ -10,12 +9,9 @@ const StyledButton = styled(Button)`
   margin-bottom: 50px !important;
 `;
 
-export default function Continuebutton({ router, text }) {
+export default function Continuebutton({ loading, text }) {
   const [clicked, setClicked] = useState(false);
   const handleClick = () => setClicked(true);
-  const onRouteComplete = () => setClicked(false);
-
-  const loading = useRouteChange(router, onRouteComplete);
 
   return (
     <>
