@@ -103,11 +103,7 @@ export default function Apply({ formData, page }) {
         <HrefLink href={linkRoute}>
           <BackButton id={`id_back_button`} onClick={pageBackward}>
             <Icon name="angle left"></Icon>
-            {loading && pageDirection === -1 ? (
-              <Loader active={loading && pageDirection === -1} inline size="small" />
-            ) : (
-              'Back'
-            )}
+            {loading && pageDirection === -1 ? <Loader active inline size="small" /> : 'Back'}
           </BackButton>
         </HrefLink>
         <ProgressContainer>
