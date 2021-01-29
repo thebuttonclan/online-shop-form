@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
-import { Button, Progress, Icon, Container } from 'semantic-ui-react';
+import { Button, Progress, Icon, Container, Loader } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/ui-schema';
@@ -63,12 +63,12 @@ export default function Apply({ formData, page }) {
   const continueBtnText = page === LAST_PAGE ? 'Submit' : 'Continue';
   const schema = pageSchemas[page - 1];
   const percent = (page / LAST_PAGE) * 100;
+
   const [loading, setLoading] = useState(false);
+  const [pageDirection, setPageDirection] = useState(null);
 
   const handleSubmit = async ({ formData }) => {
-    setLoading(true);
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
-    setLoading(false);
     if (hasError) {
       router.push('/message/error');
     } else if (isValidated) {
@@ -79,6 +79,21 @@ export default function Apply({ formData, page }) {
     }
   };
 
+  const startLoading = () => setLoading(true);
+  const stopLoading = () => setLoading(false);
+
+  const pageBackward = () => setPageDirection(-1);
+  const pageForward = () => setPageDirection(1);
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', startLoading);
+    router.events.on('routeChangeComplete', stopLoading);
+    return () => {
+      router.events.off('routeChangeStart', startLoading);
+      router.events.off('routeChangeComplete', stopLoading);
+    };
+  }, [router]);
+
   return (
     <Container>
       <Helmet>
@@ -86,9 +101,13 @@ export default function Apply({ formData, page }) {
       </Helmet>
       <TopRow>
         <HrefLink href={linkRoute}>
-          <BackButton id={`id_back_button`}>
+          <BackButton id={`id_back_button`} onClick={pageBackward}>
             <Icon name="angle left"></Icon>
-            Back
+            {loading && pageDirection === -1 ? (
+              <Loader active={loading && pageDirection === -1} inline size="small" />
+            ) : (
+              'Back'
+            )}
           </BackButton>
         </HrefLink>
         <ProgressContainer>
@@ -115,23 +134,16 @@ export default function Apply({ formData, page }) {
         ObjectFieldTemplate={ObjectFieldTemplate}
       >
         <div>
-          <StyledButton id="btn-submit-form-data" type="submit" loading={loading}>
+          <StyledButton
+            id="btn-submit-form-data"
+            type="submit"
+            onClick={pageForward}
+            loading={loading && pageDirection === 1}
+          >
             {continueBtnText}
           </StyledButton>
         </div>
       </SJsonSchemaForm>
-      {/* .error-detail class styles errors below fields,
-          .panel-danger for top error message
-      */}
-      <style jsx global>
-        {`
-          .control-label {
-            font-family: ‘BCSans’, ‘Noto Sans’, Verdana, Arial, sans-serif;
-            font-size: 18px;
-            padding-right: 2px;
-          }
-        `}
-      </style>
     </Container>
   );
 }
