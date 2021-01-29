@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
-import { Button, Progress, Icon, Container } from 'semantic-ui-react';
+import { Progress, Container } from 'semantic-ui-react';
 import { useRouter } from 'next/router';
 import { saveApplication, LAST_PAGE } from 'services/application';
 import uiSchema from 'schemas/ui-schema';
 import pageSchemas from 'schemas/page-schemas';
 import transformErrors from 'schemas/transform-errors';
 import styled from 'styled-components';
-import HrefLink from 'components/HrefLink';
+import ContinueButton from 'components/form/ContinueButton';
+import BackButton from 'components/form/BackButton';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
-import { PRIMARY_COLOUR } from 'theme';
 
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   padding-bottom: 30px;
@@ -46,29 +46,15 @@ const StyledProgress = styled(Progress)`
   }
 `;
 
-const BackButton = styled.p`
-  color: #006ef5;
-  cursor: pointer;
-`;
-
-const StyledButton = styled(Button)`
-  background-color: ${PRIMARY_COLOUR} !important;
-  color: white !important;
-  margin-bottom: 50px !important;
-`;
-
 export default function Apply({ formData, page }) {
   const router = useRouter();
-  const linkRoute = page === 1 ? '/' : `/apply/${page - 1}`;
+  const backRoute = page === 1 ? '/' : `/apply/${page - 1}`;
   const continueBtnText = page === LAST_PAGE ? 'Submit' : 'Continue';
   const schema = pageSchemas[page - 1];
   const percent = (page / LAST_PAGE) * 100;
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async ({ formData }) => {
-    setLoading(true);
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
-    setLoading(false);
     if (hasError) {
       router.push('/message/error');
     } else if (isValidated) {
@@ -85,12 +71,7 @@ export default function Apply({ formData, page }) {
         <title>Apply!</title>
       </Helmet>
       <TopRow>
-        <HrefLink href={linkRoute}>
-          <BackButton id={`id_back_button`}>
-            <Icon name="angle left"></Icon>
-            Back
-          </BackButton>
-        </HrefLink>
+        <BackButton href={backRoute} router={router} />
         <ProgressContainer>
           <p>{`Question ${page} of ${LAST_PAGE}`}</p>
           <StyledProgress percent={percent} color="black" />
@@ -114,24 +95,8 @@ export default function Apply({ formData, page }) {
         transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
       >
-        <div>
-          <StyledButton id="btn-submit-form-data" type="submit" loading={loading}>
-            {continueBtnText}
-          </StyledButton>
-        </div>
+        <ContinueButton router={router} text={continueBtnText} />
       </SJsonSchemaForm>
-      {/* .error-detail class styles errors below fields,
-          .panel-danger for top error message
-      */}
-      <style jsx global>
-        {`
-          .control-label {
-            font-family: ‘BCSans’, ‘Noto Sans’, Verdana, Arial, sans-serif;
-            font-size: 18px;
-            padding-right: 2px;
-          }
-        `}
-      </style>
     </Container>
   );
 }
