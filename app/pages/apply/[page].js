@@ -13,6 +13,7 @@ import ContinueButton from 'components/form/ContinueButton';
 import BackButton from 'components/form/BackButton';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
+import useRouteChange from 'hooks';
 
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   padding-bottom: 30px;
@@ -53,12 +54,17 @@ export default function Apply({ formData, page }) {
   const schema = pageSchemas[page - 1];
   const percent = (page / LAST_PAGE) * 100;
 
+  // Keep data for when form re-renders
+  const [prevData, setPrevData] = useState(null);
+
+  // Clear loading when route change completes
   const [loading, setLoading] = useState(false);
+  const onRouteComplete = () => setLoading(false);
+  useRouteChange(router, onRouteComplete);
 
   const handleSubmit = async ({ formData }) => {
     setLoading(true);
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
-    setLoading(false);
     if (hasError) {
       router.push('/message/error');
     } else if (isValidated) {
@@ -75,7 +81,7 @@ export default function Apply({ formData, page }) {
         <title>Apply!</title>
       </Helmet>
       <TopRow>
-        <BackButton href={backRoute} router={router} />
+        <BackButton href={backRoute} />
         <ProgressContainer>
           <p>{`Question ${page} of ${LAST_PAGE}`}</p>
           <StyledProgress percent={percent} color="black" />
@@ -86,12 +92,12 @@ export default function Apply({ formData, page }) {
         name="my-form"
         method="post"
         action={`/api/apply/${page}`}
-        formData={formData}
+        formData={prevData || formData}
         formContext={{ initialFormData: formData }}
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}
-        onChange={schema.onChange || (() => {})}
+        onChange={schema.onChange || (data => setPrevData(data.formData))}
         onSubmit={handleSubmit}
         onError={console.log}
         showErrorList={false}
@@ -99,7 +105,7 @@ export default function Apply({ formData, page }) {
         transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
       >
-        <ContinueButton loading={loading} text={continueBtnText} />
+        <ContinueButton loading={loading} text={continueBtnText} router={router} />
       </SJsonSchemaForm>
     </Container>
   );
