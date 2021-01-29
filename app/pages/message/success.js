@@ -30,6 +30,10 @@ const SuccessBanner = styled.div`
   }
 `;
 
+const FinalP = styled(StyledP)`
+  padding-bottom: 50px !important;
+`;
+
 const LiBreak = styled.li`
   margin-top: ${MIN_PADDING};
 `;
@@ -63,10 +67,10 @@ export default function SuccessPage() {
           </StyledUl>
         </li>
       </IndentedUl>
-      <StyledP>
+      <FinalP>
         If you have any questions about your applications please contact us at:{' '}
         <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>
-      </StyledP>
+      </FinalP>
     </Container>
   );
 }
