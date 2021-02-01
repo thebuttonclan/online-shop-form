@@ -47,6 +47,10 @@ const ScrollHeader1 = styled(Header1)`
   scroll-margin-top: ${TOP_HEIGHT};
 `;
 
+const ContactUsHeader = styled(ScrollHeader1)`
+  padding-top: 50px !important;
+`;
+
 const WarningMessage = styled(Message)`
   display: flex;
   align-items: center;
@@ -183,7 +187,7 @@ export default function Home({ canSubmit }) {
         <GeneralInformation canSubmit={canSubmit} />
         <BackToTop />
 
-        <ScrollHeader1 id="contact">CONTACT US</ScrollHeader1>
+        <ContactUsHeader id="contact">Contact Us</ContactUsHeader>
         <StyledP>
           Please contact us directly to ask questions. We will respond within <strong>3 business days.</strong>
         </StyledP>
