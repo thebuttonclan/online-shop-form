@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.5...v1.2.0) (2021-02-02)
+
+
+### Features
+
+* redirect http traffic to https in ingress controller ([19e769a](https://github.com/thebuttonclan/online-shop-form/commit/19e769a685a732f724a20b6ce1e84b31a60c30d4))
+
 ### [1.1.5](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.0...v1.1.5) (2021-01-29)
 
 ## 1.1.0 (2021-01-29)
