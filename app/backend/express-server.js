@@ -7,7 +7,6 @@ const helmet = require('helmet');
 const lusca = require('lusca');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const httpsRedirect = require('express-https-redirect');
 const connectPgPool = require('./setup-pg');
 const pgQuery = require('./queries');
 const backendState = require('./state');
@@ -31,8 +30,6 @@ const initExpresss = async (options = {}) => {
 
   const expressServer = express();
   expressServer.pgPool = pgPool;
-
-  expressServer.use('/', httpsRedirect());
 
   expressServer.use((req, res, next) => {
     req.pgPool = pgPool;
