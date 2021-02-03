@@ -18,8 +18,8 @@ const externalLink = href => (
 const mailLink = email => <a href={`mailto:${email}`}>{email}</a>;
 
 const StyledContainer = styled(Container)`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
 `;
 
 const StyledP = styled.p`

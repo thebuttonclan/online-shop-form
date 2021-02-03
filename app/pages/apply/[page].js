@@ -13,6 +13,7 @@ import ContinueButton from 'components/form/ContinueButton';
 import BackButton from 'components/form/BackButton';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
+import { TOP_HEIGHT } from 'layouts/DefaultLayout';
 
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   padding-bottom: 30px;
@@ -21,7 +22,7 @@ const SJsonSchemaForm = styled(JsonSchemaForm)`
 const TopRow = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
+  padding-top: 40px;
   flex-direction: row;
   width: 100%;
   align-items: center;
@@ -46,6 +47,10 @@ const StyledProgress = styled(Progress)`
   }
 `;
 
+const FullHeightContainer = styled(Container)`
+  min-height: calc(100vh - ${TOP_HEIGHT}) !important;
+`;
+
 export default function Apply({ formData, page }) {
   const router = useRouter();
   const backRoute = page === 1 ? '/' : `/apply/${page - 1}`;
@@ -66,7 +71,7 @@ export default function Apply({ formData, page }) {
   };
 
   return (
-    <Container>
+    <FullHeightContainer>
       <Helmet>
         <title>Apply!</title>
       </Helmet>
@@ -97,7 +102,7 @@ export default function Apply({ formData, page }) {
       >
         <ContinueButton router={router} text={continueBtnText} />
       </SJsonSchemaForm>
-    </Container>
+    </FullHeightContainer>
   );
 }
 
