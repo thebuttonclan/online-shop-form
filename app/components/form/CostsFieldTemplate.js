@@ -20,9 +20,9 @@ export const GrantCalculationContext = React.createContext();
 
 export default function CostsFieldTemplate(props) {
   const { formContext } = props;
-  const { initialFormData } = formContext;
+  const { savedData } = formContext;
 
-  const initialGrantAmount = calculateGrantAmount(initialFormData?.costs);
+  const initialGrantAmount = calculateGrantAmount(savedData?.costs);
 
   const [grantAmount, setGrantAmount] = useState(initialGrantAmount);
 

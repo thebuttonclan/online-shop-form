@@ -30,7 +30,7 @@ const Cost = props => {
 
   const handleChange = (e, { value }) => {
     onChange(value);
-    const grant = calculateGrantAmount({ ...formContext.initialFormData?.costs, [name]: value });
+    const grant = calculateGrantAmount({ ...formContext.savedData?.costs, [name]: value });
     setGrantAmount(grant || 0);
   };
 

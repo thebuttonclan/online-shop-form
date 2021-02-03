@@ -90,8 +90,8 @@ export default function Apply({ formData, page }) {
         name="my-form"
         method="post"
         action={`/api/apply/${page}`}
-        formData={savedData || formData}
-        formContext={{ initialFormData: savedData || formData }}
+        formData={savedData}
+        formContext={{ savedData }}
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}
