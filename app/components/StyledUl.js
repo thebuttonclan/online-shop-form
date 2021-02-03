@@ -7,7 +7,7 @@ export default styled.ul`
 
   & li {
     margin-bottom: 0.6em;
-    max-width: 65ch;
+    max-width: 675px;
   }
 
   & ul {
