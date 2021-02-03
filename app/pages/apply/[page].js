@@ -58,7 +58,7 @@ export default function Apply({ formData, page }) {
   const stopLoading = () => setLoading(false);
   const [savedData, setSavedData] = useState(formData);
 
-  const routeChanging = useRouteChange(router, stopLoading);
+  useRouteChange(router, stopLoading);
 
   const handleSubmit = async ({ formData }) => {
     setLoading(true);
@@ -95,7 +95,7 @@ export default function Apply({ formData, page }) {
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}
-        onChange={schema.onChange || (event => setSavedData(event.formData))}
+        onChange={event => setSavedData(event.formData)}
         onSubmit={handleSubmit}
         onError={console.log}
         showErrorList={false}
