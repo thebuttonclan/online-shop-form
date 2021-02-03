@@ -235,7 +235,6 @@ const MainSegment = styled(Segment)`
 
   & .ui.container {
     background-color: white !important;
-    padding: 0 20px 0 20px;
   }
 `;
 

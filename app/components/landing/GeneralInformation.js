@@ -28,6 +28,10 @@ const ApplyButton = styled.button`
   }
 `;
 
+const MaxWidthP = styled(StyledP)`
+  max-width: 675px;
+`;
+
 function GeneralInformation({ canSubmit }) {
   return (
     <StyledCard>
@@ -68,10 +72,10 @@ function GeneralInformation({ canSubmit }) {
 
       <CardHeader text="Submit Your Application" />
       <Card.Content>
-        <StyledP>
+        <MaxWidthP>
           You are encouraged to submit your application, along with your grant proposal and additional documents as
           early as possible.
-        </StyledP>
+        </MaxWidthP>
         <HrefLink href="/apply/1">
           <ApplyButton className="pointer" disabled={!canSubmit}>
             BEGIN APPLICATION

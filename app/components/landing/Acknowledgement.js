@@ -5,7 +5,7 @@ const alacrityAspectRatio = 322 / 1000;
 const sbcAspectRatio = 255 / 1043;
 
 const Acknowledgement = styled.div`
-  margin: 20px 0;
+  margin-top: 20px;
 `;
 
 const StrongText = styled.div`
