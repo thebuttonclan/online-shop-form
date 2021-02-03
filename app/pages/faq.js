@@ -8,7 +8,7 @@ import StyledUl from 'components/StyledUl';
 import Header1 from 'components/Header1';
 
 const StyledContainer = styled.div`
-  margin: 2em;
+  padding: 2em;
 `;
 
 const StyledIcon = styled.div`
