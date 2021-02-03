@@ -231,6 +231,12 @@ ResponsiveContainer.propTypes = {
 
 const MainSegment = styled(Segment)`
   min-height: calc(100vh - ${TOP_HEIGHT});
+  background-color: #f2f2f2 !important;
+
+  & .ui.container {
+    background-color: white !important;
+    padding: 0 20px 0 20px;
+  }
 `;
 
 const DefaultLayout = ({ children, query, pathname }) => {

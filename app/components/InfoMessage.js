@@ -5,6 +5,7 @@ import { MIN_PADDING, PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
 const StyledP = styled.p`
   color: white;
   padding: ${MIN_PADDING};
+  max-width: 65ch;
 `;
 
 const StyledMessage = styled(Message)`
@@ -12,6 +13,7 @@ const StyledMessage = styled(Message)`
   border-left: 10px solid ${SECONDARY_COLOUR};
   border-radius: 0 !important;
   margin: ${MIN_PADDING} !important;
+  display: inline-block;
 `;
 
 const StyledIcon = styled(Icon)`
