@@ -56,8 +56,8 @@ const WarningMessage = styled(Message)`
   align-items: center;
 `;
 
-const CharWidthP = styled(StyledP)`
-  max-width: 65ch;
+const MaxWidthP = styled(StyledP)`
+  max-width: 675px;
 `;
 
 export default function Home({ canSubmit }) {
@@ -112,15 +112,15 @@ export default function Home({ canSubmit }) {
         </Grid>
 
         <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
-        <CharWidthP>
+        <MaxWidthP>
           The Launch Online Grant program provides funding to B.C.-based business to create an online shop and/or
           improve their e-commerce experience to attract new local customers and expand to new markets. The grant will
           pay for up to 75% of eligible expenses, up to a maximum of $7,500 per business.
-        </CharWidthP>
-        <CharWidthP>
+        </MaxWidthP>
+        <MaxWidthP>
           The program supports a rapid response for businesses and is accepting applications from businesses ready to
           start and finish their online shop within 12 weeks.
-        </CharWidthP>
+        </MaxWidthP>
         <StyledUl>
           <li>
             Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outside of the lower
@@ -133,20 +133,18 @@ export default function Home({ canSubmit }) {
         <BackToTop />
 
         <ScrollHeader1 id="application-deadlines">Application deadlines</ScrollHeader1>
-        <CharWidthP>
+        <MaxWidthP>
           Program application intake is open until the funds have been fully subscribed. Funding will be awarded on a
           first-come first-served basis to small- and medium-sized B.C. businesses.
-        </CharWidthP>
-        <CharWidthP>
+        </MaxWidthP>
+        <MaxWidthP>
           For the projects to have an immediate benefit, the funds will be given as soon as a business has been approved
           for the program.
-        </CharWidthP>
+        </MaxWidthP>
         <BackToTop />
 
         <ScrollHeader1 id="eligibility">Determine your eligibility</ScrollHeader1>
-        <CharWidthP>
-          Review the following criteria to determine if your business is eligible for the program.
-        </CharWidthP>
+        <MaxWidthP>Review the following criteria to determine if your business is eligible for the program.</MaxWidthP>
 
         <EligibilityCriteria />
         <BackToTop />
@@ -154,16 +152,16 @@ export default function Home({ canSubmit }) {
         <ScrollHeader1 id="submit-application">Submit your application</ScrollHeader1>
 
         <Header2>Before applying</Header2>
-        <CharWidthP>
+        <MaxWidthP>
           Please review the eligibility information on this page. If you have any questions, please use the contact form
           at the bottom of this page for support before submitting your application. Incomplete applications cannot be
           approved to receive a grant.
-        </CharWidthP>
-        <CharWidthP>
+        </MaxWidthP>
+        <MaxWidthP>
           Prepare a proposal for how much grant funding you need and how you plan to use the funds, with estimates for
           the eligible expenses. The application form will contain a space for you to include your proposal (note the
           max size is 1,000 characters) and cost estimates.
-        </CharWidthP>
+        </MaxWidthP>
 
         <Header2>You will be asked to provide:</Header2>
         <StyledUl>
@@ -185,18 +183,18 @@ export default function Home({ canSubmit }) {
         />
 
         <Header2>Receive funding to build your online store</Header2>
-        <CharWidthP>
+        <MaxWidthP>
           Successful applicants will receive funding within 2-3 weeks of approval and are required to develop or upgrade
           their online shop within 12 weeks of receiving the grant.
-        </CharWidthP>
+        </MaxWidthP>
 
         <GeneralInformation canSubmit={canSubmit} />
         <BackToTop />
 
         <ContactUsHeader id="contact">Contact Us</ContactUsHeader>
-        <CharWidthP>
+        <MaxWidthP>
           Please contact us directly to ask questions. We will respond within <strong>3 business days.</strong>
-        </CharWidthP>
+        </MaxWidthP>
         <div>
           <Info>
             <Icon name="phone" />

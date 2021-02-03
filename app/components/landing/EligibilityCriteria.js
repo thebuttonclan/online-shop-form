@@ -6,8 +6,8 @@ import { Card } from 'semantic-ui-react';
 import StyledUl from 'components/StyledUl';
 import InfoMessage from 'components/InfoMessage';
 
-const CharMaxLengthP = styled(StyledP)`
-  max-width: 65ch;
+const MaxWidthP = styled(StyledP)`
+  max-width: 675px;
 `;
 
 function ProgramSteps() {
@@ -61,7 +61,7 @@ function ProgramSteps() {
       </Card.Content>
       <CardHeader text="Eligible Expenses" />
       <Card.Content>
-        <CharMaxLengthP>Funding will help cover up to 75% of costs for expenses such as:</CharMaxLengthP>
+        <MaxWidthP>Funding will help cover up to 75% of costs for expenses such as:</MaxWidthP>
         <StyledUl>
           <li>Service provider costs:</li>
           <StyledUl>
@@ -80,10 +80,10 @@ function ProgramSteps() {
           <li>Staff training to manage the online shop, learn about digital marketing, etc.</li>
         </StyledUl>
 
-        <CharMaxLengthP>
+        <MaxWidthP>
           Successful applicants must use one or more B.C.-based service provider(s) to build or improve their online
           store. The only non-B.C.-based eligible expenses include:
-        </CharMaxLengthP>
+        </MaxWidthP>
         <StyledUl>
           <li>Platform subscription costs</li>
           <li>Purchase of online photos and graphics</li>
@@ -94,7 +94,7 @@ function ProgramSteps() {
       <CardHeader text="Mandatory online shop features" />
 
       <Card.Content>
-        <CharMaxLengthP>At the end of the 12-weeks your online shop will need to have:</CharMaxLengthP>
+        <MaxWidthP>At the end of the 12-weeks your online shop will need to have:</MaxWidthP>
         <StyledUl>
           <li>Customer registration and information security features</li>
           <li>Shopping cart and order management capabilities</li>

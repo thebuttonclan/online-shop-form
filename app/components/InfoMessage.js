@@ -5,7 +5,7 @@ import { MIN_PADDING, PRIMARY_COLOUR, SECONDARY_COLOUR } from 'theme';
 const StyledP = styled.p`
   color: white;
   padding: ${MIN_PADDING};
-  max-width: 65ch;
+  max-width: 675px;
 `;
 
 const StyledMessage = styled(Message)`
