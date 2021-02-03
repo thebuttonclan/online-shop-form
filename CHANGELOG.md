@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.2.0...v1.3.0) (2021-02-03)
+
+
+### Features
+
+* set up app availability alert on production website ([80fc329](https://github.com/thebuttonclan/online-shop-form/commit/80fc329e52671d81f1c6e5556e4fae1bd10dda18))
+
+
+### Bug Fixes
+
+* padding ([c058342](https://github.com/thebuttonclan/online-shop-form/commit/c05834246781ceaf3407dae9abaf242fa9a52913))
+
 ## [1.2.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.1.5...v1.2.0) (2021-02-02)
 
 
