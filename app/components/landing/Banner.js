@@ -8,10 +8,10 @@ const mobileBannerAspect = 2240 / 1952;
 const ImageBackground = styled.div`
   height: calc(100vw * ${bannerAspect});
   max-height: ${HEADER_HEIGHT};
-  background-image: url('/images/banner.jpg');
+  background-image: url('/images/banner.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: right;
+  background-position: left;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -23,7 +23,7 @@ const ImageBackground = styled.div`
   }
 
   @media (max-width: 500px) {
-    background-image: url('/images/banner-mobile.jpg');
+    background-image: url('/images/banner-mobile.png');
     min-height: calc(100vw * ${mobileBannerAspect});
     max-height: unset;
   }
