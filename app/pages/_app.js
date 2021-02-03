@@ -6,6 +6,10 @@ import 'semantic-ui-css/semantic.min.css';
 import { PRIMARY_COLOUR, DEFAULT_FONT_SIZE, SECONDARY_COLOUR, PRIMARY_FONT } from 'theme';
 import { Helmet } from 'react-helmet';
 
+const { version: appVersion } = require('../package.json');
+
+console.log(`appVersion: ${appVersion}`);
+
 const GlobalStyle = createGlobalStyle`
   .bg-primary {
     background-color: ${PRIMARY_COLOUR} !important;
