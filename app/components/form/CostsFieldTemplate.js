@@ -16,17 +16,15 @@ const SInfo = styled.div`
 `;
 
 const MAX_GRANT_AMOUNT = 7500;
+export const GrantCalculationContext = React.createContext();
 
 export default function CostsFieldTemplate(props) {
-  const { formContext, schema } = props;
+  const { formContext } = props;
   const { initialFormData } = formContext;
 
-  const initialGrantAmount = calculateGrantAmount(initialFormData);
+  const initialGrantAmount = calculateGrantAmount(initialFormData?.costs);
 
   const [grantAmount, setGrantAmount] = useState(initialGrantAmount);
-
-  // Note that it mutates the page schema to have `setGrantAmount` available in onChange event
-  schema.setGrantAmount = setGrantAmount;
 
   return (
     <div>
@@ -39,7 +37,7 @@ export default function CostsFieldTemplate(props) {
         Please refer to eligible expenses, online shop completion checklist and grant limit information in the
         <HrefLink href="/files/program_guide.pdf"> program guide</HrefLink>.
       </SInfo>
-      {props.children}
+      <GrantCalculationContext.Provider value={setGrantAmount}>{props.children}</GrantCalculationContext.Provider>
       {typeof window === 'object' && (
         <div>
           <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>

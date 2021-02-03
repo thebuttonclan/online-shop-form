@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import JsonSchemaForm from '@rjsf/semantic-ui';
 import widgets from 'formConfig/widgets';
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
@@ -13,6 +13,7 @@ import ContinueButton from 'components/form/ContinueButton';
 import BackButton from 'components/form/BackButton';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
+import useRouteChange from 'hooks';
 
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   padding-bottom: 30px;
@@ -53,7 +54,14 @@ export default function Apply({ formData, page }) {
   const schema = pageSchemas[page - 1];
   const percent = (page / LAST_PAGE) * 100;
 
+  const [loading, setLoading] = useState(false);
+  const stopLoading = () => setLoading(false);
+  const [savedData, setSavedData] = useState(formData);
+
+  const routeChanging = useRouteChange(router, stopLoading);
+
   const handleSubmit = async ({ formData }) => {
+    setLoading(true);
     const { page: nextPage, isValidated, isValid, errors, hasError, message } = await saveApplication(formData, page);
     if (hasError) {
       router.push('/message/error');
@@ -71,7 +79,7 @@ export default function Apply({ formData, page }) {
         <title>Apply!</title>
       </Helmet>
       <TopRow>
-        <BackButton href={backRoute} router={router} />
+        <BackButton href={backRoute} />
         <ProgressContainer>
           <p>{`Question ${page} of ${LAST_PAGE}`}</p>
           <StyledProgress percent={percent} color="black" />
@@ -82,12 +90,12 @@ export default function Apply({ formData, page }) {
         name="my-form"
         method="post"
         action={`/api/apply/${page}`}
-        formData={formData}
-        formContext={{ initialFormData: formData }}
+        formData={savedData || formData}
+        formContext={{ initialFormData: savedData || formData }}
         schema={schema}
         uiSchema={uiSchema}
         widgets={widgets}
-        onChange={schema.onChange || (() => {})}
+        onChange={schema.onChange || (event => setSavedData(event.formData))}
         onSubmit={handleSubmit}
         onError={console.log}
         showErrorList={false}
@@ -95,7 +103,7 @@ export default function Apply({ formData, page }) {
         transformErrors={transformErrors}
         ObjectFieldTemplate={ObjectFieldTemplate}
       >
-        <ContinueButton router={router} text={continueBtnText} />
+        <ContinueButton router={router} text={continueBtnText} loading={loading} />
       </SJsonSchemaForm>
     </Container>
   );

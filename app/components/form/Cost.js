@@ -1,5 +1,8 @@
 import { Form, Input } from 'semantic-ui-react';
 import styled from 'styled-components';
+import { calculateGrantAmount } from 'schemas/helpers';
+import { useContext } from 'react';
+import { GrantCalculationContext } from 'components/form/CostsFieldTemplate';
 
 const Sdiv = styled.div`
   margin-bottom: 30px;
@@ -22,7 +25,14 @@ const Sinput = styled(Form.Input)`
 `;
 const Cost = props => {
   const { name, title, inputType, pattern, minLength, maxLength } = props.schema;
-  const { value, onChange, required } = props;
+  const { value, onChange, required, formContext } = props;
+  const setGrantAmount = useContext(GrantCalculationContext);
+
+  const handleChange = (e, { value }) => {
+    onChange(value);
+    const grant = calculateGrantAmount({ ...formContext.initialFormData?.costs, [name]: value });
+    setGrantAmount(grant || 0);
+  };
 
   // Add $
   return (
@@ -38,7 +48,7 @@ const Cost = props => {
         name={name}
         type={inputType}
         control={Input}
-        onChange={e => onChange(e.target.value)}
+        onChange={handleChange}
         value={value}
       />
       <SfinePrint>
