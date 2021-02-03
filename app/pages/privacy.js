@@ -20,6 +20,8 @@ const mailLink = email => <a href={`mailto:${email}`}>{email}</a>;
 const StyledContainer = styled(Container)`
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
+  padding-left: 30px;
+  padding-right: 30px;
 `;
 
 const StyledP = styled.p`
