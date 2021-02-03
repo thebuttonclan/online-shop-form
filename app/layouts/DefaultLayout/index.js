@@ -231,7 +231,8 @@ ResponsiveContainer.propTypes = {
 
 const MainSegment = styled(Segment)`
   min-height: calc(100vh - ${TOP_HEIGHT});
-  background-color: #f2f2f2 !important;
+  background-color: ${props =>
+    props.pathname.indexOf('message') >= 0 || props.pathname.indexOf('apply') >= 0 ? 'white' : '#f2f2f2 !important'};
 
   & .ui.container {
     background-color: white !important;
@@ -241,7 +242,7 @@ const MainSegment = styled(Segment)`
 const DefaultLayout = ({ children, query, pathname }) => {
   return (
     <ResponsiveContainer query={query} pathname={pathname}>
-      <MainSegment vertical className="no-padding">
+      <MainSegment vertical pathname={pathname} className="no-padding">
         {children}
       </MainSegment>
       <Footer />
