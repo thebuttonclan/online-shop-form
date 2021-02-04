@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.3.1...v1.4.0) (2021-02-04)
+
+
+### Features
+
+* meta tags ([5d29400](https://github.com/thebuttonclan/online-shop-form/commit/5d2940064b7adced057f55e70d7649328640a5d3))
+
 ### [1.3.2](https://github.com/thebuttonclan/online-shop-form/compare/v1.3.1...v1.3.2) (2021-02-03)
 
 ### [1.3.1](https://github.com/thebuttonclan/online-shop-form/compare/v1.3.0...v1.3.1) (2021-02-03)
