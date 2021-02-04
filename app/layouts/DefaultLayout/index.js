@@ -7,6 +7,7 @@ import { Container, Icon, Menu, Segment, Sidebar, Header } from 'semantic-ui-rea
 import styled from 'styled-components';
 import { PRIMARY_COLOUR, MIN_PADDING, SECONDARY_COLOUR, PRIMARY_FONT } from 'theme';
 import HrefLink from 'components/HrefLink';
+import Head from 'next/head';
 import Footer from './Footer';
 
 const TITLE = 'Launch Online';
@@ -241,12 +242,35 @@ const MainSegment = styled(Segment)`
 
 const DefaultLayout = ({ children, query, pathname }) => {
   return (
-    <ResponsiveContainer query={query} pathname={pathname}>
-      <MainSegment vertical pathname={pathname} className="no-padding">
-        {children}
-      </MainSegment>
-      <Footer />
-    </ResponsiveContainer>
+    <div>
+      <Head>
+        <meta property="og:title" content="Launch Online" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://launchonline.ca/images/banner.png" />
+        <meta name="twitter:image" content="https://launchonline.ca/images/banner.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Launch Online" />
+        <meta
+          property="og:description"
+          content="As part of StrongerBC, B.C.’s
+          Economic Recovery Plan the Launch Online Grant program will invest up to $12 million to help small- and
+          medium-size businesses throughout B.C. move their business model online."
+        />
+        <meta property="og:url" content="https://bcbusinessrecoverygrant.com" />
+        <meta
+          name="twitter:description"
+          content="As part of StrongerBC, B.C.’s
+          Economic Recovery Plan the Launch Online Grant program will invest up to $12 million to help small- and
+          medium-size businesses throughout B.C. move their business model online."
+        />
+      </Head>
+      <ResponsiveContainer query={query} pathname={pathname}>
+        <MainSegment vertical pathname={pathname} className="no-padding">
+          {children}
+        </MainSegment>
+        <Footer />
+      </ResponsiveContainer>
+    </div>
   );
 };
 
