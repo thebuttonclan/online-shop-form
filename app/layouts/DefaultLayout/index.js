@@ -256,7 +256,7 @@ const DefaultLayout = ({ children, query, pathname }) => {
           Economic Recovery Plan the Launch Online Grant program will invest up to $12 million to help small- and
           medium-size businesses throughout B.C. move their business model online."
         />
-        <meta property="og:url" content="https://bcbusinessrecoverygrant.com" />
+        <meta property="og:url" content="https://launchonline.ca" />
         <meta
           name="twitter:description"
           content="As part of StrongerBC, B.C.’s
