@@ -27,7 +27,7 @@ function ProgramSteps() {
             <li>Pays taxes in B.C.</li>
             <li>Maintains a</li>
             <StyledUl>
-              <li>Business license number</li>
+              <li>Business number</li>
               <li>GST number</li>
               <li>PST and WorkSafeBC number (where applicable)</li>
             </StyledUl>

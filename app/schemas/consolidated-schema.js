@@ -160,8 +160,6 @@ const schema = {
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
-    // businessLicense was supposed to be a file upload, but we're no longer doing them.
-    // Need confirmation on what (if anything) we're using in it's place.
     bcOwned: {
       type: 'boolean',
       title: 'Is the business owned by a B.C. resident or residents?',

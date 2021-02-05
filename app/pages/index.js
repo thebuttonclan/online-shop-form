@@ -170,7 +170,6 @@ export default function Home({ canSubmit }) {
           <Header2>You will be asked to provide:</Header2>
           <StyledUl>
             <li>Current year balance or past fiscal year statement</li>
-            <li>Proof of a valid B.C. business licence</li>
             <li>Business number</li>
             <li>PST and WorkSafeBC registrations, if applicable</li>
             <li>Income tax return:</li>
