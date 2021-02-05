@@ -57,7 +57,6 @@ export default function SuccessPage() {
       <Header2>Please be prepared to provide the following document attachments:</Header2>
       <IndentedUl>
         <li>Current year balance or past fiscal year statement</li>
-        <li>Proof of a valid B.C. business license</li>
         <li>Payment information document (direct deposit or VOID cheque pdf)</li>
         <li>
           Income tax return
