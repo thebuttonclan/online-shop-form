@@ -35,8 +35,8 @@ function ProgramSteps() {
               Generated sales of more than $30,000 in the past year (in 2019, or in the year preceding the application)
             </li>
             <li>
-              Has repeatable products, or in the case of artists and jewellers, individual items that have slight
-              differences (i.e. paintings or rings)
+              Has repeatable products (goods), or in the case of artists and jewellers, individual items that have
+              slight differences (i.e. paintings or rings)
             </li>
             <li>
               Does not currently have an online store or has an online store that has no more than three of the five
