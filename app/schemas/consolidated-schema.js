@@ -205,7 +205,7 @@ const schema = {
     },
     incomeTaxesFiled: {
       type: 'boolean',
-      title: "Have you filed last year's income taxes?",
+      title: 'Have you filed taxes in 2019 or 2020?',
       name: 'incomeTaxesFiled',
     },
     revenue2019: {
