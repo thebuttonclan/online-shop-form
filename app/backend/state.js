@@ -1,4 +1,4 @@
-const MAX_SUBMISSION_COUNT = 2000;
+const MAX_SUBMISSION_COUNT = 3000;
 
 let _canSubmit = true;
 let _count = -1;
