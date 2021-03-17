@@ -2,6 +2,7 @@ import consolodateSchema from './consolidated-schema';
 import CostsFieldTemplate from '../components/form/CostsFieldTemplate';
 import BcRegistrationIdTemplate from '../components/form/BcRegistrationIdTemplate';
 import GrantTermsTemplate from '../components/form/GrantTermsTemplate';
+import DeclarationsTemplate from '../components/form/DeclarationsTemplate';
 // This turns all of the boolean fields into radio buttons
 const booleanFields = {};
 
@@ -63,6 +64,7 @@ const uiSchema = {
   },
   declarations: {
     'ui:widget': 'checkboxes',
+    'ui:FieldTemplate': DeclarationsTemplate,
   },
   bcRegistrationID: {
     'ui:FieldTemplate': BcRegistrationIdTemplate,

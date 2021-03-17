@@ -29,7 +29,7 @@ const GrantTermsHeader = () => (
     <StyledUl>
       <li>
         (a) the Province will not be liable for any claims, losses, costs or expenses, whether arising in contract, tort
-        or otherwise from or relating to anything done or not done by the Service Provider as a resStyledUlt of their
+        or otherwise from or relating to anything done or not done by the Service Provider as a result of their
         engagement by the Grant Applicant including in respect of any assessments, advice or assistance that the
         Professional Service Provider may provide;
       </li>
@@ -493,13 +493,14 @@ const schema = {
     },
     declarations: {
       type: 'array',
-      title: 'Declarations',
+      title: `By submitting your application, you are declaring that all of the following statements are true as they relate to your business.
+      All information provided is true and accurate.`,
       name: 'declarations',
       allRequired: true,
       items: {
         type: 'string',
         enum: [
-          'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+          'I understand that grant funding received through this program must be used to support the development and improvement of online shop or online booking system of the business this application identifies only.',
           'I confirm that I understand that the personal information collected through this application process is collected for the administration of Launch Online Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact info@launchonline.ca',
           'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
         ],

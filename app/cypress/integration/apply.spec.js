@@ -24,9 +24,9 @@ describe('Creating an application', () => {
         cy.get(select.getBy).select(select.value, { force: true });
       });
       cy.get('#btn-submit-form-data').click({ force: true });
-      // if (index === FINAL_PAGE - 1) {
-      //   cy.wait('@apply/31').its('request.body').should('deep.equal', expectedResult);
-      // }
+      if (index === FINAL_PAGE - 1) {
+        cy.wait('@apply/31').its('request.body').should('deep.equal', expectedResult);
+      }
     });
   });
 });

@@ -8,6 +8,10 @@ const childParentRelationships = {
   serviceProviderCosts: 'costs',
   customerAcquisitionCosts: 'costs',
   staffTrainingCosts: 'costs',
+  staffTrainingDescription: 'costs',
+  customerAcquisitionDescription: 'costs',
+  serviceProviderDescription: 'costs',
+  planForFunds: 'costs',
   existingOnlineStore: 'onlineStore',
   onlineStoreUrl: 'onlineStore',
   existingStoreFeatures: 'onlineStore',
@@ -75,5 +79,11 @@ function addResults(expectedResult, pageEntries) {
 formFieldEntries.forEach(entry => {
   addResults(expectedResult, entry);
 });
+
+expectedResult.declarations = [
+  'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+  'I confirm that I understand that the personal information collected through this application process is collected for the administration of Launch Online Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact info@launchonline.ca',
+  'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
+];
 
 export default expectedResult;
