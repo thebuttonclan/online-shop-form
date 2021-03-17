@@ -46,7 +46,7 @@ function CheckboxesWidget(props) {
               disabled={disabled || itemDisabled || readonly}
               name={name}
               value={option.label}
-              required={allRequired}
+              required={allRequired || false}
               autoFocus={autofocus && index === 0}
               onChange={event => {
                 const all = enumOptions.map(({ value }) => value);

@@ -371,7 +371,6 @@ const schema = {
               'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
               'Product catalogue, search and inventory status',
               'Website analytics and reporting capabilities',
-              'Customer registration and information security features',
               'Schedule navigation and reservation management capabilities ',
               'Payment processing options including application of appropriate taxes',
               'Automated replies and reminders',
