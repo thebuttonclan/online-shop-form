@@ -37,7 +37,7 @@ const Container = styled.div`
 `;
 
 const BannerOverlay = styled.div`
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.9);
   color: #16152b;
 `;
 
@@ -60,7 +60,7 @@ const Banner = ({ text }) => (
           their business model online.
         </p>
         <p>
-          Grant eligibility criteria has been expanded . Businesses that want to enhance or build an online booking
+          Grant eligibility criteria has been expanded. Businesses that want to enhance or build an online booking
           system are now eligible to apply. The original eligibility criteria for businesses that want to enhance or
           build an online shop remains in place.
         </p>
