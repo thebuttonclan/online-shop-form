@@ -162,7 +162,7 @@ export default function Home({ canSubmit }) {
           <ScrollHeader1 id="submit-application">Submit your application</ScrollHeader1>
 
           <Header2>Before applying</Header2>
-          <InfoMessage icon={false}>
+          <InfoMessage>
             Businesses that applied previously but did not met the eligibility criteria will be reassessed against the
             new criteria. The applicant will be contacted if their application meets the new criteria. Your{' '}
             <Highlight>application does not need to be resubmitted,</Highlight> and you will not lose your place in the

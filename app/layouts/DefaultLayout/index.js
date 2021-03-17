@@ -68,6 +68,9 @@ const HeaderBrandText = styled(Header)`
   margin: auto ${MIN_PADDING} !important;
   text-align: left;
   color: white !important;
+  & a {
+    color: white !important;
+  }
   font-family: ${PRIMARY_FONT} !important;
 `;
 
@@ -109,7 +112,9 @@ const HeaderBrand = () => (
     <HrefLink href="/">
       <Logo src={logo} alt="Launch Online Logo" />
     </HrefLink>
-    <HeaderBrandText>{TITLE}</HeaderBrandText>
+    <HeaderBrandText>
+      <HrefLink href="/">{TITLE} </HrefLink>
+    </HeaderBrandText>
   </HeaderBrandContainer>
 );
 

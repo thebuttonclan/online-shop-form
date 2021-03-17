@@ -75,7 +75,7 @@ function GeneralInformation({ canSubmit }) {
           You are encouraged to submit your application, along with your grant proposal and additional documents as
           early as possible.
         </MaxWidthP>
-        <InfoMessage icon={false}>
+        <InfoMessage>
           Businesses that applied previously but did not met the eligibility criteria will be reassessed against the new
           criteria. The applicant will be contacted if their application meets the new criteria. Your{' '}
           <Highlight>application does not need to be resubmitted,</Highlight> and you will not lose your place in the
