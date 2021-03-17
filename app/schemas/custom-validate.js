@@ -8,24 +8,16 @@ export default function createValidator(page) {
   const isPageFor = field => !fields || fields.includes(field);
 
   return function customValidate(formData, errors) {
-    if (isPageFor('useOfGrant')) {
-      if (formData.useOfGrant !== true) {
-        errors.useOfGrant.addError('You must agree to continue!');
+    if (isPageFor('declarations')) {
+      if (formData.declarations.length !== 3) {
+        errors.useOfGrant.addError('You must agree to all terms to continue!');
       }
     }
-
-    if (isPageFor('personalInformation')) {
-      if (formData.personalInformation !== true) {
-        errors.personalInformation.addError('You must agree to continue!');
+    if (isPageFor('grantTerms')) {
+      if (formData.grantTerms !== true) {
+        errors.grantTerms.addError('You must agree to continue!');
       }
     }
-
-    if (isPageFor('taxImplications')) {
-      if (formData.taxImplications !== true) {
-        errors.taxImplications.addError('You must agree to continue!');
-      }
-    }
-
     return errors;
   };
 }

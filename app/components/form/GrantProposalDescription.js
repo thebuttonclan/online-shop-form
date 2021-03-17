@@ -1,19 +1,15 @@
 import HrefLink from 'components/HrefLink';
-import StyledP from 'components/StyledP';
 
 export default function GrantProposalDescription() {
   return (
     <>
-      Please provide a grant proposal (max 1000 characters) on how you plan to use the grant funds. Please refer to
-      eligible expenses, online shops completion checklist and grant limit information in the{' '}
+      Please provide a grant proposal explaining specifically how you plan to use the grant funds in order to build or
+      enhance your online shop or online booking system. Please be sure to refer to eligible expenses, online shops
+      completion checklist and grant limit information in the{' '}
       <HrefLink href="/files/program_guide.pdf" blank>
         Program Guide
       </HrefLink>
-      .
-      <StyledP>
-        The estimated total costs for service provide costs, digital marketing and training will be entered on the next
-        page of this application.
-      </StyledP>
+      . (max 1000 characters)
     </>
   );
 }
