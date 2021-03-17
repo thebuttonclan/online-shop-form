@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.1](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.0...v1.6.1) (2021-03-17)
+
+
+### Bug Fixes
+
+* remove unused widget ([51cbbd9](https://github.com/thebuttonclan/online-shop-form/commit/51cbbd922b1510c73f2971a49333bcbf9676c9d3))
+
 ## [1.6.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.5.4...v1.6.0) (2021-03-17)
 
 
