@@ -56,36 +56,37 @@ const contents = [
       <>
         <StyledP>
           Funding recipients MUST use local B.C. service providers to complete contract work to build or improve their
-          online store. The only exception to this rule is when a service is provided entirely online, such as:
+          online store or online booking system. The only exception to this rule is when a service is provided entirely
+          online, such as:
         </StyledP>
         <StyledUl>
-          <li>Platform subscription </li>
-          <li>Purchase of online photos and graphics </li>
-          <li>Purchase of online promotional space such as Facebook ads </li>
+          <li>Platform subscription</li>
+          <li>Purchase of online photos and graphics</li>
+          <li>Purchase of online promotional space such as Facebook ads</li>
         </StyledUl>
         <StyledP>
-          Expenses related to the development, management and improvement of an online shop supporting e-commerce
-          (website only with an email and/or phone number is not an eligible expense), such as:
+          Expenses related to the development, management and improvement of an online shop or online booking system and
+          must support e-commerce (website only with an email and/or phone number is not an eligible expense), such as:
         </StyledP>
         <StyledUl>
           <li>
             Service provider costs:
             <StyledUl>
-              <li>Development time for the platform (create new or substantially enhance) </li>
-              <li>Pictures (including photographer), stock photos or related graphics required for site </li>
-              <li>Copy and online content writing </li>
-              <li>Online inventory of goods and products development </li>
+              <li>Development time for the platform (create new or substantially enhance)</li>
+              <li>Pictures (including photographer), stock photos or related graphics required for site</li>
+              <li>Copy and online content writing</li>
+              <li>Online inventory of goods and products development</li>
             </StyledUl>
           </li>
           <li>
             Digital customer acquisition costs:
             <StyledUl>
-              <li>Subscription costs of e-commerce platform (up to 1 year) </li>
-              <li>Online advertising costs (up to 1 year) </li>
-              <li>Search Engine Optimization (SEO) </li>
+              <li>Subscription costs of e-commerce platform (up to 1 year)</li>
+              <li>Online advertising costs (up to 1 year)</li>
+              <li>Search Engine Optimization (SEO)</li>
+              <li>Banner and other embedded advertising creation (e.g., social media sites, gaming, etc.)</li>
             </StyledUl>
           </li>
-          <li>Banner and other embedded advertising creation (e.g., social media sites, gaming, etc.) </li>
           <li>Staff training to manage own online shop and/or gain digital marketing skills </li>
         </StyledUl>
       </>
@@ -97,7 +98,9 @@ const contents = [
       <>
         <StyledP>
           Funding cannot be used for ongoing e-commerce activities that the business has already started before the
-          project start date or for general website or IT upgrades. Funds also cannot be used for:
+          project start date or for general website or IT upgrades.
+          <br />
+          Funds also cannot be used for:
         </StyledP>
         <StyledUl>
           <li>Starting an e-commerce business which intends to sell products on behalf of other companies</li>
@@ -105,7 +108,16 @@ const contents = [
           <li>Hosting an existing site</li>
           <li>Credit card processing fees</li>
           <li>Packaging materials for product shipping and related shipping costs</li>
+          <li>Staff salary costs</li>
         </StyledUl>
+      </>
+    ),
+  },
+  {
+    question: 'Are non-profits eligible for this program?',
+    content: (
+      <>
+        <StyledP>Yes, non-profit organizations are eligible if they meet the existing eligibility criteria.</StyledP>
       </>
     ),
   },
@@ -127,7 +139,8 @@ const contents = [
     content: (
       <>
         <StyledP>
-          Yes, if your current online store has no more than 3 of the 5 identified online store features, see below:
+          Yes, if your current online store has no more than 3 of the 5 identified online store features optimized, i.e.
+          requires substantial enhancements, see below:
         </StyledP>
         <StyledUl>
           <li>Customer registration and information security features</li>
@@ -137,6 +150,17 @@ const contents = [
           </li>
           <li>Product catalogue, search and inventory status</li>
           <li>Website analytics and reporting capabilities.</li>
+        </StyledUl>
+        <StyledP>
+          Or, if your online booking system has no more than 3 of the 5 identified online booking system features
+          optimized, i.e. needs substantial enhancements, see below:
+        </StyledP>
+        <StyledUl>
+          <li>Customer registration and information security features</li>
+          <li>Schedule navigation and reservation management capabilities</li>
+          <li>Payment processing options including application of appropriate taxes</li>
+          <li>Automated replies and reminders</li>
+          <li>Website analytics and reporting capabilities</li>
         </StyledUl>
         <StyledP>
           The grant program is intended to get businesses online to fully participate in the digital market-place. The
@@ -164,8 +188,8 @@ const contents = [
       <>
         <StyledP>
           Only costs incurred to build or enhance your online shop during the program timelines will be eligible, i.e.
-          the grant funding will cover eligible expenses to build or enhance your online shop within 12-weeks from when
-          you received confirmation of eligibility via the grant letter.
+          the grant funding will cover eligible expenses to build or enhance your online shop or online booking system
+          within 12-weeks from when you received confirmation of eligibility via the grant letter.
         </StyledP>
       </>
     ),
