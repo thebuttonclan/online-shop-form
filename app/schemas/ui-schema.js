@@ -109,9 +109,6 @@ const uiSchema = {
     staffTrainingDescription: {
       'ui:widget': 'TextareaWidget',
     },
-    lastPage: {
-      'ui:widget': 'checkbox',
-    },
   },
 
   // This prevents conditional fields from rendering at the end of the form
