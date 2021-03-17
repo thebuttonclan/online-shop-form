@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const REQUIRED_TEXT_MIN_LENGTH = 0;
 const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
+const COST_REGEX = '^[0-9]*(.[0-9]{1,2})?$';
 
 const StyledUl = styled.ul`
   list-style-type: none;
@@ -465,7 +466,7 @@ const schema = {
           type: 'number',
           title: 'Total amount for digital customer acquisition',
           name: 'customerAcquisitionCosts',
-          pattern: CURRENCY_REGEX,
+          pattern: COST_REGEX,
         },
         staffTrainingDescription: {
           type: 'string',
@@ -479,7 +480,7 @@ const schema = {
           type: 'number',
           title: 'Total amount for staff training',
           name: 'staffTrainingCosts',
-          pattern: CURRENCY_REGEX,
+          pattern: COST_REGEX,
         },
       },
       required: [
@@ -487,9 +488,7 @@ const schema = {
         'serviceProviderDescription',
         'serviceProviderCosts',
         'customerAcquisitionDescription',
-        'customerAcquisitionCosts',
         'staffTrainingDescription',
-        'staffTrainingCosts',
       ],
     },
     grantTerms: {
