@@ -30,11 +30,11 @@ const Row = styled.div`
   }
 `;
 
-const InfoMessage = ({ text }) => (
+const InfoMessage = ({ icon = true, text, children }) => (
   <StyledMessage>
     <Row>
-      <StyledIcon name="info circle" size="huge" />
-      <StyledP>{text}</StyledP>
+      {icon && <StyledIcon name="info circle" size="huge" />}
+      <StyledP>{children || text}</StyledP>
     </Row>
   </StyledMessage>
 );
