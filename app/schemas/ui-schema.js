@@ -1,5 +1,7 @@
 import consolodateSchema from './consolidated-schema';
 import CostsFieldTemplate from '../components/form/CostsFieldTemplate';
+import BcRegistrationIdTemplate from '../components/form/BcRegistrationIdTemplate';
+import GrantTermsTemplate from '../components/form/GrantTermsTemplate';
 // This turns all of the boolean fields into radio buttons
 const booleanFields = {};
 
@@ -10,6 +12,12 @@ Object.keys(consolodateSchema.properties).forEach(propertyName => {
     booleanFields[propertyName] = { 'ui:widget': 'radio' };
   }
 });
+
+const LinkedHelpText = (
+  <div>
+    To learn more about Registering your Business in BC, please follow this link to the BC Registry website at to
+  </div>
+);
 
 const uiSchema = {
   // If overriding ui for boolean fields, make sure to include the widget as radio
@@ -49,6 +57,16 @@ const uiSchema = {
   productionLocation: {
     'ui:help': 'This field is required if answering No',
   },
+  grantTerms: {
+    'ui:widget': 'checkbox',
+    'ui:FieldTemplate': GrantTermsTemplate,
+  },
+  declarations: {
+    'ui:widget': 'checkboxes',
+  },
+  bcRegistrationID: {
+    'ui:FieldTemplate': BcRegistrationIdTemplate,
+  },
   onlineStore: {
     existingOnlineStore: {
       'ui:widget': 'radio',
@@ -63,22 +81,31 @@ const uiSchema = {
       'ui:widget': 'checkboxes',
     },
   },
-  planForFunds: {
-    'ui:widget': 'TextareaWidget',
-  },
   otherPrograms: {
     'ui:widget': 'TextareaWidget',
   },
   costs: {
-    'ui:FieldTemplate': CostsFieldTemplate,
+    'ui:ObjectFieldTemplate': CostsFieldTemplate,
+    planForFunds: {
+      'ui:widget': 'TextareaWidget',
+    },
     serviceProviderCosts: {
       'ui:widget': 'Cost',
+    },
+    serviceProviderDescription: {
+      'ui:widget': 'TextareaWidget',
     },
     customerAcquisitionCosts: {
       'ui:widget': 'Cost',
     },
+    customerAcquisitionDescription: {
+      'ui:widget': 'TextareaWidget',
+    },
     staffTrainingCosts: {
       'ui:widget': 'Cost',
+    },
+    staffTrainingDescription: {
+      'ui:widget': 'TextareaWidget',
     },
   },
 
@@ -124,9 +151,8 @@ const uiSchema = {
     'serviceProviderCosts',
     'customerAcquisitionCosts',
     'staffTrainingCosts',
-    'useOfGrant',
-    'personalInformation',
-    'taxImplications',
+    'grantTerms',
+    'declarations',
   ],
 };
 

@@ -1,10 +1,52 @@
 import ObjectFieldTemplate from 'components/form/ObjectFieldTemplate';
 import GrantProposalDescription from 'components/form/GrantProposalDescription';
+import styled from 'styled-components';
 
 // Only use on required elements if non-zero
 const REQUIRED_TEXT_MIN_LENGTH = 0;
 const TEXT_MAX_LENGTH = 1000;
 const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
+
+const StyledUl = styled.ul`
+  list-style-type: none;
+`;
+
+const StaffTrainingDescription = () => (
+  <>
+    <p>
+      Course fees only. Staff salary costs are not an eligible expense if training is conducted in-house by other staff.
+    </p>
+    <p>
+      Please explain which training course, how many staff members and the cost of the course you intend to use the
+      grant funding for (max 1000 characters)
+    </p>
+  </>
+);
+
+const GrantTermsHeader = () => (
+  <h2>
+    The Grant Applicant acknowledges to the Province that:
+    <StyledUl>
+      <li>
+        (a) the Province will not be liable for any claims, losses, costs or expenses, whether arising in contract, tort
+        or otherwise from or relating to anything done or not done by the Service Provider as a resStyledUlt of their
+        engagement by the Grant Applicant including in respect of any assessments, advice or assistance that the
+        Professional Service Provider may provide;
+      </li>
+      <li>
+        (b) other than as provided by law, the Province has no duty to protect from disclosure any information provided
+        by the Grant Applicant to the Service Provider should any such information be disclosed directly or indirectly
+        to the Province; and
+      </li>
+      <li>
+        (c) completion of the Grant Application including submission of the Recovery Plan and fulfillment of any other
+        requirements of the Province in relation to the Grant will not impose an obligation on the Province to advance
+        any amount of the Grant to the Grant Applicant. Any decision whether to advance a Grant or not is made solely at
+        the discretion of the Province and is final without any requirement to give reasons.
+      </li>
+    </StyledUl>
+  </h2>
+);
 
 const schema = {
   title: 'Launch Online Grant',
@@ -36,10 +78,7 @@ const schema = {
     'otherCovidFunding',
     'sector',
     // GRANT PROPOSAL SECTION
-    'planForFunds',
-    'useOfGrant',
-    'personalInformation',
-    'taxImplications',
+    'grantTerms',
   ],
   dependencies: {
     workSafeBcRegistered: {
@@ -264,12 +303,12 @@ const schema = {
     isIndigenous: {
       type: 'string',
       name: 'isIndigenous',
-      title: 'Is this an Indigenous Business?',
-      enum: ['', 'Yes', 'No', 'Rather not answer'],
+      title: 'Is this business owned by black, Indigenous or person of colour?',
+      enum: ['', 'Black', 'Indigenous', 'Person of colour', 'No', 'Rather not answer'],
     },
     repeatableProducts: {
       type: 'boolean',
-      title: 'Does the business sell products (goods)?',
+      title: 'Does the business provide services?',
       name: 'repeatableProducts',
     },
     cannabisProducts: {
@@ -307,20 +346,22 @@ const schema = {
       title: '',
       properties: {
         existingOnlineStore: {
+          // type: 'string',
           type: 'boolean',
-          title: 'Does the business currently have an online store?',
+          title: 'Does the business currently have an online store or an online booking system?',
           name: 'existingOnlineStore',
+          // enum: ['-', 'Yes (Online Store)', 'Yes (Online Booking System)', 'No']
         },
         onlineStoreUrl: {
           type: 'string',
-          title: 'If yes, please provide a link to the online store',
+          title: 'If Yes, please provide a link to the online store or booking system',
           name: 'onlineStoreUrl',
           minLength: REQUIRED_TEXT_MIN_LENGTH,
           maxLength: TEXT_MAX_LENGTH,
         },
         existingStoreFeatures: {
           type: 'array',
-          title: 'If the business has an existing online store, please select all that apply',
+          title: 'If the business has an existing online store or online booking system, please select all that apply',
           name: 'existingStoreFeatures',
           items: {
             type: 'string',
@@ -330,6 +371,11 @@ const schema = {
               'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
               'Product catalogue, search and inventory status',
               'Website analytics and reporting capabilities',
+              'Customer registration and information security features',
+              'Schedule navigation and reservation management capabilities ',
+              'Payment processing options including application of appropriate taxes',
+              'Automated replies and reminders',
+              'Website analytics and reporting capabilities ',
             ],
           },
           uniqueItems: true,
@@ -357,7 +403,7 @@ const schema = {
     canMeetDeadline: {
       type: 'boolean',
       title:
-        'If approved, are you able to utilize the grant funds and complete your online store proposal in twelve weeks?',
+        'If approved, are you able to utilize the grant funds and complete your online store or online booking system proposal in twelve weeks?',
       name: 'canMeetDeadline',
     },
     // Has condition
@@ -373,60 +419,93 @@ const schema = {
       minLength: REQUIRED_TEXT_MIN_LENGTH,
       maxLength: TEXT_MAX_LENGTH,
     },
-    // GRANT PROPOSAL SECTION
-    planForFunds: {
-      type: 'string',
-      title: 'Grant Proposal',
-      name: 'planForFunds',
-      subTitle: GrantProposalDescription(),
-      minLength: REQUIRED_TEXT_MIN_LENGTH,
-      maxLength: TEXT_MAX_LENGTH,
-    },
-
     costs: {
       type: 'object',
       name: 'costs',
-      // Title has to be a string, but we have custom text there so empty.
-      title: '',
       properties: {
+        planForFunds: {
+          type: 'string',
+          name: 'planForFunds',
+          title: 'Grant Proposal',
+          subTitle: GrantProposalDescription(),
+          minLength: REQUIRED_TEXT_MIN_LENGTH,
+          maxLength: TEXT_MAX_LENGTH,
+        },
+        serviceProviderDescription: {
+          type: 'string',
+          subTitle:
+            'Please explain for what and which service providers you intend to use the grant funding for (max 1000 characters)',
+          name: 'serviceProviderDescription',
+          break: true,
+          minLength: REQUIRED_TEXT_MIN_LENGTH,
+          maxLength: TEXT_MAX_LENGTH,
+        },
         serviceProviderCosts: {
           type: 'number',
-          title: 'Service Provider(s)',
+          title: 'Total amount for service provider costs',
           name: 'serviceProviderCosts',
           pattern: CURRENCY_REGEX,
         },
+        customerAcquisitionDescription: {
+          type: 'string',
+          title: `Digital Customer Acquisition`,
+          subTitle:
+            'Please explain the digital marketing channels, tools and platforms you intend to use the grant funding for (max 1000 characters)',
+          name: 'customerAcquisitionDescription',
+          minLength: REQUIRED_TEXT_MIN_LENGTH,
+          maxLength: TEXT_MAX_LENGTH,
+        },
         customerAcquisitionCosts: {
           type: 'number',
-          title: 'Digital Customer Acquisition',
+          title: 'Total amount for digital customer acquisition',
           name: 'customerAcquisitionCosts',
           pattern: CURRENCY_REGEX,
         },
+        staffTrainingDescription: {
+          type: 'string',
+          title: `Staff Training Costs`,
+          subTitle: StaffTrainingDescription(),
+          name: 'staffTrainingDescription',
+          minLength: REQUIRED_TEXT_MIN_LENGTH,
+          maxLength: TEXT_MAX_LENGTH,
+        },
         staffTrainingCosts: {
           type: 'number',
-          title: 'Staff Training Costs',
+          title: 'Total amount for staff training',
           name: 'staffTrainingCosts',
           pattern: CURRENCY_REGEX,
         },
       },
+      required: [
+        'planForFunds',
+        'serviceProviderDescription',
+        'serviceProviderCosts',
+        'customerAcquisitionDescription',
+        'customerAcquisitionCosts',
+        'staffTrainingDescription',
+        'staffTrainingCosts',
+      ],
     },
-
-    useOfGrant: {
+    grantTerms: {
       type: 'boolean',
-      name: 'useOfGrant',
-      title:
-        'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+      name: 'grantTerms',
+      header: GrantTermsHeader(),
+      title: `I have reviewed and agree to these terms.`,
     },
-    personalInformation: {
-      type: 'boolean',
-      name: 'personalInformation',
-      title:
-        'I confirm that I understand that the personal information collected through this application process is collected for the administration of Launch Online Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact info@launchonline.ca',
-    },
-    taxImplications: {
-      type: 'boolean',
-      name: 'taxImplications',
-      title:
-        'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
+    declarations: {
+      type: 'array',
+      title: 'Declarations',
+      name: 'declarations',
+      allRequired: true,
+      items: {
+        type: 'string',
+        enum: [
+          'I understand that grant funding received through this program must be used to support the development and improvement of online shop of the business this application identifies only.',
+          'I confirm that I understand that the personal information collected through this application process is collected for the administration of Launch Online Grant including to confirm residency, under s.26(c) of the Freedom of Information and Protection of Privacy Act. I also confirm that I have obtained authorization from the employees to whom the personal information relates to share that information with the Alacrity Canada for the above mentioned purposes. If you have questions about the collection you may contact info@launchonline.ca',
+          'I understand that the receipt of grants under this program may have implications under Canada’s Income Tax Act, administered by the federal government. I am responsible for obtaining appropriate advice with respect to my obligations under this legislation.',
+        ],
+      },
+      uniqueItems: true,
     },
   },
   ObjectFieldTemplate,

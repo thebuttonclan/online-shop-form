@@ -3,7 +3,7 @@ import sum from 'lodash/sum';
 
 export const calculateGrantAmount = formData => {
   const total = sum(values(formData.costs).map(Number));
-  const grandAmount = total * 0.75;
+  const grandAmount = total * 0.75 || 0;
 
   return grandAmount.toFixed(2);
 };

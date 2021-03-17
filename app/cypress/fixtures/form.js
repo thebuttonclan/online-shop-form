@@ -122,27 +122,25 @@ const formFieldEntries = [
   },
   // 29
   {
-    inputs: [{ getBy: '#id_planForFunds', text: 'Rent' }],
-  },
-  // 30
-  {
     numbers: [
       { getBy: '#id_serviceProviderCosts', value: 100 },
       { getBy: '#id_customerAcquisitionCosts', value: 100 },
       { getBy: '#id_staffTrainingCosts', value: 100 },
     ],
+    inputs: [
+      { getBy: '#id_planForFunds', text: 'Rent' },
+      { getBy: '#id_staffTrainingDescription', text: 'a' },
+      { getBy: '#id_customerAcquisitionDescription', text: 'b' },
+      { getBy: '#id_serviceProviderDescription', text: 'c' },
+    ],
+  },
+  // 30
+  {
+    radios: [{ getBy: '#root_grantTerms' }],
   },
   // 31
   {
-    radios: [{ getBy: '#id_useOfGrant' }],
-  },
-  // 32
-  {
-    radios: [{ getBy: '#id_personalInformation' }],
-  },
-  // 33
-  {
-    radios: [{ getBy: '#id_taxImplications' }],
+    radios: [{ getBy: '#root_declarations_0' }, { getBy: '#root_declarations_1' }, { getBy: '#root_declarations_2' }],
   },
 ];
 

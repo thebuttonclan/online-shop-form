@@ -6,7 +6,7 @@ const NamedInput = props => {
   const { value, onChange, required } = props;
   return (
     <>
-      <Label required={required}>{title}</Label>
+      {title && <Label required={required}>{title}</Label>}
       {subTitle}
       <Form.TextArea
         required={required}

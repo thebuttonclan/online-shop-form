@@ -28,7 +28,6 @@ const Cost = props => {
   return (
     <Sdiv>
       <h3>{title}</h3>
-      <FieldName>Total Amount</FieldName>
       <Sinput
         id={`id_${name}`}
         required={required}
@@ -42,8 +41,8 @@ const Cost = props => {
         value={value}
       />
       <SfinePrint>
-        Below, see the calculation that establishes the total grant amount requested (75% of eligible costs up to a max.
-        of $7,500)
+        At the bottom of the page, see the calculation that establishes the total grant amount requested (75% of
+        eligible costs up to a max. of $7,500)
       </SfinePrint>
     </Sdiv>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import HrefLink from 'components/HrefLink';
 import { calculateGrantAmount } from 'schemas/helpers';
 import { formatCurrency } from 'helpers/number';
+import HrefLink from 'components/HrefLink';
 
 const Sdiv = styled.div`
   font-weight: bold;
@@ -14,6 +14,42 @@ const SInfo = styled.div`
   font-weight: bold;
   padding-bottom: 30px;
 `;
+
+const STitleItalic = styled.h2`
+  font-style: italic;
+  margin: 0;
+  margin-bottom: 20px;
+`;
+
+const STitle = styled.h2`
+  margin: 0;
+  &::after {
+    content: '*';
+    display: inline-block;
+    vertical-align: top;
+    margin: -0.2em 0 0 0.2em;
+    color: #db2828;
+  }
+`;
+
+const BreakTitle = () => (
+  <>
+    <SInfo>
+      Include below in each section the complete cost estimates for each cost grouping (service provider, digital
+      customer acquisition or training costs). The total grant amount requested through this application is
+      auto-calculated at the bottom of this page: 75% of the eligible costs (max of $7,500).
+    </SInfo>
+    <SInfo>
+      Please refer to eligible expenses, online shop completion checklist and grant limit information in the{' '}
+      <HrefLink href="/files/program_guide.pdf" blank>
+        program guide
+      </HrefLink>
+      .
+    </SInfo>
+    <STitle>Service Provider Costs</STitle>
+    <STitleItalic>This category MUST be used in your proposal</STitleItalic>
+  </>
+);
 
 const MAX_GRANT_AMOUNT = 7500;
 
@@ -30,16 +66,12 @@ export default function CostsFieldTemplate(props) {
 
   return (
     <div>
-      <SInfo>
-        Please provide us with the complete cost estimates for each cost grouping (service provider, digital customer
-        acquisition or training costs). The total grant amount requested through this application is auto-calculated at
-        the bottom of this page: 75% of the eligible costs (max of $7,500).
-        <br />
-        <br />
-        Please refer to eligible expenses, online shop completion checklist and grant limit information in the
-        <HrefLink href="/files/program_guide.pdf"> program guide</HrefLink>.
-      </SInfo>
-      {props.children}
+      {props.properties.map(el => (
+        <div style={{ marginTop: '20px' }}>
+          {el.content.props.schema.break && <BreakTitle />}
+          {el.content}
+        </div>
+      ))}
       {typeof window === 'object' && (
         <div>
           <Sdiv>Total Grant Amount Requested (max. ${MAX_GRANT_AMOUNT})</Sdiv>
