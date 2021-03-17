@@ -53,10 +53,19 @@ const Banner = ({ text }) => (
     <BannerOverlay>
       <Container>
         <BannerOverlayHeader as="h1">Launch Online Grant Program</BannerOverlayHeader>
+        <p>Additional grant funding and expanded eligibility criteria announced for the Launch Online Grant program.</p>
         <p>
-          Small and medium-sized businesses are vital to British Columbia’s economy. As part of StrongerBC, B.C.’s
-          Economic Recovery Plan the Launch Online Grant program will invest up to $12 million to help small- and
-          medium-size businesses throughout B.C. move their business model online.
+          The B.C. government has invested an additional $30 million to help BC-businesses move their business online.
+          There is now $42 million of grant funding in place to help small- and medium-size businesses across B.C. move
+          their business model online.
+        </p>
+        <p>
+          Grant eligibility criteria has been expanded . Businesses that want to enhance or build an online booking
+          system are now eligible to apply. The original eligibility criteria for businesses that want to enhance or
+          build an online shop remains in place.
+        </p>
+        <p>
+          Please see the updated <a href="#eligibility">eligibility criteria</a> to see if your business qualifies.
         </p>
       </Container>
     </BannerOverlay>

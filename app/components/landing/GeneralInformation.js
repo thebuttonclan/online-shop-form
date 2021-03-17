@@ -4,6 +4,8 @@ import StyledP from 'components/StyledP';
 import { Card } from 'semantic-ui-react';
 import StyledUl from 'components/StyledUl';
 import HrefLink from 'components/HrefLink';
+import InfoMessage from 'components/InfoMessage';
+import Highlight from 'components/Highlight';
 import styled from 'styled-components';
 import { PRIMARY_COLOUR } from 'theme';
 
@@ -53,18 +55,15 @@ function GeneralInformation({ canSubmit }) {
           <li>Upon review, additional information may be requested from the applicant.</li>
           <li>Only one application per business will be considered.</li>
           <li>Applications are evaluated within three weeks.</li>
-          <li>
-            By submitting this application, you allow the Program to share information with the B.C. Provincial
-            Government.
-          </li>
+          <li>By submitting this application, you allow the Program to share information with the B.C. Government.</li>
           <li>
             To foster information sharing, applicant information maybe shared with other levels of government and
             funding programs.
           </li>
           <li>
-            Personal information is collected for administration of the Launch Online Grant including for confirming
-            residency, under the Personal Information Protection Act. If you have questions about the collection you may
-            contact Alacrity Canada at 844-487-1266 or{' '}
+            Personal information is collected for administration of the Launch Online Grant program including for
+            confirming residency, under the Personal Information Protection Act. If you have questions about the
+            collection you may contact Alacrity Canada at 844-487-1266 or{' '}
             <HrefLink href="mailto:info@launchonline.ca">info@launchonline.ca</HrefLink>
           </li>
         </StyledUl>
@@ -76,6 +75,12 @@ function GeneralInformation({ canSubmit }) {
           You are encouraged to submit your application, along with your grant proposal and additional documents as
           early as possible.
         </MaxWidthP>
+        <InfoMessage icon={false}>
+          Businesses that applied previously but did not met the eligibility criteria will be reassessed against the new
+          criteria. The applicant will be contacted if their application meets the new criteria. Your{' '}
+          <Highlight>application does not need to be resubmitted,</Highlight> and you will not lose your place in the
+          application queue due to reassessment.
+        </InfoMessage>
         <HrefLink href="/apply/1">
           <ApplyButton className="pointer" disabled={!canSubmit}>
             BEGIN APPLICATION

@@ -22,7 +22,7 @@ const steps = [
   {
     title: 'Step 1:',
     text:
-      'Develop a grant proposal that indicates how you plan to use the funds. Businesses need to show a cost estimate that includes how much funding you need and how the money will be spent.',
+      'Develop a grant proposal that explains how you plan to use the funds. Businesses need to show a cost estimate that includes how much funding you need and how the money will be spent.',
   },
   {
     title: 'Step 2:',
