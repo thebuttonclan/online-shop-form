@@ -17,7 +17,6 @@ async function handler(req, res) {
   const clearedPostData = matchPostBody(postData, currentPageSchema);
   const newFormData = { ...clearedFormData, ...clearedPostData };
   session.formData = newFormData;
-  // console.log('Cleaned newData is: ', newFormData);
 
   const context = { req, newData: newFormData, page, js };
 
