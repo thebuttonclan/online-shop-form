@@ -108,7 +108,10 @@ const formFieldEntries = [
     radios: [{ getBy: '#id_existingOnlineStore' }],
     inputs: [{ getBy: '#id_onlineStoreUrl', text: 'www.store.com' }],
     checkboxes: [
-      { getBy: '#id_existingStoreFeatures', value: 'Customer registration and information security features' },
+      {
+        getBy: '#id_existingStoreFeatures',
+        value: 'Online Store - Customer registration and information security features',
+      },
     ],
   },
   // 27

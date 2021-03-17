@@ -9,6 +9,12 @@ const CURRENCY_REGEX = '^([1-9]{1})[0-9]*(.[0-9]{1,2})?$';
 
 const StyledUl = styled.ul`
   list-style-type: none;
+  font-weight: 400 !important;
+  font-size: 18px;
+  line-height: 1.4285em;
+  & li {
+    margin-bottom: 5px;
+  }
 `;
 
 const StaffTrainingDescription = () => (
@@ -24,8 +30,8 @@ const StaffTrainingDescription = () => (
 );
 
 const GrantTermsHeader = () => (
-  <h2>
-    The Grant Applicant acknowledges to the Province that:
+  <>
+    <h2>The Grant Applicant acknowledges to the Province that:</h2>
     <StyledUl>
       <li>
         (a) the Province will not be liable for any claims, losses, costs or expenses, whether arising in contract, tort
@@ -45,7 +51,7 @@ const GrantTermsHeader = () => (
         the discretion of the Province and is final without any requirement to give reasons.
       </li>
     </StyledUl>
-  </h2>
+  </>
 );
 
 const schema = {
@@ -366,15 +372,16 @@ const schema = {
           items: {
             type: 'string',
             enum: [
-              'Customer registration and information security features',
-              'Shopping cart and order management capabilities',
-              'Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
-              'Product catalogue, search and inventory status',
-              'Website analytics and reporting capabilities',
-              'Schedule navigation and reservation management capabilities ',
-              'Payment processing options including application of appropriate taxes',
-              'Automated replies and reminders',
-              'Website analytics and reporting capabilities ',
+              'Online Store - Customer registration and information security features',
+              'Online Store - Shopping cart and order management capabilities',
+              'Online Store - Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
+              'Online Store - Product catalogue, search and inventory status',
+              'Online Store - Website analytics and reporting capabilities',
+              'Online Booking System - Customer registration and information security features',
+              'Online Booking System - Schedule navigation and reservation management capabilities',
+              'Online Booking System - Payment processing options including application of appropriate taxes',
+              'Online Booking System - Automated replies and reminders',
+              'Online Booking System - Website analytics and reporting capabilities',
             ],
           },
           uniqueItems: true,
