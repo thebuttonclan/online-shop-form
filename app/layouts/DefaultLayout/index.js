@@ -70,6 +70,9 @@ const HeaderBrandText = styled(Header)`
   color: white !important;
   & a {
     color: white !important;
+    &:hover {
+      text-decoration: none !important;
+    }
   }
   font-family: ${PRIMARY_FONT} !important;
 `;
