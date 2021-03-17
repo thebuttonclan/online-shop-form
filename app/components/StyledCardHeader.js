@@ -11,10 +11,10 @@ const CardContent = styled(Card.Content)`
   background-color: ${PRIMARY_COLOUR} !important;
 `;
 
-function StyledcardHeader({ text }) {
+function StyledcardHeader({ text, children }) {
   return (
     <CardContent>
-      <CardHeader>{text}</CardHeader>
+      <CardHeader>{children || text}</CardHeader>
     </CardContent>
   );
 }

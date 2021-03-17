@@ -3,6 +3,7 @@ import { Container, Icon, Message, Header, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { SECONDARY_FONT_COLOUR, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
+import Highlight from 'components/Highlight';
 import ProgramSteps from 'components/landing/ProgramSteps';
 import EligibilityCriteria from 'components/landing/EligibilityCriteria';
 import Acknowledgement from 'components/landing/Acknowledgement';
@@ -115,9 +116,10 @@ export default function Home({ canSubmit }) {
 
           <ScrollHeader1 id="program-explanation">How the program works</ScrollHeader1>
           <MaxWidthP>
-            The Launch Online Grant program provides funding to B.C.-based business to create an online shop and/or
-            improve their e-commerce experience to attract new local customers and expand to new markets. The grant will
-            pay for up to 75% of eligible expenses, up to a maximum of $7,500 per business.
+            The Launch Online Grant program provides funding to B.C.-based business to create an online shop or an
+            online booking system and/or improve their existing online operations to attract new local customers and
+            expand to new markets. The grant will pay for up to 75% of eligible expenses, up to a maximum of $7,500 per
+            business.
           </MaxWidthP>
           <MaxWidthP>
             The program supports a rapid response for businesses and is accepting applications from businesses ready to
@@ -125,10 +127,13 @@ export default function Home({ canSubmit }) {
           </MaxWidthP>
           <StyledUl>
             <li>
-              Up-to 25% of funds will be reserved for Indigenous businesses and businesses operating outside of the
-              lower mainland and greater Victoria.
+              Up-to 30% of funds will be reserved for Black, Indigenous and people of color owned businesses and
+              businesses operating outside of the lower mainland and greater Victoria.
             </li>
-            <li>The funds must be used to hire B.C.-based company(ies) to do the online store development.</li>
+            <li>
+              The funds must be used to hire B.C.-based company(ies) to do the online store or online booking system
+              development.
+            </li>
           </StyledUl>
 
           <ProgramSteps />
@@ -136,8 +141,8 @@ export default function Home({ canSubmit }) {
 
           <ScrollHeader1 id="application-deadlines">Application deadlines</ScrollHeader1>
           <MaxWidthP>
-            Program application intake is open until the funds have been fully subscribed. Funding will be awarded on a
-            first-come first-served basis to small- and medium-sized B.C. businesses.
+            Program application intake is open until September 30, 2021 or until the funds have been fully subscribed.
+            Funding will be awarded on a first-come first-serve basis to small- and medium-sized B.C. businesses.
           </MaxWidthP>
           <MaxWidthP>
             For the projects to have an immediate benefit, the funds will be given as soon as a business has been
@@ -147,7 +152,8 @@ export default function Home({ canSubmit }) {
 
           <ScrollHeader1 id="eligibility">Determine your eligibility</ScrollHeader1>
           <MaxWidthP>
-            Review the following criteria to determine if your business is eligible for the program.
+            Review the following criteria to determine if your business, including sole proprietors and non-profits, is
+            eligible for the program.
           </MaxWidthP>
 
           <EligibilityCriteria />
@@ -156,28 +162,37 @@ export default function Home({ canSubmit }) {
           <ScrollHeader1 id="submit-application">Submit your application</ScrollHeader1>
 
           <Header2>Before applying</Header2>
+          <InfoMessage icon={false}>
+            Businesses that applied previously but did not met the eligibility criteria will be reassessed against the
+            new criteria. The applicant will be contacted if their application meets the new criteria. Your{' '}
+            <Highlight>application does not need to be resubmitted,</Highlight> and you will not lose your place in the
+            application queue due to reassessment.
+          </InfoMessage>
+
           <MaxWidthP>
             Please review the eligibility information on this page. If you have any questions, please use the contact
             form at the bottom of this page for support before submitting your application. Incomplete applications
             cannot be approved to receive a grant.
           </MaxWidthP>
-          <MaxWidthP>
-            Prepare a proposal for how much grant funding you need and how you plan to use the funds, with estimates for
-            the eligible expenses. The application form will contain a space for you to include your proposal (note the
-            max size is 1,000 characters) and cost estimates.
-          </MaxWidthP>
 
           <Header2>You will be asked to provide:</Header2>
           <StyledUl>
             <li>Current year balance or past fiscal year statement</li>
-            <li>Business number</li>
+            <li>Federal business number</li>
             <li>PST and WorkSafeBC registrations, if applicable</li>
             <li>Income tax return:</li>
             <StyledUl>
               <li>Notice of assessment (2019); or</li>
               <li>First section of T2 return or first section of owner’s tax return (form 5010-R) (2019 or 2020)</li>
             </StyledUl>
-            <li>B.C. business registration number and official registered name</li>
+            <li>
+              <HrefLink
+                href="https://www2.gov.bc.ca/gov/content/employment-business/business/managing-a-business/starting-a-business/starting-a-restaurant-in-bc/register-your-business"
+                blank
+              >
+                B.C. business registration number and official registered name
+              </HrefLink>
+            </li>
           </StyledUl>
 
           <InfoMessage
@@ -188,16 +203,14 @@ export default function Home({ canSubmit }) {
           <Header2>Receive funding to build your online store</Header2>
           <MaxWidthP>
             Successful applicants will receive funding within 2-3 weeks of approval and are required to develop or
-            upgrade their online shop within 12 weeks of receiving the grant.
+            upgrade their online shop or online booking system within 12 weeks of receiving the grant.
           </MaxWidthP>
 
           <GeneralInformation canSubmit={canSubmit} />
           <BackToTop />
 
           <ScrollHeader1 id="contact">Contact Us</ScrollHeader1>
-          <MaxWidthP>
-            Please contact us directly to ask questions. We will respond within <strong>3 business days.</strong>
-          </MaxWidthP>
+          <MaxWidthP>If you have any questions, please contact:</MaxWidthP>
           <div>
             <Info>
               <Icon name="phone" />
@@ -212,6 +225,8 @@ export default function Home({ canSubmit }) {
               </HrefLink>
             </Info>
           </div>
+
+          <MaxWidthP>We will respond within 3 business days.</MaxWidthP>
 
           <HorizontalRule />
 
