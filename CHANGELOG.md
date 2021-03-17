@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.5.4...v1.6.0) (2021-03-17)
+
+
+### Features
+
+* changes as outlined in osf 105 ([827bf6f](https://github.com/thebuttonclan/online-shop-form/commit/827bf6f8210623fd0df738e1f6474010531cd7fb))
+* update view ([f7d9b1e](https://github.com/thebuttonclan/online-shop-form/commit/f7d9b1e3fdedf4dfbe4a3f5e13f42c0e9228a60d))
+
+
+### Bug Fixes
+
+* costs function adjustment, validator for grant question ([14c1d8c](https://github.com/thebuttonclan/online-shop-form/commit/14c1d8c78bb43cfd6c63bb37f4f9c568623d05ac))
+* defaults for potentially undefined costs ([ad1ee90](https://github.com/thebuttonclan/online-shop-form/commit/ad1ee907b817d0e402ff31e61510cc9bf6a8bce6))
+* fix default undefined to default false ([147290d](https://github.com/thebuttonclan/online-shop-form/commit/147290daf2859c301b71c8adcb70cafe9218a034))
+
 ### [1.5.4](https://github.com/thebuttonclan/online-shop-form/compare/v1.5.3...v1.5.4) (2021-03-01)
 
 ### [1.5.3](https://github.com/thebuttonclan/online-shop-form/compare/v1.5.2...v1.5.3) (2021-03-01)
