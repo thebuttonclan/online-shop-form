@@ -32,6 +32,8 @@ jobs:
           asdf reshim
       - name: Setup postgres
         run: |
+          sudo apt update
+          sudo apt install libreadline7
           pg_ctl start
           createdb runner || true
           chmod +x ./setup.sh
