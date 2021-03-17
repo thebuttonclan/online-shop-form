@@ -27,7 +27,7 @@ const uiSchema = {
     'ui:help': 'Please use the format xxx-xxx-xxxx',
   },
   businessAddress: {
-    'ui:help': 'For example: 1111 Government St. A1A 1A1',
+    'ui:help': 'For example: 1111 Government St., Victoria BC, A1A 1A1',
   },
   pstNumber: {
     'ui:help': 'For example: PST-1234-5678',

@@ -6,7 +6,7 @@ const bannerAspect = 657 / 1500;
 const mobileBannerAspect = 2240 / 1952;
 
 const ImageBackground = styled.div`
-  height: calc(100vw * ${bannerAspect});
+  min-height: calc(100vw * ${bannerAspect});
   max-height: ${HEADER_HEIGHT};
   background-image: url('/images/banner.png');
   background-repeat: no-repeat;
