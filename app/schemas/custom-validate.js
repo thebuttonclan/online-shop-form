@@ -13,6 +13,11 @@ export default function createValidator(page) {
         errors.useOfGrant.addError('You must agree to all terms to continue!');
       }
     }
+    if (isPageFor('grantTerms')) {
+      if (formData.grantTerms !== true) {
+        errors.grantTerms.addError('You must agree to continue!');
+      }
+    }
     return errors;
   };
 }
