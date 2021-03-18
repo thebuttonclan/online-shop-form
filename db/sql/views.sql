@@ -31,6 +31,7 @@ create view public.application_extract
         form_data -> 'onlineStore' ->> 'existingOnlineStore' AS existing_online_store,
         form_data -> 'onlineStore' ->> 'onlineStoreUrl' AS online_store_url,
         form_data -> 'onlineStore' ->> 'existingStoreFeatures' AS existing_store_features,
+        form_data -> 'onlineStore' ->> 'existingBookingSystemFeatures' AS existing_bookings_system_features,
         form_data ->> 'canMeetDeadline' AS can_meet_deadline,
         form_data ->> 'otherCovidFunding' AS recieved_other_covid_funding,
         form_data ->> 'otherPrograms' AS other_covid_programs,

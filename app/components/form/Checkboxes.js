@@ -23,16 +23,18 @@ function selectValue(value, selected, all) {
 }
 
 function deselectValue(value, selected) {
-  return selected.filter(v => v !== value);
+  const values = selected.filter(v => v !== value);
+  if (values.length === 0) return undefined;
+  return values;
 }
 
 function CheckboxesWidget(props) {
-  const { id, disabled, options, value, autofocus, readonly, onChange } = props;
+  const { id, disabled, options, value, autofocus, readonly, onChange, required } = props;
   const { enumOptions, enumDisabled, inline } = options;
   const { name, title, allRequired } = props.schema;
   return (
     <div className="checkboxes" id={id}>
-      <Label>{title}</Label>
+      <Label required={required}>{title}</Label>
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
