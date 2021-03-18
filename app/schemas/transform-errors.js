@@ -1,3 +1,6 @@
+import { filter } from 'compression';
+import uniqBy from 'lodash/uniqBy';
+
 // example error object
 // {
 //    message: "should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
@@ -8,7 +11,13 @@
 //    stack: ".businessPhone should match pattern "^[0-9]{3}-[0-9]{3}-[0-9]{4}$"",
 // }
 export default function transformErrors(errors) {
-  return errors.map(err => {
+  // If property and message are the same, only show once. (Backend validation regenerates from schema, so only affects fronte end messages)
+  const filteredErrors = uniqBy(errors, err => {
+    const { property, message } = err;
+    return property + message;
+  });
+  return filteredErrors.map(err => {
+    console.log(err);
     if (
       err.property === '.onlineStore.existingStoreFeatures' ||
       err.property === '.onlineStore.existingBookingSystemFeatures'
