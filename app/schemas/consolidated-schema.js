@@ -353,11 +353,10 @@ const schema = {
       title: '',
       properties: {
         existingOnlineStore: {
-          // type: 'string',
-          type: 'boolean',
+          type: 'string',
           title: 'Does the business currently have an online store or an online booking system?',
           name: 'existingOnlineStore',
-          // enum: ['-', 'Yes (Online Store)', 'Yes (Online Booking System)', 'No']
+          enum: ['Yes (Online Store)', 'Yes (Online Booking System)', 'No'],
         },
         onlineStoreUrl: {
           type: 'string',
@@ -368,7 +367,7 @@ const schema = {
         },
         existingStoreFeatures: {
           type: 'array',
-          title: 'If the business has an existing online store or online booking system, please select all that apply',
+          title: 'If the business has an existing online store, please select all that apply',
           name: 'existingStoreFeatures',
           items: {
             type: 'string',
@@ -378,6 +377,17 @@ const schema = {
               'Online Store - Payment processing options including application of appropriate taxes and shipping costs at time of ordering',
               'Online Store - Product catalogue, search and inventory status',
               'Online Store - Website analytics and reporting capabilities',
+            ],
+          },
+          uniqueItems: true,
+        },
+        existingBookingSystemFeatures: {
+          type: 'array',
+          title: 'If the business has an existing online booking system, please select all that apply',
+          name: 'existingBookingSystemFeatures',
+          items: {
+            type: 'string',
+            enum: [
               'Online Booking System - Customer registration and information security features',
               'Online Booking System - Schedule navigation and reservation management capabilities',
               'Online Booking System - Payment processing options including application of appropriate taxes',
@@ -394,14 +404,20 @@ const schema = {
           oneOf: [
             {
               properties: {
-                existingOnlineStore: { enum: [false] },
+                existingOnlineStore: { enum: ['Yes (Online Store)'] },
               },
+              required: ['onlineStoreUrl', 'existingStoreFeatures'],
             },
             {
               properties: {
-                existingOnlineStore: { enum: [true] },
+                existingOnlineStore: { enum: ['Yes (Online Booking System)'] },
               },
-              required: ['onlineStoreUrl'],
+              required: ['onlineStoreUrl', 'existingBookingSystemFeatures'],
+            },
+            {
+              properties: {
+                existingOnlineStore: { enum: ['No'] },
+              },
             },
           ],
         },

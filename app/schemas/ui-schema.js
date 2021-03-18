@@ -73,6 +73,9 @@ const uiSchema = {
     existingOnlineStore: {
       'ui:widget': 'radio',
     },
+    existingBookingSystemFeatures: {
+      'ui:widget': 'checkboxes',
+    },
     onlineStoreUrl: {
       'ui:help': 'This field is required if answering Yes',
     },
