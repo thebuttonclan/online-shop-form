@@ -17,7 +17,6 @@ export default function transformErrors(errors) {
     return property + message;
   });
   return filteredErrors.map(err => {
-    console.log(err);
     if (
       err.property === '.onlineStore.existingStoreFeatures' ||
       err.property === '.onlineStore.existingBookingSystemFeatures'

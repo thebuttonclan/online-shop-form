@@ -59,7 +59,7 @@ function CheckboxesWidget(props) {
                 }
               }}
             />
-            <CheckboxLabel required>{option.label}</CheckboxLabel>
+            <CheckboxLabel>{option.label}</CheckboxLabel>
           </CheckboxContainer>
         );
         return inline ? (
