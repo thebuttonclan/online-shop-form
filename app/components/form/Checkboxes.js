@@ -34,7 +34,7 @@ function CheckboxesWidget(props) {
   const { name, title, allRequired } = props.schema;
   return (
     <div className="checkboxes" id={id}>
-      <Label>{title}</Label>
+      <Label required={required}>{title}</Label>
       {enumOptions.map((option, index) => {
         const checked = value.indexOf(option.value) !== -1;
         const itemDisabled = enumDisabled && enumDisabled.indexOf(option.value) !== -1;
@@ -59,7 +59,7 @@ function CheckboxesWidget(props) {
                 }
               }}
             />
-            <CheckboxLabel>{option.label}</CheckboxLabel>
+            <CheckboxLabel required>{option.label}</CheckboxLabel>
           </CheckboxContainer>
         );
         return inline ? (
