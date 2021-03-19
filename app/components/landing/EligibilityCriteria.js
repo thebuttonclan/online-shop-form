@@ -95,7 +95,7 @@ function ProgramSteps() {
             <li>Developing an online inventory of goods, products and services</li>
             <li>Pictures (including hiring a photographer), stock photos or related graphics needed</li>
           </StyledUl>
-          <li>Digital customer costs:</li>
+          <li>Digital Customer Acquisition:</li>
           <StyledUl>
             <li>E-commerce platform subscription (up to 1 year)</li>
             <li>Online advertising (up to 1 year)</li>
