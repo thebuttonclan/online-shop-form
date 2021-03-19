@@ -338,7 +338,7 @@ const contents = [
           and connections to vetted digital service providers: local B.C. businesses that provide online services. For
           information and to register:
         </StyledP>
-        <StyledAnchor href="https://innovatebc.ca/what-we-offer/connect-with-ex perts/der3/">
+        <StyledAnchor href="https://innovatebc.ca/what-we-offer/connect-with-experts/der3/">
           https://innovatebc.ca/what-we-offer/connect-with-experts/der3/
         </StyledAnchor>
         <br />
