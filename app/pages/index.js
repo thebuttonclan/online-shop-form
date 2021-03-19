@@ -177,7 +177,7 @@ export default function Home({ canSubmit }) {
 
           <Header2>You will be asked to provide:</Header2>
           <StyledUl>
-            <li>Current year balance or past fiscal year statement</li>
+            <li>Current year or past fiscal year income statement</li>
             <li>Federal business number</li>
             <li>PST and WorkSafeBC registrations, if applicable</li>
             <li>Income tax return:</li>
