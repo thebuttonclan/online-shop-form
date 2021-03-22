@@ -84,7 +84,7 @@ const formFieldEntries = [
   },
   // 21
   {
-    radios: [{ getBy: '#id_repeatableProducts' }],
+    radios: [{ getBy: '#id_repeatableProducts' }, { getBy: '#id_services' }],
   },
   // 22
   {

@@ -113,6 +113,14 @@ const uiSchema = {
       'ui:widget': 'TextareaWidget',
     },
   },
+  productType: {
+    repeatableProducts: {
+      'ui:widget': 'radio',
+    },
+    services: {
+      'ui:widget': 'radio',
+    },
+  },
 
   // This prevents conditional fields from rendering at the end of the form
   'ui:order': [
@@ -138,7 +146,9 @@ const uiSchema = {
     'sectorOther',
     'region',
     'isIndigenous',
+    'productType',
     'repeatableProducts',
+    'services',
     'cannabisProducts',
     'madeInBc',
     'productionLocation',

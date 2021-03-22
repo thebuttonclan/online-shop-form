@@ -76,7 +76,6 @@ const schema = {
     'workSafeBcRegistered',
     'region',
     'isIndigenous',
-    'repeatableProducts',
     'cannabisProducts',
     'madeInBc',
     'employees',
@@ -313,10 +312,22 @@ const schema = {
       title: 'Is this business owned by black, Indigenous or person of colour?',
       enum: ['', 'Black', 'Indigenous', 'Person of colour', 'No', 'Rather not answer'],
     },
-    repeatableProducts: {
-      type: 'boolean',
-      title: 'Does the business provide services?',
-      name: 'repeatableProducts',
+    productType: {
+      type: 'object',
+      name: 'productType',
+      properties: {
+        repeatableProducts: {
+          type: 'boolean',
+          title: 'Does the business sell products (goods)?',
+          name: 'repeatableProducts',
+        },
+        services: {
+          type: 'boolean',
+          title: 'Does the business provide services?',
+          name: 'services',
+        },
+      },
+      required: ['repeatableProducts', 'services'],
     },
     cannabisProducts: {
       type: 'boolean',
