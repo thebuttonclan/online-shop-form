@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.6.6](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.5...v1.6.6) (2021-03-22)
+
+
+### Bug Fixes
+
+* remove extra column ([9f330b6](https://github.com/thebuttonclan/online-shop-form/commit/9f330b6b343df8d97e5cff5bbde474642842861f))
+
 ### [1.6.5](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.3...v1.6.5) (2021-03-18)
 
 ### [1.6.4](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.3...v1.6.4) (2021-03-18)

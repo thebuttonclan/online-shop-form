@@ -66,7 +66,7 @@ function ProgramSteps() {
             <br />
             <li>
               Does not currently have an online booking system or has an online booking system that has no more than
-              three of the five identified online booking features
+              three of the five identified online booking features optimized
             </li>
             <StyledUl>
               <li>Customer registration and information security features</li>
