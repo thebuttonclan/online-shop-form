@@ -51,8 +51,8 @@ export default function SuccessPage() {
         </p>
       </SuccessBanner>
       <Header2>
-        Your application has been submitted for conditional approval. Someone will reach out to you in 3 weeks to
-        further discuss this proposal.
+        Your application has been submitted for conditional approval. We will reach out to you within 3 weeks to
+        regarding the status of your application.
       </Header2>
       <Header2>Please be prepared to provide the following document attachments:</Header2>
       <IndentedUl>
