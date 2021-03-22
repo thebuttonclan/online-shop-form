@@ -391,6 +391,11 @@ export default class Faq extends Component {
         </Helmet>
         <StyledContainer>
           <Header1 as="h1">FAQ</Header1>
+          <StyledP>(Also provided in French, Spanish, Chinese, Korean, Punjabi, and Tagalog)</StyledP>
+          <HrefLink href="/files/faqs.pdf" blank>
+            View the translated FAQs.
+          </HrefLink>
+
           <StyledShowAllWrapper>
             <div></div>
             <ShowAllBtn onClick={this.handleAllClick}>{activeIndexs.length >= 1 ? 'Hide all' : 'Show all'}</ShowAllBtn>
