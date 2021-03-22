@@ -22,7 +22,6 @@ create view public.application_extract
         form_data ->> 'workSafeBcRegistrationNumber' AS worksafe_bc_registration_number,
         form_data ->> 'region' AS region,
         form_data ->> 'isIndigenous' AS is_indigenous,
-        form_data ->> 'repeatableProducts' AS repeatable_products,
         COALESCE(form_data -> 'productType' ->> 'repeatableProducts', form_data ->> 'repeatableProducts') AS repeatable_products,
         form_data -> 'productType' ->> 'services' AS services,
         form_data ->> 'cannabisProducts' AS cannabis_products,
