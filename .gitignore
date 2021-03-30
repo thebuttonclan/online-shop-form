@@ -73,3 +73,5 @@ terraform.rc
 
 private_ssh_key
 git-crypt.key
+
+.env

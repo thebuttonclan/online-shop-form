@@ -1,4 +1,5 @@
 import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
+import sendConfirmationEmail from '../../../services/mailer/mailer';
 import schemasArray from 'schemas/page-schemas';
 import { removePageFields, matchPostBody } from 'utils/form-helpers';
 
@@ -19,9 +20,15 @@ async function handler(req, res) {
   session.formData = newFormData;
 
   const context = { req, newData: newFormData, page, js };
-
   if (page === LAST_PAGE) {
-    await submitApplication(context);
+    let success = await submitApplication(context);
+    if (success !== undefined) {
+      let [result, res, userEmail] = success;
+      if (result.isValid) {
+        await sendConfirmationEmail(userEmail);
+        return res.json(result);
+      }
+    }
   } else {
     pageForward(context);
   }

@@ -51,9 +51,10 @@ export async function submitApplication({ req, newData, js }) {
     req.backendState.setApplicationCount(count);
     res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
 
+    let userEmail = req.session.formData.email;
     req.session.formData = {};
 
-    if (js) return res.json(result);
+    if (js) return [result, res, userEmail];
     return res.redirect('/message/success');
   } catch (error) {
     res.log = `${SAVING_ERROR_MSG}: ${error}`;
