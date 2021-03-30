@@ -5,7 +5,7 @@ const host = process.env.SMTP_HOST || '';
 const port = (process.env.SMTP_PORT && parseInt(process.env.SMTP_PORT, 10)) || 587;
 const secure = process.env.SMTP_SECURE === 'true';
 const user = process.env.SMTP_USERNAME || '';
-const pass = process.env.SMPT_PASSWORD || '';
+const pass = process.env.SMTP_PASSWORD || '';
 
 const transport = nodemailer.createTransport({
   host,
