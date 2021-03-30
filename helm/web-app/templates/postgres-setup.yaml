@@ -21,6 +21,8 @@ spec:
           envFrom:
             - secretRef:
                 name: postgresql
+            - secretRef:
+                name: smtp
 
       restartPolicy: Never
   backoffLimit: 1
