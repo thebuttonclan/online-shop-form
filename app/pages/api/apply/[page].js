@@ -1,7 +1,7 @@
-import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
+import { LAST_PAGE } from 'services/application';
+import { submitApplication, pageForward } from 'services/backend';
 import schemasArray from 'schemas/page-schemas';
 import { removePageFields, matchPostBody } from 'utils/form-helpers';
-import sendConfirmationEmail from 'services/mailer/mailer';
 
 async function handler(req, res) {
   const { body: postData, session = {}, query = {} } = req;
@@ -20,15 +20,9 @@ async function handler(req, res) {
   session.formData = newFormData;
 
   const context = { req, newData: newFormData, page, js };
+
   if (page === LAST_PAGE) {
-    const success = await submitApplication(context);
-    if (success !== undefined) {
-      const [result, res, userEmail] = success;
-      if (result.isValid) {
-        await sendConfirmationEmail(userEmail);
-        return res.json(result);
-      }
-    }
+    await submitApplication(context);
   } else {
     pageForward(context);
   }
