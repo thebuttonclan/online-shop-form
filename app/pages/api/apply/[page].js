@@ -1,4 +1,5 @@
-import { LAST_PAGE, submitApplication, pageForward } from 'services/application';
+import { LAST_PAGE } from 'services/application';
+import { submitApplication, pageForward } from 'services/backend';
 import schemasArray from 'schemas/page-schemas';
 import { removePageFields, matchPostBody } from 'utils/form-helpers';
 

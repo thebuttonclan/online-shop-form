@@ -3,9 +3,6 @@ import validate from 'react-jsonschema-form/lib/validate';
 import createValidator from 'schemas/custom-validate';
 import fullSchema from 'schemas/consolidated-schema';
 import { getPropertyDependencies } from 'schemas/split-schema';
-import { DB_ERROR_MSG, INVALID_APPLICATION_MSG, SUCCESSFUL_APPLICATION_MSG, SAVING_ERROR_MSG } from 'utils/logging';
-
-const { version: formVersion } = require('../package.json');
 
 export const LAST_PAGE =
   Object.keys(fullSchema.properties).length - getPropertyDependencies(fullSchema.dependencies).length;
@@ -27,50 +24,4 @@ export async function saveApplication(formData, page) {
   );
 
   return data;
-}
-
-export async function submitApplication({ req, newData, js }) {
-  const { res, pgQuery } = req;
-  try {
-    const result = validateFormData(newData);
-
-    if (!result.isValid) {
-      res.log = `${INVALID_APPLICATION_MSG}, data: ${JSON.stringify(newData)}, errors: ${JSON.stringify(
-        result.errors
-      )}`;
-      if (js) return res.status(422).json(result);
-      return res.redirect('/message/validation-error');
-    }
-    const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
-    if (!success) {
-      res.log = `${DB_ERROR_MSG}, data: ${JSON.stringify(newData)}`;
-      throw new Error('Failed to save application');
-    }
-
-    const count = await pgQuery.countApplication();
-    req.backendState.setApplicationCount(count);
-    res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
-
-    req.session.formData = {};
-
-    if (js) return res.json(result);
-    return res.redirect('/message/success');
-  } catch (error) {
-    res.log = `${SAVING_ERROR_MSG}: ${error}`;
-    if (js) return res.status(422).json({ hasError: true, message: error.message || error });
-    return res.redirect('/message/error');
-  }
-}
-
-export function pageForward({ req, newData, page, js }) {
-  const { res } = req;
-
-  const nextPage = page + 1;
-  const props = { page: nextPage, formData: newData };
-
-  if (js) {
-    res.json(props);
-  } else {
-    res.redirect(`/apply/${nextPage}`);
-  }
 }
