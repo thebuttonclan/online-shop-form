@@ -9,13 +9,13 @@ export default function createValidator(page) {
 
   return function customValidate(formData, errors) {
     if (isPageFor('declarations')) {
-      if (formData.declarations.length !== 3) {
-        errors.useOfGrant.addError('You must agree to all terms to continue!');
+      if (!formData.declarations || formData.declarations.length !== 3) {
+        errors.useOfGrant?.addError('You must agree to all terms to continue!');
       }
     }
     if (isPageFor('grantTerms')) {
       if (formData.grantTerms !== true) {
-        errors.grantTerms.addError('You must agree to continue!');
+        errors.grantTerms?.addError('You must agree to continue!');
       }
     }
     return errors;

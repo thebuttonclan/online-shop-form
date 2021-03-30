@@ -16,6 +16,7 @@ export async function submitApplication({ req, newData, js }) {
       if (js) return res.status(422).json(result);
       return res.redirect('/message/validation-error');
     }
+
     const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
     if (!success) {
       res.log = `${DB_ERROR_MSG}, data: ${JSON.stringify(newData)}`;
@@ -26,7 +27,8 @@ export async function submitApplication({ req, newData, js }) {
     req.backendState.setApplicationCount(count);
     res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
 
-    await sendEmail({
+    // intentionally not waiting for the email sent to unblock the response
+    sendEmail({
       subject: 'Launch Online - Application Received',
       to: req.session.formData.email,
       template: 'confirmation',
