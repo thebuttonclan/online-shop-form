@@ -62,6 +62,8 @@ spec:
           envFrom:
             - secretRef:
                 name: postgresql
+            - secretRef:
+                name: smtp
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
