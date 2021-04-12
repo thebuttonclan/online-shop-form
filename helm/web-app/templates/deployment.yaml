@@ -62,10 +62,10 @@ spec:
           envFrom:
             - secretRef:
                 name: postgresql
-            {{- if .Values.smtp.enabled -}}
+            {{ if .Values.smtp.enabled }}
             - secretRef:
                 name: smtp
-            {{- end }}
+            {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
