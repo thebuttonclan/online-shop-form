@@ -74,3 +74,12 @@ git-crypt init
 echo "<hash>" | base64 -d > git-crypt.key
 git-crypt unlock git-crypt.key
 ```
+
+## Create app password with `Security defaults` enabled
+
+- Go to Azure Active Directory > Users > Multi-Factor Authentication; You need to be in the Authentication Administrator Azure AD role (or a Global Administrator) to have access to this resource.
+
+1. Allow users to create app passwords
+   & > service settings, and select `Allow users to create app passwords to sign in to non-browser apps`
+1. Enforce multi-factor auth
+   & > users, and select the target user to set `MULTI-FACTOR AUTH STATUS` to `Enforced`.
