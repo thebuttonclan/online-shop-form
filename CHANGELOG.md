@@ -4,7 +4,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [1.7.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.6...v1.7.0) (2021-04-12)
 
-
 ### Features
 
 * add helm chart for mailhog ([2dd5f02](https://github.com/thebuttonclan/online-shop-form/commit/2dd5f02563d7f40a62d7cbcd19faa0824b41df72))
