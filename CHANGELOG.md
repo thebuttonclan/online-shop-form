@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.6...v1.7.0) (2021-04-12)
+
+### Features
+
+* add helm chart for mailhog ([2dd5f02](https://github.com/thebuttonclan/online-shop-form/commit/2dd5f02563d7f40a62d7cbcd19faa0824b41df72))
+* email template and mailer service created ([5680288](https://github.com/thebuttonclan/online-shop-form/commit/568028871a16e81bdbdc604762cd0b8487b2cd73))
+* filenames ([7b4796e](https://github.com/thebuttonclan/online-shop-form/commit/7b4796e53019ceafb47b3bab4c964ad7862c8fa9))
+* helm charts with auth for mailhog ([493e3cd](https://github.com/thebuttonclan/online-shop-form/commit/493e3cdabe6fb2730a355b9a29a2ab2e03d3f40c))
+* organize email service ([435b583](https://github.com/thebuttonclan/online-shop-form/commit/435b583d0420ea295e60d2637d86d3da4d499fe5))
+* updated apply/page/api route to send confirmation email on successful appplication submission ([6b64424](https://github.com/thebuttonclan/online-shop-form/commit/6b644243e020cd7d0d9c56e9ac23f4c225a7ef50))
+
+### [1.6.7](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.6...v1.6.7) (2021-03-23)
+
 ### [1.6.6](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.5...v1.6.6) (2021-03-22)
 
 
