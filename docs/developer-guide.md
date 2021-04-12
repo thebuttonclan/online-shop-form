@@ -63,3 +63,23 @@ This project includes a [commitizen](https://github.com/commitizen/cz-cli) confi
 to facilitate conformance with the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
 Run `make commit` to use the `git commit` wrapper that ensures your commit messages are well-formed.
+
+## git-crypt
+
+We use [`git-crypt`](https://github.com/AGWA/git-crypt) to encrypt files containing sensitive data.
+Once you have the `hash string` of `git-crypt.key` file, configure your repository:
+
+```sh
+git-crypt init
+echo "<hash>" | base64 -d > git-crypt.key
+git-crypt unlock git-crypt.key
+```
+
+## Create app password with `Security defaults` enabled
+
+- Go to Azure Active Directory > Users > Multi-Factor Authentication; You need to be in the Authentication Administrator Azure AD role (or a Global Administrator) to have access to this resource.
+
+1. Allow users to create app passwords
+   & > service settings, and select `Allow users to create app passwords to sign in to non-browser apps`
+1. Enforce multi-factor auth
+   & > users, and select the target user to set `MULTI-FACTOR AUTH STATUS` to `Enforced`.
