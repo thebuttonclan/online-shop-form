@@ -28,16 +28,15 @@ export async function submitApplication({ req, newData, js }) {
     res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
 
     // intentionally not waiting for the email sent to unblock the response
-    // keep this commented until the SMTP server issues are resolved
-    // sendEmail({
-    //   subject: 'Launch Online - Application Received',
-    //   to: req.session.formData.email,
-    //   template: 'confirmation',
-    //   context: {
-    //     phoneNum: '844-487-1266',
-    //     siteUrl: 'https://launchonline.ca',
-    //   },
-    // });
+    sendEmail({
+      subject: 'Launch Online - Application Received',
+      to: req.session.formData.email,
+      template: 'confirmation',
+      context: {
+        phoneNum: '844-487-1266',
+        siteUrl: 'https://launchonline.ca',
+      },
+    });
 
     req.session.formData = {};
 
