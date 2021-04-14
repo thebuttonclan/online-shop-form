@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/thebuttonclan/online-shop-form/compare/v1.7.1...v1.8.0) (2021-04-14)
+
+
+### Features
+
+* enable email confirmation ([60b0cf7](https://github.com/thebuttonclan/online-shop-form/commit/60b0cf767e9c5e036b8a1503457d9a1ccc02eb2b))
+
 ### [1.7.1](https://github.com/thebuttonclan/online-shop-form/compare/v1.7.0...v1.7.1) (2021-04-12)
 
 ### [1.6.7](https://github.com/thebuttonclan/online-shop-form/compare/v1.6.6...v1.6.7) (2021-03-23)
