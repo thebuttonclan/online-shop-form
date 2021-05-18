@@ -38,6 +38,10 @@ const LiBreak = styled.li`
   margin-top: ${MIN_PADDING};
 `;
 
+const HeaderWarning = styled(Header2)`
+  color: red;
+`;
+
 export default function SuccessPage() {
   return (
     <Container>
@@ -51,13 +55,26 @@ export default function SuccessPage() {
         </p>
       </SuccessBanner>
       <Header2>
-        Your application has been submitted for conditional approval. We will reach out to you within 3 weeks to
-        regarding the status of your application.
+        Your application has been submitted for conditional approval. You should receive a confirmation email from us
+        shortly.
       </Header2>
+      <HeaderWarning>
+        Please be sure to check any Spam, Junk, or Promotions folders if you don’t see our email in your main Inbox. Our
+        emails will be from Applications via{' '}
+        <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>.
+      </HeaderWarning>
+      <Header2>We will be reaching out to you within 3 weeks regarding the status of your application.</Header2>
       <Header2>Please be prepared to provide the following document attachments:</Header2>
       <IndentedUl>
         <li>Current year or past fiscal year income statement</li>
-        <li>Payment information document (direct deposit or VOID cheque pdf)</li>
+        <li>Payment information document</li>
+        <StyledUl>
+          <li>Image copy of a VOID cheque; or</li>
+          <li>
+            Pre-filled Direct Deposit/Pre-Authorized Debit payment form (PDF) from your bank with your associated
+            name/business name
+          </li>
+        </StyledUl>
         <li>
           Income tax return
           <StyledUl>
@@ -67,8 +84,8 @@ export default function SuccessPage() {
         </li>
       </IndentedUl>
       <FinalP>
-        If you have any questions about your applications please contact us at:{' '}
-        <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>
+        If you have any questions about your application or if you did not receive a confirmation email, please contact
+        us at: <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>
       </FinalP>
     </Container>
   );
