@@ -58,5 +58,7 @@ create view public.application_extract
             GREATEST((form_data -> 'costs' ->> 'staffTrainingCosts')::numeric, 0)
           ))
         ) AS grant_request,
+        TRUE as consent,
+        TRUE as declarations,
         created_at
     from applications;

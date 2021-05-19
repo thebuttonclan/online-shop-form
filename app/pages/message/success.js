@@ -1,4 +1,4 @@
-import { Container, Icon } from 'semantic-ui-react';
+import { Container, Icon, Message } from 'semantic-ui-react';
 import Header2 from 'components/Header2';
 import StyledUl from 'components/StyledUl';
 import styled from 'styled-components';
@@ -12,8 +12,8 @@ const IndentedUl = styled(StyledUl)`
 
 const SuccessBanner = styled.div`
   min-height: 150px;
-  background-color: #00dd59;
-  color: white;
+  background-color: #dff0d8;
+  color: #2d4821;
   width: 100%;
   margin-top: 100px;
   margin-bottom: ${MIN_PADDING};
@@ -38,8 +38,8 @@ const LiBreak = styled.li`
   margin-top: ${MIN_PADDING};
 `;
 
-const HeaderWarning = styled(Header2)`
-  color: red;
+const StrongP = styled(StyledP)`
+  font-weight: bold;
 `;
 
 export default function SuccessPage() {
@@ -54,16 +54,21 @@ export default function SuccessPage() {
           Application Submitted!
         </p>
       </SuccessBanner>
-      <Header2>
+      <Header2>What Happens Next</Header2>
+      <StyledP>
         Your application has been submitted for conditional approval. You should receive a confirmation email from us
         shortly.
-      </Header2>
-      <HeaderWarning>
+      </StyledP>
+      <StrongP>
         Please be sure to check any Spam, Junk, or Promotions folders if you don’t see our email in your main Inbox. Our
         emails will be from Applications via{' '}
         <a href="mailto:applications@launchonline.ca">applications@launchonline.ca</a>.
-      </HeaderWarning>
-      <Header2>We will be reaching out to you within 3 weeks regarding the status of your application.</Header2>
+      </StrongP>
+      <Message
+        icon="warning sign"
+        warning
+        content="We will be reaching out to you within 3 weeks regarding the status of your application."
+      />
       <Header2>Please be prepared to provide the following document attachments:</Header2>
       <IndentedUl>
         <li>Current year or past fiscal year income statement</li>
