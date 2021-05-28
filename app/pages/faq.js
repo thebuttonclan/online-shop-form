@@ -27,6 +27,10 @@ const StyledAnchor = styled.a.attrs({ target: '_blank', rel: 'noopener noreferre
   font-size: ${DEFAULT_FONT_SIZE};
 `;
 
+const InlineAnchor = styled(StyledAnchor)`
+  display: inline-block;
+`;
+
 const StyledShowAllWrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -332,23 +336,114 @@ const contents = [
     content: (
       <>
         <StyledP>
-          The Digital Economy: Rapid Response + Resiliency (DER3), program funded through Innovate BC, provides support
-          for small-medium sized businesses in any sector to enter or expand in the digital economy, through
-          personalized advisory services to assess needs, recommend tools and solutions toward appropriate technology
-          and connections to vetted digital service providers: local B.C. businesses that provide online services. For
-          information and to register:
+          Please feel free to reach out to the below B.C. business accelerators that make up the B.C. Acceleration
+          Network (BCAN), an alliance of regional partners and executive-level mentors in your area for further
+          assistance to build your online store or booking system.
         </StyledP>
-        <StyledAnchor href="https://innovatebc.ca/what-we-offer/connect-with-experts/der3/">
-          https://innovatebc.ca/what-we-offer/connect-with-experts/der3/
-        </StyledAnchor>
+
+        <StyledP>
+          Viatec - South Island
+          <br />
+          Web: <InlineAnchor href="https://www.viatec.ca">www.viatec.ca</InlineAnchor>
+          <br />
+          Email: <InlineAnchor href="mailto:rbennett@viatec.ca">rbennett@viatec.ca</InlineAnchor>
+        </StyledP>
+
+        <StyledP>
+          HubSpace – Northern B.C.
+          <br />
+          Web: <InlineAnchor href="https://www.hubspace.ca">www.hubspace.ca</InlineAnchor>
+          <br />
+          Email: <InlineAnchor href="mailto:executivedirector@hubspace.ca">executivedirector@hubspace.ca</InlineAnchor>
+        </StyledP>
+
+        <StyledP>
+          Kamloops Innovation – Interior
+          <br />
+          Web: <InlineAnchor href="https://www.kamloopsinnovation.ca">www.kamloopsinnovation.ca</InlineAnchor>
+          <br />
+          Email: <InlineAnchor href="mailto:info@kamloopsinnovation.ca">info@kamloopsinnovation.ca</InlineAnchor>
+        </StyledP>
+
+        <StyledP>
+          Accelerate Okanagan – Okanagan
+          <br />
+          Web: <InlineAnchor href="https://www.accelerateokanagan.com">www.accelerateokanagan.com</InlineAnchor>
+          <br />
+          Email:{' '}
+          <InlineAnchor href="mailto:contact@accelerateokanagan.com">contact@accelerateokanagan.com</InlineAnchor>
+        </StyledP>
+
+        <StyledP>
+          Innovation Island – North Island
+          <br />
+          Web: <InlineAnchor href="https://www.innovationisland.ca">www.innovationisland.ca</InlineAnchor>
+          <br />
+          Email: <InlineAnchor href="mailto:info@innovationisland.ca">info@innovationisland.ca</InlineAnchor>
+        </StyledP>
+
+        <StyledP>
+          KAST – Kootneys
+          <br />
+          Web: <InlineAnchor href="https://www.kast.com">www.kast.com</InlineAnchor>
+          <br />
+          Email: <InlineAnchor href="mailto:info@kast.com">info@kast.com</InlineAnchor>
+        </StyledP>
         <br />
+
+        <StyledP>
+          BDC has a digital readiness roadmap program that provides SMEs with advice when creating their roadmap to
+          digitization. For information:{' '}
+          <StyledAnchor href="https://www.bdc.ca/en/consulting/digital-readiness-for-sme">
+            Digital readiness roadmap for SMEs | BDC.ca
+          </StyledAnchor>
+        </StyledP>
+
         <StyledP>
           In the lower mainland, Greater Vancouver Board of Trade is a great resource through their Business Resiliency
           Series: E-Commerce Essentials for businesses looking for advice. For information:
+          <StyledAnchor href="https://www.boardoftrade.com/events/individual-events/1789-6567">
+            https://www.boardoftrade.com/events/individual-events/1789-6567
+          </StyledAnchor>
         </StyledP>
-        <StyledAnchor href="https://www.boardoftrade.com/events/individual-eve nts/1789-6567">
-          https://www.boardoftrade.com/events/individual-eve nts/1789-6567
-        </StyledAnchor>
+
+        <StyledP>
+          Other B.C. wide resources include: The BC Tech Association:
+          <StyledAnchor href="https://wearebctech.com/">https://wearebctech.com/</StyledAnchor>
+        </StyledP>
+
+        <StyledP>
+          Small Business B.C.
+          <StyledAnchor href="https://smallbusinessbc.ca/">https://smallbusinessbc.ca/</StyledAnchor>
+        </StyledP>
+
+        <StyledP>
+          Local chambers of commerce and regional economic development offices are also great starting points when
+          looking for guidance on starting your online shop or booking system.
+        </StyledP>
+      </>
+    ),
+  },
+  {
+    question: `Can I have a consultant apply for the Launch Online Grant on behalf of my business?`,
+    content: (
+      <>
+        <StyledP>
+          No. Only applications submitted by business owners/management can be considered. Applications submitted by
+          "authorized representatives" on the business’s behalf cannot be considered.{' '}
+        </StyledP>
+      </>
+    ),
+  },
+  {
+    question: `My business is part of a franchise. Am I eligible to apply for the grant?`,
+    content: (
+      <>
+        <StyledP>
+          Franchises should look to their head office to apply. If eligible, one grant per franchise can be received. If
+          another franchisee within the company has already received a grant, subsequent applications would not be
+          eligible.{' '}
+        </StyledP>
       </>
     ),
   },
