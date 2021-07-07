@@ -2,7 +2,9 @@ import { Icon, Message, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const MarginDiv = styled.div`
-  padding: 20px 0;
+  position: sticky;
+  top: 120px;
+  z-index: 2;
 `;
 
 const WarningMessage = styled(Message)`
