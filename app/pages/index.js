@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Icon, Message, Header, Grid } from 'semantic-ui-react';
+import { Container, Icon, Header, Grid } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { SECONDARY_FONT_COLOUR, MIN_PADDING } from 'theme';
 import InfoMessage from 'components/InfoMessage';
@@ -17,6 +17,7 @@ import Header2 from 'components/Header2';
 import HrefLink from 'components/HrefLink';
 import { TOP_HEIGHT } from 'layouts/DefaultLayout';
 import SBCLogo from 'components/SBCLogo';
+import DisabledBanner from 'components/DisabledBanner';
 
 const Info = styled.div`
   color: ${SECONDARY_FONT_COLOUR};
@@ -49,11 +50,6 @@ const ScrollHeader1 = styled(Header1)`
   padding-top: 50px !important;
 `;
 
-const WarningMessage = styled(Message)`
-  display: flex;
-  align-items: center;
-`;
-
 const MaxWidthP = styled(StyledP)`
   max-width: 675px;
 `;
@@ -66,18 +62,7 @@ export default function Home({ canSubmit }) {
   return (
     <>
       <Container>
-        {!canSubmit && (
-          <WarningMessage warning>
-            <Icon size="large" name="exclamation triangle"></Icon>
-            <div>
-              <Header warning>Please Be Advised</Header>
-              <p>
-                Due to the volume of applications we've already received, the application intake form is currently ON
-                HOLD. Please check back at a later time if this status has changed. We are sorry for any inconvenience.
-              </p>
-            </div>
-          </WarningMessage>
-        )}
+        {!canSubmit && <DisabledBanner />}
         <Banner />
         <PaddedDiv>
           <Header2>On this page:</Header2>

@@ -19,7 +19,7 @@ export default function Continuebutton({ router, text }) {
 
   return (
     <>
-      <StyledButton id="btn-submit-form-data" type="submit" loading={loading && clicked} onClick={handleClick}>
+      <StyledButton id="btn-submit-form-data" type="submit" loading={loading && clicked} onClick={handleClick} disabled>
         {text}
       </StyledButton>
     </>
