@@ -6,47 +6,49 @@ const { version: formVersion } = require('../package.json');
 
 export async function submitApplication({ req, newData, js }) {
   const { res, pgQuery } = req;
-  try {
-    const result = validateFormData(newData);
+  // Application submissions disabled
+  return res.status(422);
+  // try {
+  //   const result = validateFormData(newData);
 
-    if (!result.isValid) {
-      res.log = `${INVALID_APPLICATION_MSG}, data: ${JSON.stringify(newData)}, errors: ${JSON.stringify(
-        result.errors
-      )}`;
-      if (js) return res.status(422).json(result);
-      return res.redirect('/message/validation-error');
-    }
+  //   if (!result.isValid) {
+  //     res.log = `${INVALID_APPLICATION_MSG}, data: ${JSON.stringify(newData)}, errors: ${JSON.stringify(
+  //       result.errors
+  //     )}`;
+  //     if (js) return res.status(422).json(result);
+  //     return res.redirect('/message/validation-error');
+  //   }
 
-    const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
-    if (!success) {
-      res.log = `${DB_ERROR_MSG}, data: ${JSON.stringify(newData)}`;
-      throw new Error('Failed to save application');
-    }
+  //   const success = await pgQuery.createApplication({ form_data: { ...newData, formVersion } });
+  //   if (!success) {
+  //     res.log = `${DB_ERROR_MSG}, data: ${JSON.stringify(newData)}`;
+  //     throw new Error('Failed to save application');
+  //   }
 
-    const count = await pgQuery.countApplication();
-    req.backendState.setApplicationCount(count);
-    res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
+  //   const count = await pgQuery.countApplication();
+  //   req.backendState.setApplicationCount(count);
+  //   res.log = `${SUCCESSFUL_APPLICATION_MSG}: ${count}`;
 
-    // intentionally not waiting for the email sent to unblock the response
-    sendEmail({
-      subject: 'Launch Online - Application Received',
-      to: req.session.formData.email,
-      template: 'confirmation',
-      context: {
-        phoneNum: '844-487-1266',
-        siteUrl: 'https://launchonline.ca',
-      },
-    });
+  //   // intentionally not waiting for the email sent to unblock the response
+  //   sendEmail({
+  //     subject: 'Launch Online - Application Received',
+  //     to: req.session.formData.email,
+  //     template: 'confirmation',
+  //     context: {
+  //       phoneNum: '844-487-1266',
+  //       siteUrl: 'https://launchonline.ca',
+  //     },
+  //   });
 
-    req.session.formData = {};
+  //   req.session.formData = {};
 
-    if (js) return res.json(result);
-    return res.redirect('/message/success');
-  } catch (error) {
-    res.log = `${SAVING_ERROR_MSG}: ${error}`;
-    if (js) return res.status(422).json({ hasError: true, message: error.message || error });
-    return res.redirect('/message/error');
-  }
+  //   if (js) return res.json(result);
+  //   return res.redirect('/message/success');
+  // } catch (error) {
+  //   res.log = `${SAVING_ERROR_MSG}: ${error}`;
+  //   if (js) return res.status(422).json({ hasError: true, message: error.message || error });
+  //   return res.redirect('/message/error');
+  // }
 }
 
 export function pageForward({ req, newData, page, js }) {

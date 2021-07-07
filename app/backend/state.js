@@ -5,7 +5,7 @@ let _count = -1;
 
 const setApplicationCount = count => {
   _count = count;
-  _canSubmit = count < MAX_SUBMISSION_COUNT;
+  _canSubmit = false;
   return _canSubmit;
 };
 

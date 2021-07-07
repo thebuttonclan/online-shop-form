@@ -14,6 +14,7 @@ import BackButton from 'components/form/BackButton';
 import { Helmet } from 'react-helmet';
 import createValidator from 'schemas/custom-validate';
 import { TOP_HEIGHT } from 'layouts/DefaultLayout';
+import DisabledBanner from 'components/DisabledBanner';
 
 const SJsonSchemaForm = styled(JsonSchemaForm)`
   padding-bottom: 30px;
@@ -75,6 +76,7 @@ export default function Apply({ formData, page }) {
       <Helmet>
         <title>Apply!</title>
       </Helmet>
+      <DisabledBanner />
       <TopRow>
         <BackButton href={backRoute} router={router} />
         <ProgressContainer>
