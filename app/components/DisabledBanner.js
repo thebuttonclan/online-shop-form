@@ -13,7 +13,7 @@ const WarningMessage = styled(Message)`
 export default function Disabledbanner() {
   return (
     <MarginDiv>
-      <WarningMessage warning>
+      <WarningMessage negative>
         <Icon size="large" name="exclamation triangle"></Icon>
         <div>
           <Header warning>Please Be Advised</Header>
