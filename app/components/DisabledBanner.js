@@ -21,8 +21,8 @@ export default function Disabledbanner() {
           <Header warning>Please Be Advised</Header>
           <p>
             Application intake for Launch Online Grant Program is now <strong>closed</strong>. Adjudication of already
-            submitted applications will continue until the all funds are fully allocated. Each applicant will be
-            informed of the outcome of their application.
+            submitted applications will continue until all funds are fully allocated. Each applicant will be informed of
+            the outcome of their application.
           </p>
         </div>
       </WarningMessage>
