@@ -2,19 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [1.8.7](https://github.com/thebuttonclan/online-shop-form/compare/v1.8.5...v1.8.7) (2021-07-07)
-
-
-### Bug Fixes
-
-* **banner:** typo ([b9fad9b](https://github.com/thebuttonclan/online-shop-form/commit/b9fad9b4b5f3d5788b984e5b45f4ff57376fa262))
-
 ### [1.8.6](https://github.com/thebuttonclan/online-shop-form/compare/v1.8.5...v1.8.6) (2021-07-07)
-
-
-### Bug Fixes
-
-* **banner:** typo ([b9fad9b](https://github.com/thebuttonclan/online-shop-form/commit/b9fad9b4b5f3d5788b984e5b45f4ff57376fa262))
 
 ### [1.8.5](https://github.com/thebuttonclan/online-shop-form/compare/v1.8.4...v1.8.5) (2021-05-28)
 
